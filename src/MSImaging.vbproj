@@ -22,8 +22,4 @@
     <ProjectReference Include="..\..\..\..\..\mzkit\src\visualize\MsImaging\MsImaging.NET5.vbproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ggplot\" />
-  </ItemGroup>
-
 </Project>
