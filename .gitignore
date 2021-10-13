@@ -10,6 +10,8 @@
 *.userosscache
 *.sln.docstates
 
+assembly/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -350,3 +352,4 @@ MigrationBackup/
 .ionide/
 .Rproj.user
 MSImaging.zip
+*.dll
