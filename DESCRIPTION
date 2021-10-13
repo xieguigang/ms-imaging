@@ -8,5 +8,5 @@ Description: MS-imaging rendering package for R# environment
     based on the mzkit library and ggplot api.
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 License: MIT
