@@ -66,4 +66,6 @@
     </None>
   </ItemGroup>
 
+  <Import Project="..\..\..\..\..\mzkit\Rscript\Library\mzkit.interopArguments\mzkit.interopArguments.projitems" Label="Shared" />
+
 </Project>
