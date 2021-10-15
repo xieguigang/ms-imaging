@@ -13,8 +13,7 @@ bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096_RGB.png`, size = [3300,
            mapping = aes(driver = MSImaging()), 
            padding = "padding: 200px 600px 200px 250px;"
     ) 
-       # rendering of a single ion m/z
-       # default color palette is Jet color set
+       # rendering of rgb channels ion m/z
        + geom_red(mz = 743.5468, tolerance = "da:0.3")
        + geom_green(mz = 798.5414, tolerance = "da:0.3")
        + geom_blue(mz = 741.5303, tolerance = "da:0.3")
