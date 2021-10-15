@@ -15,9 +15,11 @@ bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096_RGB.png`, size = [3300,
     ) 
        # rendering of a single ion m/z
        # default color palette is Jet color set
-       + geom_red(mz = 741.5, tolerance = "da:0.3")
+       + geom_red(mz = 741.5303, tolerance = "da:0.3")
+       + geom_green(mz = 743.5468, tolerance = "da:0.3")
+       + geom_blue(mz = 798.5414, tolerance = "da:0.3")
        # add ggplot charting elements
-       + ggtitle("MSImaging of m/z 741.5")
+       + ggtitle("HR2MSI mouse urinary bladder S096 - Figure1")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")
        + scale_x_continuous(labels = "F0")
        + scale_y_continuous(labels = "F0")
