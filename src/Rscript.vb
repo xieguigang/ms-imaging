@@ -13,6 +13,37 @@ Imports SMRUCC.Rsharp.Runtime.Interop
 <Package("ggplot")>
 Public Module Rscript
 
+    Private Function unionlayers(layers As IEnumerable(Of ggplotLayer)) As IEnumerable(Of ggplotLayer)
+        Dim all = layers.ToArray
+
+        If all.Any(Function(l) TypeOf l Is MSIChannelLayer) Then
+            Dim list As New List(Of ggplotLayer)(all)
+            Dim union As New MSIRGBCompositionLayer With {
+                .red = getChannel(list, MSIChannelLayer.Channels.Red),
+                .blue = getChannel(list, MSIChannelLayer.Channels.Blue),
+                .green = getChannel(list, MSIChannelLayer.Channels.Green)
+            }
+
+            list.Insert(0, union)
+
+            If Not union.red Is Nothing Then list.Remove(union.red)
+            If Not union.green Is Nothing Then list.Remove(union.green)
+            If Not union.blue Is Nothing Then list.Remove(union.blue)
+
+            Return list
+        Else
+            Return all
+        End If
+    End Function
+
+    Private Function getChannel(all As IEnumerable(Of ggplotLayer), channel As MSIChannelLayer.Channels) As MSIChannelLayer
+        Return (From layer As ggplotLayer
+                In all
+                Where TypeOf layer Is MSIChannelLayer
+                Where DirectCast(layer, MSIChannelLayer).channel = channel
+                Select layer).FirstOrDefault
+    End Function
+
     ''' <summary>
     ''' create a MSI data reader.
     ''' </summary>
@@ -68,6 +99,8 @@ Public Module Rscript
 
         If mzdiff Like GetType(Message) Then
             Return mzdiff.TryCast(Of Message)
+        Else
+            ggplot.ggplot.UnionGgplotLayers = AddressOf unionlayers
         End If
 
         Return New MSIChannelLayer With {

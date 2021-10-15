@@ -20,8 +20,6 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
         Blue
     End Enum
 
-    Public Property pixelDrawer As Boolean = False
-
     Public ReadOnly Property channel As Channels
         Get
             Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
@@ -37,15 +35,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
         End Get
     End Property
 
-    Public Overrides Function Plot(g As IGraphics,
-                                   canvas As GraphicsRegion,
-                                   baseData As ggplotData,
-                                   x() As Double,
-                                   y() As Double,
-                                   scale As DataScaler,
-                                   ggplot As ggplot.ggplot,
-                                   theme As Theme) As IggplotLegendElement
-
+    Public Overloads Function getIonlayer(ggplot As ggplot.ggplot) As SingleIonLayer
         Dim args = reader.args
         Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
         Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
@@ -58,8 +48,20 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
             ggplot.environment.AddMessage("missing 'tolerance' parameter, use the default da:0.1 as mzdiff tolerance value!")
         End If
 
+        Return getIonlayer(mz, mzdiff, ggplot)
+    End Function
+
+    Public Overrides Function Plot(g As IGraphics,
+                                   canvas As GraphicsRegion,
+                                   baseData As ggplotData,
+                                   x() As Double,
+                                   y() As Double,
+                                   scale As DataScaler,
+                                   ggplot As ggplot.ggplot,
+                                   theme As Theme) As IggplotLegendElement
+
         Dim rect As Rectangle = canvas.PlotRegion
-        Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
+        Dim ion As SingleIonLayer = getIonlayer(ggplot)
         Dim MSI As Image
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
         Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
@@ -86,7 +88,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
                 .color = color,
                 .fontstyle = theme.legendLabelCSS,
                 .style = LegendStyles.Square,
-                .title = $"m/z {mz.ToString("F4")}"
+                .title = $"m/z {ion.IonMz.ToString("F4")}"
             }
         }
     End Function
