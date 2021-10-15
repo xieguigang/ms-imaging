@@ -24,7 +24,7 @@ Public Class MSImagingLayer : Inherits ggplotLayer
                                    y() As Double,
                                    scale As DataScaler,
                                    ggplot As ggplot.ggplot,
-                                   theme As Theme) As legendGroupElement
+                                   theme As Theme) As IggplotLegendElement
 
         Dim args = reader.args
         Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
