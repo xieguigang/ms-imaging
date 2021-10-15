@@ -1,8 +1,11 @@
 ﻿Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports ggplot
 Imports SMRUCC.Rsharp.Runtime
 
 Public Class MSIReader : Inherits ggplotReader
+
+    Public ReadOnly Property reader As PixelReader
 
     ''' <summary>
     ''' returns the dimensions of the MSI raw data
@@ -15,6 +18,8 @@ Public Class MSIReader : Inherits ggplotReader
         Dim points = raw.MS.Select(Function(scan) scan.GetMSIPixel).ToArray
         Dim x As Double() = points.Select(Function(p) CDbl(p.X)).ToArray
         Dim y As Double() = points.Select(Function(p) CDbl(p.Y)).ToArray
+
+        _reader = New ReadRawPack(mzpack:=raw)
 
         Return New ggplotData With {
             .x = x,
