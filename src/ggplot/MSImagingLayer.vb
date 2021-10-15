@@ -7,8 +7,10 @@ Imports ggplot
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports any = Microsoft.VisualBasic.Scripting
 
 Public Class MSImagingLayer : Inherits ggplotLayer
 
@@ -41,12 +43,28 @@ Public Class MSImagingLayer : Inherits ggplotLayer
         Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(mz, base.reader, mzdiff)
         Dim MSI As Image
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+        Dim colorSet As String
 
-        MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=theme.colorSet)
+        If colorMap Is Nothing Then
+            colorSet = theme.colorSet
+        Else
+            colorSet = any.ToString(colorMap.colorMap)
+        End If
+
+        MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=colorSet)
         MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
         Call g.DrawImage(MSI, rect)
 
-        Return Nothing
+        Return New legendGroupElement With {
+            .legends = {
+                New LegendObject With {
+                    .color = "black",
+                    .fontstyle = theme.legendLabelCSS,
+                    .style = LegendStyles.Circle,
+                    .title = mz
+                }
+            }
+        }
     End Function
 End Class

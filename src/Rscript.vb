@@ -29,6 +29,8 @@ Public Module Rscript
                                    Optional pixel_render As Boolean = False,
                                    <RRawVectorArgument(GetType(Double))>
                                    Optional cutoff As Object = "0.05,0.65",
+                                   <RRawVectorArgument>
+                                   Optional color As Object = "Jet",
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
@@ -50,7 +52,8 @@ Public Module Rscript
                 }
             },
             .pixelDrawer = pixel_render,
-            .cutoff = cutoffRange.TryCast(Of DoubleRange)
+            .cutoff = cutoffRange.TryCast(Of DoubleRange),
+            .colorMap = If(color Is Nothing, Nothing, ggplotColorMap.CreateColorMap(map:=color, env))
         }
     End Function
 
