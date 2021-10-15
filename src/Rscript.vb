@@ -2,7 +2,9 @@
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports ggplot
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports SMRUCC.Rsharp
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -24,11 +26,17 @@ Public Module Rscript
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_msimaging(mz As Double,
                                    Optional tolerance As Object = "da:0.1",
+                                   Optional pixel_render As Boolean = False,
+                                   <RRawVectorArgument(GetType(Double))>
+                                   Optional cutoff As Object = "0.05,0.65",
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
+        Dim cutoffRange = ApiArgumentHelpers.GetDoubleRange(cutoff, env)
 
-        If mzdiff Like GetType(Message) Then
+        If cutoffRange Like GetType(Message) Then
+            Return cutoffRange.TryCast(Of Message)
+        ElseIf mzdiff Like GetType(Message) Then
             Return mzdiff.TryCast(Of Message)
         End If
 
@@ -40,7 +48,9 @@ Public Module Rscript
                         {"mzdiff", mzdiff.TryCast(Of Tolerance)}
                     }
                 }
-            }
+            },
+            .pixelDrawer = pixel_render,
+            .cutoff = cutoffRange.TryCast(Of DoubleRange)
         }
     End Function
 
