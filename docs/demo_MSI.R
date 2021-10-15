@@ -4,7 +4,7 @@ require(ggplot);
 
 options(memory.load = "max");
 
-bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096.png`, size = [3000, 2400]) {
+bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096.png`, size = [3300, 2000]) {
     
     # load mzpack/imzML raw data file
     # and config ggplot data source driver 
