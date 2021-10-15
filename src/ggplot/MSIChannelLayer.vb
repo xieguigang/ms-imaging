@@ -14,7 +14,6 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Public Class MSIChannelLayer : Inherits ggplotLayer
 
     Public Property pixelDrawer As Boolean = False
-    Public Property cutoff As DoubleRange = Nothing
 
     Public Overrides Function Plot(g As IGraphics,
                                    canvas As GraphicsRegion,
@@ -44,8 +43,9 @@ Public Class MSIChannelLayer : Inherits ggplotLayer
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
         Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
         Dim colorSet As String = $"transparent,{color}"
+        Dim cutoff As Double = Renderer.AutoCheckCutMax(ion.GetIntensity, 0.65)
 
-        MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=colorSet)
+        MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, cutoff}, colorSet:=colorSet)
         MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
         Call g.DrawImage(MSI, rect)
