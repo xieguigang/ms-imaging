@@ -59,7 +59,7 @@ Public Class MSImagingLayer : Inherits ggplotLayer
         Call g.DrawImage(MSI, rect)
 
         Return New legendColorMapElement With {
-            .width = canvas.Padding.Right,
+            .width = canvas.Padding.Right * (3 / 4),
             .height = rect.Height,
             .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
                 .format = "G3",
