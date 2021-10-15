@@ -4,8 +4,8 @@
 #' 
 #' @return a ggplot layer object for do MS-imaging rendering. 
 #' 
-const geom_red as function(mz) {
-    geom_color(mz, "red");
+const geom_red as function(mz, tolerance = "da:0.3") {
+    geom_color(mz, "red", tolerance);
 }
 
 #' Do MSI rendering for mz as green layer
@@ -14,8 +14,8 @@ const geom_red as function(mz) {
 #' 
 #' @return a ggplot layer object for do MS-imaging rendering. 
 #' 
-const geom_green as function(mz) {
-    geom_color(mz, "green");
+const geom_green as function(mz, tolerance = "da:0.3") {
+    geom_color(mz, "green", tolerance);
 }
 
 #' Do MSI rendering for mz as blue layer
@@ -24,6 +24,6 @@ const geom_green as function(mz) {
 #' 
 #' @return a ggplot layer object for do MS-imaging rendering. 
 #' 
-const geom_blue as function(mz) {
-    geom_color(mz, "blue");
+const geom_blue as function(mz, tolerance = "da:0.3") {
+    geom_color(mz, "blue", tolerance);
 }

@@ -58,7 +58,37 @@ Public Module Rscript
     End Function
 
     <ExportAPI("geom_color")>
-    Public Function geom_color(mz As Double, color As Object, Optional env As Environment = Nothing) As ggplotLayer
+    <RApiReturn(GetType(ggplotLayer))>
+    Public Function geom_color(mz As Double, color As Object,
+                               Optional tolerance As Object = "da:0.1",
+                               Optional pixel_render As Boolean = False,
+                               <RRawVectorArgument(GetType(Double))>
+                               Optional cutoff As Object = "0.05,0.65",
+                               Optional env As Environment = Nothing) As Object
 
+        Dim mzdiff = Math.getTolerance(tolerance, env)
+        Dim cutoffRange = ApiArgumentHelpers.GetDoubleRange(cutoff, env)
+
+        If cutoffRange Like GetType(Message) Then
+            Return cutoffRange.TryCast(Of Message)
+        ElseIf mzdiff Like GetType(Message) Then
+            Return mzdiff.TryCast(Of Message)
+        End If
+
+        Return New MSIChannelLayer With {
+            .reader = New ggplotReader With {
+                .args = New list With {
+                    .slots = New Dictionary(Of String, Object) From {
+                        {"mz", mz},
+                        {"mzdiff", mzdiff.TryCast(Of Tolerance)}
+                    }
+                }
+            },
+            .pixelDrawer = pixel_render,
+            .cutoff = cutoffRange.TryCast(Of DoubleRange),
+            .colorMap = New ggplotColorLiteral With {
+                .colorMap = color
+            }
+        }
     End Function
 End Module
