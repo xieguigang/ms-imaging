@@ -66,8 +66,10 @@ Public Class MSImagingLayer : Inherits ggplotLayer
                 .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
                 .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
                 .ticks = ion.GetIntensity.Range.CreateAxisTicks,
-                .title = $"m/z {mz.ToString("F4")}",
-                .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
+                .title = $"m/z {mz.ToString("F3")}",
+                .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi),
+                .noblank = True,
+                .legendOffsetLeft = canvas.Padding.Right / 10
             }
         }
     End Function
