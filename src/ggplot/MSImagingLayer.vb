@@ -15,7 +15,6 @@ Imports any = Microsoft.VisualBasic.Scripting
 
 Public Class MSImagingLayer : Inherits ggplotMSILayer
 
-    Public Property pixelDrawer As Boolean = False
     Public Property cutoff As DoubleRange = Nothing
 
     Public Overrides Function Plot(g As IGraphics,
