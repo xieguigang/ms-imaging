@@ -10,6 +10,8 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports any = Microsoft.VisualBasic.Scripting
 
 Public Class MSImagingLayer : Inherits ggplotLayer
@@ -56,14 +58,16 @@ Public Class MSImagingLayer : Inherits ggplotLayer
 
         Call g.DrawImage(MSI, rect)
 
-        Return New legendGroupElement With {
-            .legends = {
-                New LegendObject With {
-                    .color = "black",
-                    .fontstyle = theme.legendLabelCSS,
-                    .style = LegendStyles.Circle,
-                    .title = mz
-                }
+        Return New legendColorMapElement With {
+            .width = canvas.Padding.Right,
+            .height = rect.Height,
+            .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
+                .format = "G3",
+                .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
+                .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
+                .ticks = ion.GetIntensity.Range.CreateAxisTicks,
+                .title = $"m/z {mz.ToString("F4")}",
+                .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
             }
         }
     End Function
