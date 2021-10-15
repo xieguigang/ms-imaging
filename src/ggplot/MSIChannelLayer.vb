@@ -11,9 +11,31 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
-Public Class MSIChannelLayer : Inherits ggplotLayer
+Public Class MSIChannelLayer : Inherits ggplotMSILayer
+
+    Public Enum Channels
+        NA
+        Red
+        Green
+        Blue
+    End Enum
 
     Public Property pixelDrawer As Boolean = False
+
+    Public ReadOnly Property channel As Channels
+        Get
+            Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
+
+            Select Case color.ToLower
+                Case "#ff0000" : Return Channels.Red
+
+                Case "#00ff00", "#008000" : Return Channels.Green
+                Case "#0000ff" : Return Channels.Blue
+                Case Else
+                    Return Channels.NA
+            End Select
+        End Get
+    End Property
 
     Public Overrides Function Plot(g As IGraphics,
                                    canvas As GraphicsRegion,
@@ -37,15 +59,24 @@ Public Class MSIChannelLayer : Inherits ggplotLayer
         End If
 
         Dim rect As Rectangle = canvas.PlotRegion
-        Dim base = DirectCast(ggplot.base.reader, MSIReader)
-        Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(mz, base.reader, mzdiff)
+        Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
         Dim MSI As Image
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
         Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
         Dim colorSet As String = $"transparent,{color}"
-        Dim cutoff As Double = Renderer.AutoCheckCutMax(ion.GetIntensity, 0.65)
+        Dim q As DoubleRange = {0, Renderer.AutoCheckCutMax(ion.GetIntensity, 0.8)}
 
-        MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, cutoff}, colorSet:=colorSet)
+        Select Case color.ToLower
+            Case "#ff0000"            ' red
+                MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent")
+            Case "#00ff00", "#008000" ' green
+                MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent")
+            Case "#0000ff"            ' blue
+                MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent")
+            Case Else
+                MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=q, colorSet:=colorSet)
+        End Select
+
         MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
         Call g.DrawImage(MSI, rect)

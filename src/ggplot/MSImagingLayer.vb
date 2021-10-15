@@ -7,14 +7,13 @@ Imports ggplot
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports any = Microsoft.VisualBasic.Scripting
 
-Public Class MSImagingLayer : Inherits ggplotLayer
+Public Class MSImagingLayer : Inherits ggplotMSILayer
 
     Public Property pixelDrawer As Boolean = False
     Public Property cutoff As DoubleRange = Nothing
@@ -41,11 +40,10 @@ Public Class MSImagingLayer : Inherits ggplotLayer
         End If
 
         Dim rect As Rectangle = canvas.PlotRegion
-        Dim base = DirectCast(ggplot.base.reader, MSIReader)
-        Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(mz, base.reader, mzdiff)
         Dim MSI As Image
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
         Dim colorSet As String
+        Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
 
         If colorMap Is Nothing Then
             colorSet = theme.colorSet
