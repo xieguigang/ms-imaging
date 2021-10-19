@@ -1,5 +1,5 @@
-git pull local HEAD
-git pull gitee HEAD
+git pull local HEAD:main
+git pull gitee HEAD:main
 
-git push local HEAD
-git push gitee HEAD
+git push local HEAD:main
+git push gitee HEAD:main
