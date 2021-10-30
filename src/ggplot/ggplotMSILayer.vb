@@ -1,6 +1,7 @@
 ﻿Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports ggplot
+Imports ggplot.layers
 
 Public MustInherit Class ggplotMSILayer : Inherits ggplotLayer
 

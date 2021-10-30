@@ -4,6 +4,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
 Imports ggplot
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -26,7 +27,7 @@ Public Class MSImagingLayer : Inherits ggplotMSILayer
                                    ggplot As ggplot.ggplot,
                                    theme As Theme) As IggplotLegendElement
 
-        Dim args = reader.args
+        Dim args = Reader.args
         Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
         Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
@@ -44,10 +45,10 @@ Public Class MSImagingLayer : Inherits ggplotMSILayer
         Dim colorSet As String
         Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
 
-        If colorMap Is Nothing Then
+        If ColorMap Is Nothing Then
             colorSet = theme.colorSet
         Else
-            colorSet = any.ToString(colorMap.colorMap)
+            colorSet = any.ToString(ColorMap.colorMap)
         End If
 
         MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=colorSet)

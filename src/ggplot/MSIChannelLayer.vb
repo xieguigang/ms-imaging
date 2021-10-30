@@ -4,6 +4,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
 Imports ggplot
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -22,7 +23,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
 
     Public ReadOnly Property channel As Channels
         Get
-            Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
+            Dim color As String = DirectCast(ColorMap, ggplotColorLiteral).ToColor.ToHtmlColor
 
             Select Case color.ToLower
                 Case "#ff0000" : Return Channels.Red
@@ -36,7 +37,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
     End Property
 
     Public Overloads Function getIonlayer(ggplot As ggplot.ggplot) As SingleIonLayer
-        Dim args = reader.args
+        Dim args = Reader.args
         Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
         Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
@@ -64,7 +65,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
         Dim ion As SingleIonLayer = getIonlayer(ggplot)
         Dim MSI As Image
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
-        Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
+        Dim color As String = DirectCast(ColorMap, ggplotColorLiteral).ToColor.ToHtmlColor
         Dim colorSet As String = $"transparent,{color}"
         Dim q As DoubleRange = {0, Renderer.AutoCheckCutMax(ion.GetIntensity, 0.8)}
 
@@ -94,6 +95,6 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
     End Function
 
     Public Overrides Function ToString() As String
-        Return $"[{DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor}] {reader.args!mz}"
+        Return $"[{DirectCast(ColorMap, ggplotColorLiteral).ToColor.ToHtmlColor}] {Reader.args!mz}"
     End Function
 End Class
