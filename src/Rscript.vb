@@ -134,6 +134,13 @@ Public Module Rscript
         }
     End Function
 
+    <ExportAPI("geom_MSIbackground")>
+    Public Function geom_MSIbackground(background As Object) As Object
+        Return New MSIBackgroundOption With {
+            .background = background
+        }
+    End Function
+
     <ExportAPI("geom_color")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_color(mz As Double, color As Object,
