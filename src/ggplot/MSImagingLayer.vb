@@ -60,6 +60,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports any = Microsoft.VisualBasic.Scripting
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 Public Class MSImagingLayer : Inherits ggplotMSILayer
 
@@ -75,11 +76,11 @@ Public Class MSImagingLayer : Inherits ggplotMSILayer
                                    theme As Theme) As IggplotLegendElement
 
         Dim args As list = reader.args
-        Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
+        Dim mz As Double() = REnv.asVector(Of Double)(args.getByName("mz"))
         Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
-        If mz <= 0 Then
-            Throw New InvalidProgramException("invalid ion m/z value!")
+        If mz.Any(Function(mzi) mzi <= 0) Then
+            Throw New InvalidProgramException($"invalid ion m/z value '{mz.Where(Function(mzi) mzi <= 0).First}'!")
         End If
         If mzdiff Is Nothing Then
             mzdiff = Tolerance.DeltaMass(0.1)
@@ -103,20 +104,24 @@ Public Class MSImagingLayer : Inherits ggplotMSILayer
 
         Call g.DrawImage(MSI, rect)
 
-        Return New legendColorMapElement With {
-            .width = canvas.Padding.Right * (3 / 4),
-            .height = rect.Height,
-            .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
-                .format = "G3",
-                .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
-                .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
-                .ticks = ion.GetIntensity.Range.CreateAxisTicks,
-                .title = $"m/z {mz.ToString("F3")}",
-                .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi),
-                .noblank = True,
-                .legendOffsetLeft = canvas.Padding.Right / 10
+        If mz.Length > 1 Then
+            Return Nothing
+        Else
+            Return New legendColorMapElement With {
+                .width = canvas.Padding.Right * (3 / 4),
+                .height = rect.Height,
+                .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
+                    .format = "G3",
+                    .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
+                    .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
+                    .ticks = ion.GetIntensity.Range.CreateAxisTicks,
+                    .title = $"m/z {mz(Scan0).ToString("F3")}",
+                    .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi),
+                    .noblank = True,
+                    .legendOffsetLeft = canvas.Padding.Right / 10
+                }
             }
-        }
+        End If
     End Function
 End Class
 

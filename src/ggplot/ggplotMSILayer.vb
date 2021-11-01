@@ -59,5 +59,12 @@ Public MustInherit Class ggplotMSILayer : Inherits ggplotLayer
 
         Return ion
     End Function
+
+    Public Function getIonlayer(mz As Double(), mzdiff As Tolerance, ggplot As ggplot.ggplot) As SingleIonLayer
+        Dim base = DirectCast(ggplot.base.reader, MSIReader)
+        Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(mz, base.reader, mzdiff)
+
+        Return ion
+    End Function
 End Class
 
