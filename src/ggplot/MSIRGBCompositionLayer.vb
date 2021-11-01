@@ -81,7 +81,10 @@ Public Class MSIRGBCompositionLayer : Inherits ggplotMSILayer
         Dim qcutRed As DoubleRange = {0, Renderer.AutoCheckCutMax(redLayer?.GetIntensity, 0.8)}
         Dim qcutGreen As DoubleRange = {0, Renderer.AutoCheckCutMax(greenLayer?.GetIntensity, 0.8)}
         Dim qcutBlue As DoubleRange = {0, Renderer.AutoCheckCutMax(blueLayer?.GetIntensity, 0.8)}
-        Dim dimSizes As Size() = {redLayer?.DimensionSize, greenLayer?.DimensionSize, blueLayer?.DimensionSize}
+        Dim dimSizes As Size() = (From layer As SingleIonLayer
+                                  In {redLayer, greenLayer, blueLayer}
+                                  Where Not layer Is Nothing
+                                  Select layer.DimensionSize).ToArray
         Dim dims As New Size With {
             .Width = (Aggregate [dim] As Size In dimSizes Into Max([dim].Width)),
             .Height = (Aggregate [dim] As Size In dimSizes Into Max([dim].Height))
