@@ -29,5 +29,5 @@ const geom_blue as function(mz, tolerance = getOption("mzdiff", default = "da:0.
 }
 
 const geom_blanket as function(mz, tolerance = getOption("mzdiff", default = "da:0.3")) {
-
+    geom_msimaging(mz, tolerance, color = "Greys:c8");
 }
