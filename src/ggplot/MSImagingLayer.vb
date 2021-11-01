@@ -1,46 +1,46 @@
 ﻿#Region "Microsoft.VisualBasic::ae9e44566fb03d0844e959258f757387, Rscript\Library\MSI_app\src\ggplot\MSImagingLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    ' Class MSImagingLayer
-    ' 
-    '     Properties: cutoff
-    ' 
-    '     Function: Plot
-    ' 
-    ' /********************************************************************************/
+' Class MSImagingLayer
+' 
+'     Properties: cutoff
+' 
+'     Function: Plot
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -58,6 +58,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports any = Microsoft.VisualBasic.Scripting
 
 Public Class MSImagingLayer : Inherits ggplotMSILayer
@@ -73,7 +74,7 @@ Public Class MSImagingLayer : Inherits ggplotMSILayer
                                    ggplot As ggplot.ggplot,
                                    theme As Theme) As IggplotLegendElement
 
-        Dim args = Reader.args
+        Dim args As list = reader.args
         Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
         Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
@@ -91,10 +92,10 @@ Public Class MSImagingLayer : Inherits ggplotMSILayer
         Dim colorSet As String
         Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
 
-        If ColorMap Is Nothing Then
+        If colorMap Is Nothing Then
             colorSet = theme.colorSet
         Else
-            colorSet = any.ToString(ColorMap.colorMap)
+            colorSet = any.ToString(colorMap.colorMap)
         End If
 
         MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=colorSet)
