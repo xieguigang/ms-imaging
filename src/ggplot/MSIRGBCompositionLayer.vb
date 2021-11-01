@@ -63,6 +63,15 @@ Public Class MSIRGBCompositionLayer : Inherits ggplotMSILayer
     Public Property blue As ggplotMSILayer
     Public Property green As ggplotMSILayer
 
+    Public ReadOnly Property MeanZIndex As Integer
+        Get
+            Return Aggregate layer As ggplotMSILayer
+                   In {red, blue, green}
+                   Where Not layer Is Nothing
+                   Into Average(layer.zindex)
+        End Get
+    End Property
+
     Public Overrides Function Plot(g As IGraphics,
                                    canvas As GraphicsRegion,
                                    baseData As ggplotData,

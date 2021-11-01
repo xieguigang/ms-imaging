@@ -69,13 +69,14 @@ Public Module Rscript
                 .green = getChannel(list, MSIChannelLayer.Channels.Green)
             }
 
-            list.Insert(0, union)
+            list.Add(union)
+            union.zindex = union.MeanZIndex
 
             If Not union.red Is Nothing Then list.Remove(union.red)
             If Not union.green Is Nothing Then list.Remove(union.green)
             If Not union.blue Is Nothing Then list.Remove(union.blue)
 
-            Return list
+            Return list.OrderBy(Function(layer) layer.zindex)
         Else
             Return all
         End If
