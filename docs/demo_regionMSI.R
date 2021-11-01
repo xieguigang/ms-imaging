@@ -14,12 +14,10 @@ bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096_regionMSI.png`, size = 
            padding = "padding: 200px 600px 200px 250px;"
     ) 
        # rendering data layer in grayscale
-       + geom_blanket(mz = [743.5468, 798.5414], tolerance = "da:0.3")
+       + geom_blanket(mz = [743.5468, 741.5303], tolerance = "da:0.3")
 
        # rendering of rgb channels ion m/z
-       # + geom_red(mz = 743.5468, tolerance = "da:0.3")
-       # + geom_green(mz = 798.5414, tolerance = "da:0.3")
-       + geom_blue(mz = 741.5303, tolerance = "da:0.3")
+       + geom_blue(mz = 798.5414, tolerance = "da:0.3")
        # add ggplot charting elements
        + ggtitle("HR2MSI mouse urinary bladder S096 - Figure1")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")
