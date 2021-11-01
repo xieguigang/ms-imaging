@@ -59,7 +59,7 @@ Imports SMRUCC.Rsharp.Runtime.Interop
 Public Module Rscript
 
     Private Function unionlayers(layers As IEnumerable(Of ggplotLayer)) As IEnumerable(Of ggplotLayer)
-        Dim all = layers.ToArray
+        Dim all As ggplotLayer() = layers.ToArray
 
         If all.Any(Function(l) TypeOf l Is MSIChannelLayer) Then
             Dim list As New List(Of ggplotLayer)(all)
