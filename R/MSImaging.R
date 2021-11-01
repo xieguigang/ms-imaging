@@ -4,7 +4,7 @@
 #' 
 #' @return a ggplot layer object for do MS-imaging rendering. 
 #' 
-const geom_red as function(mz, tolerance = "da:0.3") {
+const geom_red as function(mz, tolerance = getOption("mzdiff", default = "da:0.3")) {
     geom_color(mz, "red", tolerance);
 }
 
@@ -14,7 +14,7 @@ const geom_red as function(mz, tolerance = "da:0.3") {
 #' 
 #' @return a ggplot layer object for do MS-imaging rendering. 
 #' 
-const geom_green as function(mz, tolerance = "da:0.3") {
+const geom_green as function(mz, tolerance = getOption("mzdiff", default = "da:0.3")) {
     geom_color(mz, "green", tolerance);
 }
 
@@ -24,6 +24,10 @@ const geom_green as function(mz, tolerance = "da:0.3") {
 #' 
 #' @return a ggplot layer object for do MS-imaging rendering. 
 #' 
-const geom_blue as function(mz, tolerance = "da:0.3") {
+const geom_blue as function(mz, tolerance = getOption("mzdiff", default = "da:0.3")) {
     geom_color(mz, "blue", tolerance);
+}
+
+const geom_blanket as function(mz, tolerance = getOption("mzdiff", default = "da:0.3")) {
+
 }

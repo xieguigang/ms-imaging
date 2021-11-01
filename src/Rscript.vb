@@ -100,7 +100,7 @@ Public Module Rscript
 
     <ExportAPI("geom_msimaging")>
     <RApiReturn(GetType(ggplotLayer))>
-    Public Function geom_msimaging(mz As Double,
+    Public Function geom_msimaging(mz As Double(),
                                    Optional tolerance As Object = "da:0.1",
                                    Optional pixel_render As Boolean = False,
                                    <RRawVectorArgument(GetType(Double))>
