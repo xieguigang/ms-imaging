@@ -57,81 +57,84 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
-Public Class MSIRGBCompositionLayer : Inherits ggplotMSILayer
+Namespace layers
 
-    Public Property red As ggplotMSILayer
-    Public Property blue As ggplotMSILayer
-    Public Property green As ggplotMSILayer
+    Public Class MSIRGBCompositionLayer : Inherits ggplotMSILayer
 
-    Public ReadOnly Property MeanZIndex As Integer
-        Get
-            Return Aggregate layer As ggplotMSILayer
-                   In {red, blue, green}
-                   Where Not layer Is Nothing
-                   Into Average(layer.zindex)
-        End Get
-    End Property
+        Public Property red As ggplotMSILayer
+        Public Property blue As ggplotMSILayer
+        Public Property green As ggplotMSILayer
 
-    Public Overrides Function Plot(g As IGraphics,
-                                   canvas As GraphicsRegion,
-                                   baseData As ggplotData,
-                                   x() As Double,
-                                   y() As Double,
-                                   scale As DataScaler,
-                                   ggplot As ggplot.ggplot,
-                                   theme As Theme) As IggplotLegendElement
+        Public ReadOnly Property MeanZIndex As Integer
+            Get
+                Return Aggregate layer As ggplotMSILayer
+                       In {red, blue, green}
+                       Where Not layer Is Nothing
+                       Into Average(layer.zindex)
+            End Get
+        End Property
 
-        Dim rect As Rectangle = canvas.PlotRegion
-        Dim MSI As Image
-        Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
-        Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
-        Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
-        Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)
-        Dim qcutRed As DoubleRange = {0, Renderer.AutoCheckCutMax(redLayer?.GetIntensity, 0.8)}
-        Dim qcutGreen As DoubleRange = {0, Renderer.AutoCheckCutMax(greenLayer?.GetIntensity, 0.8)}
-        Dim qcutBlue As DoubleRange = {0, Renderer.AutoCheckCutMax(blueLayer?.GetIntensity, 0.8)}
-        Dim dimSizes As Size() = (From layer As SingleIonLayer
-                                  In {redLayer, greenLayer, blueLayer}
-                                  Where Not layer Is Nothing
-                                  Select layer.DimensionSize).ToArray
-        Dim dims As New Size With {
-            .Width = (Aggregate [dim] As Size In dimSizes Into Max([dim].Width)),
-            .Height = (Aggregate [dim] As Size In dimSizes Into Max([dim].Height))
-        }
+        Public Overrides Function Plot(g As IGraphics,
+                                       canvas As GraphicsRegion,
+                                       baseData As ggplotData,
+                                       x() As Double,
+                                       y() As Double,
+                                       scale As DataScaler,
+                                       ggplot As ggplot.ggplot,
+                                       theme As Theme) As IggplotLegendElement
 
-        MSI = engine.ChannelCompositions(
-            R:=redLayer,
-            G:=greenLayer,
-            B:=blueLayer,
-            dimension:=dims,
-            dimSize:=Nothing,
-            cut:=(qcutRed, qcutGreen, qcutBlue),
-            background:="black"
-        )
-        MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
-
-        Call g.DrawImage(MSI, rect)
-
-        Return New legendGroupElement With {
-            .legends = (From legend As LegendObject In {
-                legend("red", theme, redLayer),
-                legend("green", theme, greenLayer),
-                legend("blue", theme, blueLayer)
-            } Where Not legend Is Nothing).ToArray
-        }
-    End Function
-
-    Private Shared Function legend(color As String, theme As Theme, layer As SingleIonLayer) As LegendObject
-        If layer Is Nothing Then
-            Return Nothing
-        Else
-            Return New LegendObject With {
-                .color = color,
-                .fontstyle = theme.legendLabelCSS,
-                .style = LegendStyles.Square,
-                .title = $"m/z {layer.IonMz.ToString("F4")}"
+            Dim rect As Rectangle = canvas.PlotRegion
+            Dim MSI As Image
+            Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+            Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
+            Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
+            Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)
+            Dim qcutRed As DoubleRange = {0, Renderer.AutoCheckCutMax(redLayer?.GetIntensity, 0.8)}
+            Dim qcutGreen As DoubleRange = {0, Renderer.AutoCheckCutMax(greenLayer?.GetIntensity, 0.8)}
+            Dim qcutBlue As DoubleRange = {0, Renderer.AutoCheckCutMax(blueLayer?.GetIntensity, 0.8)}
+            Dim dimSizes As Size() = (From layer As SingleIonLayer
+                                      In {redLayer, greenLayer, blueLayer}
+                                      Where Not layer Is Nothing
+                                      Select layer.DimensionSize).ToArray
+            Dim dims As New Size With {
+                .Width = (Aggregate [dim] As Size In dimSizes Into Max([dim].Width)),
+                .Height = (Aggregate [dim] As Size In dimSizes Into Max([dim].Height))
             }
-        End If
-    End Function
-End Class
 
+            MSI = engine.ChannelCompositions(
+                R:=redLayer,
+                G:=greenLayer,
+                B:=blueLayer,
+                dimension:=dims,
+                dimSize:=Nothing,
+                cut:=(qcutRed, qcutGreen, qcutBlue),
+                background:="black"
+            )
+            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
+
+            Call g.DrawImage(MSI, rect)
+
+            Return New legendGroupElement With {
+                .legends = (From legend As LegendObject In {
+                    legend("red", theme, redLayer),
+                    legend("green", theme, greenLayer),
+                    legend("blue", theme, blueLayer)
+                } Where Not legend Is Nothing).ToArray
+            }
+        End Function
+
+        Private Shared Function legend(color As String, theme As Theme, layer As SingleIonLayer) As LegendObject
+            If layer Is Nothing Then
+                Return Nothing
+            Else
+                Return New LegendObject With {
+                    .color = color,
+                    .fontstyle = theme.legendLabelCSS,
+                    .style = LegendStyles.Square,
+                    .title = $"m/z {layer.IonMz.ToString("F4")}"
+                }
+            End If
+        End Function
+    End Class
+
+End Namespace

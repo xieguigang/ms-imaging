@@ -62,66 +62,69 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
-Public Class MSImagingLayer : Inherits ggplotMSILayer
+Namespace layers
 
-    Public Property cutoff As DoubleRange = Nothing
+    Public Class MSImagingLayer : Inherits ggplotMSILayer
 
-    Public Overrides Function Plot(g As IGraphics,
-                                   canvas As GraphicsRegion,
-                                   baseData As ggplotData,
-                                   x() As Double,
-                                   y() As Double,
-                                   scale As DataScaler,
-                                   ggplot As ggplot.ggplot,
-                                   theme As Theme) As IggplotLegendElement
+        Public Property cutoff As DoubleRange = Nothing
 
-        Dim args As list = reader.args
-        Dim mz As Double() = REnv.asVector(Of Double)(args.getByName("mz"))
-        Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
+        Public Overrides Function Plot(g As IGraphics,
+                                       canvas As GraphicsRegion,
+                                       baseData As ggplotData,
+                                       x() As Double,
+                                       y() As Double,
+                                       scale As DataScaler,
+                                       ggplot As ggplot.ggplot,
+                                       theme As Theme) As IggplotLegendElement
 
-        If mz.Any(Function(mzi) mzi <= 0) Then
-            Throw New InvalidProgramException($"invalid ion m/z value '{mz.Where(Function(mzi) mzi <= 0).First}'!")
-        End If
-        If mzdiff Is Nothing Then
-            mzdiff = Tolerance.DeltaMass(0.1)
-            ggplot.environment.AddMessage("missing 'tolerance' parameter, use the default da:0.1 as mzdiff tolerance value!")
-        End If
+            Dim args As list = reader.args
+            Dim mz As Double() = REnv.asVector(Of Double)(args.getByName("mz"))
+            Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
-        Dim rect As Rectangle = canvas.PlotRegion
-        Dim MSI As Image
-        Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
-        Dim colorSet As String
-        Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
+            If mz.Any(Function(mzi) mzi <= 0) Then
+                Throw New InvalidProgramException($"invalid ion m/z value '{mz.Where(Function(mzi) mzi <= 0).First}'!")
+            End If
+            If mzdiff Is Nothing Then
+                mzdiff = Tolerance.DeltaMass(0.1)
+                ggplot.environment.AddMessage("missing 'tolerance' parameter, use the default da:0.1 as mzdiff tolerance value!")
+            End If
 
-        If colorMap Is Nothing Then
-            colorSet = theme.colorSet
-        Else
-            colorSet = any.ToString(colorMap.colorMap)
-        End If
+            Dim rect As Rectangle = canvas.PlotRegion
+            Dim MSI As Image
+            Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+            Dim colorSet As String
+            Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
 
-        MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=colorSet)
-        MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
+            If colorMap Is Nothing Then
+                colorSet = theme.colorSet
+            Else
+                colorSet = any.ToString(colorMap.colorMap)
+            End If
 
-        Call g.DrawImage(MSI, rect)
+            MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=cutoff, colorSet:=colorSet)
+            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
-        If mz.Length > 1 Then
-            Return Nothing
-        Else
-            Return New legendColorMapElement With {
-                .width = canvas.Padding.Right * (3 / 4),
-                .height = rect.Height,
-                .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
-                    .format = "G3",
-                    .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
-                    .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
-                    .ticks = ion.GetIntensity.Range.CreateAxisTicks,
-                    .title = $"m/z {mz(Scan0).ToString("F3")}",
-                    .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi),
-                    .noblank = True,
-                    .legendOffsetLeft = canvas.Padding.Right / 10
+            Call g.DrawImage(MSI, rect)
+
+            If mz.Length > 1 Then
+                Return Nothing
+            Else
+                Return New legendColorMapElement With {
+                    .width = canvas.Padding.Right * (3 / 4),
+                    .height = rect.Height,
+                    .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
+                        .format = "G3",
+                        .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
+                        .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
+                        .ticks = ion.GetIntensity.Range.CreateAxisTicks,
+                        .title = $"m/z {mz(Scan0).ToString("F3")}",
+                        .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi),
+                        .noblank = True,
+                        .legendOffsetLeft = canvas.Padding.Right / 10
+                    }
                 }
-            }
-        End If
-    End Function
-End Class
+            End If
+        End Function
+    End Class
 
+End Namespace
