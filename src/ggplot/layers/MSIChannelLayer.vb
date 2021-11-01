@@ -1,55 +1,55 @@
 ﻿#Region "Microsoft.VisualBasic::d32924e6cc8742a15435845382e91538, Rscript\Library\MSI_app\src\ggplot\MSIChannelLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    ' Class MSIChannelLayer
-    ' 
-    ' 
-    '     Enum Channels
-    ' 
-    '         Blue, Green, NA, Red
-    ' 
-    ' 
-    ' 
-    '  
-    ' 
-    '     Properties: channel
-    ' 
-    '     Function: getIonlayer, Plot, ToString
-    ' 
-    ' /********************************************************************************/
+' Class MSIChannelLayer
+' 
+' 
+'     Enum Channels
+' 
+'         Blue, Green, NA, Red
+' 
+' 
+' 
+'  
+' 
+'     Properties: channel
+' 
+'     Function: getIonlayer, Plot, ToString
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -59,6 +59,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
 Imports ggplot
+Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
@@ -78,7 +79,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
 
     Public ReadOnly Property channel As Channels
         Get
-            Dim color As String = DirectCast(ColorMap, ggplotColorLiteral).ToColor.ToHtmlColor
+            Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
 
             Select Case color.ToLower
                 Case "#ff0000" : Return Channels.Red
@@ -92,7 +93,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
     End Property
 
     Public Overloads Function getIonlayer(ggplot As ggplot.ggplot) As SingleIonLayer
-        Dim args = Reader.args
+        Dim args = reader.args
         Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
         Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
@@ -120,7 +121,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
         Dim ion As SingleIonLayer = getIonlayer(ggplot)
         Dim MSI As Image
         Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
-        Dim color As String = DirectCast(ColorMap, ggplotColorLiteral).ToColor.ToHtmlColor
+        Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
         Dim colorSet As String = $"transparent,{color}"
         Dim q As DoubleRange = {0, Renderer.AutoCheckCutMax(ion.GetIntensity, 0.8)}
 
@@ -150,7 +151,7 @@ Public Class MSIChannelLayer : Inherits ggplotMSILayer
     End Function
 
     Public Overrides Function ToString() As String
-        Return $"[{DirectCast(ColorMap, ggplotColorLiteral).ToColor.ToHtmlColor}] {Reader.args!mz}"
+        Return $"[{DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor}] {reader.args!mz}"
     End Function
 End Class
 
