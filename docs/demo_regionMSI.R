@@ -18,6 +18,7 @@ bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096_regionMSI.png`, size = 
 
        # rendering of rgb channels ion m/z
        + geom_blue(mz = 798.5414, tolerance = "da:0.3")
+       + geom_MSIbackground("transparent")
        # add ggplot charting elements
        + ggtitle("HR2MSI mouse urinary bladder S096 - Figure1")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")
