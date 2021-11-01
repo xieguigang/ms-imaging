@@ -108,7 +108,7 @@ Namespace layers
                 dimension:=dims,
                 dimSize:=Nothing,
                 cut:=(qcutRed, qcutGreen, qcutBlue),
-                background:="black"
+                background:=theme.background
             )
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 

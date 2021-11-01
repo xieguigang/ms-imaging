@@ -1,4 +1,5 @@
 ﻿Imports ggplot.options
+Imports any = Microsoft.VisualBasic.Scripting
 
 Public Class MSIBackgroundOption : Inherits ggplotOption
 
@@ -9,6 +10,7 @@ Public Class MSIBackgroundOption : Inherits ggplotOption
     Public Property background As Object
 
     Public Overrides Function Config(ggplot As ggplot.ggplot) As ggplot.ggplot
-        Throw New NotImplementedException()
+        ggplot.ggplotTheme.background = any.ToString(background)
+        Return ggplot
     End Function
 End Class
