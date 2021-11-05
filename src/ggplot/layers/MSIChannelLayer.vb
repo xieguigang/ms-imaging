@@ -125,7 +125,7 @@ Namespace layers
             Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
             Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
             Dim colorSet As String = $"transparent,{color}"
-            Dim q As DoubleRange = {0, Renderer.AutoCheckCutMax(ion.GetIntensity, 0.8)}
+            Dim q As DoubleRange = {0, If(threshold, New TrIQThreshold).ThresholdValue(ion.GetIntensity)}
 
             Select Case color.ToLower
                 Case "#ff0000"            ' red

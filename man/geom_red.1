@@ -1,14 +1,14 @@
-﻿.TH GEOM_RED 1 2021-10-28 "" "Do MSI rendering for mz as red layer"
+﻿.TH GEOM_RED 1 2021-11-04 "" "Do MSI rendering for mz as red layer"
 .SH NAME
-geom_red \- geom_red(mz, tolerance = da:0.3)
+geom_red \- geom_red(mz, tolerance = getOption(mzdiff, default = da:0.3))
 .SH SYNOPSIS
-\fIgeom_red(mz, tolerance = da:0.3)\fR
+\fIgeom_red(mz, tolerance = getOption(mzdiff, default = da:0.3))\fR
 .SH OPTIONS
 .PP
 \fBmz\fB \fR\- . the m/z value of the target ion
 .PP
 .PP
-\fBtolerance\fB \fR\- da:0.3. 
+\fBtolerance\fB \fR\- getOption(mzdiff, default = da:0.3). 
 .PP
 .SH VALUE
 .PP

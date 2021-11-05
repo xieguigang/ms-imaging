@@ -89,9 +89,10 @@ Namespace layers
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)
-            Dim qcutRed As DoubleRange = {0, Renderer.AutoCheckCutMax(redLayer?.GetIntensity, 0.8)}
-            Dim qcutGreen As DoubleRange = {0, Renderer.AutoCheckCutMax(greenLayer?.GetIntensity, 0.8)}
-            Dim qcutBlue As DoubleRange = {0, Renderer.AutoCheckCutMax(blueLayer?.GetIntensity, 0.8)}
+            Dim cut As IQuantizationThreshold = AddressOf If(threshold, New TrIQThreshold).ThresholdValue
+            Dim qcutRed As DoubleRange = {0, cut(redLayer?.GetIntensity)}
+            Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
+            Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
             Dim dimSizes As Size() = (From layer As SingleIonLayer
                                       In {redLayer, greenLayer, blueLayer}
                                       Where Not layer Is Nothing
