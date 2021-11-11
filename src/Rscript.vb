@@ -109,6 +109,7 @@ Public Module Rscript
                                    Optional cutoff As Object = "0.05,0.65",
                                    <RRawVectorArgument>
                                    Optional color As Object = "Jet",
+                                   Optional knnFill As Integer = 10,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
@@ -125,7 +126,8 @@ Public Module Rscript
                 .args = New list With {
                     .slots = New Dictionary(Of String, Object) From {
                         {"mz", mz},
-                        {"mzdiff", mzdiff.TryCast(Of Tolerance)}
+                        {"mzdiff", mzdiff.TryCast(Of Tolerance)},
+                        {"knnfill", knnFill}
                     }
                 }
             },

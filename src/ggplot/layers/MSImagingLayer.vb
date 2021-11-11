@@ -80,6 +80,7 @@ Namespace layers
             Dim args As list = reader.args
             Dim mz As Double() = REnv.asVector(Of Double)(args.getByName("mz"))
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
+            Dim knnfill As Integer = args.getValue(Of Integer)("knnfill", ggplot.environment, -1)
 
             If mz.Any(Function(mzi) mzi <= 0) Then
                 Throw New InvalidProgramException($"invalid ion m/z value '{mz.Where(Function(mzi) mzi <= 0).First}'!")
@@ -94,6 +95,10 @@ Namespace layers
             Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
+
+            If knnfill > 0 Then
+                ion = ion.KnnFill(resolution:=knnfill)
+            End If
 
             If colorMap Is Nothing Then
                 colorSet = theme.colorSet
