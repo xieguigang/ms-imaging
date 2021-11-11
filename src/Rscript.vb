@@ -109,7 +109,7 @@ Public Module Rscript
                                    Optional cutoff As Object = "0.05,0.65",
                                    <RRawVectorArgument>
                                    Optional color As Object = "Jet",
-                                   Optional knnFill As Integer = 10,
+                                   Optional knnFill As Integer = -1,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
