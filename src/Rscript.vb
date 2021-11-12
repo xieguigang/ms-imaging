@@ -105,19 +105,15 @@ Public Module Rscript
     Public Function geom_msimaging(mz As Double(),
                                    Optional tolerance As Object = "da:0.1",
                                    Optional pixel_render As Boolean = False,
-                                   <RRawVectorArgument(GetType(Double))>
-                                   Optional cutoff As Object = "0.05,0.65",
+                                   Optional TrIQ As Double = 0.65,
                                    <RRawVectorArgument>
                                    Optional color As Object = "Jet",
-                                   Optional knnFill As Integer = -1,
+                                   Optional knnFill As Boolean = True,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
-        Dim cutoffRange = ApiArgumentHelpers.GetDoubleRange(cutoff, env)
 
-        If cutoffRange Like GetType(Message) Then
-            Return cutoffRange.TryCast(Of Message)
-        ElseIf mzdiff Like GetType(Message) Then
+        If mzdiff Like GetType(Message) Then
             Return mzdiff.TryCast(Of Message)
         End If
 
@@ -132,7 +128,7 @@ Public Module Rscript
                 }
             },
             .pixelDrawer = pixel_render,
-            .cutoff = cutoffRange.TryCast(Of DoubleRange),
+            .TrIQ = TrIQ,
             .colorMap = If(color Is Nothing, Nothing, ggplotColorMap.CreateColorMap(map:=color, env))
         }
     End Function
