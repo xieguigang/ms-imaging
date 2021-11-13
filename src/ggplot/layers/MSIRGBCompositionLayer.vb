@@ -74,6 +74,17 @@ Namespace layers
             End Get
         End Property
 
+        Private Shared Function getDimSize(redLayer As SingleIonLayer, greenLayer As SingleIonLayer, blueLayer As SingleIonLayer) As Size
+            Dim dimSizes As Size() = (From layer As SingleIonLayer
+                                      In {redLayer, greenLayer, blueLayer}
+                                      Where Not layer Is Nothing
+                                      Select layer.DimensionSize).ToArray
+            Dim w As Integer = (Aggregate [dim] As Size In dimSizes Into Max([dim].Width))
+            Dim h As Integer = (Aggregate [dim] As Size In dimSizes Into Max([dim].Height))
+
+            Return New Size(w, h)
+        End Function
+
         Public Overrides Function Plot(g As IGraphics,
                                        canvas As GraphicsRegion,
                                        baseData As ggplotData,
@@ -93,14 +104,7 @@ Namespace layers
             Dim qcutRed As DoubleRange = {0, cut(redLayer?.GetIntensity)}
             Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
             Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
-            Dim dimSizes As Size() = (From layer As SingleIonLayer
-                                      In {redLayer, greenLayer, blueLayer}
-                                      Where Not layer Is Nothing
-                                      Select layer.DimensionSize).ToArray
-            Dim dims As New Size With {
-                .Width = (Aggregate [dim] As Size In dimSizes Into Max([dim].Width)),
-                .Height = (Aggregate [dim] As Size In dimSizes Into Max([dim].Height))
-            }
+            Dim dims As Size = getDimSize(redLayer, greenLayer, blueLayer)
 
             MSI = engine.ChannelCompositions(
                 R:=redLayer,
@@ -109,7 +113,7 @@ Namespace layers
                 dimension:=dims,
                 dimSize:=Nothing,
                 cut:=(qcutRed, qcutGreen, qcutBlue),
-                background:=theme.background
+                background:=theme.gridFill
             )
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 

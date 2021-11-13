@@ -59,6 +59,14 @@ Imports SMRUCC.Rsharp.Runtime.Interop
 <Package("ggplot")>
 Public Module Rscript
 
+    <ExportAPI("MSI_knnfill")>
+    Public Function KnnFill(Optional k As Integer = 3, Optional qcut As Double = 0.8) As MSIKnnFillOption
+        Return New MSIKnnFillOption With {
+            .k = k,
+            .qcut = qcut
+        }
+    End Function
+
     Private Function unionlayers(layers As IEnumerable(Of ggplotLayer)) As IEnumerable(Of ggplotLayer)
         Dim all As ggplotLayer() = layers.ToArray
 

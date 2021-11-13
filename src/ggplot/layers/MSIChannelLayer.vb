@@ -67,6 +67,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports SMRUCC.Rsharp.Runtime.Internal.Object
 
 Namespace layers
 
@@ -95,7 +96,7 @@ Namespace layers
         End Property
 
         Public Overloads Function getIonlayer(ggplot As ggplot.ggplot) As SingleIonLayer
-            Dim args = reader.args
+            Dim args As list = reader.args
             Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
 
@@ -107,7 +108,7 @@ Namespace layers
                 ggplot.environment.AddMessage("missing 'tolerance' parameter, use the default da:0.1 as mzdiff tolerance value!")
             End If
 
-            Return getIonlayer(mz, mzdiff, ggplot)
+            Return MSIInterpolation(getIonlayer(mz, mzdiff, ggplot), ggplot)
         End Function
 
         Public Overrides Function Plot(g As IGraphics,

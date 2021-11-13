@@ -10,7 +10,7 @@ Public Class MSIBackgroundOption : Inherits ggplotOption
     Public Property background As Object
 
     Public Overrides Function Config(ggplot As ggplot.ggplot) As ggplot.ggplot
-        ggplot.ggplotTheme.background = any.ToString(background)
+        ggplot.ggplotTheme.gridFill = any.ToString(background)
         Return ggplot
     End Function
 End Class

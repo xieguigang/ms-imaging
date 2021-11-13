@@ -47,6 +47,7 @@
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
+Imports ggplot
 Imports ggplot.layers
 
 Namespace layers
@@ -55,6 +56,20 @@ Namespace layers
 
         Public Property pixelDrawer As Boolean = False
         Public Property threshold As QuantizationThreshold
+
+        Public Function MSIInterpolation(layer As SingleIonLayer, ggplot As ggplot.ggplot) As SingleIonLayer
+            If layer Is Nothing Then
+                Return Nothing
+            End If
+            If ggplot.args.getValue("knnFill", ggplot.environment, [default]:=False) Then
+                Dim k As Integer = ggplot.args.getValue("knn", ggplot.environment, [default]:=3)
+                Dim qcut As Double = ggplot.args.getValue("qcut", ggplot.environment, [default]:=0.8)
+
+                layer = layer.KnnFill(k, k, qcut)
+            End If
+
+            Return layer
+        End Function
 
         Public Function getIonlayer(mz As Double, mzdiff As Tolerance, ggplot As ggplot.ggplot) As SingleIonLayer
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
