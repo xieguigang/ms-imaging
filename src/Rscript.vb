@@ -56,6 +56,9 @@ Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 
+''' <summary>
+''' the ggplot api plugin for do MS-Imaging rendering
+''' </summary>
 <Package("ggplot")>
 Public Module Rscript
 

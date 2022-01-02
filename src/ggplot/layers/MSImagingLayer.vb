@@ -68,15 +68,8 @@ Namespace layers
 
         Public Property TrIQ As Double = 0.65
 
-        Public Overrides Function Plot(g As IGraphics,
-                                       canvas As GraphicsRegion,
-                                       baseData As ggplotData,
-                                       x() As Double,
-                                       y() As Double,
-                                       scale As DataScaler,
-                                       ggplot As ggplot.ggplot,
-                                       theme As Theme) As IggplotLegendElement
-
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim args As list = reader.args
             Dim mz As Double() = REnv.asVector(Of Double)(args.getByName("mz"))
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
@@ -90,19 +83,20 @@ Namespace layers
                 ggplot.environment.AddMessage("missing 'tolerance' parameter, use the default da:0.1 as mzdiff tolerance value!")
             End If
 
-            Dim rect As Rectangle = canvas.PlotRegion
+            Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
             Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
+            Dim theme As Theme = stream.theme
 
             If knnfill Then
                 ion = ion.KnnFill(3, 3, 0.8)
             End If
 
             If colorMap Is Nothing Then
-                colorSet = theme.colorSet
+                colorSet = stream.theme.colorSet
             Else
                 colorSet = any.ToString(colorMap.colorMap)
             End If
@@ -110,23 +104,23 @@ Namespace layers
             MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, TrIQ}, colorSet:=colorSet)
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
-            Call g.DrawImage(MSI, rect)
+            Call stream.g.DrawImage(MSI, rect)
 
             If mz.Length > 1 Then
                 Return Nothing
             Else
                 Return New legendColorMapElement With {
-                    .width = canvas.Padding.Right * (3 / 4),
+                    .width = stream.canvas.Padding.Right * (3 / 4),
                     .height = rect.Height,
                     .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
                         .format = "G3",
                         .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
-                        .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
+                        .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(stream.g.Dpi),
                         .ticks = ion.GetIntensity.Range.CreateAxisTicks,
                         .title = $"m/z {mz(Scan0).ToString("F3")}",
-                        .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi),
+                        .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(stream.g.Dpi),
                         .noblank = True,
-                        .legendOffsetLeft = canvas.Padding.Right / 10
+                        .legendOffsetLeft = stream.canvas.Padding.Right / 10
                     }
                 }
             End If

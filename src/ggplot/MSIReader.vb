@@ -49,6 +49,9 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports ggplot
 Imports SMRUCC.Rsharp.Runtime
 
+''' <summary>
+''' read ms-imaging raw data
+''' </summary>
 Public Class MSIReader : Inherits ggplotReader
 
     Public ReadOnly Property reader As PixelReader

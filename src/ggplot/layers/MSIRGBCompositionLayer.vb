@@ -85,17 +85,10 @@ Namespace layers
             Return New Size(w, h)
         End Function
 
-        Public Overrides Function Plot(g As IGraphics,
-                                       canvas As GraphicsRegion,
-                                       baseData As ggplotData,
-                                       x() As Double,
-                                       y() As Double,
-                                       scale As DataScaler,
-                                       ggplot As ggplot.ggplot,
-                                       theme As Theme) As IggplotLegendElement
-
-            Dim rect As Rectangle = canvas.PlotRegion
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
+            Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
@@ -113,17 +106,17 @@ Namespace layers
                 dimension:=dims,
                 dimSize:=Nothing,
                 cut:=(qcutRed, qcutGreen, qcutBlue),
-                background:=theme.gridFill
+                background:=stream.theme.gridFill
             )
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
-            Call g.DrawImage(MSI, rect)
+            Call stream.g.DrawImage(MSI, rect)
 
             Return New legendGroupElement With {
                 .legends = (From legend As LegendObject In {
-                    legend("red", theme, redLayer),
-                    legend("green", theme, greenLayer),
-                    legend("blue", theme, blueLayer)
+                    legend("red", stream.theme, redLayer),
+                    legend("green", stream.theme, greenLayer),
+                    legend("blue", stream.theme, blueLayer)
                 } Where Not legend Is Nothing).ToArray
             }
         End Function
