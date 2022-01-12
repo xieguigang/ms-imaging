@@ -1,0 +1,76 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "element_text" "element_text"
+.SH NAME
+element_text \- Theme elements
+.SH SYNOPSIS
+\fIelement_text(\fBfamily\fR as string = \fB<NULL>\fR, 
+\fBface\fR as string = \fB<NULL>\fR, 
+\fBsize\fR as double = 0, 
+\fBhjust\fR as double = 0, 
+\fBvjust\fR as double = 0, 
+\fBangle\fR as double = 0, 
+\fBlineheight\fR as double = 0, 
+\fBcolor\fR as string = \fB<NULL>\fR, 
+\fBmargin\fR as double = 0, 
+\fBdebug\fR as boolean = FALSE, 
+\fBinherit_blank\fR as boolean = FALSE);\fR
+.SH DESCRIPTION
+.PP
+Theme elements
+ 
+ text.
+.PP
+.SH OPTIONS
+.PP
+\fBfamily\fB \fR\- Font family. 
+.PP
+.PP
+\fBface\fB \fR\- Font face ("plain", "italic", "bold", "bold.italic"). 
+.PP
+.PP
+\fBsize\fB \fR\- Line/border size in mm; text size in pts.. 
+.PP
+.PP
+\fBhjust\fB \fR\- Horizontal justification (in [0, 1]). 
+.PP
+.PP
+\fBvjust\fB \fR\- Vertical justification (in [0, 1]). 
+.PP
+.PP
+\fBangle\fB \fR\- Angle (in [0, 360]). 
+.PP
+.PP
+\fBlineheight\fB \fR\- Line height. 
+.PP
+.PP
+\fBcolor\fB \fR\- Line/border colour. Color is an alias for colour.. 
+.PP
+.PP
+\fBmargin\fB \fR\- 
+ Margins around the text. See margin() for more details. When creating a theme, 
+ the margins should be placed on the side of the text facing towards the center 
+ of the plot.
+. 
+.PP
+.PP
+\fBdebug\fB \fR\- 
+ If TRUE, aids visual debugging by drawing a solid rectangle behind the complete 
+ text area, and a point where each label is anchored.
+. 
+.PP
+.PP
+\fBinherit_blank\fB \fR\- 
+ Should this element inherit the existence of an element_blank among its parents? 
+ If TRUE the existence of a blank element among its parents will cause this 
+ element to be blank as well. If FALSE any blank parent element will be ignored 
+ when calculating final element state.
+. 
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.

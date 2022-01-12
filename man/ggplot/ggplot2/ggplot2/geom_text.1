@@ -1,0 +1,139 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "geom_text" "geom_text"
+.SH NAME
+geom_text \- Text
+.SH SYNOPSIS
+\fIgeom_text(\fBmapping\fR as <generic> ggplotReader = \fB<NULL>\fR, 
+\fBdata\fR as any = \fB<NULL>\fR, 
+\fBstat\fR as string = "identity", 
+\fBposition\fR as string = "identity", 
+\fBparse\fR as boolean = FALSE, 
+\fBnudge_x\fR as double = 0, 
+\fBnudge_y\fR as double = 0, 
+\fBcheck_overlap\fR as boolean = FALSE, 
+\fBna_rm\fR as boolean = FALSE, 
+\fBshow_legend\fR as boolean = FALSE, 
+\fBinherit_aes\fR as boolean = TRUE, 
+\fBcolor\fR as any = "steelblue", 
+\fBwhich\fR as <generic> Expression = \fB<NULL>\fR, 
+..., 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Text
+ 
+ Text geoms are useful for labeling plots. They can be used by themselves 
+ as scatterplots or in combination with other geoms, for example, for 
+ labeling points or for annotating the height of bars. geom_text() adds 
+ only text to the plot. geom_label() draws a rectangle behind the text, 
+ making it easier to read.
+.PP
+.SH OPTIONS
+.PP
+\fBmapping\fB \fR\- 
+ Set of aesthetic mappings created by aes() or aes_(). If specified and 
+ inherit.aes = TRUE (the default), it is combined with the default mapping 
+ at the top level of the plot. You must supply mapping if there is no plot 
+ mapping.
+. 
+.PP
+.PP
+\fBdata\fB \fR\- 
+ The data to be displayed in this layer. There are three options:
+ 
+ If NULL, the Default, the data Is inherited from the plot data As 
+ specified In the Call To ggplot().
+ 
+ A data.frame, Or other Object, will override the plot data. All objects 
+ will be fortified To produce a data frame. See fortify() For which 
+ variables will be created.
+ 
+ A Function will be called With a Single argument, the plot data. The Return 
+ value must be a data.frame, And will be used As the layer data. A Function 
+ can be created from a formula (e.g. ~ head(.x, 10)).
+. 
+.PP
+.PP
+\fBstat\fB \fR\- 
+ The statistical transformation to use on the data for this layer, as a 
+ string.
+. 
+.PP
+.PP
+\fBposition\fB \fR\- 
+ Position adjustment, either as a string, or the result of a call to a 
+ position adjustment function. Cannot be jointy specified with nudge_x or 
+ nudge_y.
+. 
+.PP
+.PP
+\fBparse\fB \fR\- 
+ If TRUE, the labels will be parsed into expressions and displayed as 
+ described in ?plotmath.
+. 
+.PP
+.PP
+\fBnudge_x\fB \fR\- 
+ Horizontal and vertical adjustment to nudge labels by. Useful for 
+ offsetting text from points, particularly on discrete scales. Cannot be 
+ jointly specified with position.
+. 
+.PP
+.PP
+\fBnudge_y\fB \fR\- 
+ Horizontal and vertical adjustment to nudge labels by. Useful for 
+ offsetting text from points, particularly on discrete scales. Cannot be 
+ jointly specified with position.
+. 
+.PP
+.PP
+\fBcheck_overlap\fB \fR\- 
+ If TRUE, text that overlaps previous text in the same layer will not be 
+ plotted. check_overlap happens at draw time and in the order of the data. 
+ Therefore data should be arranged by the label column before calling 
+ geom_text(). Note that this argument is not supported by geom_label().
+. 
+.PP
+.PP
+\fBna_rm\fB \fR\- 
+ If False, the Default, missing values are removed With a warning. 
+ If True, missing values are silently removed.
+. 
+.PP
+.PP
+\fBshow_legend\fB \fR\- 
+ logical. Should this layer be included in the legends? NA, the default, 
+ includes if any aesthetics are mapped. FALSE never includes, and TRUE 
+ always includes. It can also be a named logical vector to finely select
+ the aesthetics to display.
+. 
+.PP
+.PP
+\fBinherit_aes\fB \fR\- 
+ If False, Overrides the Default aesthetics, rather than combining With 
+ them. This Is most useful For helper functions that define both data And 
+ aesthetics And shouldn't inherit behaviour from the default plot 
+ specification, e.g. borders().
+. 
+.PP
+.PP
+\fBcolor\fB \fR\- -. 
+.PP
+.PP
+\fBargs\fB \fR\- 
+ Other arguments passed On To layer(). These are often aesthetics, used To 
+ Set an aesthetic To a fixed value, Like colour = "red" Or size = 3. They
+ may also be parameters To the paired geom/stat.
+. 
+.PP
+.PP
+\fBenv\fB \fR\- -. 
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.

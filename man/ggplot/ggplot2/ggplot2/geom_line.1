@@ -1,0 +1,32 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "geom_line" "geom_line"
+.SH NAME
+geom_line \- Connect observations
+.SH SYNOPSIS
+\fIgeom_line(\fBmapping\fR as <generic> ggplotReader = \fB<NULL>\fR, 
+\fBcolor\fR as any = \fB<NULL>\fR, 
+\fBwidth\fR as double = 5, 
+\fBshow_legend\fR as boolean = TRUE, 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Connect observations
+ 
+ geom_path() connects the observations in the order in which they appear in 
+ the data. geom_line() connects them in order of the variable on the x axis. 
+ geom_step() creates a stairstep plot, highlighting exactly when changes 
+ occur. The group aesthetic determines which cases are connected together.
+.PP
+.SH DETAILS
+.PP
+An alternative parameterisation is geom_segment(), where each line corresponds 
+ to a single case which provides the start and end coordinates.
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.

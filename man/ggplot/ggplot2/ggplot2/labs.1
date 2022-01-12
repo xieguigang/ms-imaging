@@ -1,0 +1,88 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "labs" "labs"
+.SH NAME
+labs \- Modify axis, legend, and plot labels
+.SH SYNOPSIS
+\fIlabs(\fBx\fR as string = \fB<NULL>\fR, 
+\fBy\fR as string = \fB<NULL>\fR, 
+\fBtitle\fR as string = \fB<NULL>\fR, 
+\fBsubtitle\fR as string = \fB<NULL>\fR, 
+\fBcaption\fR as string = \fB<NULL>\fR, 
+\fBtag\fR as any = \fB<NULL>\fR, 
+\fBalt\fR as any = \fB<NULL>\fR, 
+\fBalt_insight\fR as any = \fB<NULL>\fR, 
+..., 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Modify axis, legend, and plot labels
+ 
+ Good labels are critical for making your plots accessible to 
+ a wider audience. Always ensure the axis and legend labels 
+ display the full variable name. Use the plot title and subtitle 
+ to explain the main findings. It's common to use the caption 
+ to provide information about the data source. tag can be used 
+ for adding identification tags to differentiate between multiple 
+ plots.
+.PP
+.SH OPTIONS
+.PP
+\fBx\fB \fR\- -. 
+.PP
+.PP
+\fBy\fB \fR\- -. 
+.PP
+.PP
+\fBtitle\fB \fR\- The text for the title.. 
+.PP
+.PP
+\fBsubtitle\fB \fR\- 
+ The text For the subtitle For the plot which will be displayed 
+ below the title.
+. 
+.PP
+.PP
+\fBcaption\fB \fR\- 
+ The text for the caption which will be displayed in the 
+ bottom-right of the plot by default.
+. 
+.PP
+.PP
+\fBtag\fB \fR\- 
+ The text for the tag label which will be displayed at the top-left 
+ of the plot by default.
+. 
+.PP
+.PP
+\fBalt\fB \fR\- 
+ Text used for the generation of alt-text for the plot. See 
+ get_alt_text for examples.
+. 
+.PP
+.PP
+\fBalt_insight\fB \fR\- -. 
+.PP
+.PP
+\fBargs\fB \fR\- 
+ A list of new name-value pairs. The name should be an aesthetic.
+. 
+.PP
+.SH DETAILS
+.PP
+You can also set axis and legend labels in the individual scales 
+ (using the first argument, the name). If you're changing other 
+ scale options, this is recommended.
+ 
+ If a plot already has a title, subtitle, caption, etc., And you want 
+ To remove it, you can Do so by setting the respective argument To 
+ NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) 
+ will remove the subtitle from the plot.
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.
