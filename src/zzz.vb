@@ -1,4 +1,7 @@
 ﻿Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
+Imports SMRUCC.Rsharp.Runtime.Interop
+
+<Assembly: RPackageModule>
 
 Public Class zzz
 
