@@ -51,12 +51,10 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
 Imports ggplot
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports any = Microsoft.VisualBasic.Scripting
@@ -109,6 +107,16 @@ Namespace layers
             If mz.Length > 1 Then
                 Return Nothing
             Else
+                Dim rawInto = ion.GetIntensity
+                Dim ticks As Double() = rawInto.Range.CreateAxisTicks
+
+                If ticks.Any(Function(t) t = 0.0) Then
+                    ticks = {rawInto.Min} _
+                        .JoinIterates(ticks.Where(Function(t) t > 0)) _
+                        .OrderBy(Function(d) d) _
+                        .ToArray
+                End If
+
                 Return New legendColorMapElement With {
                     .width = stream.canvas.Padding.Right * (3 / 4),
                     .height = rect.Height,
@@ -116,7 +124,7 @@ Namespace layers
                         .format = "G3",
                         .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
                         .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(stream.g.Dpi),
-                        .ticks = ion.GetIntensity.Range.CreateAxisTicks,
+                        .ticks = ticks,
                         .title = $"m/z {mz(Scan0).ToString("F3")}",
                         .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(stream.g.Dpi),
                         .noblank = True,
