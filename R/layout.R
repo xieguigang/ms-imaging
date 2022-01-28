@@ -21,7 +21,7 @@ require(graphics2D);
 #' 
 autoSize = function(dims, padding, scale = 1) {
     dims    = graphics2D::sizeVector(dims);
-    padding = graphics2D::paddingVector(padding);
+    padding = graphics2D::paddingVector(padding); 
     vpad    = padding[1] + padding[3];
     hpad    = padding[2] + padding[4]; 
     dims    = dims * scale;
