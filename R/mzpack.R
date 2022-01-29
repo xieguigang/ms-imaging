@@ -3,6 +3,6 @@
 #'
 #' @param raw the mzpack object 
 #'
-const npixels as function(raw) {
+const npixels = function(raw) {
 	length(as.object(raw)$MS);
 }

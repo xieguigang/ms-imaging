@@ -19,7 +19,7 @@ require(graphics2D);
 #'   a dimension vector with two elements standards for 
 #'   ``[w, h]``.
 #' 
-autoSize = function(dims, padding, scale = 1) {
+const autoSize = function(dims, padding, scale = 1) {
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
     vpad    = padding[1] + padding[3];
