@@ -498,6 +498,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ggplot\ggMSI.vb" />
+    <Compile Include="ggplot\MSIBackgroundOption.vb" />
+    <Compile Include="ggplot\MSIKnnFillOption.vb" />
+    <Compile Include="ggplot\MSIReader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -513,6 +517,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Rscript.vb" />
+    <Compile Include="zzz.vb" />
+    <Compile Include="ggplot\layers\MSImagingLayer.vb" />
+    <Compile Include="ggplot\layers\MSIRGBCompositionLayer.vb" />
+    <Compile Include="ggplot\layers\ggplotMSILayer.vb" />
+    <Compile Include="ggplot\layers\MSIChannelLayer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
