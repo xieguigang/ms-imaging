@@ -47,9 +47,12 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DensityQuery", "..\..\..\..
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GraphTheory", "..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Graph\GraphTheory.vbproj", "{203BC68F-A0CD-443A-AB62-4AF4110F752F}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "mzkit.interopArguments", "..\mzkit.interopArguments\mzkit.interopArguments.shproj", "{C295C3AF-3E62-4756-966A-3D0B90DED160}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53473af8-1f89-4fe1-bcb8-10fa0c9bce74}*SharedItemsImports = 4
+		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{c295c3af-3e62-4756-966a-3d0b90ded160}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		BioDeep_database|Any CPU = BioDeep_database|Any CPU
@@ -4055,6 +4058,7 @@ Global
 		{1B42809B-603F-4CEA-A0DB-91276582B9CA} = {CCD80C23-C6C0-45B0-B367-6603D9E7EE6F}
 		{39FE675E-F451-47DE-8695-98E093775981} = {CCD80C23-C6C0-45B0-B367-6603D9E7EE6F}
 		{203BC68F-A0CD-443A-AB62-4AF4110F752F} = {CCD80C23-C6C0-45B0-B367-6603D9E7EE6F}
+		{C295C3AF-3E62-4756-966A-3D0B90DED160} = {4925F75E-0C29-4E8D-855F-09F267DD49EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A02F3656-0BF6-43C9-8DEA-59258180FA11}
