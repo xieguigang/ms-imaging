@@ -87,7 +87,7 @@ Namespace layers
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
             Dim ggplot As ggplot.ggplot = stream.ggplot
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+            Dim engine As Renderer = If(pixelDrawer, New PixelRender(heatmapRender:=False), New RectangleRender(heatmapRender:=False))
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)

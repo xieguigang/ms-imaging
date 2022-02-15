@@ -112,7 +112,7 @@ Namespace layers
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim ion As SingleIonLayer = getIonlayer(stream.ggplot)
             Dim MSI As Image
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+            Dim engine As Renderer = If(pixelDrawer, New PixelRender(heatmapRender:=False), New RectangleRender(heatmapRender:=False))
             Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
             Dim colorSet As String = $"transparent,{color}"
             Dim q As DoubleRange = {0, If(threshold, New TrIQThreshold).ThresholdValue(ion.GetIntensity)}

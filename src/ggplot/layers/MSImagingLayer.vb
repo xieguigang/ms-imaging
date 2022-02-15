@@ -83,7 +83,7 @@ Namespace layers
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
-            Dim engine As Renderer = If(pixelDrawer, DirectCast(New PixelRender, Renderer), New RectangleRender)
+            Dim engine As Renderer = If(pixelDrawer, DirectCast(New PixelRender(heatmapRender:=False), Renderer), New RectangleRender(heatmapRender:=False))
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)

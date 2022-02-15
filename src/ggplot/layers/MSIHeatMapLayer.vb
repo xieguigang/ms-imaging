@@ -17,7 +17,7 @@ Namespace layers
             Dim MSI As Image
             Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim data = DirectCast(ggplot.data, MSIHeatMap)
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+            Dim engine As Renderer = If(pixelDrawer, New PixelRender(heatmapRender:=True), New RectangleRender(heatmapRender:=True))
             Dim redLayer As SingleIonLayer = data.R
             Dim greenLayer As SingleIonLayer = data.G
             Dim blueLayer As SingleIonLayer = data.B
