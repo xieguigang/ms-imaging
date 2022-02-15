@@ -77,12 +77,12 @@ Public Module Rscript
                                      Optional B As String = Nothing,
                                      Optional env As Environment = Nothing) As Object
 
-        Dim checkLayer =
+        Dim missingLayer =
             Function(layer As String) As Boolean
                 Return layer.StringEmpty OrElse Not matrix.hasName(layer)
             End Function
 
-        If Not checkLayer(R) Then
+        If missingLayer(R) Then
             Return Internal.debug.stop(New MissingPrimaryKeyException("missing of the basic heatmap layer key!"), env)
         ElseIf matrix.rownames.IsNullOrEmpty Then
             Return Internal.debug.stop(New MissingFieldException("no pixels data, you should assign the pixel points to the row names!"), env)
@@ -103,8 +103,8 @@ Public Module Rscript
 
         Return New MSIHeatMap With {
             .R = MSIHeatMap.CreateLayer(R, pixels, REnv.asVector(Of Double)(matrix(R))),
-            .B = If(checkLayer(B), MSIHeatMap.CreateLayer(B, pixels, REnv.asVector(Of Double)(matrix(B))), Nothing),
-            .G = If(checkLayer(G), MSIHeatMap.CreateLayer(G, pixels, REnv.asVector(Of Double)(matrix(G))), Nothing),
+            .B = If(missingLayer(B), Nothing, MSIHeatMap.CreateLayer(B, pixels, REnv.asVector(Of Double)(matrix(B)))),
+            .G = If(missingLayer(G), Nothing, MSIHeatMap.CreateLayer(G, pixels, REnv.asVector(Of Double)(matrix(G)))),
             .dimension = New Size(maxWidth, maxHeight)
         }
     End Function
