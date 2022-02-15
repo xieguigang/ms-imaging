@@ -140,15 +140,6 @@ Public Module Rscript
                 Select layer).FirstOrDefault
     End Function
 
-    ''' <summary>
-    ''' create a MSI data reader.
-    ''' </summary>
-    ''' <returns></returns>
-    <ExportAPI("MSImaging")>
-    Public Function MSIReader() As ggplotReader
-        Return New MSIReader
-    End Function
-
     <ExportAPI("geom_msimaging")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_msimaging(mz As Double(),
