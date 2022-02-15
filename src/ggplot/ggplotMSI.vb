@@ -1,8 +1,15 @@
-﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+﻿Imports ggplot
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 
 Public Class ggplotMSI : Inherits ggplot.ggplot
 
     Public Sub New(theme As Theme)
         MyBase.New(theme)
     End Sub
+
+    Public Overrides Function CreateReader(mapping As ggplot.ggplotReader) As ggplot.ggplotBase
+        Return New ggplotBase With {
+            .reader = New MSIReader()
+        }
+    End Function
 End Class
