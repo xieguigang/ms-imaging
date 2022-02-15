@@ -1,4 +1,5 @@
-﻿Imports ggplot
+﻿Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
+Imports ggplot
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 
 Public Class ggplotMSI : Inherits ggplot.ggplot
@@ -8,8 +9,13 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     End Sub
 
     Public Overrides Function CreateReader(mapping As ggplot.ggplotReader) As ggplot.ggplotBase
-        Return New ggplotBase With {
-            .reader = New MSIReader()
-        }
+        Select Case template
+            Case GetType(mzPack)
+                Return New ggplotBase With {
+                    .reader = New MSIReader()
+                }
+            Case Else
+                Throw New NotImplementedException(template.FullName)
+        End Select
     End Function
 End Class
