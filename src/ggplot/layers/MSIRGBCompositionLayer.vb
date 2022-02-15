@@ -129,7 +129,7 @@ Namespace layers
                     .color = color,
                     .fontstyle = theme.legendLabelCSS,
                     .style = LegendStyles.Square,
-                    .title = $"m/z {layer.IonMz.ToString("F4")}"
+                    .title = SingleIonLayer.ToString(layer)
                 }
             End If
         End Function

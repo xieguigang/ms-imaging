@@ -140,7 +140,7 @@ Namespace layers
                     .color = color,
                     .fontstyle = stream.theme.legendLabelCSS,
                     .style = LegendStyles.Square,
-                    .title = $"m/z {ion.IonMz.ToString("F4")}"
+                    .title = SingleIonLayer.ToString(ion)
                 }
             }
         End Function

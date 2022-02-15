@@ -9,8 +9,7 @@ bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096_RGB.png`, size = [3300,
     # load mzpack/imzML raw data file
     # and config ggplot data source driver 
     # as MSImaging data reader
-    ggplot(open.mzpack(system.file("data/HR2MSI mouse urinary bladder S096 - Figure1.cdf", package = "MSImaging")), 
-           mapping = aes(driver = MSImaging()), 
+    ggplot(open.mzpack(system.file("data/HR2MSI mouse urinary bladder S096 - Figure1.cdf", package = "MSImaging")),           
            padding = "padding: 200px 600px 200px 250px;"
     ) 
        # rendering of rgb channels ion m/z

@@ -69,9 +69,9 @@ Namespace layers
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim args As list = reader.args
-            Dim mz As Double() = REnv.asVector(Of Double)(args.getByName("mz"))
+            Dim mz As Double() = DirectCast(REnv.asVector(Of Double)(args.getByName("mz")), Double())
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
-            Dim knnfill As Integer = args.getValue(Of Boolean)("knnfill", ggplot.environment, False)
+            Dim knnfill As Boolean = args.getValue(Of Boolean)("knnfill", ggplot.environment, False)
 
             If mz.Any(Function(mzi) mzi <= 0) Then
                 Throw New InvalidProgramException($"invalid ion m/z value '{mz.Where(Function(mzi) mzi <= 0).First}'!")
@@ -83,7 +83,7 @@ Namespace layers
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender, New RectangleRender)
+            Dim engine As Renderer = If(pixelDrawer, DirectCast(New PixelRender, Renderer), New RectangleRender)
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
@@ -100,7 +100,7 @@ Namespace layers
             End If
 
             MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, TrIQ}, colorSet:=colorSet)
-            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
+            MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
 
             Call stream.g.DrawImage(MSI, rect)
 

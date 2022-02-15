@@ -42,6 +42,7 @@
 
 #End Region
 
+Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports ggplot
 Imports ggplot.colors
@@ -53,6 +54,7 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
@@ -65,6 +67,44 @@ Public Module Rscript
         Return New MSIKnnFillOption With {
             .k = k,
             .qcut = qcut
+        }
+    End Function
+
+    <ExportAPI("MSIheatmap")>
+    Public Function CreateMSIheatmap(matrix As dataframe, R As String,
+                                     Optional G As String = Nothing,
+                                     Optional B As String = Nothing,
+                                     Optional env As Environment = Nothing) As Object
+
+        Dim checkLayer =
+            Function(layer As String) As Boolean
+                Return layer.StringEmpty OrElse Not matrix.hasName(layer)
+            End Function
+
+        If Not checkLayer(R) Then
+            Return Internal.debug.stop(New MissingPrimaryKeyException("missing of the basic heatmap layer key!"), env)
+        ElseIf matrix.rownames.IsNullOrEmpty Then
+            Return Internal.debug.stop(New MissingFieldException("no pixels data, you should assign the pixel points to the row names!"), env)
+        End If
+
+        Dim pixels As Point() = matrix.rownames _
+            .Select(Function(pt)
+                        Dim t As Integer() = pt _
+                            .Split(","c) _
+                            .Select(AddressOf Integer.Parse) _
+                            .ToArray
+
+                        Return New Point(t(0), t(1))
+                    End Function) _
+            .ToArray
+        Dim maxWidth As Integer = Aggregate pt As Point In pixels Into Max(pt.X)
+        Dim maxHeight As Integer = Aggregate pt As Point In pixels Into Max(pt.Y)
+
+        Return New MSIHeatMap With {
+            .R = MSIHeatMap.CreateLayer(R, pixels, REnv.asVector(Of Double)(matrix(R))),
+            .B = If(checkLayer(B), MSIHeatMap.CreateLayer(B, pixels, REnv.asVector(Of Double)(matrix(B))), Nothing),
+            .G = If(checkLayer(G), MSIHeatMap.CreateLayer(G, pixels, REnv.asVector(Of Double)(matrix(G))), Nothing),
+            .dimension = New Size(maxWidth, maxHeight)
         }
     End Function
 
@@ -98,15 +138,6 @@ Public Module Rscript
                 Where TypeOf layer Is MSIChannelLayer
                 Where DirectCast(layer, MSIChannelLayer).channel = channel
                 Select layer).FirstOrDefault
-    End Function
-
-    ''' <summary>
-    ''' create a MSI data reader.
-    ''' </summary>
-    ''' <returns></returns>
-    <ExportAPI("MSImaging")>
-    Public Function MSIReader() As ggplotReader
-        Return New MSIReader
     End Function
 
     <ExportAPI("geom_msimaging")>
