@@ -32,7 +32,7 @@ Namespace layers
                 G:=greenLayer,
                 B:=blueLayer,
                 dimension:=dims,
-                dimSize:=Nothing,
+                dimSize:=New Size(16, 16),
                 cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
             )

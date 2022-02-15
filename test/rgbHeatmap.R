@@ -22,7 +22,9 @@ bitmap(file = `${datadir}/UMAP_RGB.png`, size = [3300, 2000]) {
 
        # plot heatmap
        + geom_msiheatmap()
-
+	   + theme(panel.background = "black")
+	   + MSI_knnfill()
+       
        # add ggplot charting elements
        + ggtitle("UMAP RGB")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")
