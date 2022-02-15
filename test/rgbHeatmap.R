@@ -16,7 +16,7 @@ bitmap(file = `${datadir}/UMAP_RGB.png`, size = [3300, 2000]) {
     # load mzpack/imzML raw data file
     # and config ggplot data source driver 
     # as MSImaging data reader
-    ggplot(MSIheatmap(data, R = "x", G = "y", B = "z"),           
+    ggplot(MSIheatmap(data, R = "UMAP_dim1", G = "UMAP_dim2", B = "UMAP_dim3"),           
            padding = "padding: 200px 600px 200px 250px;"
     )        
 
@@ -24,9 +24,9 @@ bitmap(file = `${datadir}/UMAP_RGB.png`, size = [3300, 2000]) {
        + geom_msiheatmap()
 	   + theme(panel.background = "black")
 	   + MSI_knnfill()
-       
+
        # add ggplot charting elements
-       + ggtitle("UMAP RGB")
+       + ggtitle("UMAP RGB Heatmap")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")
        + scale_x_continuous(labels = "F0")
        + scale_y_continuous(labels = "F0")
