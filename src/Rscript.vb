@@ -102,9 +102,9 @@ Public Module Rscript
         Dim maxHeight As Integer = Aggregate pt As Point In pixels Into Max(pt.Y)
 
         Return New MSIHeatMap With {
-            .R = MSIHeatMap.CreateLayer(R, pixels, REnv.asVector(Of Double)(matrix(R))),
-            .B = If(missingLayer(B), Nothing, MSIHeatMap.CreateLayer(B, pixels, REnv.asVector(Of Double)(matrix(B)))),
-            .G = If(missingLayer(G), Nothing, MSIHeatMap.CreateLayer(G, pixels, REnv.asVector(Of Double)(matrix(G)))),
+            .R = MSIHeatMap.CreateLayer(R, pixels, DirectCast(REnv.asVector(Of Double)(matrix(R)), Double())),
+            .B = If(missingLayer(B), Nothing, MSIHeatMap.CreateLayer(B, pixels, DirectCast(REnv.asVector(Of Double)(matrix(B)), Double()))),
+            .G = If(missingLayer(G), Nothing, MSIHeatMap.CreateLayer(G, pixels, DirectCast(REnv.asVector(Of Double)(matrix(G)), Double()))),
             .dimension = New Size(maxWidth, maxHeight)
         }
     End Function

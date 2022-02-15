@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
 
 Public Class MSIHeatMap
 
@@ -9,7 +10,10 @@ Public Class MSIHeatMap
 
     Public Property dimension As Size
 
-    Public Shared Function CreateLayer(layerName As String, pixels As Point(), heatmap As Double()) As SingleIonLayer
+    Public Shared Function CreateLayer(layerName As String, pixels As Point(), heatmap As Vector) As SingleIonLayer
+        ' scale to [0,1]
+        heatmap = (heatmap - heatmap.Min) / (heatmap.Max - heatmap.Min)
+
         Return New SingleIonLayer With {
             .IonMz = layerName,
             .MSILayer = pixels _
