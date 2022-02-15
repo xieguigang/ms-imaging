@@ -19,6 +19,10 @@ bitmap(file = `${datadir}/UMAP_RGB.png`, size = [3300, 2000]) {
     ggplot(MSIheatmap(data, R = "x", G = "y", B = "z"),           
            padding = "padding: 200px 600px 200px 250px;"
     )        
+
+       # plot heatmap
+       + geom_msiheatmap()
+
        # add ggplot charting elements
        + ggtitle("UMAP RGB")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")

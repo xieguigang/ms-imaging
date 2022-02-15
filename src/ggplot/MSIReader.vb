@@ -56,6 +56,10 @@ Public Class MSIReader : Inherits ggplotReader
 
     Public ReadOnly Property reader As PixelReader
 
+    Sub New(raw As mzPack)
+        _reader = New ReadRawPack(mzpack:=raw)
+    End Sub
+
     ''' <summary>
     ''' returns the dimensions of the MSI raw data
     ''' </summary>
@@ -68,8 +72,6 @@ Public Class MSIReader : Inherits ggplotReader
         Dim x As Double() = points.Select(Function(p) CDbl(p.X)).ToArray
         Dim y As Double() = points.Select(Function(p) CDbl(p.Y)).ToArray
 
-        _reader = New ReadRawPack(mzpack:=raw)
-
         Return New ggplotData With {
             .x = x,
             .y = y
@@ -77,3 +79,23 @@ Public Class MSIReader : Inherits ggplotReader
     End Function
 End Class
 
+Public Class HeatMapReader : Inherits ggplotReader
+
+    Public ReadOnly Property heatmap As MSIHeatMap
+
+    Sub New(heatmap As MSIHeatMap)
+        Me.heatmap = heatmap
+    End Sub
+
+    Public Overrides Function getMapData(data As Object, env As Environment) As ggplotData
+        Dim raw As MSIHeatMap = DirectCast(data, MSIHeatMap)
+        Dim x As Double() = New Double() {0, raw.dimension.Width}
+        Dim y As Double() = New Double() {0, raw.dimension.Height}
+
+        Return New ggplotData With {
+           .x = x,
+           .y = y
+        }
+    End Function
+
+End Class

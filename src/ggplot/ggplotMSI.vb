@@ -12,7 +12,11 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         Select Case template
             Case GetType(mzPack)
                 Return New ggplotBase With {
-                    .reader = New MSIReader()
+                    .reader = New MSIReader(DirectCast(data, mzPack))
+                }
+            Case GetType(MSIHeatMap)
+                Return New ggplotBase() With {
+                   .reader = New HeatMapReader(DirectCast(data, MSIHeatMap))
                 }
             Case Else
                 Throw New NotImplementedException(template.FullName)

@@ -141,6 +141,12 @@ Public Module Rscript
                 Select layer).FirstOrDefault
     End Function
 
+    <ExportAPI("geom_msiheatmap")>
+    <RApiReturn(GetType(ggplotLayer))>
+    Public Function geom_msiheatmap() As Object
+        Return New MSIHeatMapLayer
+    End Function
+
     <ExportAPI("geom_msimaging")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_msimaging(mz As Double(),
