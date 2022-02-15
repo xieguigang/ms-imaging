@@ -42,6 +42,7 @@
 
 #End Region
 
+Imports System.Data
 Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports ggplot
