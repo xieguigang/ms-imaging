@@ -71,6 +71,13 @@ Public Module Rscript
         }
     End Function
 
+    <ExportAPI("MSI_gaussblur")>
+    Public Function gaussBlurOpt(Optional levels As Integer = 500) As MSIGaussBlurOption
+        Return New MSIGaussBlurOption With {
+            .blurLevels = levels
+        }
+    End Function
+
     <ExportAPI("MSIheatmap")>
     Public Function CreateMSIheatmap(matrix As dataframe, R As String,
                                      Optional G As String = Nothing,

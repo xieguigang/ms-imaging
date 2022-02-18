@@ -54,6 +54,7 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -88,6 +89,7 @@ Namespace layers
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
             Dim theme As Theme = stream.theme
+            Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)
 
             If knnfill Then
                 ion = ion.KnnFill(3, 3, 0.8)
@@ -101,6 +103,16 @@ Namespace layers
 
             MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, TrIQ}, colorSet:=colorSet)
             MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
+
+            If gaussBlurs > 0 Then
+                Dim bitmap As New Bitmap(MSI)
+
+                For i As Integer = 0 To gaussBlurs
+                    bitmap = GaussBlur.GaussBlur(bitmap)
+                Next
+
+                MSI = bitmap
+            End If
 
             Call stream.g.DrawImage(MSI, rect)
 
