@@ -65,7 +65,7 @@ Namespace layers
 
     Public Class MSImagingLayer : Inherits ggplotMSILayer
 
-        Public Property TrIQ As Double = 0.65
+        Public Property TrIQ As Double = 0.6
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplot.ggplot = stream.ggplot

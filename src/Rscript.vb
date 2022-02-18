@@ -72,7 +72,7 @@ Public Module Rscript
     End Function
 
     <ExportAPI("MSI_gaussblur")>
-    Public Function gaussBlurOpt(Optional levels As Integer = 500) As MSIGaussBlurOption
+    Public Function gaussBlurOpt(Optional levels As Integer = 30) As MSIGaussBlurOption
         Return New MSIGaussBlurOption With {
             .blurLevels = levels
         }
@@ -159,7 +159,7 @@ Public Module Rscript
     Public Function geom_msimaging(mz As Double(),
                                    Optional tolerance As Object = "da:0.1",
                                    Optional pixel_render As Boolean = False,
-                                   Optional TrIQ As Double = 0.65,
+                                   Optional TrIQ As Double = 0.5,
                                    <RRawVectorArgument>
                                    Optional color As Object = "Jet",
                                    Optional knnFill As Boolean = True,
