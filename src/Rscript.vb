@@ -161,7 +161,7 @@ Public Module Rscript
                                    Optional pixel_render As Boolean = False,
                                    Optional TrIQ As Double = 0.5,
                                    <RRawVectorArgument>
-                                   Optional color As Object = "Jet",
+                                   Optional color As Object = "viridis:turbo",
                                    Optional knnFill As Boolean = True,
                                    Optional env As Environment = Nothing) As Object
 
