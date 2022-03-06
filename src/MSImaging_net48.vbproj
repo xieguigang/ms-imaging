@@ -527,8 +527,6 @@
     <Compile Include="ggplot\layers\MSIHeatMapLayer.vb" />
     <Compile Include="ggplot\MSIHeatMap.vb" />
     <Compile Include="ggplot\ggplotMSI.vb" />
-    <Compile Include="ggplot\MSIBackgroundOption.vb" />
-    <Compile Include="ggplot\MSIKnnFillOption.vb" />
     <Compile Include="ggplot\MSIReader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Rscript.vb" />
@@ -537,6 +535,9 @@
     <Compile Include="ggplot\layers\MSIRGBCompositionLayer.vb" />
     <Compile Include="ggplot\layers\ggplotMSILayer.vb" />
     <Compile Include="ggplot\layers\MSIChannelLayer.vb" />
+    <Compile Include="ggplot\options\MSIGaussBlurOption.vb" />
+    <Compile Include="ggplot\options\MSIKnnFillOption.vb" />
+    <Compile Include="ggplot\options\MSIBackgroundOption.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\R-sharp\R#\R.vbproj">
