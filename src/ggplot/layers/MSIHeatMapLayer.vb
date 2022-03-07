@@ -1,12 +1,13 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
-Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Imaging
 
 Namespace layers
 
@@ -17,7 +18,7 @@ Namespace layers
             Dim MSI As Image
             Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim data = DirectCast(ggplot.data, MSIHeatMap)
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender(heatmapRender:=True), New RectangleRender(heatmapRender:=True))
+            Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=True)
             Dim redLayer As SingleIonLayer = data.R
             Dim greenLayer As SingleIonLayer = data.G
             Dim blueLayer As SingleIonLayer = data.B
@@ -35,7 +36,7 @@ Namespace layers
                 dimSize:=New Size(16, 16),
                 cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
-            )
+            ).AsGDIImage
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
             Call stream.g.DrawImage(MSI, rect)

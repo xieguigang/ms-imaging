@@ -538,9 +538,6 @@
     <Compile Include="ggplot\layers\MSIRGBCompositionLayer.vb" />
     <Compile Include="ggplot\layers\ggplotMSILayer.vb" />
     <Compile Include="ggplot\layers\MSIChannelLayer.vb" />
-    <Compile Include="ggplot\options\MSIGaussBlurOption.vb" />
-    <Compile Include="ggplot\options\MSIKnnFillOption.vb" />
-    <Compile Include="ggplot\options\MSIBackgroundOption.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\R-sharp\R#\R.vbproj">
@@ -617,5 +614,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\mzkit.interopArguments\mzkit.interopArguments.projitems" Label="Shared" />
+  <Import Project="..\..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

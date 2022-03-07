@@ -57,7 +57,7 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
-Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
 Imports ggplot.colors
 Imports ggplot.elements.legend
@@ -110,22 +110,23 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim ion As SingleIonLayer = getIonlayer(stream.ggplot)
+            Dim ggplot = stream.ggplot
+            Dim ion As SingleIonLayer = getIonlayer(ggplot)
             Dim MSI As Image
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender(heatmapRender:=False), New RectangleRender(heatmapRender:=False))
+            Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
             Dim colorSet As String = $"transparent,{color}"
             Dim q As DoubleRange = {0, If(threshold, New TrIQThreshold).ThresholdValue(ion.GetIntensity)}
 
             Select Case color.ToLower
                 Case "#ff0000"            ' red
-                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent")
+                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent").AsGDIImage
                 Case "#00ff00", "#008000" ' green
-                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent")
+                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent").AsGDIImage
                 Case "#0000ff"            ' blue
-                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent")
+                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent").AsGDIImage
                 Case Else
-                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=q, colorSet:=colorSet)
+                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=q, colorSet:=colorSet).AsGDIImage
             End Select
 
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)

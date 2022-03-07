@@ -48,11 +48,12 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
-Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.Linq
@@ -84,7 +85,7 @@ Namespace layers
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
-            Dim engine As Renderer = If(pixelDrawer, DirectCast(New PixelRender(heatmapRender:=False), Renderer), New RectangleRender(heatmapRender:=False))
+            Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
@@ -101,7 +102,7 @@ Namespace layers
                 colorSet = any.ToString(colorMap.colorMap)
             End If
 
-            MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, TrIQ}, colorSet:=colorSet)
+            MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, TrIQ}, colorSet:=colorSet).AsGDIImage
             MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
 
             If gaussBlurs > 0 Then

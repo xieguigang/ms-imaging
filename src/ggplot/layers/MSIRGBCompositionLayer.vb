@@ -47,7 +47,7 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
-Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Imaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
@@ -87,7 +87,7 @@ Namespace layers
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
             Dim ggplot As ggplot.ggplot = stream.ggplot
-            Dim engine As Renderer = If(pixelDrawer, New PixelRender(heatmapRender:=False), New RectangleRender(heatmapRender:=False))
+            Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)
@@ -105,7 +105,7 @@ Namespace layers
                 dimSize:=Nothing,
                 cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
-            )
+            ).AsGDIImage
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
             Call stream.g.DrawImage(MSI, rect)
