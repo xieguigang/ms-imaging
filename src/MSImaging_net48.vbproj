@@ -524,6 +524,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ggplot\options\MSIBackgroundOption.vb" />
+    <Compile Include="ggplot\options\MSIGaussBlurOption.vb" />
+    <Compile Include="ggplot\options\MSIKnnFillOption.vb" />
     <Compile Include="ggplot\layers\MSIHeatMapLayer.vb" />
     <Compile Include="ggplot\MSIHeatMap.vb" />
     <Compile Include="ggplot\ggplotMSI.vb" />
