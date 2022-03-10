@@ -85,7 +85,6 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim MSI As Image
             Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
@@ -97,18 +96,16 @@ Namespace layers
             Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
             Dim dims As Size = getDimSize(redLayer, greenLayer, blueLayer)
 
-            MSI = engine.ChannelCompositions(
+            Call engine.ChannelCompositions(
+                stream.g, stream.canvas,
                 R:=redLayer,
                 G:=greenLayer,
                 B:=blueLayer,
                 dimension:=dims,
-                dimSize:=Nothing,
+                dimSize:=New Size(stream.canvas.PlotRegion.Width / dims.Width, stream.canvas.PlotRegion.Height / dims.Height),
                 cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
-            ).AsGDIImage
-            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
-
-            Call stream.g.DrawImage(MSI, rect)
+            )
 
             Return New legendGroupElement With {
                 .legends = (From legend As LegendObject In {
