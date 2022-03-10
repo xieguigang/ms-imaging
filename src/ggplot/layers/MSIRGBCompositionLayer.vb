@@ -83,6 +83,13 @@ Namespace layers
             Return New Size(w, h)
         End Function
 
+        Private Function processingLayer(layer As SingleIonLayer) As SingleIonLayer
+            layer = layer.KnnFill(3, 3)
+            layer.MSILayer = layer.MSILayer.DensityCut(0.05).ToArray
+
+            Return layer
+        End Function
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim ggplot As ggplot.ggplot = stream.ggplot
@@ -95,6 +102,14 @@ Namespace layers
             Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
             Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
             Dim dims As Size = getDimSize(redLayer, greenLayer, blueLayer)
+            Dim pixelSize As New SizeF With {
+                .Width = stream.canvas.PlotRegion.Width / dims.Width,
+                .Height = stream.canvas.PlotRegion.Height / dims.Height
+            }
+
+            If Not redLayer Is Nothing Then redLayer = processingLayer(redLayer)
+            If Not blueLayer Is Nothing Then blueLayer = processingLayer(blueLayer)
+            If Not greenLayer Is Nothing Then greenLayer = processingLayer(greenLayer)
 
             Call engine.ChannelCompositions(
                 stream.g, stream.canvas,
@@ -102,7 +117,7 @@ Namespace layers
                 G:=greenLayer,
                 B:=blueLayer,
                 dimension:=dims,
-                dimSize:=New Size(stream.canvas.PlotRegion.Width / dims.Width, stream.canvas.PlotRegion.Height / dims.Height),
+                dimSize:=pixelSize,
                 cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
             )
