@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d064c0fd1aab098ad4246568d3bb897f, Rscript\Library\MSI_app\src\ggplot\MSIReader.vb"
+﻿#Region "Microsoft.VisualBasic::cea25db9530bbf141e6228831140fa17, mzkit\Rscript\Library\MSI_app\src\ggplot\MSIReader.vb"
 
     ' Author:
     ' 
@@ -34,10 +34,28 @@
 
     ' Summaries:
 
+
+    ' Code Statistics:
+
+    '   Total Lines: 55
+    '    Code Lines: 35
+    ' Comment Lines: 9
+    '   Blank Lines: 11
+    '     File Size: 1.71 KB
+
+
     ' Class MSIReader
     ' 
     '     Properties: reader
     ' 
+    '     Constructor: (+1 Overloads) Sub New
+    '     Function: getMapData
+    ' 
+    ' Class HeatMapReader
+    ' 
+    '     Properties: heatmap
+    ' 
+    '     Constructor: (+1 Overloads) Sub New
     '     Function: getMapData
     ' 
     ' /********************************************************************************/
