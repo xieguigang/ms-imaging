@@ -65,5 +65,6 @@ Public Class zzz
     Public Shared Sub onLoad()
         Call ggplot.ggplot.Register(GetType(mzPack), Function(theme) New ggplotMSI(theme))
         Call ggplot.ggplot.Register(GetType(MSIHeatMap), Function(theme) New ggplotMSI(theme))
+        Call ggplot.ggplot.Register(GetType(PointPack), Function(theme) New ggplotMSI(theme))
     End Sub
 End Class
