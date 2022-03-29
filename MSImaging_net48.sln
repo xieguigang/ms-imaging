@@ -54,14 +54,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\..\..\GCModeller\src\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{3a35ac34-f313-4f72-89e9-eacca217bc8d}*SharedItemsImports = 4
-		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53473af8-1f89-4fe1-bcb8-10fa0c9bce74}*SharedItemsImports = 4
-		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
-		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{a2130297-2b4a-4b02-80b2-5cfa860f6dae}*SharedItemsImports = 4
-		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{a2130297-2b4a-4b02-80b2-5cfa860f6dae}*SharedItemsImports = 4
-		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{c295c3af-3e62-4756-966a-3d0b90ded160}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		BioDeep_database|Any CPU = BioDeep_database|Any CPU
 		BioDeep_database|x64 = BioDeep_database|x64
@@ -889,8 +881,8 @@ Global
 		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit_UnixDocker|x86.Build.0 = Debug|Any CPU
 		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|Any CPU.ActiveCfg = Debug|Any CPU
 		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|Any CPU.Build.0 = Debug|Any CPU
-		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|x64.ActiveCfg = Debug|x64
-		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|x64.Build.0 = Debug|x64
+		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|x64.ActiveCfg = mzkit|x64
+		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|x64.Build.0 = mzkit|x64
 		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|x86.ActiveCfg = Debug|Any CPU
 		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.mzkit|x86.Build.0 = Debug|Any CPU
 		{53473AF8-1F89-4FE1-BCB8-10FA0C9BCE74}.node-debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -4276,5 +4268,13 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A02F3656-0BF6-43C9-8DEA-59258180FA11}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\..\GCModeller\src\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{3a35ac34-f313-4f72-89e9-eacca217bc8d}*SharedItemsImports = 4
+		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53473af8-1f89-4fe1-bcb8-10fa0c9bce74}*SharedItemsImports = 4
+		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
+		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{a2130297-2b4a-4b02-80b2-5cfa860f6dae}*SharedItemsImports = 4
+		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{a2130297-2b4a-4b02-80b2-5cfa860f6dae}*SharedItemsImports = 4
+		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{c295c3af-3e62-4756-966a-3d0b90ded160}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
