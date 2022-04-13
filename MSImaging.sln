@@ -60,7 +60,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\..\GCModeller\src\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{186d2f67-97f7-4381-bcbf-8d5f86ce7dfb}*SharedItemsImports = 5
-		..\..\..\..\GCModeller\src\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
 		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{5bd88dbb-f451-48f0-aa5d-e67e197fc713}*SharedItemsImports = 5
 		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{c295c3af-3e62-4756-966a-3d0b90ded160}*SharedItemsImports = 13
 	EndGlobalSection
