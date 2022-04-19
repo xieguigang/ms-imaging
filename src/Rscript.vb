@@ -77,6 +77,12 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 <Package("ggplot")>
 Public Module Rscript
 
+    ''' <summary>
+    ''' configs the parameters for do Knn fill of the pixels
+    ''' </summary>
+    ''' <param name="k"></param>
+    ''' <param name="qcut"></param>
+    ''' <returns></returns>
     <ExportAPI("MSI_knnfill")>
     Public Function KnnFill(Optional k As Integer = 3, Optional qcut As Double = 0.8) As MSIKnnFillOption
         Return New MSIKnnFillOption With {
@@ -173,6 +179,25 @@ Public Module Rscript
         Return New MSIHeatMapLayer
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="mz"></param>
+    ''' <param name="tolerance">
+    ''' the mass tolerance error vaue for load intensity 
+    ''' data for each pixels from the raw data files.
+    ''' </param>
+    ''' <param name="pixel_render"></param>
+    ''' <param name="TrIQ">
+    ''' the intensity cutoff threshold value for the target 
+    ''' ion layer use TrIQ algorithm.
+    ''' </param>
+    ''' <param name="color">
+    ''' the color set name
+    ''' </param>
+    ''' <param name="knnFill"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_msimaging")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_msimaging(mz As Double(),
@@ -206,6 +231,11 @@ Public Module Rscript
         }
     End Function
 
+    ''' <summary>
+    ''' config of the background of the MS-imaging charting plot.
+    ''' </summary>
+    ''' <param name="background"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_MSIbackground")>
     Public Function geom_MSIbackground(background As Object) As Object
         Return New MSIBackgroundOption With {

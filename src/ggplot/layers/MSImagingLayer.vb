@@ -113,7 +113,16 @@ Namespace layers
                 colorSet = any.ToString(colorMap.colorMap)
             End If
 
-            MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:={0, TrIQ}, colorSet:=colorSet).AsGDIImage
+            MSI = engine.RenderPixels(
+                pixels:=ion.MSILayer,
+                dimension:=ion.DimensionSize,
+                dimSize:=Nothing,
+                cutoff:={0, TrIQ},
+                colorSet:=colorSet,
+                defaultFill:=ggplot.ggplotTheme.gridFill
+            ).AsGDIImage
+
+            ' scale size to the plot region
             MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
 
             If gaussBlurs > 0 Then
