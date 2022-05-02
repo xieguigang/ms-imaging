@@ -1,0 +1,71 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "ggplot" "ggplot"
+.SH NAME
+ggplot \- Create a new ggplot
+.SH SYNOPSIS
+\fIggplot(\fBdata\fR as any = \fB<NULL>\fR, 
+\fBmapping\fR as any = CALL "AES"(), 
+\fBcolorSet\fR as any = "paper", 
+..., 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Create a new ggplot
+ 
+ ggplot() initializes a ggplot object. It can be used to declare 
+ the input data frame for a graphic and to specify the set of 
+ plot aesthetics intended to be common throughout all subsequent 
+ layers unless specifically overridden.
+.PP
+.SH OPTIONS
+.PP
+\fBdata\fB \fR\- 
+ Default dataset to use for plot. If not already a data.frame, 
+ will be converted to one by fortify(). If not specified, must be 
+ supplied in each layer added to the plot.
+. 
+.PP
+.PP
+\fBmapping\fB \fR\- 
+ Default list of aesthetic mappings to use for plot. If not specified, 
+ must be supplied in each layer added to the plot.
+. 
+.PP
+.PP
+\fBargs\fB \fR\- 
+ Other arguments passed on to methods. Not currently used.
+. 
+.PP
+.PP
+\fBenvironment\fB \fR\- -. 
+.PP
+.SH DETAILS
+.PP
+ggplot() is used to construct the initial plot object, and is 
+ almost always followed by + to add component to the plot. There 
+ are three common ways to invoke ggplot():
+ 
+ + ggplot(df, aes(x, y, other aesthetics))
+ + ggplot(df)
+ + ggplot()
+ 
+ The first method Is recommended If all layers use the same data 
+ And the same Set Of aesthetics, although this method can also be 
+ used To add a layer Using data from another data frame. See the 
+ first example below. The second method specifies the Default 
+ data frame To use For the plot, but no aesthetics are defined up 
+ front. This Is useful When one data frame Is used predominantly 
+ As layers are added, but the aesthetics may vary from one layer 
+ To another. The third method initializes a skeleton ggplot Object
+ which Is fleshed out As layers are added. This method Is useful 
+ When multiple data frames are used To produce different layers, 
+ As Is often the Case In complex graphics.
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.
