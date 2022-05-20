@@ -210,6 +210,15 @@ Public Module Rscript
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
+        Dim colors As ggplotColorMap = Nothing
+
+        If Not color Is Nothing Then
+            colors = ggplotColorMap.CreateColorMap(
+                map:=color,
+                alpha:=1,
+                env:=env
+            )
+        End If
 
         If mzdiff Like GetType(Message) Then
             Return mzdiff.TryCast(Of Message)
@@ -227,7 +236,7 @@ Public Module Rscript
             },
             .pixelDrawer = pixel_render,
             .TrIQ = TrIQ,
-            .colorMap = If(color Is Nothing, Nothing, ggplotColorMap.CreateColorMap(map:=color, env))
+            .colorMap = colors
         }
     End Function
 
