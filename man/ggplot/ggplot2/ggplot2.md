@@ -11,6 +11,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_hline](ggplot2/geom_hline.1) 
 + [geom_vline](ggplot2/geom_vline.1) ## Reference lines: horizontal, vertical, and diagonal
 + [geom_path](ggplot2/geom_path.1) ## Connect observations
++ [geom_convexHull](ggplot2/geom_convexHull.1) 
 + [geom_boxplot](ggplot2/geom_boxplot.1) ## A box and whiskers plot (in the style of Tukey)
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
