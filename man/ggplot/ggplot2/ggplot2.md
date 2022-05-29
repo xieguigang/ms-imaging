@@ -13,7 +13,12 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_path](ggplot2/geom_path.1) ## Connect observations
 + [geom_convexHull](ggplot2/geom_convexHull.1) 
 + [geom_boxplot](ggplot2/geom_boxplot.1) ## A box and whiskers plot (in the style of Tukey)
++ [geom_barplot](ggplot2/geom_barplot.1) 
++ [geom_violin](ggplot2/geom_violin.1) 
++ [geom_jitter](ggplot2/geom_jitter.1) 
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
++ [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) 
++ [stat_compare_means](ggplot2/stat_compare_means.1) 
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
 + [theme](ggplot2/theme.1) ## Modify components of a theme
