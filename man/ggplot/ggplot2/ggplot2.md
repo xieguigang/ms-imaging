@@ -19,6 +19,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
 + [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) 
 + [stat_compare_means](ggplot2/stat_compare_means.1) 
++ [geom_signif](ggplot2/geom_signif.1) ## Create significance layer
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
 + [theme](ggplot2/theme.1) ## Modify components of a theme
