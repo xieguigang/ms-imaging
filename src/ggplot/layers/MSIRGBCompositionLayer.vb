@@ -137,7 +137,11 @@ Namespace layers
                     background:=stream.theme.gridFill
                 )
 
-                Call stream.g.DrawImageUnscaled(buf.ImageResource, rect)
+                Dim rgb As Image = buf.ImageResource
+
+                ' scale size to the plot region
+                rgb = Drawer.ScaleLayer(CType(rgb, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
+                stream.g.DrawImage(rgb, rect)
             End Using
 
             Return New legendGroupElement With {
