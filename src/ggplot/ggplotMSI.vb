@@ -62,6 +62,8 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
 
     Public Sub New(theme As Theme)
         MyBase.New(theme)
+
+        titleOffset = 1.125
     End Sub
 
     Public Overrides Function CreateReader(mapping As ggplot.ggplotReader) As ggplot.ggplotBase
