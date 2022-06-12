@@ -1,57 +1,57 @@
 ﻿#Region "Microsoft.VisualBasic::5f82788f843607863abf5c1ab548ffeb, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBCompositionLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 102
-    '    Code Lines: 88
-    ' Comment Lines: 0
-    '   Blank Lines: 14
-    '     File Size: 4.72 KB
+' Summaries:
 
 
-    '     Class MSIRGBCompositionLayer
-    ' 
-    '         Properties: blue, green, MeanZIndex, red
-    ' 
-    '         Function: getDimSize, legend, Plot, processingLayer
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 102
+'    Code Lines: 88
+' Comment Lines: 0
+'   Blank Lines: 14
+'     File Size: 4.72 KB
+
+
+'     Class MSIRGBCompositionLayer
+' 
+'         Properties: blue, green, MeanZIndex, red
+' 
+'         Function: getDimSize, legend, Plot, processingLayer
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -65,6 +65,8 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace layers
 
@@ -113,25 +115,30 @@ Namespace layers
             Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
             Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
             Dim dims As Size = getDimSize(redLayer, greenLayer, blueLayer)
-            Dim pixelSize As New SizeF With {
-                .Width = stream.canvas.PlotRegion.Width / dims.Width,
-                .Height = stream.canvas.PlotRegion.Height / dims.Height
-            }
+            'Dim pixelSize As New SizeF With {
+            '    .Width = rect.Width / dims.Width,
+            '    .Height = rect.Height / dims.Height
+            '}
 
             If Not redLayer Is Nothing Then redLayer = processingLayer(redLayer)
             If Not blueLayer Is Nothing Then blueLayer = processingLayer(blueLayer)
             If Not greenLayer Is Nothing Then greenLayer = processingLayer(greenLayer)
 
-            Call engine.ChannelCompositions(
-                stream.g, stream.canvas,
-                R:=redLayer,
-                G:=greenLayer,
-                B:=blueLayer,
-                dimension:=dims,
-                dimSize:=pixelSize,
-                cut:=(qcutRed, qcutGreen, qcutBlue),
-                background:=stream.theme.gridFill
-            )
+            Using buf As Graphics2D = dims.CreateGDIDevice(filled:=Color.Black)
+                Call engine.ChannelCompositions(
+                    buf,
+                    region:=New GraphicsRegion With {.Size = dims, .Padding = Padding.Zero},
+                    R:=redLayer,
+                    G:=greenLayer,
+                    B:=blueLayer,
+                    dimension:=dims,
+                    dimSize:=Nothing,
+                    cut:=(qcutRed, qcutGreen, qcutBlue),
+                    background:=stream.theme.gridFill
+                )
+
+                Call stream.g.DrawImageUnscaled(buf.ImageResource, rect)
+            End Using
 
             Return New legendGroupElement With {
                 .legends = (From legend As LegendObject In {
