@@ -29,3 +29,4 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [scale_y_continuous](ggplot2/scale_y_continuous.1) ### Position scales for continuous data (x & y)
 + [scale_y_reverse](ggplot2/scale_y_reverse.1) ### Position scales for continuous data (x & y)
 + [element_text](ggplot2/element_text.1) ### Theme elements
++ [element_rect](ggplot2/element_rect.1) ## Theme elements
