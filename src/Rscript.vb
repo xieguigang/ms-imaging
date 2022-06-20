@@ -91,6 +91,11 @@ Public Module Rscript
         }
     End Function
 
+    ''' <summary>
+    ''' options for gauss filter of the MS-imaging buffer
+    ''' </summary>
+    ''' <param name="levels"></param>
+    ''' <returns></returns>
     <ExportAPI("MSI_gaussblur")>
     Public Function gaussBlurOpt(Optional levels As Integer = 30) As MSIGaussBlurOption
         Return New MSIGaussBlurOption With {
@@ -203,10 +208,11 @@ Public Module Rscript
     Public Function geom_msimaging(mz As Double(),
                                    Optional tolerance As Object = "da:0.1",
                                    Optional pixel_render As Boolean = False,
-                                   Optional TrIQ As Double = 0.5,
+                                   Optional TrIQ As Double = 0.65,
                                    <RRawVectorArgument>
                                    Optional color As Object = "viridis:turbo",
                                    Optional knnFill As Boolean = True,
+                                   Optional colorLevels As Integer = 255,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
@@ -236,7 +242,9 @@ Public Module Rscript
             },
             .pixelDrawer = pixel_render,
             .TrIQ = TrIQ,
-            .colorMap = colors
+            .colorMap = colors,
+            .colorLevels = colorLevels,
+            .alpha = 1
         }
     End Function
 

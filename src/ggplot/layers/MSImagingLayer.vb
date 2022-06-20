@@ -77,7 +77,7 @@ Namespace layers
 
     Public Class MSImagingLayer : Inherits ggplotMSILayer
 
-        Public Property TrIQ As Double = 0.6
+        Public Property TrIQ As Double = 0.65
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplot.ggplot = stream.ggplot
@@ -113,13 +113,18 @@ Namespace layers
                 colorSet = any.ToString(colorMap.colorMap)
             End If
 
+            If colorLevels <= 0 Then
+                colorLevels = 30
+            End If
+
             MSI = engine.RenderPixels(
                 pixels:=ion.MSILayer,
                 dimension:=ion.DimensionSize,
                 dimSize:=Nothing,
                 cutoff:={0, TrIQ},
                 colorSet:=colorSet,
-                defaultFill:=ggplot.ggplotTheme.gridFill
+                defaultFill:=ggplot.ggplotTheme.gridFill,
+                mapLevels:=colorLevels
             ).AsGDIImage
 
             ' scale size to the plot region

@@ -66,6 +66,7 @@ Namespace layers
 
         Public Property pixelDrawer As Boolean = False
         Public Property threshold As QuantizationThreshold
+        Public Property colorLevels As Integer = 255
 
         Public Function MSIInterpolation(layer As SingleIonLayer, ggplot As ggplot.ggplot) As SingleIonLayer
             If layer Is Nothing Then
