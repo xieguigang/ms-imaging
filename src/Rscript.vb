@@ -96,6 +96,9 @@ Public Module Rscript
     ''' </summary>
     ''' <param name="levels"></param>
     ''' <returns></returns>
+    ''' <remarks>
+    ''' the gauss blur function is not working well on the linux platform
+    ''' </remarks>
     <ExportAPI("MSI_gaussblur")>
     Public Function gaussBlurOpt(Optional levels As Integer = 30) As MSIGaussBlurOption
         Return New MSIGaussBlurOption With {
