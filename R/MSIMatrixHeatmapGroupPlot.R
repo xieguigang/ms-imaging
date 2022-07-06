@@ -15,6 +15,10 @@ const PlotMSIMatrixHeatmap = function(ions_data,
                                       size          = [2700, 2000], 
                                       canvasPadding = [50, 300, 50, 50], 
                                       cellPadding   = [200, 100, 0, 100]) {
+    let NxN as integer = layout;
+    let cambria   = rasterFont("Cambria", 27, "Bold");
+    let cellWidth = (size[1] - canvasPadding[2] - canvasPadding[4]) / NxN[1]; 
+
     ions_data = ions_data
     |> lapply(function(ion) {
         ion$layer = ion$layer |> knnFill();
@@ -22,11 +26,10 @@ const PlotMSIMatrixHeatmap = function(ions_data,
         ion$layer = intensityLimits(ion$layer, max = ion$TrIQ[2]);
         ion;
     });
-
-    NxN       = layout;
-    layout    = layout.grid(layout, margin = `padding: ${cellPadding[1]}px ${cellPadding[2]}px ${cellPadding[3]}px ${cellPadding[4]}px;`);
-    cambria   = rasterFont("Cambria", 27, "Bold");
-    cellWidth = (size[1] - canvasPadding[2] - canvasPadding[4]) / NxN[1]; 
+    
+    layout = layout |> layout.grid(
+        margin = `padding: ${cellPadding[1]}px ${cellPadding[2]}px ${cellPadding[3]}px ${cellPadding[4]}px;`
+    );
 
     print("grid layouts:");
     print(layout);
@@ -47,10 +50,11 @@ const PlotMSIMatrixHeatmap = function(ions_data,
 
     # draw each cell drawing
     for(i in 1:length(layout)) {
-        region   = layout[i];
-        ion_data = ions_data[[i]];
-        ion      = ion_data$layer;
-        i        = as.vector(region);
+        const region   = layout[i];
+        const ion_data = ions_data[[i]];
+        const ion      = ion_data$layer;
+
+        i = as.vector(region);
 
         [ion]::MSILayer 
         |> rasterHeatmap(
@@ -63,7 +67,12 @@ const PlotMSIMatrixHeatmap = function(ions_data,
         print("raw label text of current ion image:");
         print(ion_data$title);
 
-        labels = ion_data$title;
+        let labels as string = ion_data$title;
+        let max = NULL;
+        let h = NULL;
+        let x = NULL;
+        let y = NULL;
+
         labels = labels 
         |> Html::plainText() 
         |> splitParagraph(32) 
@@ -83,9 +92,10 @@ const PlotMSIMatrixHeatmap = function(ions_data,
 
         # draw multiple line text
         for(line in labels) {
-            lb_size = measureString(line, font = cambria);
+            const lb_size = measureString(line, font = cambria);
+            const yx = y;
+
             x = (cellWidth - lb_size[1]) / 2 + i[1] - cellPadding[4];
-            yx = y;
             # move to new line
             y = y + lb_size[2];
 
