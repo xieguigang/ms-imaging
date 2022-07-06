@@ -1,0 +1,33 @@
+﻿.TH PLOTMSIMATRIXHEATMAP 1 2022-07-07 "" "Plot MS-Imaging heatmap matrix"
+.SH NAME
+PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSet = Jet, MSI_TrIQ = 0.8, size = [2700, 2000], canvasPadding = [50, 300, 50, 50], cellPadding = [200, 100, 0, 100])
+.SH SYNOPSIS
+\fIPlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSet = Jet, MSI_TrIQ = 0.8, size = [2700, 2000], canvasPadding = [50, 300, 50, 50], cellPadding = [200, 100, 0, 100])\fR
+.SH OPTIONS
+.PP
+\fBions_data\fB \fR\- . a list of MSI layers data, each element in this list should also be a list object that contains data slots: 1. type  precursor type information string 2. title   the ion metabolite name 3. layer   the MSI ion layer data
+.PP
+.PP
+\fBlayout\fB \fR\- [3, 3]. 
+.PP
+.PP
+\fBcolorSet\fB \fR\- Jet. 
+.PP
+.PP
+\fBMSI_TrIQ\fB \fR\- 0.8. 
+.PP
+.PP
+\fBsize\fB \fR\- [2700, 2000]. 
+.PP
+.PP
+\fBcanvasPadding\fB \fR\- [50, 300, 50, 50]. 
+.PP
+.PP
+\fBcellPadding\fB \fR\- [200, 100, 0, 100]. 
+.PP
+.SH FILES
+.PP
+SMRUCC/R#.declare_function.PlotMSIMatrixHeatmap at MSIMatrixHeatmapGroupPlot.R:line 11
+.PP
+.SH COPYRIGHT
+Copyright © xieguigang, MIT Licensed 2022
