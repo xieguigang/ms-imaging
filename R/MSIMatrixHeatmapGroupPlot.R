@@ -12,6 +12,7 @@ const PlotMSIMatrixHeatmap = function(ions_data,
                                       layout        = [3,3],
                                       colorSet      = "Jet",
                                       MSI_TrIQ      = 0.8,
+                                      gaussian      = 3,
                                       size          = [2700, 2000], 
                                       canvasPadding = [50, 300, 50, 50], 
                                       cellPadding   = [200, 100, 0, 100]) {
@@ -59,7 +60,7 @@ const PlotMSIMatrixHeatmap = function(ions_data,
         [ion]::MSILayer 
         |> rasterHeatmap(
             region       = region, 
-            gauss        = 10, 
+            gauss        = gaussian, 
             colorName    = colorSet, 
             rasterBitmap = TRUE
         );
