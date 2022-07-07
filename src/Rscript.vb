@@ -70,6 +70,7 @@ Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports REnv = SMRUCC.Rsharp.Runtime
+Imports any = Microsoft.VisualBasic.Scripting
 
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
@@ -111,11 +112,42 @@ Public Module Rscript
         Return New PointPack With {.pixels = pixels}
     End Function
 
+    ''' <summary>
+    ''' create R,G,B layers from the given dataframe columns data
+    ''' </summary>
+    ''' <param name="matrix"></param>
+    ''' <param name="R"></param>
+    ''' <param name="G"></param>
+    ''' <param name="B"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("MSIheatmap")>
-    Public Function CreateMSIheatmap(matrix As dataframe, R As String,
-                                     Optional G As String = Nothing,
-                                     Optional B As String = Nothing,
+    Public Function CreateMSIheatmap(R As Object,
+                                     Optional G As Object = Nothing,
+                                     Optional B As Object = Nothing,
+                                     Optional matrix As dataframe = Nothing,
                                      Optional env As Environment = Nothing) As Object
+
+        If matrix Is Nothing Then
+            Dim layerR As SingleIonLayer = R
+            Dim layerG As SingleIonLayer = G
+            Dim layerB As SingleIonLayer = B
+            Dim dims As New Size With {
+                .Width = {layerR.DimensionSize.Width, layerG.DimensionSize.Width, layerB.DimensionSize.Width}.Max,
+                .Height = {layerR.DimensionSize.Height, layerG.DimensionSize.Height, layerB.DimensionSize.Height}.Max
+            }
+
+            Return New MSIHeatMap With {
+                .R = R,
+                .G = G,
+                .B = B,
+                .dimension = dims
+            }
+        Else
+            R = any.ToString(R)
+            G = any.ToString(G)
+            B = any.ToString(B)
+        End If
 
         Dim missingLayer =
             Function(layer As String) As Boolean
