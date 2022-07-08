@@ -97,8 +97,13 @@ Namespace layers
         End Function
 
         Private Function processingLayer(layer As SingleIonLayer) As SingleIonLayer
-            layer = layer.KnnFill(3, 3)
-            layer.MSILayer = layer.MSILayer.DensityCut(0.05).ToArray
+            ' 20220710
+            ' knn fill has already been called at [getIonlayer] function
+            ' layer = layer.KnnFill(3, 3)
+            layer.MSILayer = layer _
+                .MSILayer _
+                .DensityCut(0.05) _
+                .ToArray
 
             Return layer
         End Function

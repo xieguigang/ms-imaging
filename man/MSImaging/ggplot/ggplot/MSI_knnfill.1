@@ -4,7 +4,7 @@
 MSI_knnfill \- configs the parameters for do Knn fill of the pixels
 .SH SYNOPSIS
 \fIMSI_knnfill(\fBk\fR as integer = 3, 
-\fBqcut\fR as double = 0.8);\fR
+\fBqcut\fR as double = 0.85);\fR
 .SH DESCRIPTION
 .PP
 configs the parameters for do Knn fill of the pixels
@@ -14,7 +14,12 @@ configs the parameters for do Knn fill of the pixels
 \fBk\fB \fR\- -. 
 .PP
 .PP
-\fBqcut\fB \fR\- -. 
+\fBqcut\fB \fR\- 
+ the query block area percentage threshold value, 
+ the higher cutoff of this parameter, the less fitting 
+ will be perfermen on the pixels, the lower cutoff of 
+ this parameter, the more interpolation will be.
+. 
 .PP
 .SH SEE ALSO
 ggplot
