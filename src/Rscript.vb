@@ -137,9 +137,22 @@ Public Module Rscript
             Dim layerR As SingleIonLayer = R
             Dim layerG As SingleIonLayer = G
             Dim layerB As SingleIonLayer = B
+
+            Dim w As Integer = {
+                layerR.DimensionSize.Width,
+                layerG.DimensionSize.Width,
+                layerB.DimensionSize.Width
+            }.Max
+
+            Dim h As Integer = {
+                layerR.DimensionSize.Height,
+                layerG.DimensionSize.Height,
+                layerB.DimensionSize.Height
+            }.Max
+
             Dim dims As New Size With {
-                .Width = {layerR.DimensionSize.Width, layerG.DimensionSize.Width, layerB.DimensionSize.Width}.Max,
-                .Height = {layerR.DimensionSize.Height, layerG.DimensionSize.Height, layerB.DimensionSize.Height}.Max
+                .Width = w,
+                .Height = h
             }
 
             Return New MSIHeatMap With {
