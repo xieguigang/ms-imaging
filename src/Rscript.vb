@@ -82,10 +82,15 @@ Public Module Rscript
     ''' configs the parameters for do Knn fill of the pixels
     ''' </summary>
     ''' <param name="k"></param>
-    ''' <param name="qcut"></param>
+    ''' <param name="qcut">
+    ''' the query block area percentage threshold value, 
+    ''' the higher cutoff of this parameter, the less fitting 
+    ''' will be perfermen on the pixels, the lower cutoff of 
+    ''' this parameter, the more interpolation will be.
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("MSI_knnfill")>
-    Public Function KnnFill(Optional k As Integer = 3, Optional qcut As Double = 0.8) As MSIKnnFillOption
+    Public Function KnnFill(Optional k As Integer = 3, Optional qcut As Double = 0.85) As MSIKnnFillOption
         Return New MSIKnnFillOption With {
             .k = k,
             .qcut = qcut

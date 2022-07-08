@@ -103,6 +103,11 @@ Namespace layers
             End Get
         End Property
 
+        ''' <summary>
+        ''' the ion layer has already been knn interpolation at here
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <returns></returns>
         Public Overloads Function getIonlayer(ggplot As ggplot.ggplot) As SingleIonLayer
             Dim args As list = reader.args
             Dim mz As Double = args.getValue(Of Double)("mz", ggplot.environment)
