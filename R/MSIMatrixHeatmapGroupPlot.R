@@ -15,7 +15,8 @@ const PlotMSIMatrixHeatmap = function(ions_data,
                                       gaussian      = 3,
                                       size          = [2700, 2000], 
                                       canvasPadding = [50, 300, 50, 50], 
-                                      cellPadding   = [200, 100, 0, 100]) {
+                                      cellPadding   = [200, 100, 0, 100], 
+                                      strict        = TRUE) {
     let NxN as integer = layout;
     let cambria   = rasterFont("Cambria", 27, "Bold");
     let cellWidth = (size[1] - canvasPadding[2] - canvasPadding[4]) / NxN[1]; 
@@ -62,7 +63,8 @@ const PlotMSIMatrixHeatmap = function(ions_data,
             region       = region, 
             gauss        = gaussian, 
             colorName    = colorSet, 
-            rasterBitmap = TRUE
+            rasterBitmap = TRUE,
+            strict       = strict
         );
 
         print("raw label text of current ion image:");
