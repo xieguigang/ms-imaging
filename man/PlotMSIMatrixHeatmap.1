@@ -1,8 +1,10 @@
 ﻿.TH PLOTMSIMATRIXHEATMAP 1 2022-07-16 "" "Plot MS-Imaging heatmap matrix"
+﻿.TH PLOTMSIMATRIXHEATMAP 1 2022-07-15 "" "Plot MS-Imaging heatmap matrix"
+﻿.TH PLOTMSIMATRIXHEATMAP 1 2022-07-14 "" "Plot MS-Imaging heatmap matrix"
 .SH NAME
-PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSet = Jet, MSI_TrIQ = 0.8, gaussian = 3, size = [2700, 2000], canvasPadding = [50, 300, 50, 50], cellPadding = [200, 100, 0, 100])
+PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSet = Jet, MSI_TrIQ = 0.8, gaussian = 3, size = [2700, 2000], canvasPadding = [50, 300, 50, 50], cellPadding = [200, 100, 0, 100], strict = TRUE)
 .SH SYNOPSIS
-\fIPlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSet = Jet, MSI_TrIQ = 0.8, gaussian = 3, size = [2700, 2000], canvasPadding = [50, 300, 50, 50], cellPadding = [200, 100, 0, 100])\fR
+\fIPlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSet = Jet, MSI_TrIQ = 0.8, gaussian = 3, size = [2700, 2000], canvasPadding = [50, 300, 50, 50], cellPadding = [200, 100, 0, 100], strict = TRUE)\fR
 .SH OPTIONS
 .PP
 \fBions_data\fB \fR\- . a list of MSI layers data, each element in this list should also be a list object that contains data slots: 1. type  precursor type information string 2. title   the ion metabolite name 3. layer   the MSI ion layer data
@@ -27,6 +29,9 @@ PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions_data, layout = [3, 3], colorSe
 .PP
 .PP
 \fBcellPadding\fB \fR\- [200, 100, 0, 100]. 
+.PP
+.PP
+\fBstrict\fB \fR\- TRUE. 
 .PP
 .SH FILES
 .PP
