@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modify axis, legend, and plot labels</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <style rel="stylesheet" type="text/css">
+        @media screen {
+            .container {
+                padding-right: 10px;
+                padding-left: 10px;
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 900px;
+            }
+        }
+
+        .rimage img {
+            /* from knitr - for examples and demos */
+            width: 96%;
+            margin-left: 2%;
+        }
+
+        .katex {
+            font-size: 1.1em;
+        }
+
+        code {
+            color: rgb(194, 42, 42);
+            background: inherit;
+            font-style:italic;
+            font-weight: bold;
+        }
+
+        body {
+            line-height: 1.4;
+            background: white;
+            color: black;
+        }
+
+        a:link {
+            background: white;
+            color: blue;
+        }
+
+        a:visited {
+            background: white;
+            color: rgb(50%, 0%, 50%);
+        }
+
+        h1 {
+            background: white;
+            color: rgb(55%, 55%, 55%);
+            font-family: monospace;
+            font-size: 1.4em;
+            /* x-large; */
+            text-align: center;
+        }
+
+        h2 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-size: 1.2em;
+            /* large; */
+            text-align: center;
+        }
+
+        h3 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-size: 1.2em;
+            /* large; */
+        }
+
+        h4 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-style: italic;
+            font-size: 1.2em;
+            /* large; */
+        }
+
+        h5 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+        }
+
+        h6 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-style: italic;
+        }
+
+        img.toplogo {
+            width: 4em;
+            vertical-align: middle;
+        }
+
+        img.arrow {
+            width: 30px;
+            height: 30px;
+            border: 0;
+        }
+
+        span.acronym {
+            font-size: small;
+        }
+
+        span.env {
+            font-family: monospace;
+        }
+
+        span.file {
+            font-family: monospace;
+        }
+
+        span.option {
+            font-family: monospace;
+        }
+
+        span.pkg {
+            font-weight: bold;
+        }
+
+        span.samp {
+            font-family: monospace;
+        }
+
+        div.vignettes a:hover {
+            background: rgb(85%, 85%, 85%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>labs {ggplot2}</td>
+                <td style="text-align: right;">R Documentation</td>
+            </tr>
+        </table>
+
+        <h2>Modify axis, legend, and plot labels</h2>
+
+        <h3>Description</h3>
+
+        <p><br /> Good labels are critical for making your plots accessible to <br /> a wider audience. Always ensure the axis and legend labels <br /> display the full variable name. Use the plot title and subtitle <br /> to explain the main findings. It's common to use the caption <br /> to provide information about the data source. tag can be used <br /> for adding identification tags to differentiate between multiple <br /> plots.</p>
+
+        <h3>Usage</h3>
+
+        <div style="width: 100%; padding-left: 3%; color: black;">
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>labs</strong>(
+    <i>x</i> = <span style='color: blue;'>NULL</span>,
+    <i>y</i> = <span style='color: blue;'>NULL</span>,
+    <i>title</i> = <span style='color: blue;'>NULL</span>,
+    <i>subtitle</i> = <span style='color: blue;'>NULL</span>,
+    <i>caption</i> = <span style='color: blue;'>NULL</span>,
+    <i>tag</i> = <span style='color: blue;'>NULL</span>,
+    <i>alt</i> = <span style='color: blue;'>NULL</span>,
+    <i>alt.insight</i> = <span style='color: blue;'>NULL</span>,
+    <i>...</i> = <span style='color: blue;'>NULL</span>);</code></pre>
+        </div>
+
+        <h3>Arguments</h3>
+
+        <table>
+            
+<dt>x</dt>
+<dd><p><p>-</p></p></dd>
+
+
+<dt>y</dt>
+<dd><p><p>-</p></p></dd>
+
+
+<dt>title</dt>
+<dd><p><p>The text for the title.</p></p></dd>
+
+
+<dt>subtitle</dt>
+<dd><p><p>The text For the subtitle For the plot which will be displayed <br />
+ below the title.</p></p></dd>
+
+
+<dt>caption</dt>
+<dd><p><p>The text for the caption which will be displayed in the <br />
+ bottom-right of the plot by default.</p></p></dd>
+
+
+<dt>tag</dt>
+<dd><p><p>The text for the tag label which will be displayed at the top-left <br />
+ of the plot by default.</p></p></dd>
+
+
+<dt>alt</dt>
+<dd><p><p>Text used for the generation of alt-text for the plot. See <br />
+ get_alt_text for examples.</p></p></dd>
+
+
+<dt>alt.insight</dt>
+<dd><p><p>-</p></p></dd>
+
+
+<dt>args</dt>
+<dd><p><p>A list of new name-value pairs. The name should be an aesthetic.</p></p></dd>
+
+        </table>
+
+
+        <h3 style="display: block;">Details</h3>
+
+        <p>You can also set axis and legend labels in the individual scales <br />
+ (using the first argument, the name). If you're changing other <br />
+ scale options, this is recommended.</p>
+
+<p>If a plot already has a title, subtitle, caption, etc., And you want <br />
+ To remove it, you can Do so by setting the respective argument To <br />
+ NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) <br />
+ will remove the subtitle from the plot.</p>
+
+
+        <h3>Value</h3>
+
+        This function has no value returns.
+
+        <hr />
+        <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a
+                href="../ggplot2.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+</html>
