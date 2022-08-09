@@ -1,6 +1,10 @@
 
 #' Stat plot combine with the MS-imaging
 #' 
+#' @param mzpack a mzpack data object used for do MS-imaging 
+#'    or other data object that contains the ms-imaging layer 
+#'    data and could be recognized by the ggplot ms-imaging
+#'    function.
 #' @param ionName the display title string. the ion m/z value 
 #'    will be used if this parameter leaves default NULL.
 #' @param mz the target ion m/z value.
@@ -22,18 +26,27 @@
 #'          format for specific the color of the bar/box/violin
 #'          stat plot.
 #' 
+#' @param colorMap a list object that contains the color set value
+#'    that used for rendering the stat chartting, example as box/bar/violin.
+#'    this list data object the key names should be the sample group 
+#'    tag and the corresponding value must be the sample intensity 
+#'    data value.
+#' @param MSI_colorset the color map name for do MS-imaging 
+#'    rendering, default color scale name is ``viridis:turbo``.
 #' @param ggStatPlot default is bar plot.
 #' @param combine_layout the layout of the stat charting 
 #'   and the MS-imaging plot. a numeric vector that contains
 #'   two value element, first is the width percentage of the 
 #'   stats chart and the second one is the width percentage
 #'   of the single ion ms-imaging.
+#' @param savePng the filepath to save the image plot output.
 #' 
 const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo, 
                                  savePng        = "./Rplot.png", 
                                  ionName        = NULL,
                                  size           = [2400, 1000], 
                                  colorMap       = NULL, 
+                                 MSI_colorset   = "viridis:turbo",
                                  ggStatPlot     = NULL, 
                                  padding_top    = 150,
                                  padding_right  = 200,
@@ -103,7 +116,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         tolerance = mzkit::tolerance("da", 0.1),
         TrIQ      = TrIQ,
         knnFill   = TRUE,
-        color     = "viridis:turbo"
+        color     = MSI_colorset
     )
     + geom_MSIbackground("black")
     + MSI_knnfill(qcut = 0.5)
