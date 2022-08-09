@@ -16,7 +16,7 @@
 #'    defined the sample group information and the plot color 
 #'    value. this list data should be contains at least 3 
 #'    required data fields:
-#'     
+#'
 #'       1. group: the sample group name, used for display as 
 #'          the title label of each group data
 #'       2. id: a character vector that contains the necessary
@@ -86,6 +86,9 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
             );
         }
     }
+
+    print("previews of the ANOVA group data:");
+    print(data, max.print = 13);
 
     # chartting at left
     bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
