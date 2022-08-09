@@ -66,7 +66,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
 
     # mzkit::ANOVAGroup
     data = ANOVAGroup(met, sampleinfo);
-    ionName = ifelse(is.null(ionName), `M/Z: {mz |> toString(format = "F3")}`, ionName);
+    ionName = ifelse(is.null(ionName), `M/Z: ${mz |> toString(format = "F3")}`, ionName);
     combine_layout = combine_layout / sum(combine_layout);
     width = size[1] - (padding_left + padding_right);
     left = width * combine_layout[1];
