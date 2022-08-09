@@ -4,6 +4,24 @@
 #' @param ionName the display title string. the ion m/z value 
 #'    will be used if this parameter leaves default NULL.
 #' @param mz the target ion m/z value.
+#' @param met should be a list data object that contains the
+#'    sample data, which this list the key names is the sample 
+#'    id set and the corresponding element value is the sample 
+#'    intensity value.
+#' @param sampleinfo a data list set which could be used for 
+#'    defined the sample group information and the plot color 
+#'    value. this list data should be contains at least 3 
+#'    required data fields:
+#'     
+#'       1. group: the sample group name, used for display as 
+#'          the title label of each group data
+#'       2. id: a character vector that contains the necessary
+#'          sample id reference to get the required sample data
+#'          for each data group
+#'       3. color: a single character string value in html color
+#'          format for specific the color of the bar/box/violin
+#'          stat plot.
+#' 
 #' @param ggStatPlot default is bar plot.
 #' @param combine_layout the layout of the stat charting 
 #'   and the MS-imaging plot. a numeric vector that contains
@@ -31,8 +49,9 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     print("open the graphics device at location:");
     print(savePng);
 
-    ionName = ifelse(is.null(ionName), `M/Z: {mz |> toString(format = "F3")}`, ionName);
+    # mzkit::ANOVAGroup
     data = ANOVAGroup(met, sampleinfo);
+    ionName = ifelse(is.null(ionName), `M/Z: {mz |> toString(format = "F3")}`, ionName);
     combine_layout = combine_layout / sum(combine_layout);
     width = size[1] - (padding_left + padding_right);
     left = width * combine_layout[1];
