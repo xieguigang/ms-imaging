@@ -1,7 +1,8 @@
 
 #' Stat plot combine with the MS-imaging
 #' 
-#' @param ionName the display title string.
+#' @param ionName the display title string. the ion m/z value 
+#'    will be used if this parameter leaves default NULL.
 #' @param mz the target ion m/z value.
 #' @param ggStatPlot default is bar plot.
 #' @param combine_layout the layout of the stat charting 
@@ -10,8 +11,9 @@
 #'   stats chart and the second one is the width percentage
 #'   of the single ion ms-imaging.
 #' 
-const MSI_ionStatPlot = function(mzpack, mz, ionName, met, sampleinfo, 
+const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo, 
                                  savePng        = "./Rplot.png", 
+                                 ionName        = NULL,
                                  size           = [2400, 1000], 
                                  colorMap       = NULL, 
                                  ggStatPlot     = NULL, 
@@ -29,6 +31,7 @@ const MSI_ionStatPlot = function(mzpack, mz, ionName, met, sampleinfo,
     print("open the graphics device at location:");
     print(savePng);
 
+    ionName = ifelse(is.null(ionName), `M/Z: {mz |> toString(format = "F3")}`, ionName);
     data = ANOVAGroup(met, sampleinfo);
     combine_layout = combine_layout / sum(combine_layout);
     width = size[1] - (padding_left + padding_right);
