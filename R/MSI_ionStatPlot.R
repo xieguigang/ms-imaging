@@ -40,6 +40,7 @@
 #'   stats chart and the second one is the width percentage
 #'   of the single ion ms-imaging.
 #' @param savePng the filepath to save the image plot output.
+#' @param backcolor the background color of the MS-imaging plot
 #' 
 const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo, 
                                  savePng        = "./Rplot.png", 
@@ -55,7 +56,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  interval       = 50,
                                  combine_layout = [4, 5], 
                                  jitter_size    = 8, 
-                                 TrIQ           = 0.65) {
+                                 TrIQ           = 0.65,
+                                 backcolor      = "black") {
 
     bitmap(file = savePng, size = size, fill = "white");
 
@@ -118,7 +120,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         knnFill   = TRUE,
         color     = MSI_colorset
     )
-    + geom_MSIbackground("black")
+    + geom_MSIbackground(backcolor)
     + MSI_knnfill(qcut = 0.5)
     # + MSI_gaussblur()
     # add ggplot charting elements
