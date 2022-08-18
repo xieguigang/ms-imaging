@@ -1123,7 +1123,15 @@ As Is often the Case In complex graphics.</p></li>
   </h2>
   <hr />
   <p>
-                      
+                    <h3>Modify axis, legend, and plot labels</h3>
+
+<p>Good labels are critical for making your plots accessible <br />
+ to a wider audience. Always ensure the axis and legend <br />
+ labels display the full variable name. Use the plot title <br />
+ and subtitle to explain the main findings. It's common to <br />
+ use the caption to provide information about the data <br />
+ source. tag can be used for adding identification tags to <br />
+ differentiate between multiple plots.</p>  
                 
                     <pre><p>let <code>ggtitle</code> as function(<code>title</code> as string) -> <code>&lt;generic&gt; ggplotOption</code> {
     #
@@ -1137,11 +1145,26 @@ As Is often the Case In complex graphics.</p></li>
     return call <code>R&#35;.interop_[ggplot2::ggtitle]</code>(...);
 }</p></pre>
 
-                    
+                    <div>
+  <h4>Arguments</h4>
+  <ul>
+                   <li>
+  <code>title</code>: The text for the title.
+                </li>
+                </ul>
+</div>
                        
                     
 
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>You can also set axis and legend labels in the individual <br />
+ scales (using the first argument, the name). If you're<br />
+ changing other scale options, this is recommended.</p>
+
+<p>If a plot already has a title, subtitle, caption, etc., And<br />
+ you want To remove it, you can Do so by setting the respective <br />
+ argument To NULL. For example, If plot p has a subtitle, Then<br />
+ p + labs(subtitle = NULL) will remove the subtitle from the <br />
+ plot.</p></blockquote></span></p>
 </div><br /><div>
   <h2 id="scale_colour_manual">
     <a href="./ggplot2/scale_colour_manual.html">scale_colour_manual</a>
