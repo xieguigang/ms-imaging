@@ -23,7 +23,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
 + [theme](ggplot2/theme.1) ## Modify components of a theme
-+ [ggtitle](ggplot2/ggtitle.1) ### Modify axis, legend, and plot labels
++ [ggtitle](ggplot2/ggtitle.1) 
 + [scale_colour_manual](ggplot2/scale_colour_manual.1) ### Create your own discrete scale
 + [scale_x_continuous](ggplot2/scale_x_continuous.1) Position scales for continuous data (x & y)
 + [scale_y_continuous](ggplot2/scale_y_continuous.1) ### Position scales for continuous data (x & y)
