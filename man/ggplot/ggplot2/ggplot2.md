@@ -16,6 +16,8 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_barplot](ggplot2/geom_barplot.1) 
 + [geom_violin](ggplot2/geom_violin.1) 
 + [geom_jitter](ggplot2/geom_jitter.1) 
++ [geom_scatterpie](ggplot2/geom_scatterpie.1) 
++ [geom_pie](ggplot2/geom_pie.1) 
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
 + [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) 
 + [stat_compare_means](ggplot2/stat_compare_means.1) 
