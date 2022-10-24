@@ -22,10 +22,16 @@ require(graphics2D);
 const autoSize = function(dims, padding, scale = 1) {
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
-    vpad    = padding[1] + padding[3];
-    hpad    = padding[2] + padding[4]; 
-    dims    = dims * scale;
-    dims    = [
+
+    .auto_size_internal(dims, padding, scale);
+}
+
+const .auto_size_internal = function(dims, padding, scale = 1) {
+    const vpad = padding[1] + padding[3];
+    const hpad = padding[2] + padding[4]; 
+
+    dims = dims * scale;
+    dims = [
         dims[1] + hpad, # width
         dims[2] + vpad  # height
     ];
