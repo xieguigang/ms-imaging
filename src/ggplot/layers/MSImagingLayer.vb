@@ -99,7 +99,7 @@ Namespace layers
             Dim MSI As Image
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim colorSet As String
-            Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
+            Dim ion As SingleIonLayer = processingLayer(getIonlayer(mz, mzdiff, ggplot))
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
             Dim theme As Theme = stream.theme
             Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)

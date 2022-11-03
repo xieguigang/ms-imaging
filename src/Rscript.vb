@@ -258,11 +258,11 @@ Public Module Rscript
     Public Function geom_msimaging(mz As Double(),
                                    Optional tolerance As Object = "da:0.1",
                                    Optional pixel_render As Boolean = False,
-                                   Optional TrIQ As Double = 0.65,
+                                   Optional TrIQ As Double = 0.99,
                                    <RRawVectorArgument>
                                    Optional color As Object = "viridis:turbo",
                                    Optional knnFill As Boolean = True,
-                                   Optional colorLevels As Integer = 255,
+                                   Optional colorLevels As Integer = 120,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)

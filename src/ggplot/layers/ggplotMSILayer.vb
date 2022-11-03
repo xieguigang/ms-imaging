@@ -82,6 +82,18 @@ Namespace layers
             Return layer
         End Function
 
+        Friend Shared Function processingLayer(layer As SingleIonLayer) As SingleIonLayer
+            ' 20220710
+            ' knn fill has already been called at [getIonlayer] function
+            ' layer = layer.KnnFill(3, 3)
+            layer.MSILayer = layer _
+                .MSILayer _
+                .DensityCut(0.05) _
+                .ToArray
+
+            Return layer
+        End Function
+
         Public Function getIonlayer(mz As Double, mzdiff As Tolerance, ggplot As ggplot.ggplot) As SingleIonLayer
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
             Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(mz, base.reader, mzdiff)

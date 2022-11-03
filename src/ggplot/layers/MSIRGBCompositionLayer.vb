@@ -56,7 +56,6 @@
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
@@ -66,6 +65,8 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace layers
@@ -94,18 +95,6 @@ Namespace layers
             Dim h As Integer = (Aggregate [dim] As Size In dimSizes Into Max([dim].Height))
 
             Return New Size(w, h)
-        End Function
-
-        Private Function processingLayer(layer As SingleIonLayer) As SingleIonLayer
-            ' 20220710
-            ' knn fill has already been called at [getIonlayer] function
-            ' layer = layer.KnnFill(3, 3)
-            layer.MSILayer = layer _
-                .MSILayer _
-                .DensityCut(0.05) _
-                .ToArray
-
-            Return layer
         End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
@@ -144,7 +133,10 @@ Namespace layers
                 Dim rgb As Image = buf.ImageResource
 
                 ' scale size to the plot region
-                rgb = Drawer.ScaleLayer(CType(rgb, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
+                ' rgb = Drawer.ScaleLayer(CType(rgb, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
+                rgb = New RasterScaler(CType(rgb, Bitmap)).Scale(hqx:=HqxScales.Hqx_4x)
+                rgb = New RasterScaler(CType(rgb, Bitmap)).Scale(rect.Width, rect.Height)
+
                 stream.g.DrawImage(rgb, rect)
             End Using
 
