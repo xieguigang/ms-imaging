@@ -14,15 +14,11 @@
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;Rsharp_app_release</Configurations>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <OutputPath>../assembly/</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>../assembly/</OutputPath>
-    <DocumentationFile>MSImaging.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutputPath>D:\biodeep\biodeepdb_v3\spatial\ms-imaging\assembly\</OutputPath>
+   
     <DocumentationFile>MSImaging.xml</DocumentationFile>
   </PropertyGroup>
 
