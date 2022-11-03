@@ -117,6 +117,32 @@ Public Module Rscript
         Return New PointPack With {.pixels = pixels}
     End Function
 
+    Private Function unionLayers(layerR As SingleIonLayer, layerG As SingleIonLayer, layerB As SingleIonLayer) As MSIHeatMap
+        Dim w As Integer = {
+            layerR.DimensionSize.Width,
+            layerG.DimensionSize.Width,
+            layerB.DimensionSize.Width
+        }.Max
+
+        Dim h As Integer = {
+            layerR.DimensionSize.Height,
+            layerG.DimensionSize.Height,
+            layerB.DimensionSize.Height
+        }.Max
+
+        Dim dims As New Size With {
+            .Width = w,
+            .Height = h
+        }
+
+        Return New MSIHeatMap With {
+            .R = layerR,
+            .G = layerG,
+            .B = layerB,
+            .dimension = dims
+        }
+    End Function
+
     ''' <summary>
     ''' create R,G,B layers from the given dataframe columns data
     ''' </summary>
@@ -132,35 +158,8 @@ Public Module Rscript
                                      Optional B As Object = Nothing,
                                      Optional matrix As dataframe = Nothing,
                                      Optional env As Environment = Nothing) As Object
-
         If matrix Is Nothing Then
-            Dim layerR As SingleIonLayer = R
-            Dim layerG As SingleIonLayer = G
-            Dim layerB As SingleIonLayer = B
-
-            Dim w As Integer = {
-                layerR.DimensionSize.Width,
-                layerG.DimensionSize.Width,
-                layerB.DimensionSize.Width
-            }.Max
-
-            Dim h As Integer = {
-                layerR.DimensionSize.Height,
-                layerG.DimensionSize.Height,
-                layerB.DimensionSize.Height
-            }.Max
-
-            Dim dims As New Size With {
-                .Width = w,
-                .Height = h
-            }
-
-            Return New MSIHeatMap With {
-                .R = R,
-                .G = G,
-                .B = B,
-                .dimension = dims
-            }
+            Return unionLayers(layerR:=R, layerG:=G, layerB:=B)
         Else
             R = any.ToString(R)
             G = any.ToString(G)
