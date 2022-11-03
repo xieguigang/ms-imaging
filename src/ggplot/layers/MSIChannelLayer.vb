@@ -1,66 +1,66 @@
 ﻿#Region "Microsoft.VisualBasic::43e1a5030afb0cc8625e9589ed7cfcd2, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\MSIChannelLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 96
-    '    Code Lines: 80
-    ' Comment Lines: 0
-    '   Blank Lines: 16
-    '     File Size: 4.28 KB
+' Summaries:
 
 
-    '     Class MSIChannelLayer
-    ' 
-    ' 
-    '         Enum Channels
-    ' 
-    '             Blue, Green, NA, Red
-    ' 
-    ' 
-    ' 
-    '  
-    ' 
-    '     Properties: channel
-    ' 
-    '     Function: getIonlayer, Plot, ToString
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 96
+'    Code Lines: 80
+' Comment Lines: 0
+'   Blank Lines: 16
+'     File Size: 4.28 KB
+
+
+'     Class MSIChannelLayer
+' 
+' 
+'         Enum Channels
+' 
+'             Blue, Green, NA, Red
+' 
+' 
+' 
+'  
+' 
+'     Properties: channel
+' 
+'     Function: getIonlayer, Plot, ToString
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -136,16 +136,16 @@ Namespace layers
 
             Select Case color.ToLower
                 Case "#ff0000"            ' red
-                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, cut:=(q, q, q), background:="transparent").AsGDIImage
                 Case "#00ff00", "#008000" ' green
-                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, cut:=(q, q, q), background:="transparent").AsGDIImage
                 Case "#0000ff"            ' blue
-                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, Nothing, cut:=(q, q, q), background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, cut:=(q, q, q), background:="transparent").AsGDIImage
                 Case Else
-                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, Nothing, cutoff:=q, colorSet:=colorSet).AsGDIImage
+                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, cutoff:=q, colorSet:=colorSet).AsGDIImage
             End Select
 
-            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
+            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
 
             Call stream.g.DrawImage(MSI, rect)
 

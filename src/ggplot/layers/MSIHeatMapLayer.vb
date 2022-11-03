@@ -88,7 +88,6 @@ Namespace layers
                 G:=greenLayer,
                 B:=blueLayer,
                 dimension:=dims,
-                dimSize:=New Size(16, 16),
                 cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
             ).AsGDIImage

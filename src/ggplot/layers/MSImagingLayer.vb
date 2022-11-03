@@ -120,7 +120,6 @@ Namespace layers
             MSI = engine.RenderPixels(
                 pixels:=ion.MSILayer,
                 dimension:=ion.DimensionSize,
-                dimSize:=Nothing,
                 cutoff:={0, TrIQ},
                 colorSet:=colorSet,
                 defaultFill:=ggplot.ggplotTheme.gridFill,
@@ -128,7 +127,7 @@ Namespace layers
             ).AsGDIImage
 
             ' scale size to the plot region
-            MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
+            MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
 
             If gaussBlurs > 0 Then
                 Dim bitmap As New Bitmap(MSI)

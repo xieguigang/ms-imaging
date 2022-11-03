@@ -137,7 +137,6 @@ Namespace layers
                     G:=greenLayer,
                     B:=blueLayer,
                     dimension:=dims,
-                    dimSize:=Nothing,
                     cut:=(qcutRed, qcutGreen, qcutBlue),
                     background:=stream.theme.gridFill
                 )
