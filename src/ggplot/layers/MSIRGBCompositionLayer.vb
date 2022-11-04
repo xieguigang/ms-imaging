@@ -99,7 +99,7 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim ggplot As ggplot.ggplot = stream.ggplot
+            Dim ggplot As ggplotMSI = stream.ggplot
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
@@ -111,9 +111,27 @@ Namespace layers
             '    .Height = rect.Height / dims.Height
             '}
 
-            If Not redLayer Is Nothing Then redLayer = processingLayer(redLayer)
-            If Not blueLayer Is Nothing Then blueLayer = processingLayer(blueLayer)
-            If Not greenLayer Is Nothing Then greenLayer = processingLayer(greenLayer)
+            If Not redLayer Is Nothing Then
+                redLayer = processingLayer(redLayer)
+
+                If Not ggplot.filter Is Nothing Then
+                    redLayer = ggplot.filter(redLayer)
+                End If
+            End If
+            If Not blueLayer Is Nothing Then
+                blueLayer = processingLayer(blueLayer)
+
+                If Not ggplot.filter Is Nothing Then
+                    blueLayer = ggplot.filter(blueLayer)
+                End If
+            End If
+            If Not greenLayer Is Nothing Then
+                greenLayer = processingLayer(greenLayer)
+
+                If Not ggplot.filter Is Nothing Then
+                    greenLayer = ggplot.filter(greenLayer)
+                End If
+            End If
 
             Using buf As Graphics2D = dims.CreateGDIDevice(filled:=Color.Black)
                 Call engine.ChannelCompositions(
