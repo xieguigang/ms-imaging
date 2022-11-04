@@ -112,9 +112,9 @@ Namespace layers
             Dim theme As Theme = stream.theme
             Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)
 
-            If knnfill Then
-                ion = ion.KnnFill(3, 3, 0.8)
-            End If
+            'If knnfill Then
+            '    ion = ion.KnnFill(3, 3, 0.8)
+            'End If
 
             If colorMap Is Nothing Then
                 colorSet = stream.theme.colorSet

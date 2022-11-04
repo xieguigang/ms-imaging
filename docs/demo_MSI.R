@@ -1,6 +1,7 @@
 imports "package_utils" from "devkit";
 
 package_utils::attach("D:\mzkit\Rscript\Library\mzkit_app");
+package_utils::attach("D:\mzkit\Rscript\Library\MSI_app"); 
 
 require(MSImaging);
 require(mzkit);

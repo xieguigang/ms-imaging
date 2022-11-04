@@ -26,4 +26,9 @@ Module Filters
     Public Function softenScaler() As SoftenScaler
         Return New SoftenScaler(New TrIQThreshold(0.999))
     End Function
+
+    <ExportAPI("knn_scale")>
+    Public Function knnScaler() As KNNScaler
+        Return New KNNScaler
+    End Function
 End Module
