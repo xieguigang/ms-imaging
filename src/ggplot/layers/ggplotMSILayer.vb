@@ -88,7 +88,7 @@ Namespace layers
             ' layer = layer.KnnFill(3, 3)
             layer.MSILayer = layer _
                 .MSILayer _
-                .DensityCut(0.05) _
+                .DensityCut(0.01) _
                 .ToArray
 
             Return layer

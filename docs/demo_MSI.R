@@ -1,3 +1,7 @@
+imports "package_utils" from "devkit";
+
+package_utils::attach("D:\mzkit\Rscript\Library\mzkit_app");
+
 require(MSImaging);
 require(mzkit);
 require(ggplot);

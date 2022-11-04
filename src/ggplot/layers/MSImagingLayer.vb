@@ -63,12 +63,14 @@ Imports ggplot
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.DataStorage.netCDF.DataVector
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.Math.Scripting.Rscript.Machine
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports any = Microsoft.VisualBasic.Scripting
@@ -99,13 +101,13 @@ Namespace layers
             Dim MSI As Image
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim colorSet As String
-            Dim ion As SingleIonLayer = processingLayer(getIonlayer(mz, mzdiff, ggplot))
+            Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
 
             If Not ggplot.filter Is Nothing Then
                 ion = ggplot.filter(ion)
             End If
 
-            Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
+            Dim TrIQ As Double = Double.MaxValue  ' New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
             Dim theme As Theme = stream.theme
             Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)
 
@@ -126,7 +128,7 @@ Namespace layers
             MSI = engine.RenderPixels(
                 pixels:=ion.MSILayer,
                 dimension:=ion.DimensionSize,
-                cutoff:={0, TrIQ},
+                cutoff:={0, 1},
                 colorSet:=colorSet,
                 defaultFill:=ggplot.ggplotTheme.gridFill,
                 mapLevels:=colorLevels
