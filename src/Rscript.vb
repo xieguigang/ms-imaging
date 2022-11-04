@@ -55,14 +55,18 @@
 
 Imports System.Data
 Imports System.Drawing
+Imports System.Runtime.CompilerServices
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports ggplot
 Imports ggplot.colors
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports MSImaging.layers
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -312,7 +316,19 @@ Public Module Rscript
 
     <ExportAPI("geom_MSIfilters")>
     Public Function geom_MSIfilters(<RLazyExpression> filters As Object, Optional env As Environment = Nothing) As Object
+        If TypeOf filters Is BinaryExpression Then
+            Return New MSIFilterPipelineOption With {
+                .pipeline = BuildPipeline(filters, New RasterPipeline)
+            }
+        Else
+            Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
+        End If
+    End Function
 
+    <Extension>
+    Private Function BuildPipeline(bin As BinaryExpression, pip As RasterPipeline) As RasterPipeline
+        Dim start As Expression = bin.left
+        Dim right As Expression = bin.right
     End Function
 
     <ExportAPI("geom_color")>
