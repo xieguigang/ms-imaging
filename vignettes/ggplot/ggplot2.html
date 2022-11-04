@@ -853,6 +853,44 @@ As Is often the Case In complex graphics.</p></li>
 
                     <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
 </div><br /><div>
+  <h2 id="annotation_raster">
+    <a href="./ggplot2/annotation_raster.html">annotation_raster</a>
+  </h2>
+  <hr />
+  <p>
+                    <p>annotation_raster: Annotation: high-performance rectangular tiling</p>
+
+<p>This is a special version of geom_raster() optimised for static <br />
+ annotations that are the same in every panel. These annotations <br />
+ will not affect scales (i.e. the x and y axes will not grow to cover <br />
+ the range of the raster, and the raster must already have its own <br />
+ colours). This is useful for adding bitmap images.</p>  
+                
+                    <pre><p>let <code>annotation_raster</code> as function(<code>raster</code> as any) -> <code>any</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggplot2
+    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
+    # library: ggplot.dll
+    # package: "ggplot2"
+    #
+    return call <code>R&#35;.interop_[ggplot2::annotation_raster]</code>(...);
+}</p></pre>
+
+                    <div>
+  <h4>Arguments</h4>
+  <ul>
+                   <li>
+  <code>raster</code>: raster object to display, may be an array or a nativeRaster
+                </li>
+                </ul>
+</div>
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div><br /><div>
   <h2 id="labs">
     <a href="./ggplot2/labs.html">labs</a>
   </h2>
@@ -1129,7 +1167,7 @@ As Is often the Case In complex graphics.</p></li>
                     <pre><p>let <code>theme</code> as function(<code>text</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
 <code>axis_text</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
 <code>axis_title</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>axis_line</code> as string = "stroke: black; stroke-width: 5px; stroke-dash: solid;", 
+<code>axis_line</code> as any = "stroke: black; stroke-width: 5px; stroke-dash: solid;", 
 <code>axis_text_x</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
 <code>legend_background</code> as string = "white", 
 <code>legend_text</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
@@ -1137,7 +1175,7 @@ As Is often the Case In complex graphics.</p></li>
 <code>plot_background</code> as string = <code>&lt;NULL&gt;</code>, 
 <code>plot_title</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
 <code>panel_background</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>panel_grid</code> as string = "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", 
+<code>panel_grid</code> as any = "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", 
 <code>panel_border</code> as <generic> rectElement = <code>&lt;NULL&gt;</code>) -> <code>&lt;generic&gt; ggplotOption</code> {
     #
     # .NET API information
@@ -1192,6 +1230,79 @@ As Is often the Case In complex graphics.</p></li>
  appearance of multiple elements by setting a single high-level component.</p>
 
 <p>Learn more about setting these aesthetics In vignette("ggplot2-specs").</p></blockquote></span></p>
+</div><br /><div>
+  <h2 id="element_blank">
+    <a href="./ggplot2/element_blank.html">element_blank</a>
+  </h2>
+  <hr />
+  <p>
+                      
+                
+                    <pre><p>let <code>element_blank</code> as function() -> <code>&lt;generic&gt; element_blank</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggplot2
+    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
+    # library: ggplot.dll
+    # package: "ggplot2"
+    #
+    return call <code>R&#35;.interop_[ggplot2::element_blank]</code>(...);
+}</p></pre>
+
+                    
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div><br /><div>
+  <h2 id="element_line">
+    <a href="./ggplot2/element_line.html">element_line</a>
+  </h2>
+  <hr />
+  <p>
+                    <p>Theme element: line.</p>  
+                
+                    <pre><p>let <code>element_line</code> as function(<code>colour</code> as any = <code>&lt;NULL&gt;</code>, 
+<code>size</code> as any = <code>&lt;NULL&gt;</code>, 
+<code>linetype</code> as any = <code>&lt;NULL&gt;</code>, 
+<code>lineend</code> as any = <code>&lt;NULL&gt;</code>, 
+<code>color</code> as any = <code>&lt;NULL&gt;</code>) -> <code>&lt;generic&gt; lineElement</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggplot2
+    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
+    # library: ggplot.dll
+    # package: "ggplot2"
+    #
+    return call <code>R&#35;.interop_[ggplot2::element_line]</code>(...);
+}</p></pre>
+
+                    <div>
+  <h4>Arguments</h4>
+  <ul>
+                   <li>
+  <code>colour</code>: line colour
+                </li>
+<li>
+  <code>size</code>: line size
+                </li>
+<li>
+  <code>linetype</code>: line type
+                </li>
+<li>
+  <code>lineend</code>: line end
+                </li>
+<li>
+  <code>color</code>: an alias for <code>colour</code>
+                </li>
+                </ul>
+</div>
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
 </div><br /><div>
   <h2 id="ggtitle">
     <a href="./ggplot2/ggtitle.html">ggtitle</a>

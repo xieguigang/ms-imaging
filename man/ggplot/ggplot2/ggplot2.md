@@ -19,6 +19,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_scatterpie](ggplot2/geom_scatterpie.1) 
 + [geom_scatterheatmap](ggplot2/geom_scatterheatmap.1) 
 + [geom_pie](ggplot2/geom_pie.1) 
++ [annotation_raster](ggplot2/annotation_raster.1) annotation_raster: Annotation: high-performance rectangular tiling
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
 + [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) 
 + [stat_compare_means](ggplot2/stat_compare_means.1) 
@@ -26,6 +27,8 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
 + [theme](ggplot2/theme.1) ## Modify components of a theme
++ [element_blank](ggplot2/element_blank.1) 
++ [element_line](ggplot2/element_line.1) Theme element: line.
 + [ggtitle](ggplot2/ggtitle.1) ### Modify axis, legend, and plot labels
 + [scale_colour_manual](ggplot2/scale_colour_manual.1) ### Create your own discrete scale
 + [scale_x_continuous](ggplot2/scale_x_continuous.1) Position scales for continuous data (x & y)
