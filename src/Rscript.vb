@@ -310,6 +310,11 @@ Public Module Rscript
         }
     End Function
 
+    <ExportAPI("geom_MSIfilters")>
+    Public Function geom_MSIfilters(filters As Object, Optional env As Environment = Nothing) As Object
+
+    End Function
+
     <ExportAPI("geom_color")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_color(mz As Double, color As Object,
