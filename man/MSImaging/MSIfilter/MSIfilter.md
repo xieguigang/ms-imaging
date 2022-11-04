@@ -7,3 +7,4 @@
 + [TrIQ_scale](MSIfilter/TrIQ_scale.1) 
 + [soften_scale](MSIfilter/soften_scale.1) 
 + [knn_scale](MSIfilter/knn_scale.1) 
++ [denoise_scale](MSIfilter/denoise_scale.1) 
