@@ -10,7 +10,7 @@
     <meta name="keywords" content="GCModeller; Xanthomonas; Artificial Life" />
     <meta name="generator" content="https://github.com/xieguigang/xDoc" />
     <meta name="theme-color" content="#333" />
-    <meta name="last-update" content="2022-11-03" />
+    <meta name="last-update" content="2022-11-04" />
     <meta name="description" content="A software system aim at Artificial Life system design and analysis." />
     <meta class="foundation-data-attribute-namespace" />
     <meta class="foundation-mq-xxlarge" />
@@ -212,10 +212,10 @@
                     <pre><p>let <code>geom_msimaging</code> as function(<code>mz</code> as double, 
 <code>tolerance</code> as any = "da:0.1", 
 <code>pixel_render</code> as boolean = FALSE, 
-<code>TrIQ</code> as double = 0.65, 
+<code>TrIQ</code> as double = 0.99, 
 <code>color</code> as any = "viridis:turbo", 
 <code>knnFill</code> as boolean = TRUE, 
-<code>colorLevels</code> as integer = 255, 
+<code>colorLevels</code> as integer = 120, 
 [<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
     #
     # .NET API information
@@ -288,6 +288,31 @@
                 </li>
                 </ul>
 </div>
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div><br /><div>
+  <h2 id="geom_MSIfilters">
+    <a href="./ggplot/geom_MSIfilters.html">geom_MSIfilters</a>
+  </h2>
+  <hr />
+  <p>
+                      
+                
+                    <pre><p>let <code>geom_MSIfilters</code> as function(<code>filters</code> as any, [<code>&lt;Environment&gt;</code>]) -> <code>any</code> {
+    #
+    # .NET API information
+    #
+    # module: MSImaging.Rscript
+    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
+    # library: MSImaging.dll
+    # package: "ggplot"
+    #
+    return call <code>R&#35;.interop_[Rscript::geom_MSIfilters]</code>(...);
+}</p></pre>
+
+                    
                        
                     
 
