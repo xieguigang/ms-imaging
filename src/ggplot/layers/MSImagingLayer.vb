@@ -81,7 +81,7 @@ Namespace layers
         Public Property TrIQ As Double = 0.65
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim ggplot As ggplot.ggplot = stream.ggplot
+            Dim ggplot As ggplotMSI = stream.ggplot
             Dim args As list = reader.args
             Dim mz As Double() = DirectCast(REnv.asVector(Of Double)(args.getByName("mz")), Double())
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
@@ -100,6 +100,11 @@ Namespace layers
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim colorSet As String
             Dim ion As SingleIonLayer = processingLayer(getIonlayer(mz, mzdiff, ggplot))
+
+            If Not ggplot.filter Is Nothing Then
+                ion = ggplot.filter(ion)
+            End If
+
             Dim TrIQ As Double = New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
             Dim theme As Theme = stream.theme
             Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)
