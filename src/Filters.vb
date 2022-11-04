@@ -29,4 +29,9 @@ Module Filters
     Public Function knnScaler(Optional k As Integer = 3, Optional q As Double = 0.65) As KNNScaler
         Return New KNNScaler(k, q)
     End Function
+
+    <ExportAPI("denoise_scale")>
+    Public Function denoiseScaler(Optional q As Double = 0.01) As DenoiseScaler
+        Return New DenoiseScaler(q)
+    End Function
 End Module

@@ -112,22 +112,16 @@ Namespace layers
             '}
 
             If Not redLayer Is Nothing Then
-                redLayer = processingLayer(redLayer)
-
                 If Not ggplot.filter Is Nothing Then
                     redLayer = ggplot.filter(redLayer)
                 End If
             End If
             If Not blueLayer Is Nothing Then
-                blueLayer = processingLayer(blueLayer)
-
                 If Not ggplot.filter Is Nothing Then
                     blueLayer = ggplot.filter(blueLayer)
                 End If
             End If
             If Not greenLayer Is Nothing Then
-                greenLayer = processingLayer(greenLayer)
-
                 If Not ggplot.filter Is Nothing Then
                     greenLayer = ggplot.filter(greenLayer)
                 End If
