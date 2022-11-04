@@ -311,7 +311,7 @@ Public Module Rscript
     End Function
 
     <ExportAPI("geom_MSIfilters")>
-    Public Function geom_MSIfilters(filters As Object, Optional env As Environment = Nothing) As Object
+    Public Function geom_MSIfilters(<RLazyExpression> filters As Object, Optional env As Environment = Nothing) As Object
 
     End Function
 
