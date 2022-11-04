@@ -55,10 +55,16 @@
 
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports ggplot
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 
+''' <summary>
+''' ggplot for ms-imaging
+''' </summary>
 Public Class ggplotMSI : Inherits ggplot.ggplot
+
+    Public Property filter As RasterPipeline
 
     Public Sub New(theme As Theme)
         MyBase.New(theme)

@@ -77,6 +77,9 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
 ''' </summary>
+''' <remarks>
+''' <see cref="ggplotMSI"/> is the ms-imaging render.
+''' </remarks>
 <Package("ggplot")>
 Public Module Rscript
 
@@ -318,7 +321,7 @@ Public Module Rscript
     Public Function geom_MSIfilters(<RLazyExpression> filters As Object, Optional env As Environment = Nothing) As Object
         If TypeOf filters Is BinaryExpression Then
             Return New MSIFilterPipelineOption With {
-                .pipeline = BuildPipeline(filters, New RasterPipeline)
+                .pipeline = BuildPipeline(filters, env, New RasterPipeline)
             }
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
@@ -326,9 +329,22 @@ Public Module Rscript
     End Function
 
     <Extension>
-    Private Function BuildPipeline(bin As BinaryExpression, pip As RasterPipeline) As RasterPipeline
+    Private Function BuildPipeline(bin As BinaryExpression, env As Environment, pip As RasterPipeline) As RasterPipeline
         Dim start As Expression = bin.left
         Dim right As Expression = bin.right
+
+        If TypeOf start Is BinaryExpression Then
+            pip = DirectCast(start, BinaryExpression).BuildPipeline(env, pip)
+        Else
+            pip.Add(start.Evaluate(env))
+        End If
+        If TypeOf right Is BinaryExpression Then
+            pip = DirectCast(right, BinaryExpression).BuildPipeline(env, pip)
+        Else
+            pip.Add(right.Evaluate(env))
+        End If
+
+        Return pip
     End Function
 
     <ExportAPI("geom_color")>

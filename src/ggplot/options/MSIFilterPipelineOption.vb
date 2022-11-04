@@ -6,6 +6,7 @@ Public Class MSIFilterPipelineOption : Inherits ggplotOption
     Public Property pipeline As RasterPipeline
 
     Public Overrides Function Config(ggplot As ggplot.ggplot) As ggplot.ggplot
-        Throw New NotImplementedException()
+        DirectCast(ggplot, ggplotMSI).filter = pipeline
+        Return ggplot
     End Function
 End Class
