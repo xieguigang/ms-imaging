@@ -102,6 +102,7 @@ Namespace layers
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
+            Dim rawInto As Double() = ion.GetIntensity
 
             If Not ggplot.filter Is Nothing Then
                 ion = ggplot.filter(ion)
@@ -128,7 +129,6 @@ Namespace layers
             MSI = engine.RenderPixels(
                 pixels:=ion.MSILayer,
                 dimension:=ion.DimensionSize,
-                cutoff:={0, 1},
                 colorSet:=colorSet,
                 defaultFill:=ggplot.ggplotTheme.gridFill,
                 mapLevels:=colorLevels
@@ -154,7 +154,6 @@ Namespace layers
             If mz.Length > 1 Then
                 Return Nothing
             Else
-                Dim rawInto = ion.GetIntensity
                 Dim ticks As Double() = rawInto.Range.CreateAxisTicks
 
                 If ticks.Any(Function(t) t = 0.0) Then

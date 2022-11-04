@@ -77,10 +77,10 @@ Namespace layers
             Dim redLayer As SingleIonLayer = data.R
             Dim greenLayer As SingleIonLayer = data.G
             Dim blueLayer As SingleIonLayer = data.B
-            Dim cut As IQuantizationThreshold = AddressOf If(threshold, New TrIQThreshold).ThresholdValue
-            Dim qcutRed As DoubleRange = {0, cut(redLayer?.GetIntensity)}
-            Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
-            Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
+            'Dim cut As IQuantizationThreshold = AddressOf If(threshold, New TrIQThreshold).ThresholdValue
+            'Dim qcutRed As DoubleRange = {0, cut(redLayer?.GetIntensity)}
+            'Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
+            'Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
             Dim dims As Size = data.dimension
 
             MSI = engine.ChannelCompositions(
@@ -88,7 +88,6 @@ Namespace layers
                 G:=greenLayer,
                 B:=blueLayer,
                 dimension:=dims,
-                cut:=(qcutRed, qcutGreen, qcutBlue),
                 background:=stream.theme.gridFill
             ).AsGDIImage
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)

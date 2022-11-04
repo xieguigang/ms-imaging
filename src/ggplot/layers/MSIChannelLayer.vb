@@ -132,17 +132,16 @@ Namespace layers
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
             Dim colorSet As String = $"transparent,{color}"
-            Dim q As DoubleRange = {0, If(threshold, New TrIQThreshold).ThresholdValue(ion.GetIntensity)}
 
             Select Case color.ToLower
                 Case "#ff0000"            ' red
-                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, cut:=(q, q, q), background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, background:="transparent").AsGDIImage
                 Case "#00ff00", "#008000" ' green
-                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, cut:=(q, q, q), background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, background:="transparent").AsGDIImage
                 Case "#0000ff"            ' blue
-                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, cut:=(q, q, q), background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, background:="transparent").AsGDIImage
                 Case Else
-                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, cutoff:=q, colorSet:=colorSet).AsGDIImage
+                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, colorSet:=colorSet).AsGDIImage
             End Select
 
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)

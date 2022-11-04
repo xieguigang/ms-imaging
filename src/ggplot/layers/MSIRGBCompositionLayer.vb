@@ -105,9 +105,6 @@ Namespace layers
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim cut As IQuantizationThreshold = AddressOf If(threshold, New TrIQThreshold).ThresholdValue
-            Dim qcutRed As DoubleRange = {0, cut(redLayer?.GetIntensity)}
-            Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
-            Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
             Dim dims As Size = getDimSize(redLayer, greenLayer, blueLayer)
             'Dim pixelSize As New SizeF With {
             '    .Width = rect.Width / dims.Width,
@@ -126,7 +123,6 @@ Namespace layers
                     G:=greenLayer,
                     B:=blueLayer,
                     dimension:=dims,
-                    cut:=(qcutRed, qcutGreen, qcutBlue),
                     background:=stream.theme.gridFill
                 )
 
