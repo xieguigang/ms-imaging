@@ -66,7 +66,7 @@
   <p>
                       
                 
-                    <pre><p>let <code>quantile_scale</code> as function() -> <code>&lt;generic&gt; QuantileScaler</code> {
+                    <pre><p>let <code>quantile_scale</code> as function(<code>q</code> as double = 0.5) -> <code>&lt;generic&gt; QuantileScaler</code> {
     #
     # .NET API information
     #
@@ -141,7 +141,7 @@
   <p>
                       
                 
-                    <pre><p>let <code>knn_scale</code> as function() -> <code>&lt;generic&gt; KNNScaler</code> {
+                    <pre><p>let <code>knn_scale</code> as function(<code>k</code> as integer = 3, <code>q</code> as double = 0.65) -> <code>&lt;generic&gt; KNNScaler</code> {
     #
     # .NET API information
     #

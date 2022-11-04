@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports MSImaging.layers
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
@@ -322,6 +323,10 @@ Public Module Rscript
         If TypeOf filters Is BinaryExpression Then
             Return New MSIFilterPipelineOption With {
                 .pipeline = BuildPipeline(filters, env, New RasterPipeline)
+            }
+        ElseIf TypeOf filters Is FunctionInvoke Then
+            Return New MSIFilterPipelineOption With {
+                .pipeline = New RasterPipeline().Then(DirectCast(filters, FunctionInvoke).Evaluate(env))
             }
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
