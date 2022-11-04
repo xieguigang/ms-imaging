@@ -8,8 +8,8 @@ Imports Microsoft.VisualBasic.Scripting.MetaData
 Module Filters
 
     <ExportAPI("log_scale")>
-    Public Function logScaler() As LogScaler
-        Return New LogScaler
+    Public Function logScaler(Optional base As Double = 2.0) As LogScaler
+        Return New LogScaler(base)
     End Function
 
     <ExportAPI("quantile_scale")>
@@ -18,8 +18,8 @@ Module Filters
     End Function
 
     <ExportAPI("TrIQ_scale")>
-    Public Function TrIQScaler() As TrIQScaler
-        Return New TrIQScaler
+    Public Function TrIQScaler(Optional q As Double = 0.6) As TrIQScaler
+        Return New TrIQScaler(q)
     End Function
 
     <ExportAPI("soften_scale")>
