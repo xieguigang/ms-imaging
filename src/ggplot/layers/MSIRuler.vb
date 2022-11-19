@@ -13,7 +13,7 @@ Namespace layers
             Dim ggplot = stream.ggplot
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
             Dim reader As PixelReader = base.reader
-            Dim resolution As Double = 17
+            Dim resolution As Double = reader.resolution
             Dim dimsize As Size = reader.dimension
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim ratio As Double = rect.Width / dimsize.Width

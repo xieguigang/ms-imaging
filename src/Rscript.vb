@@ -56,6 +56,7 @@
 Imports System.Data
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
+Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
@@ -306,16 +307,33 @@ Public Module Rscript
         }
     End Function
 
+    <ExportAPI("geom_MSIruler")>
+    Public Function geom_MSIruler() As Object
+        Return New MSIRuler
+    End Function
+
     ''' <summary>
     ''' config of the background of the MS-imaging charting plot.
     ''' </summary>
-    ''' <param name="background"></param>
+    ''' <param name="background">
+    ''' the background color value or character vector ``TIC`` or ``BPC``.
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_MSIbackground")>
     Public Function geom_MSIbackground(background As Object) As Object
-        Return New MSIBackgroundOption With {
-            .background = background
-        }
+        If TypeOf background Is String AndAlso (CStr(background).ToUpper = "TIC" OrElse CStr(background).ToUpper = "BPC") Then
+            Return New MSITICOverlap With {
+                .summary = If(
+                    CStr(background).ToUpper = "TIC",
+                    IntensitySummary.Total,
+                    IntensitySummary.BasePeak
+                )
+            }
+        Else
+            Return New MSIBackgroundOption With {
+                .background = background
+            }
+        End If
     End Function
 
     <ExportAPI("geom_MSIfilters")>
