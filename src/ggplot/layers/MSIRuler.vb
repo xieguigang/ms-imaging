@@ -9,6 +9,8 @@ Namespace layers
 
     Public Class MSIRuler : Inherits ggplotLayer
 
+        Public Property color As Color
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot = stream.ggplot
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
@@ -27,8 +29,12 @@ Namespace layers
             Dim right As New PointF(left.X + rulerWidth, bottom)
             Dim center As New PointF(left.X + (rulerWidth - fontsize.Width) / 2, bottom + 10)
 
+#Disable Warning
+            pen.Color = color
+
             Call stream.g.DrawLine(pen, left, right)
-            Call stream.g.DrawString(physical, font, Brushes.Red, center)
+            Call stream.g.DrawString(physical, font, New SolidBrush(color), center)
+#Enable Warning
 
             Return Nothing
         End Function

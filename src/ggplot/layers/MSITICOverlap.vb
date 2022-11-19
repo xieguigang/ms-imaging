@@ -16,11 +16,13 @@ Namespace layers
         Public Property summary As IntensitySummary
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim ggplot = stream.ggplot
+            Dim ggplot As ggplotMSI = stream.ggplot
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
             Dim reader As PixelReader = base.reader
+            Dim dimsize As Size = reader.dimension
             Dim summary As MSISummary = reader.GetSummary
             Dim pixels As PixelData() = summary.GetLayer(Me.summary) _
+                .Where(Function(p) p.totalIon > 0) _
                 .Select(Function(p)
                             Return New PixelData With {
                                 .x = p.x,
@@ -29,16 +31,20 @@ Namespace layers
                             }
                         End Function) _
                 .ToArray
+
             Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim black = rect.Size.CreateGDIDevice(filled:=Color.Black).ImageResource
             Dim TIC As Image = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,
-                dimension:=reader.dimension,
+                dimension:=dimsize,
                 colorSet:="gray",
                 mapLevels:=250,
                 defaultFill:="black"
             ).AsGDIImage
 
-            Call stream.g.DrawImage(TIC, rect)
+            stream.theme.gridFill = "transparent"
+            stream.g.DrawImage(black, rect)
+            stream.g.DrawImage(TIC, rect)
 
             Return Nothing
         End Function

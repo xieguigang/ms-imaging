@@ -63,14 +63,12 @@ Imports ggplot
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.DataStorage.netCDF.DataVector
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.Linq
-Imports Microsoft.VisualBasic.Math.Scripting.Rscript.Machine
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports any = Microsoft.VisualBasic.Scripting
@@ -106,6 +104,9 @@ Namespace layers
 
             If Not ggplot.filter Is Nothing Then
                 ion = ggplot.filter(ion)
+                ion.MSILayer = ion.MSILayer _
+                    .Where(Function(p) p.intensity >= 1) _
+                    .ToArray
             End If
 
             Dim TrIQ As Double = Double.MaxValue  ' New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
