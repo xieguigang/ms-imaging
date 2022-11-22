@@ -11,7 +11,7 @@
     <meta name="generator" content="https://github.com/xieguigang/xDoc" />
     <meta name="theme-color" content="#333" />
     <meta name="last-update" content="2022-11-22" />
-    <meta name="description" content="A software system aim at Artificial Life system design and analysis." />
+    <meta name="description" content="" />
     <meta class="foundation-data-attribute-namespace" />
     <meta class="foundation-mq-xxlarge" />
     <meta class="foundation-mq-xlarge" />
@@ -31,347 +31,84 @@
     </table>
     <h1>ggplot</h1>
     <hr />
+    <p>
+      <code>
+        <span style="color: blue;">imports</span>
+        <span style="color: brown"> "ggplot"</span>
+        <span style="color: blue;"> from</span>
+        <span style="color: brown"> "MSImaging"</span>
+      </code>
+    </p>
     <p></p>
     <div id="main-wrapper">
-                           <div>
-  <h2 id="MSI_knnfill">
+      <table>
+        <thead>
+          <tr>
+            <th>function</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+  <td id="MSI_knnfill">
     <a href="./ggplot/MSI_knnfill.html">MSI_knnfill</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>configs the parameters for do Knn fill of the pixels</p>  
-                
-                    <pre><p>let <code>MSI_knnfill</code> as function(<code>k</code> as integer = 3, <code>qcut</code> as double = 0.85) -> <code>&lt;generic&gt; MSIKnnFillOption</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::KnnFill]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>k</code>: -
-                </li>
-<li>
-  <code>qcut</code>: the query block area percentage threshold value, <br />
- the higher cutoff of this parameter, the less fitting <br />
- will be perfermen on the pixels, the lower cutoff of <br />
- this parameter, the more interpolation will be.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="MSI_gaussblur">
+  </td>
+  <td><p>configs the parameters for do Knn fill of the pixels</p></td>
+</tr>
+<tr>
+  <td id="MSI_gaussblur">
     <a href="./ggplot/MSI_gaussblur.html">MSI_gaussblur</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>options for gauss filter of the MS-imaging buffer</p>  
-                
-                    <pre><p>let <code>MSI_gaussblur</code> as function(<code>levels</code> as integer = 30) -> <code>&lt;generic&gt; MSIGaussBlurOption</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::gaussBlurOpt]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>levels</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>the gauss blur function is not working well on the linux platform</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="pixelPack">
+  </td>
+  <td><p>options for gauss filter of the MS-imaging buffer</p></td>
+</tr>
+<tr>
+  <td id="pixelPack">
     <a href="./ggplot/pixelPack.html">pixelPack</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>pixelPack</code> as function(<code>pixels</code> as <generic> PixelData[]) -> <code>&lt;generic&gt; PointPack</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::createPixelPack]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="MSIheatmap">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="MSIheatmap">
     <a href="./ggplot/MSIheatmap.html">MSIheatmap</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>create R,G,B layers from the given dataframe columns data</p>  
-                
-                    <pre><p>let <code>MSIheatmap</code> as function(<code>R</code> as any, 
-<code>G</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>B</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>matrix</code> as <generic> dataframe = <code>&lt;NULL&gt;</code>, 
-[<code>&lt;Environment&gt;</code>]) -> <code>any</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::CreateMSIheatmap]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>matrix</code>: -
-                </li>
-<li>
-  <code>R</code>: -
-                </li>
-<li>
-  <code>G</code>: -
-                </li>
-<li>
-  <code>B</code>: -
-                </li>
-<li>
-  <code>env</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_msiheatmap">
+  </td>
+  <td><p>create R,G,B layers from the given dataframe columns data</p></td>
+</tr>
+<tr>
+  <td id="geom_msiheatmap">
     <a href="./ggplot/geom_msiheatmap.html">geom_msiheatmap</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_msiheatmap</code> as function() -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::geom_msiheatmap]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_msimaging">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_msimaging">
     <a href="./ggplot/geom_msimaging.html">geom_msimaging</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_msimaging</code> as function(<code>mz</code> as double, 
-<code>tolerance</code> as any = "da:0.1", 
-<code>pixel_render</code> as boolean = FALSE, 
-<code>TrIQ</code> as double = 0.99, 
-<code>color</code> as any = "viridis:turbo", 
-<code>knnFill</code> as boolean = TRUE, 
-<code>colorLevels</code> as integer = 120, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::geom_msimaging]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>mz</code>: -
-                </li>
-<li>
-  <code>tolerance</code>: the mass tolerance error vaue for load intensity <br />
- data for each pixels from the raw data files.
-                </li>
-<li>
-  <code>pixel_render</code>: -
-                </li>
-<li>
-  <code>TrIQ</code>: the intensity cutoff threshold value for the target <br />
- ion layer use TrIQ algorithm.
-                </li>
-<li>
-  <code>color</code>: the color set name
-                </li>
-<li>
-  <code>knnFill</code>: -
-                </li>
-<li>
-  <code>env</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_MSIruler">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_MSIruler">
     <a href="./ggplot/geom_MSIruler.html">geom_MSIruler</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_MSIruler</code> as function(<code>color</code> as any = "white") -> <code>any</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::geom_MSIruler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_MSIbackground">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_MSIbackground">
     <a href="./ggplot/geom_MSIbackground.html">geom_MSIbackground</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>config of the background of the MS-imaging charting plot.</p>  
-                
-                    <pre><p>let <code>geom_MSIbackground</code> as function(<code>background</code> as any) -> <code>any</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::geom_MSIbackground]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>background</code>: the background color value or character vector <code>TIC</code> or <code>BPC</code>.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_MSIfilters">
+  </td>
+  <td><p>config of the background of the MS-imaging charting plot.</p></td>
+</tr>
+<tr>
+  <td id="geom_MSIfilters">
     <a href="./ggplot/geom_MSIfilters.html">geom_MSIfilters</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_MSIfilters</code> as function(<code>filters</code> as any, [<code>&lt;Environment&gt;</code>]) -> <code>any</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::geom_MSIfilters]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_color">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_color">
     <a href="./ggplot/geom_color.html">geom_color</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_color</code> as function(<code>mz</code> as double, 
-<code>color</code> as any, 
-<code>tolerance</code> as any = "da:0.1", 
-<code>pixel_render</code> as boolean = FALSE, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Rscript
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "ggplot"
-    #
-    return call <code>R&#35;.interop_[Rscript::geom_color]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div>
-                       </div>
+  </td>
+  <td></td>
+</tr></tbody>
+      </table>
+    </div>
   </body>
 </html>

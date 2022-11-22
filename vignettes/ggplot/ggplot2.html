@@ -11,7 +11,7 @@
     <meta name="generator" content="https://github.com/xieguigang/xDoc" />
     <meta name="theme-color" content="#333" />
     <meta name="last-update" content="2022-11-22" />
-    <meta name="description" content="A software system aim at Artificial Life system design and analysis." />
+    <meta name="description" content="" />
     <meta class="foundation-data-attribute-namespace" />
     <meta class="foundation-mq-xxlarge" />
     <meta class="foundation-mq-xlarge" />
@@ -31,872 +31,187 @@
     </table>
     <h1>ggplot2</h1>
     <hr />
+    <p>
+      <code>
+        <span style="color: blue;">imports</span>
+        <span style="color: brown"> "ggplot2"</span>
+        <span style="color: blue;"> from</span>
+        <span style="color: brown"> "ggplot"</span>
+      </code>
+    </p>
     <p></p>
     <div id="main-wrapper">
-                           <div>
-  <h2 id="ggplot">
+      <table>
+        <thead>
+          <tr>
+            <th>function</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+  <td id="ggplot">
     <a href="./ggplot2/ggplot.html">ggplot</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Create a new ggplot</h3>
+  </td>
+  <td><h3>Create a new ggplot</h3>
 
 <p><code>ggplot()</code> initializes a ggplot object. It can be used to declare <br />
  the input data frame for a graphic and to specify the set of <br />
  plot aesthetics intended to be common throughout all subsequent <br />
- layers unless specifically overridden.</p>  
-                
-                    <pre><p>let <code>ggplot</code> as function(<code>data</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>mapping</code> as any = CALL "AES"(), 
-<code>colorSet</code> as any = "paper", 
-..., 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplot</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::ggplot]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>data</code>: Default dataset to use for plot. If not already a data.frame, <br />
- will be converted to one by fortify(). If not specified, must be <br />
- supplied in each layer added to the plot.
-                </li>
-<li>
-  <code>mapping</code>: Default list of aesthetic mappings to use for plot. If not specified, <br />
- must be supplied in each layer added to the plot.
-                </li>
-<li>
-  <code>args</code>: Other arguments passed on to methods. Not currently used.
-                </li>
-<li>
-  <code>environment</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    <h4>Value</h4><p>a ggplot base layer object which can be rendering to graphics by <br />
- invoke the <code>plot</code> function.</p>
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p><code>ggplot()</code> is used to construct the initial plot object, and is <br />
- almost always followed by + to add component to the plot. There <br />
- are three common ways to invoke <code>ggplot()</code>:</p>
-
-<ul>
-<li><code>ggplot(df, aes(x, y, other aesthetics))</code></li>
-<li><code>ggplot(df)</code></li>
-<li><p><code>ggplot()</code></p>
-
-<p>The first method Is recommended If all layers use the same data <br />
-And the same Set Of aesthetics, although this method can also be <br />
-used To add a layer Using data from another data frame. See the <br />
-first example below. The second method specifies the Default <br />
-data frame To use For the plot, but no aesthetics are defined up <br />
-front. This Is useful When one data frame Is used predominantly <br />
-As layers are added, but the aesthetics may vary from one layer <br />
-To another. The third method initializes a skeleton ggplot Object<br />
-which Is fleshed out As layers are added. This method Is useful <br />
-When multiple data frames are used To produce different layers, <br />
-As Is often the Case In complex graphics.</p></li>
-</ul></blockquote></span></p>
-</div><br /><div>
-  <h2 id="aes">
+ layers unless specifically overridden.</p></td>
+</tr>
+<tr>
+  <td id="aes">
     <a href="./ggplot2/aes.html">aes</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Construct aesthetic mappings</h3>
+  </td>
+  <td><h3>Construct aesthetic mappings</h3>
 
 <p>Aesthetic mappings describe how variables in the data are mapped <br />
  to visual properties (aesthetics) of geoms. Aesthetic mappings <br />
- can be set in ggplot() and in individual layers.</p>  
-                
-                    <pre><p>let <code>aes</code> as function(<code>x</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>y</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>z</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>label</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>color</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>title</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>shape</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>class</code> as any = <code>&lt;NULL&gt;</code>, 
-..., 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotReader</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::aes]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>x</code>: List of name-value pairs in the form aesthetic = variable describing <br />
- which variables in the layer data should be mapped to which aesthetics <br />
- used by the paired geom/stat. The expression variable is evaluated <br />
- within the layer data, so there is no need to refer to the original <br />
- dataset (i.e., use ggplot(df, aes(variable)) instead of <br />
- <code>ggplot(df, aes(df$variable)))</code>. The names for x and y aesthetics <br />
- are typically omitted because they are so common; all other aesthetics<br />
- must be named.
-                </li>
-<li>
-  <code>y</code>: -
-                </li>
-<li>
-  <code>color</code>: -
-                </li>
-<li>
-  <code>class</code>: mapping data of the element class group.
-                </li>
-<li>
-  <code>env</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    <h4>Value</h4><p>A list with class uneval. Components of the list are either quosures <br />
- or constants.</p>
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>This function also standardises aesthetic names by converting color to <br />
- colour (also in substrings, e.g., point_color to point_colour) and <br />
- translating old style R names to ggplot names (e.g., pch to shape and <br />
- cex to size).</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_point">
+ can be set in ggplot() and in individual layers.</p></td>
+</tr>
+<tr>
+  <td id="geom_point">
     <a href="./ggplot2/geom_point.html">geom_point</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Scatter Points</h3>
+  </td>
+  <td><h3>Scatter Points</h3>
 
 <p>The point geom is used to create scatterplots. The scatterplot is most <br />
  useful for displaying the relationship between two continuous variables. <br />
  It can be used to compare one continuous and one categorical variable, <br />
  or two categorical variables, but a variation like geom_jitter(), <br />
  geom_count(), or geom_bin2d() is usually more appropriate. A bubblechart <br />
- is a scatterplot with a third variable mapped to the size of points.</p>  
-                
-                    <pre><p>let <code>geom_point</code> as function(<code>mapping</code> as <generic> ggplotReader = <code>&lt;NULL&gt;</code>, 
-<code>color</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>shape</code> as <integer> LegendStyles = <code>&lt;NULL&gt;</code>, 
-<code>stroke</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>size</code> as double = 2, 
-<code>show_legend</code> as boolean = TRUE, 
-<code>alpha</code> as double = 1, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_point]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>color</code>: -
-                </li>
-<li>
-  <code>shape</code>: -
-                </li>
-<li>
-  <code>size</code>: -
-                </li>
-<li>
-  <code>show_legend</code>: logical. Should this layer be included in the legends? NA, the default, <br />
- includes if any aesthetics are mapped. FALSE never includes, And TRUE <br />
- always includes. It can also be a named logical vector to finely select <br />
- the aesthetics to display.
-                </li>
-<li>
-  <code>env</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_text">
+ is a scatterplot with a third variable mapped to the size of points.</p></td>
+</tr>
+<tr>
+  <td id="geom_text">
     <a href="./ggplot2/geom_text.html">geom_text</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Text</h3>
+  </td>
+  <td><h3>Text</h3>
 
 <p>Text geoms are useful for labeling plots. They can be used by themselves <br />
  as scatterplots or in combination with other geoms, for example, for <br />
  labeling points or for annotating the height of bars. geom_text() adds <br />
  only text to the plot. geom_label() draws a rectangle behind the text, <br />
- making it easier to read.</p>  
-                
-                    <pre><p>let <code>geom_text</code> as function(<code>mapping</code> as <generic> ggplotReader = <code>&lt;NULL&gt;</code>, 
-<code>data</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>stat</code> as string = "identity", 
-<code>position</code> as string = "identity", 
-<code>parse</code> as boolean = FALSE, 
-<code>nudge_x</code> as double = 0, 
-<code>nudge_y</code> as double = 0, 
-<code>check_overlap</code> as boolean = FALSE, 
-<code>na_rm</code> as boolean = FALSE, 
-<code>show_legend</code> as boolean = FALSE, 
-<code>inherit_aes</code> as boolean = TRUE, 
-<code>color</code> as any = "steelblue", 
-<code>which</code> as <generic> Expression = <code>&lt;NULL&gt;</code>, 
-<code>alpha</code> as double = 1, 
-<code>size</code> as double = <code>&lt;NULL&gt;</code>, 
-..., 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_text]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>mapping</code>: Set of aesthetic mappings created by aes() or aes_(). If specified and <br />
- inherit.aes = TRUE (the default), it is combined with the default mapping <br />
- at the top level of the plot. You must supply mapping if there is no plot <br />
- mapping.
-                </li>
-<li>
-  <code>data</code>: The data to be displayed in this layer. There are three options:</p>
-
-<p>If NULL, the Default, the data Is inherited from the plot data As <br />
- specified In the Call To ggplot().</p>
-
-<p>A data.frame, Or other Object, will override the plot data. All objects <br />
- will be fortified To produce a data frame. See fortify() For which <br />
- variables will be created.</p>
-
-<p>A Function will be called With a Single argument, the plot data. The Return <br />
- value must be a data.frame, And will be used As the layer data. A Function <br />
- can be created from a formula (e.g. ~ head(.x, 10)).
-                </li>
-<li>
-  <code>stat</code>: The statistical transformation to use on the data for this layer, as a <br />
- string.
-                </li>
-<li>
-  <code>position</code>: Position adjustment, either as a string, or the result of a call to a <br />
- position adjustment function. Cannot be jointy specified with nudge_x or <br />
- nudge_y.
-                </li>
-<li>
-  <code>parse</code>: If TRUE, the labels will be parsed into expressions and displayed as <br />
- described in ?plotmath.
-                </li>
-<li>
-  <code>nudge_x</code>: Horizontal and vertical adjustment to nudge labels by. Useful for <br />
- offsetting text from points, particularly on discrete scales. Cannot be <br />
- jointly specified with position.
-                </li>
-<li>
-  <code>nudge_y</code>: Horizontal and vertical adjustment to nudge labels by. Useful for <br />
- offsetting text from points, particularly on discrete scales. Cannot be <br />
- jointly specified with position.
-                </li>
-<li>
-  <code>check_overlap</code>: If TRUE, text that overlaps previous text in the same layer will not be <br />
- plotted. check_overlap happens at draw time and in the order of the data. <br />
- Therefore data should be arranged by the label column before calling <br />
- geom_text(). Note that this argument is not supported by geom_label().
-                </li>
-<li>
-  <code>na_rm</code>: If False, the Default, missing values are removed With a warning. <br />
- If True, missing values are silently removed.
-                </li>
-<li>
-  <code>show_legend</code>: logical. Should this layer be included in the legends? NA, the default, <br />
- includes if any aesthetics are mapped. FALSE never includes, and TRUE <br />
- always includes. It can also be a named logical vector to finely select<br />
- the aesthetics to display.
-                </li>
-<li>
-  <code>inherit_aes</code>: If False, Overrides the Default aesthetics, rather than combining With <br />
- them. This Is most useful For helper functions that define both data And <br />
- aesthetics And shouldn't inherit behaviour from the default plot <br />
- specification, e.g. borders().
-                </li>
-<li>
-  <code>color</code>: -
-                </li>
-<li>
-  <code>args</code>: Other arguments passed On To layer(). These are often aesthetics, used To <br />
- Set an aesthetic To a fixed value, Like colour = "red" Or size = 3. They<br />
- may also be parameters To the paired geom/stat.
-                </li>
-<li>
-  <code>env</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_histogram">
+ making it easier to read.</p></td>
+</tr>
+<tr>
+  <td id="geom_histogram">
     <a href="./ggplot2/geom_histogram.html">geom_histogram</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Histograms and frequency polygons</h2>
+  </td>
+  <td><h2>Histograms and frequency polygons</h2>
 
 <p>Visualise the distribution of a single continuous variable by dividing <br />
  the x axis into bins and counting the number of observations in each bin. <br />
- Histograms (geom_histogram()) display the counts with bars;</p>  
-                
-                    <pre><p>let <code>geom_histogram</code> as function(<code>bins</code> as integer, 
-<code>color</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>alpha</code> as double = 1, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_histogram]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>bins</code>: Number of bins. Overridden by binwidth. Defaults to 30.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_line">
+ Histograms (geom_histogram()) display the counts with bars;</p></td>
+</tr>
+<tr>
+  <td id="geom_line">
     <a href="./ggplot2/geom_line.html">geom_line</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Connect observations</h3>
+  </td>
+  <td><h3>Connect observations</h3>
 
 <p>geom_path() connects the observations in the order in which they appear in <br />
  the data. geom_line() connects them in order of the variable on the x axis. <br />
  geom_step() creates a stairstep plot, highlighting exactly when changes <br />
- occur. The group aesthetic determines which cases are connected together.</p>  
-                
-                    <pre><p>let <code>geom_line</code> as function(<code>mapping</code> as <generic> ggplotReader = <code>&lt;NULL&gt;</code>, 
-<code>color</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>width</code> as double = 5, 
-<code>show_legend</code> as boolean = TRUE, 
-<code>alpha</code> as double = 1, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_line]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>An alternative parameterisation is geom_segment(), where each line corresponds <br />
- to a single case which provides the start and end coordinates.</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_hline">
+ occur. The group aesthetic determines which cases are connected together.</p></td>
+</tr>
+<tr>
+  <td id="geom_hline">
     <a href="./ggplot2/geom_hline.html">geom_hline</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_hline</code> as function(<code>yintercept</code> as double, 
-<code>color</code> as any = "black", 
-<code>line_width</code> as double = 3, 
-<code>linetype</code> as <integer> DashStyle = [Solid]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_hline]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>yintercept</code>: -
-                </li>
-<li>
-  <code>color</code>: -
-                </li>
-<li>
-  <code>line_width!</code>: -
-                </li>
-<li>
-  <code>linetype</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_vline">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_vline">
     <a href="./ggplot2/geom_vline.html">geom_vline</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Reference lines: horizontal, vertical, and diagonal</h2>
+  </td>
+  <td><h2>Reference lines: horizontal, vertical, and diagonal</h2>
 
 <p>These geoms add reference lines (sometimes called rules) to a plot, <br />
  either horizontal, vertical, or diagonal (specified by slope and<br />
- intercept). These are useful for annotating plots.</p>  
-                
-                    <pre><p>let <code>geom_vline</code> as function(<code>xintercept</code> as double, 
-<code>color</code> as any = "black", 
-<code>line_width</code> as double = 2, 
-<code>linetype</code> as <integer> DashStyle = [Solid]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_vline]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>xintercept</code>: Parameters that control the position of the line. If these are set, <br />
- data, mapping and show.legend are overridden.
-                </li>
-<li>
-  <code>color</code>: -
-                </li>
-<li>
-  <code>line_width!</code>: -
-                </li>
-<li>
-  <code>linetype</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_path">
+ intercept). These are useful for annotating plots.</p></td>
+</tr>
+<tr>
+  <td id="geom_path">
     <a href="./ggplot2/geom_path.html">geom_path</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Connect observations</h2>
+  </td>
+  <td><h2>Connect observations</h2>
 
 <p>geom_path() connects the observations in the order in which they <br />
  appear in the data. geom_line() connects them in order of the <br />
  variable on the x axis. geom_step() creates a stairstep plot, highlighting <br />
  exactly when changes occur. The group aesthetic determines which <br />
- cases are connected together.</p>  
-                
-                    <pre><p>let <code>geom_path</code> as function() -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_path]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_convexHull">
+ cases are connected together.</p></td>
+</tr>
+<tr>
+  <td id="geom_convexHull">
     <a href="./ggplot2/geom_convexHull.html">geom_convexHull</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_convexHull</code> as function(<code>mapping</code> as <generic> ggplotReader = <code>&lt;NULL&gt;</code>, <code>alpha</code> as double = 1) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_convexHull]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_boxplot">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_boxplot">
     <a href="./ggplot2/geom_boxplot.html">geom_boxplot</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>A box and whiskers plot (in the style of Tukey)</h2>
+  </td>
+  <td><h2>A box and whiskers plot (in the style of Tukey)</h2>
 
 <p>The boxplot compactly displays the distribution of a continuous variable. <br />
  It visualises five summary statistics (the median, two hinges and two <br />
- whiskers), and all "outlying" points individually.</p>  
-                
-                    <pre><p>let <code>geom_boxplot</code> as function(<code>color</code> as list = <code>&lt;NULL&gt;</code>, 
-<code>width</code> as double = 1, 
-<code>alpha</code> as double = 0.95, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_boxplot]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><h2>Orientation</h2>
-
-<p>This geom treats Each axis differently And, thus, can thus have two <br />
- orientations. Often the orientation Is easy To deduce from a combination <br />
- Of the given mappings And the types Of positional scales In use. Thus, <br />
- ggplot2 will by Default Try To guess which orientation the layer should <br />
- have. Under rare circumstances, the orientation Is ambiguous And guessing <br />
- may fail. In that Case the orientation can be specified directly Using the <br />
- orientation parameter, which can be either "x" Or "y". The value gives <br />
- the axis that the geom should run along, "x" being the Default orientation <br />
- you would expect For the geom.</p>
-
-<p>## Summary statistics<br />
- The lower And upper hinges correspond To the first And third quartiles <br />
- (the 25th And 75th percentiles). This differs slightly from the method <br />
- used by the boxplot() Function, And may be apparent With small samples. <br />
- See boxplot.stats() For For more information On how hinge positions are <br />
- calculated For boxplot().</p>
-
-<p>The upper whisker extends from the hinge To the largest value no further <br />
- than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or <br />
- distance between the first And third quartiles). The lower whisker extends <br />
- from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data <br />
- beyond the End Of the whiskers are called "outlying" points And are plotted <br />
- individually.</p>
-
-<p>In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a <br />
- roughly 95onfidence interval for comparing medians. See McGill et al. <br />
- (1978) for more details.</p>
-
-<p>## Aesthetics<br />
- geom_boxplot() understands the following aesthetics (required aesthetics are <br />
- in bold):</p>
-
-<ul>
-<li>x Or y</li>
-<li>lower Or xlower</li>
-<li>upper Or xupper</li>
-<li>middle Or xmiddle</li>
-<li>ymin Or xmin</li>
-<li>ymax Or xmax</li>
-<li>alpha</li>
-<li>colour</li>
-<li>fill</li>
-<li>group</li>
-<li>linetype</li>
-<li>shape</li>
-<li>size</li>
-<li><p>weight</p>
-
-<p>Learn more about setting these aesthetics In vignette("ggplot2-specs").</p>
-
-<h2>Computed variables</h2>
-
-<p>stat_boxplot() provides the following variables, some of which depend on the orientation:</p></li>
-<li><p>width: width of boxplot</p></li>
-<li>ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR</li>
-<li>lower Or xlower: lower hinge, 25% quantile</li>
-<li>notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)</li>
-<li>middle Or xmiddle: median, 50% quantile</li>
-<li>notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)</li>
-<li>upper Or xupper: upper hinge, 75% quantile</li>
-<li><p>ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR</p>
-
-<h2>References</h2>
-
-<blockquote>
-  <p>McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. <br />
-  The American Statistician 32, 12-16.</p>
-</blockquote></li>
-</ul></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_barplot">
+ whiskers), and all "outlying" points individually.</p></td>
+</tr>
+<tr>
+  <td id="geom_barplot">
     <a href="./ggplot2/geom_barplot.html">geom_barplot</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_barplot</code> as function(<code>color</code> as list = <code>&lt;NULL&gt;</code>, 
-<code>width</code> as double = 1, 
-<code>alpha</code> as double = 0.95, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_barplot]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_violin">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_violin">
     <a href="./ggplot2/geom_violin.html">geom_violin</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_violin</code> as function(<code>color</code> as list = <code>&lt;NULL&gt;</code>, 
-<code>width</code> as double = 0.9, 
-<code>alpha</code> as double = 0.95, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_violin]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_jitter">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_jitter">
     <a href="./ggplot2/geom_jitter.html">geom_jitter</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_jitter</code> as function(<code>mapping</code> as <generic> ggplotReader = <code>&lt;NULL&gt;</code>, 
-<code>data</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>stat</code> as any = "identity", 
-<code>width</code> as double = 0.5, 
-<code>radius</code> as double = 10, 
-<code>alpha</code> as double = 0.85, 
-<code>color</code> as list = <code>&lt;NULL&gt;</code>, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_jitter]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_scatterpie">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_scatterpie">
     <a href="./ggplot2/geom_scatterpie.html">geom_scatterpie</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_scatterpie</code> as function(<code>data</code> as string) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_scatterpie]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_scatterheatmap">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_scatterheatmap">
     <a href="./ggplot2/geom_scatterheatmap.html">geom_scatterheatmap</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_scatterheatmap</code> as function(<code>data</code> as string, <code>colors</code> as string = <code>&lt;NULL&gt;</code>, [<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_scatterheatmap]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_pie">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_pie">
     <a href="./ggplot2/geom_pie.html">geom_pie</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>geom_pie</code> as function() -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_pie]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="annotation_raster">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="annotation_raster">
     <a href="./ggplot2/annotation_raster.html">annotation_raster</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>annotation_raster: Annotation: high-performance rectangular tiling</p>
+  </td>
+  <td><p>annotation_raster: Annotation: high-performance rectangular tiling</p>
 
 <p>This is a special version of geom_raster() optimised for static <br />
  annotations that are the same in every panel. These annotations <br />
  will not affect scales (i.e. the x and y axes will not grow to cover <br />
  the range of the raster, and the raster must already have its own <br />
- colours). This is useful for adding bitmap images.</p>  
-                
-                    <pre><p>let <code>annotation_raster</code> as function(<code>raster</code> as any) -> <code>any</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::annotation_raster]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>raster</code>: raster object to display, may be an array or a nativeRaster
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="labs">
+ colours). This is useful for adding bitmap images.</p></td>
+</tr>
+<tr>
+  <td id="labs">
     <a href="./ggplot2/labs.html">labs</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Modify axis, legend, and plot labels</h2>
+  </td>
+  <td><h2>Modify axis, legend, and plot labels</h2>
 
 <p>Good labels are critical for making your plots accessible to <br />
  a wider audience. Always ensure the axis and legend labels <br />
@@ -904,158 +219,31 @@ As Is often the Case In complex graphics.</p></li>
  to explain the main findings. It's common to use the caption <br />
  to provide information about the data source. tag can be used <br />
  for adding identification tags to differentiate between multiple <br />
- plots.</p>  
-                
-                    <pre><p>let <code>labs</code> as function(<code>x</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>y</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>title</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>subtitle</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>caption</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>tag</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>alt</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>alt_insight</code> as any = <code>&lt;NULL&gt;</code>, 
-..., 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::labs]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>x</code>: -
-                </li>
-<li>
-  <code>y</code>: -
-                </li>
-<li>
-  <code>title</code>: The text for the title.
-                </li>
-<li>
-  <code>subtitle</code>: The text For the subtitle For the plot which will be displayed <br />
- below the title.
-                </li>
-<li>
-  <code>caption</code>: The text for the caption which will be displayed in the <br />
- bottom-right of the plot by default.
-                </li>
-<li>
-  <code>tag</code>: The text for the tag label which will be displayed at the top-left <br />
- of the plot by default.
-                </li>
-<li>
-  <code>alt</code>: Text used for the generation of alt-text for the plot. See <br />
- get_alt_text for examples.
-                </li>
-<li>
-  <code>alt_insight</code>: -
-                </li>
-<li>
-  <code>args</code>: A list of new name-value pairs. The name should be an aesthetic.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>You can also set axis and legend labels in the individual scales <br />
- (using the first argument, the name). If you're changing other <br />
- scale options, this is recommended.</p>
-
-<p>If a plot already has a title, subtitle, caption, etc., And you want <br />
- To remove it, you can Do so by setting the respective argument To <br />
- NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) <br />
- will remove the subtitle from the plot.</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="stat_pvalue_manual">
+ plots.</p></td>
+</tr>
+<tr>
+  <td id="stat_pvalue_manual">
     <a href="./ggplot2/stat_pvalue_manual.html">stat_pvalue_manual</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>stat_pvalue_manual</code> as function(<code>comparisons</code> as <generic> dataframe) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::stat_pvalue_manual]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="stat_compare_means">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="stat_compare_means">
     <a href="./ggplot2/stat_compare_means.html">stat_compare_means</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>stat_compare_means</code> as function(<code>method</code> as string = "anova", <code>ref_group</code> as string = ".all.", <code>hide_ns</code> as boolean = TRUE) -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::stat_compare_means]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="geom_signif">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="geom_signif">
     <a href="./ggplot2/geom_signif.html">geom_signif</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Create significance layer</h2>  
-                
-                    <pre><p>let <code>geom_signif</code> as function(<code>comparisons</code> as list, <code>test</code> as string = "t.test") -> <code>&lt;generic&gt; ggplotLayer</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::geom_signif]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="xlab">
+  </td>
+  <td><h2>Create significance layer</h2></td>
+</tr>
+<tr>
+  <td id="xlab">
     <a href="./ggplot2/xlab.html">xlab</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Modify axis, legend, and plot labels</h2>
+  </td>
+  <td><h2>Modify axis, legend, and plot labels</h2>
 
 <p>Good labels are critical for making your plots accessible to a <br />
  wider audience. Always ensure the axis and legend labels display <br />
@@ -1063,47 +251,13 @@ As Is often the Case In complex graphics.</p></li>
  explain the main findings. It's common to use the caption to <br />
  provide information about the data source. tag can be used for <br />
  adding identification tags to differentiate between multiple <br />
- plots.</p>  
-                
-                    <pre><p>let <code>xlab</code> as function(<code>label</code> as string) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::xlab]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>label</code>: The title of the respective axis (for xlab() or ylab()) or <br />
- of the plot (for ggtitle()).
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>You can also set axis and legend labels in the individual scales <br />
- (using the first argument, the name). If you're changing other <br />
- scale options, this is recommended.</p>
-
-<p>If a plot already has a title, subtitle, caption, etc., And you want <br />
- To remove it, you can Do so by setting the respective argument To <br />
- NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) <br />
- will remove the subtitle from the plot.</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="ylab">
+ plots.</p></td>
+</tr>
+<tr>
+  <td id="ylab">
     <a href="./ggplot2/ylab.html">ylab</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Modify axis, legend, and plot labels</h2>
+  </td>
+  <td><h2>Modify axis, legend, and plot labels</h2>
 
 <p>Good labels are critical for making your plots accessible to a <br />
  wider audience. Always ensure the axis and legend labels display <br />
@@ -1111,47 +265,13 @@ As Is often the Case In complex graphics.</p></li>
  explain the main findings. It's common to use the caption to <br />
  provide information about the data source. tag can be used for <br />
  adding identification tags to differentiate between multiple <br />
- plots.</p>  
-                
-                    <pre><p>let <code>ylab</code> as function(<code>label</code> as string) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::ylab]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>label</code>: The title of the respective axis (for xlab() or ylab()) or <br />
- of the plot (for ggtitle()).
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>You can also set axis and legend labels in the individual scales <br />
- (using the first argument, the name). If you're changing other <br />
- scale options, this is recommended.</p>
-
-<p>If a plot already has a title, subtitle, caption, etc., And you want <br />
- To remove it, you can Do so by setting the respective argument To <br />
- NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) <br />
- will remove the subtitle from the plot.</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="theme">
+ plots.</p></td>
+</tr>
+<tr>
+  <td id="theme">
     <a href="./ggplot2/theme.html">theme</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Modify components of a theme</h2>
+  </td>
+  <td><h2>Modify components of a theme</h2>
 
 <p>Themes are a powerful way to customize the non-data components of <br />
  your plots: i.e. titles, labels, fonts, background, gridlines, and <br />
@@ -1162,154 +282,25 @@ As Is often the Case In complex graphics.</p></li>
  a complete theme such as theme_bw(), theme_minimal(), and more. </p>
 
 <p>Theme elements are documented together according to inheritance, read<br />
- more about theme inheritance below.</p>  
-                
-                    <pre><p>let <code>theme</code> as function(<code>text</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>axis_text</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>axis_title</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>axis_line</code> as any = "stroke: black; stroke-width: 5px; stroke-dash: solid;", 
-<code>axis_text_x</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>legend_background</code> as string = "white", 
-<code>legend_text</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>legend_split</code> as integer = 6, 
-<code>plot_background</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>plot_title</code> as <generic> textElement = <code>&lt;NULL&gt;</code>, 
-<code>panel_background</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>panel_grid</code> as any = "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", 
-<code>panel_border</code> as <generic> rectElement = <code>&lt;NULL&gt;</code>) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::theme]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>axis_text</code>: -
-                </li>
-<li>
-  <code>text</code>: all text elements (element_text())
-                </li>
-<li>
-  <code>plot_background</code>: background of the entire plot (element_rect(); inherits from rect)
-                </li>
-<li>
-  <code>legend_background</code>: background of legend (element_rect(); inherits from rect)
-                </li>
-<li>
-  <code>panel_background</code>: background of plotting area, drawn underneath plot (element_rect(); inherits from rect)
-                </li>
-<li>
-  <code>legend_text</code>: legend item labels (element_text(); inherits from text)
-                </li>
-<li>
-  <code>axis_line</code>: lines along axes (element_line()). Specify lines <br />
- along all axes (axis.line), lines for each plane (using axis.line.x or <br />
- axis.line.y), or individually for each axis (using axis.line.x.bottom, <br />
- axis.line.x.top, axis.line.y.left, axis.line.y.right). <code>axis.line.*.*</code> <br />
- inherits from axis.line.* which inherits from axis.line, which in turn <br />
- inherits from line
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>Theme elements inherit properties from other theme elements hierarchically. <br />
- For example, axis.title.x.bottom inherits from axis.title.x which inherits <br />
- from axis.title, which in turn inherits from text. All text elements inherit<br />
- directly or indirectly from text; all lines inherit from line, and all <br />
- rectangular objects inherit from rect. This means that you can modify the <br />
- appearance of multiple elements by setting a single high-level component.</p>
-
-<p>Learn more about setting these aesthetics In vignette("ggplot2-specs").</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="element_blank">
+ more about theme inheritance below.</p></td>
+</tr>
+<tr>
+  <td id="element_blank">
     <a href="./ggplot2/element_blank.html">element_blank</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>element_blank</code> as function() -> <code>&lt;generic&gt; element_blank</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::element_blank]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="element_line">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="element_line">
     <a href="./ggplot2/element_line.html">element_line</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>Theme element: line.</p>  
-                
-                    <pre><p>let <code>element_line</code> as function(<code>colour</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>size</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>linetype</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>lineend</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>color</code> as any = <code>&lt;NULL&gt;</code>) -> <code>&lt;generic&gt; lineElement</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::element_line]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>colour</code>: line colour
-                </li>
-<li>
-  <code>size</code>: line size
-                </li>
-<li>
-  <code>linetype</code>: line type
-                </li>
-<li>
-  <code>lineend</code>: line end
-                </li>
-<li>
-  <code>color</code>: an alias for <code>colour</code>
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="ggtitle">
+  </td>
+  <td><p>Theme element: line.</p></td>
+</tr>
+<tr>
+  <td id="ggtitle">
     <a href="./ggplot2/ggtitle.html">ggtitle</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Modify axis, legend, and plot labels</h3>
+  </td>
+  <td><h3>Modify axis, legend, and plot labels</h3>
 
 <p>Good labels are critical for making your plots accessible <br />
  to a wider audience. Always ensure the axis and legend <br />
@@ -1317,335 +308,56 @@ As Is often the Case In complex graphics.</p></li>
  and subtitle to explain the main findings. It's common to <br />
  use the caption to provide information about the data <br />
  source. tag can be used for adding identification tags to <br />
- differentiate between multiple plots.</p>  
-                
-                    <pre><p>let <code>ggtitle</code> as function(<code>title</code> as string, <code>text_wrap</code> as boolean = FALSE) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::ggtitle]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>title</code>: The text for the title.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><p>You can also set axis and legend labels in the individual <br />
- scales (using the first argument, the name). If you're<br />
- changing other scale options, this is recommended.</p>
-
-<p>If a plot already has a title, subtitle, caption, etc., And<br />
- you want To remove it, you can Do so by setting the respective <br />
- argument To NULL. For example, If plot p has a subtitle, Then<br />
- p + labs(subtitle = NULL) will remove the subtitle from the <br />
- plot.</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="scale_colour_manual">
+ differentiate between multiple plots.</p></td>
+</tr>
+<tr>
+  <td id="scale_colour_manual">
     <a href="./ggplot2/scale_colour_manual.html">scale_colour_manual</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Create your own discrete scale</h3>
+  </td>
+  <td><h3>Create your own discrete scale</h3>
 
 <p>These functions allow you to specify your own set of <br />
- mappings from levels in the data to aesthetic values.</p>  
-                
-                    <pre><p>let <code>scale_colour_manual</code> as function(<code>values</code> as any, <code>alpha</code> as double = 1, [<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::scale_colour_manual]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>values</code>: -
-                </li>
-<li>
-  <code>env</code>: -
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: block"><h4>Details</h4><blockquote><h3>Color Blindness</h3>
-
-<p>Many color palettes derived from RGB combinations (Like <br />
- the "rainbow" color palette) are Not suitable To support <br />
- all viewers, especially those With color vision <br />
- deficiencies. </p>
-
-<p>Using viridis type, which Is perceptually uniform In both <br />
- colour And black-And-white display Is an easy Option To <br />
- ensure good perceptive properties Of your visulizations. <br />
- The colorspace package offers functionalities.</p>
-
-<p>to generate color palettes with good perceptive properties,</p>
-
-<p>to analyse a given color palette, Like emulating color <br />
- blindness,</p>
-
-<p>And to modify a given color palette for better perceptivity.</p>
-
-<p>For more information on color vision deficiencies And <br />
- suitable color choices see the paper on the colorspace <br />
- package And references therein.</p></blockquote></span></p>
-</div><br /><div>
-  <h2 id="scale_x_continuous">
+ mappings from levels in the data to aesthetic values.</p></td>
+</tr>
+<tr>
+  <td id="scale_x_continuous">
     <a href="./ggplot2/scale_x_continuous.html">scale_x_continuous</a>
-  </h2>
-  <hr />
-  <p>
-                    <p>Position scales for continuous data (x &amp; y)</p>  
-                
-                    <pre><p>let <code>scale_x_continuous</code> as function(<code>labels</code> as string = <code>&lt;NULL&gt;</code>, <code>limits</code> as double = <code>&lt;NULL&gt;</code>, [<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::scale_x_continuous]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>labels</code>: One of:
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="scale_y_continuous">
+  </td>
+  <td><p>Position scales for continuous data (x &amp; y)</p></td>
+</tr>
+<tr>
+  <td id="scale_y_continuous">
     <a href="./ggplot2/scale_y_continuous.html">scale_y_continuous</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Position scales for continuous data (x &amp; y)</h3>  
-                
-                    <pre><p>let <code>scale_y_continuous</code> as function(<code>labels</code> as string = <code>&lt;NULL&gt;</code>, <code>limits</code> as double = <code>&lt;NULL&gt;</code>, [<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::scale_y_continuous]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>labels</code>: One of:
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="scale_y_reverse">
+  </td>
+  <td><h3>Position scales for continuous data (x &amp; y)</h3></td>
+</tr>
+<tr>
+  <td id="scale_y_reverse">
     <a href="./ggplot2/scale_y_reverse.html">scale_y_reverse</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Position scales for continuous data (x &amp; y)</h3>  
-                
-                    <pre><p>let <code>scale_y_reverse</code> as function() -> <code>&lt;generic&gt; ggplotOption</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::scale_y_reverse]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="element_text">
+  </td>
+  <td><h3>Position scales for continuous data (x &amp; y)</h3></td>
+</tr>
+<tr>
+  <td id="element_text">
     <a href="./ggplot2/element_text.html">element_text</a>
-  </h2>
-  <hr />
-  <p>
-                    <h3>Theme elements</h3>
+  </td>
+  <td><h3>Theme elements</h3>
 
-<p>text.</p>  
-                
-                    <pre><p>let <code>element_text</code> as function(<code>family</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>face</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>size</code> as double = 0, 
-<code>hjust</code> as double = 0, 
-<code>vjust</code> as double = 0, 
-<code>angle</code> as double = 0, 
-<code>lineheight</code> as double = 0, 
-<code>color</code> as string = <code>&lt;NULL&gt;</code>, 
-<code>margin</code> as double = 0, 
-<code>debug</code> as boolean = FALSE, 
-<code>inherit_blank</code> as boolean = FALSE) -> <code>&lt;generic&gt; textElement</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::element_text]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>family</code>: Font family
-                </li>
-<li>
-  <code>face</code>: Font face ("plain", "italic", "bold", "bold.italic")
-                </li>
-<li>
-  <code>size</code>: Line/border size in mm; text size in pts.
-                </li>
-<li>
-  <code>hjust</code>: Horizontal justification (in [0, 1])
-                </li>
-<li>
-  <code>vjust</code>: Vertical justification (in [0, 1])
-                </li>
-<li>
-  <code>angle</code>: Angle (in [0, 360])
-                </li>
-<li>
-  <code>lineheight</code>: Line height
-                </li>
-<li>
-  <code>color</code>: Line/border colour. Color is an alias for colour.
-                </li>
-<li>
-  <code>margin</code>: Margins around the text. See margin() for more details. When creating a theme, <br />
- the margins should be placed on the side of the text facing towards the center <br />
- of the plot.
-                </li>
-<li>
-  <code>debug</code>: If TRUE, aids visual debugging by drawing a solid rectangle behind the complete <br />
- text area, and a point where each label is anchored.
-                </li>
-<li>
-  <code>inherit_blank</code>: Should this element inherit the existence of an element_blank among its parents? <br />
- If TRUE the existence of a blank element among its parents will cause this <br />
- element to be blank as well. If FALSE any blank parent element will be ignored <br />
- when calculating final element state.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="element_rect">
+<p>text.</p></td>
+</tr>
+<tr>
+  <td id="element_rect">
     <a href="./ggplot2/element_rect.html">element_rect</a>
-  </h2>
-  <hr />
-  <p>
-                    <h2>Theme elements</h2>
+  </td>
+  <td><h2>Theme elements</h2>
 
 <p>In conjunction with the theme system, the <code>element_</code> functions<br />
  specify the display of how non-data components of the plot are <br />
  drawn.</p>
 
-<p>borders and backgrounds.</p>  
-                
-                    <pre><p>let <code>element_rect</code> as function(<code>fill</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>colour</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>size</code> as double = 1, 
-<code>linetype</code> as <integer> DashStyle = [Solid], 
-<code>color</code> as any = <code>&lt;NULL&gt;</code>, 
-<code>inherit_blank</code> as boolean = FALSE, 
-[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; rectElement</code> {
-    #
-    # .NET API information
-    #
-    # module: ggplot.ggplot2
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: ggplot.dll
-    # package: "ggplot2"
-    #
-    return call <code>R&#35;.interop_[ggplot2::element_rect]</code>(...);
-}</p></pre>
-
-                    <div>
-  <h4>Arguments</h4>
-  <ul>
-                   <li>
-  <code>fill</code>: Fill colour.
-                </li>
-<li>
-  <code>color</code>: Line/border colour. Color is an alias for colour.
-                </li>
-<li>
-  <code>colour</code>: Line/border colour. Color is an alias for colour.
-                </li>
-<li>
-  <code>size</code>: Line/border size in mm; text size in pts.
-                </li>
-<li>
-  <code>linetype</code>: Line type. An integer (0:8), a name (blank, solid, dashed, dotted, <br />
- dotdash, longdash, twodash), or a string with an even number (up <br />
- to eight) of hexadecimal digits which give the lengths in consecutive <br />
- positions in the string.
-                </li>
-<li>
-  <code>inherit_blank</code>: Should this element inherit the existence of an element_blank <br />
- among its parents? If TRUE the existence of a blank element<br />
- among its parents will cause this element to be blank as well. <br />
- If FALSE any blank parent element will be ignored when calculating<br />
- final element state.
-                </li>
-                </ul>
-</div>
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div>
-                       </div>
+<p>borders and backgrounds.</p></td>
+</tr></tbody>
+      </table>
+    </div>
   </body>
 </html>

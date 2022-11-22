@@ -11,7 +11,7 @@
     <meta name="generator" content="https://github.com/xieguigang/xDoc" />
     <meta name="theme-color" content="#333" />
     <meta name="last-update" content="2022-11-22" />
-    <meta name="description" content="A software system aim at Artificial Life system design and analysis." />
+    <meta name="description" content="" />
     <meta class="foundation-data-attribute-namespace" />
     <meta class="foundation-mq-xxlarge" />
     <meta class="foundation-mq-xlarge" />
@@ -31,159 +31,60 @@
     </table>
     <h1>MSIfilter</h1>
     <hr />
+    <p>
+      <code>
+        <span style="color: blue;">imports</span>
+        <span style="color: brown"> "MSIfilter"</span>
+        <span style="color: blue;"> from</span>
+        <span style="color: brown"> "MSImaging"</span>
+      </code>
+    </p>
     <p></p>
     <div id="main-wrapper">
-                           <div>
-  <h2 id="log_scale">
+      <table>
+        <thead>
+          <tr>
+            <th>function</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+  <td id="log_scale">
     <a href="./MSIfilter/log_scale.html">log_scale</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>log_scale</code> as function(<code>base</code> as double = 2) -> <code>&lt;generic&gt; LogScaler</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Filters
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "MSIfilter"
-    #
-    return call <code>R&#35;.interop_[Filters::logScaler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="quantile_scale">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="quantile_scale">
     <a href="./MSIfilter/quantile_scale.html">quantile_scale</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>quantile_scale</code> as function(<code>q</code> as double = 0.5) -> <code>&lt;generic&gt; QuantileScaler</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Filters
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "MSIfilter"
-    #
-    return call <code>R&#35;.interop_[Filters::quantileScaler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="TrIQ_scale">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="TrIQ_scale">
     <a href="./MSIfilter/TrIQ_scale.html">TrIQ_scale</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>TrIQ_scale</code> as function(<code>q</code> as double = 0.6) -> <code>&lt;generic&gt; TrIQScaler</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Filters
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "MSIfilter"
-    #
-    return call <code>R&#35;.interop_[Filters::TrIQScaler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="soften_scale">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="soften_scale">
     <a href="./MSIfilter/soften_scale.html">soften_scale</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>soften_scale</code> as function() -> <code>&lt;generic&gt; SoftenScaler</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Filters
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "MSIfilter"
-    #
-    return call <code>R&#35;.interop_[Filters::softenScaler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="knn_scale">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="knn_scale">
     <a href="./MSIfilter/knn_scale.html">knn_scale</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>knn_scale</code> as function(<code>k</code> as integer = 3, <code>q</code> as double = 0.65) -> <code>&lt;generic&gt; KNNScaler</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Filters
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "MSIfilter"
-    #
-    return call <code>R&#35;.interop_[Filters::knnScaler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div><br /><div>
-  <h2 id="denoise_scale">
+  </td>
+  <td></td>
+</tr>
+<tr>
+  <td id="denoise_scale">
     <a href="./MSIfilter/denoise_scale.html">denoise_scale</a>
-  </h2>
-  <hr />
-  <p>
-                      
-                
-                    <pre><p>let <code>denoise_scale</code> as function(<code>q</code> as double = 0.01) -> <code>&lt;generic&gt; DenoiseScaler</code> {
-    #
-    # .NET API information
-    #
-    # module: MSImaging.Filters
-    # LibPath: D:/mzkit/Rscript/Library/MSI_app/assembly/net6.0
-    # library: MSImaging.dll
-    # package: "MSIfilter"
-    #
-    return call <code>R&#35;.interop_[Filters::denoiseScaler]</code>(...);
-}</p></pre>
-
-                    
-                       
-                    
-
-                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
-</div>
-                       </div>
+  </td>
+  <td></td>
+</tr></tbody>
+      </table>
+    </div>
   </body>
 </html>
