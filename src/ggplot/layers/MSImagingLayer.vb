@@ -101,6 +101,7 @@ Namespace layers
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim rawInto As Double() = ion.GetIntensity
+            Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
 
             If Not ggplot.filter Is Nothing Then
                 ion = ggplot.filter(ion)
@@ -129,7 +130,7 @@ Namespace layers
 
             MSI = engine.RenderPixels(
                 pixels:=ion.MSILayer,
-                dimension:=ion.DimensionSize,
+                dimension:=dimension_size,
                 colorSet:=colorSet,
                 defaultFill:=ggplot.ggplotTheme.gridFill,
                 mapLevels:=colorLevels

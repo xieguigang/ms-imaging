@@ -19,7 +19,6 @@ Namespace layers
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
             Dim reader As PixelReader = base.reader
-            Dim dimsize As Size = reader.dimension
             Dim summary As MSISummary = reader.GetSummary
             Dim pixels As PixelData() = summary.GetLayer(Me.summary) _
                 .Where(Function(p) p.totalIon > 0) _
@@ -36,7 +35,7 @@ Namespace layers
             Dim black = rect.Size.CreateGDIDevice(filled:=Color.Black).ImageResource
             Dim TIC As Image = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,
-                dimension:=dimsize,
+                dimension:=ggplot.GetDimensionSize(reader.dimension),
                 colorSet:="gray",
                 mapLevels:=250,
                 defaultFill:="black"

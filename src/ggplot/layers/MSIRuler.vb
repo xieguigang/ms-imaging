@@ -12,11 +12,11 @@ Namespace layers
         Public Property color As Color
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim ggplot = stream.ggplot
+            Dim ggplot As ggplotMSI = stream.ggplot
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
             Dim reader As PixelReader = base.reader
             Dim resolution As Double = reader.resolution
-            Dim dimsize As Size = reader.dimension
+            Dim dimsize As Size = ggplot.GetDimensionSize(reader.dimension)
             Dim rect As Rectangle = stream.canvas.PlotRegion
 
             Call New Ruler(stream.theme).DrawOnCanvas(

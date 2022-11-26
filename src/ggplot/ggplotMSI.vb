@@ -79,6 +79,21 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     End Sub
 
     ''' <summary>
+    ''' returns the given <paramref name="dims"/> size if the 
+    ''' <see cref="dimension_size"/> is empty or else returns 
+    ''' the <see cref="dimension_size"/>.
+    ''' </summary>
+    ''' <param name="dims"></param>
+    ''' <returns></returns>
+    Public Function GetDimensionSize(dims As Size) As Size
+        If dimension_size.IsEmpty Then
+            Return dims
+        Else
+            Return dimension_size
+        End If
+    End Function
+
+    ''' <summary>
     ''' create the reader from a given ggplot base <see cref="data"/> object
     ''' </summary>
     ''' <param name="mapping"></param>
@@ -98,9 +113,18 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
                 Return New ggplotBase With {
                     .reader = New MSIReader(mzpack)
                 }
-            Case GetType(MSIHeatMap) : Return New ggplotBase() With {.reader = New HeatMapReader(DirectCast(data, MSIHeatMap))}
-            Case GetType(PixelData()) : Return New ggplotBase() With {.reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})}
-            Case GetType(PointPack) : Return New ggplotBase With {.reader = New MSIReader(DirectCast(data, PointPack))}
+            Case GetType(MSIHeatMap)
+                Return New ggplotBase() With {
+                    .reader = New HeatMapReader(DirectCast(data, MSIHeatMap))
+                }
+            Case GetType(PixelData())
+                Return New ggplotBase() With {
+                    .reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})
+                }
+            Case GetType(PointPack)
+                Return New ggplotBase With {
+                    .reader = New MSIReader(DirectCast(data, PointPack))
+                }
             Case Else
                 Throw New NotImplementedException(template.FullName)
         End Select

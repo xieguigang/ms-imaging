@@ -126,22 +126,23 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim ggplot = stream.ggplot
+            Dim ggplot As ggplotMSI = stream.ggplot
             Dim ion As SingleIonLayer = getIonlayer(ggplot)
             Dim MSI As Image
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor
             Dim colorSet As String = $"transparent,{color}"
+            Dim dims As Size = ggplot.GetDimensionSize(ion.DimensionSize)
 
             Select Case color.ToLower
                 Case "#ff0000"            ' red
-                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, ion.DimensionSize, background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions(ion.MSILayer, {}, {}, dims, background:="transparent").AsGDIImage
                 Case "#00ff00", "#008000" ' green
-                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, ion.DimensionSize, background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions({}, ion.MSILayer, {}, dims, background:="transparent").AsGDIImage
                 Case "#0000ff"            ' blue
-                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, ion.DimensionSize, background:="transparent").AsGDIImage
+                    MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, dims, background:="transparent").AsGDIImage
                 Case Else
-                    MSI = engine.RenderPixels(ion.MSILayer, ion.DimensionSize, colorSet:=colorSet).AsGDIImage
+                    MSI = engine.RenderPixels(ion.MSILayer, dims, colorSet:=colorSet).AsGDIImage
             End Select
 
             MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)

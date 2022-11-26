@@ -105,11 +105,13 @@ Namespace layers
             Dim greenLayer As SingleIonLayer = DirectCast(green, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim blueLayer As SingleIonLayer = DirectCast(blue, MSIChannelLayer)?.getIonlayer(ggplot)
             Dim cut As IQuantizationThreshold = AddressOf If(threshold, New TrIQThreshold).ThresholdValue
-            Dim dims As Size = getDimSize(redLayer, greenLayer, blueLayer)
-            'Dim pixelSize As New SizeF With {
-            '    .Width = rect.Width / dims.Width,
-            '    .Height = rect.Height / dims.Height
-            '}
+            Dim dims As Size
+
+            If ggplot.dimension_size.IsEmpty Then
+                dims = ggplot.dimension_size
+            Else
+                dims = getDimSize(redLayer, greenLayer, blueLayer)
+            End If
 
             If Not redLayer Is Nothing Then
                 If Not ggplot.filter Is Nothing Then
