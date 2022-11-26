@@ -128,7 +128,10 @@ Public Module Rscript
     ''' <returns></returns>
     <ExportAPI("MSI_dimension")>
     <RApiReturn(GetType(MSIDimensionSizeOption))>
-    Public Function ConfigMSIDimensionSize(<RRawVectorArgument> dims As Object, Optional env As Environment = Nothing) As Object
+    Public Function ConfigMSIDimensionSize(<RRawVectorArgument>
+                                           dims As Object,
+                                           Optional env As Environment = Nothing) As Object
+
         Dim size = InteropArgumentHelper.getSize(dims, env, [default]:="0,0")
         Dim dimVals As Size = size.SizeParser
 
