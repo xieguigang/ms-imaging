@@ -71,6 +71,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "dataframeUtils-netcore5", "
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "btree-netcore5", "..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\DataMining\BinaryTree\btree-netcore5.vbproj", "{937CE4B7-CF56-4E72-8364-7BF9CFDAEE16}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1595,6 +1597,7 @@ Global
 		{99B7C9E3-A841-41F7-85AB-8B4ECDCEECB4} = {B7D567D1-D94A-4F80-BB5C-040AD5CB26EE}
 		{15DB4407-EE39-4875-ACBF-9766B20E4FC6} = {AC7A6FCD-2CC3-4B6F-BBFE-D6AE33B85F8D}
 		{937CE4B7-CF56-4E72-8364-7BF9CFDAEE16} = {AC7A6FCD-2CC3-4B6F-BBFE-D6AE33B85F8D}
+		{53AF2B13-CCD5-4F73-94D5-612191E785A9} = {41D05E2F-B5E2-4613-81A5-C385D4175C4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB6AE3CD-B26B-4DD4-9682-BED759F7A40E}
@@ -1602,6 +1605,8 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\..\GCModeller\src\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{186d2f67-97f7-4381-bcbf-8d5f86ce7dfb}*SharedItemsImports = 5
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{5bd88dbb-f451-48f0-aa5d-e67e197fc713}*SharedItemsImports = 5
 		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{5bd88dbb-f451-48f0-aa5d-e67e197fc713}*SharedItemsImports = 5
 		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{c295c3af-3e62-4756-966a-3d0b90ded160}*SharedItemsImports = 13
 	EndGlobalSection

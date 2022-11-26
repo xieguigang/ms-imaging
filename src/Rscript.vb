@@ -65,6 +65,7 @@ Imports ggplot.colors
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports MSImaging.layers
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
@@ -119,6 +120,30 @@ Public Module Rscript
         }
     End Function
 
+    ''' <summary>
+    ''' options for config the canvas dimension size of the ms-imaging raw data scans
+    ''' </summary>
+    ''' <param name="dims"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("MSI_dimension")>
+    <RApiReturn(GetType(MSIDimensionSizeOption))>
+    Public Function ConfigMSIDimensionSize(<RRawVectorArgument> dims As Object, Optional env As Environment = Nothing) As Object
+        Dim size = InteropArgumentHelper.getSize(dims, env, [default]:="0,0")
+        Dim dimVals As Size = size.SizeParser
+
+        Return New MSIDimensionSizeOption With {
+            .dimension_size = dimVals
+        }
+    End Function
+
+    ''' <summary>
+    ''' create a pixel point pack object for create ggplot
+    ''' </summary>
+    ''' <param name="pixels">
+    ''' A pixel point vector for create a data pack
+    ''' </param>
+    ''' <returns></returns>
     <ExportAPI("pixelPack")>
     Public Function createPixelPack(pixels As PixelData()) As PointPack
         Return New PointPack With {.pixels = pixels}

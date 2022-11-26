@@ -53,6 +53,7 @@
 
 #End Region
 
+Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
@@ -65,6 +66,11 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Public Class ggplotMSI : Inherits ggplot.ggplot
 
     Public Property filter As RasterPipeline
+    ''' <summary>
+    ''' the dimension size of the ms-imaging file scan
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property dimension_size As Size
 
     Public Sub New(theme As Theme)
         MyBase.New(theme)
@@ -72,9 +78,26 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         titleOffset = 1.125
     End Sub
 
+    ''' <summary>
+    ''' create the reader from a given ggplot base <see cref="data"/> object
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <returns></returns>
     Public Overrides Function CreateReader(mapping As ggplot.ggplotReader) As ggplot.ggplotBase
         Select Case template
-            Case GetType(mzPack) : Return New ggplotBase With {.reader = New MSIReader(DirectCast(data, mzPack))}
+            Case GetType(mzPack)
+                Dim mzpack As mzPack = DirectCast(data, mzPack)
+                Dim metadata = mzpack.metadata
+                Dim scan_x = Val(metadata.TryGetValue("width", [default]:=0))
+                Dim scan_y = Val(metadata.TryGetValue("height", [default]:=0))
+
+                If dimension_size.IsEmpty AndAlso scan_x > 0 AndAlso scan_y > 0 Then
+                    dimension_size = New Size(scan_x, scan_y)
+                End If
+
+                Return New ggplotBase With {
+                    .reader = New MSIReader(mzpack)
+                }
             Case GetType(MSIHeatMap) : Return New ggplotBase() With {.reader = New HeatMapReader(DirectCast(data, MSIHeatMap))}
             Case GetType(PixelData()) : Return New ggplotBase() With {.reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})}
             Case GetType(PointPack) : Return New ggplotBase With {.reader = New MSIReader(DirectCast(data, PointPack))}
