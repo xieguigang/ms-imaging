@@ -124,8 +124,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         color     = MSI_colorset
     )
     + geom_MSIbackground(backcolor)
-    + MSI_knnfill(qcut = 0.5)
-    # + MSI_gaussblur()
+    + default_MSIfilter()
     # add ggplot charting elements
     + ggtitle("")
     + labs(x = "Dimension(X)", y = "Dimension(Y)")
