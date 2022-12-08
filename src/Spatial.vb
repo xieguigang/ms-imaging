@@ -25,10 +25,16 @@ Public Module ggplotSpatial
         Dim index As Integer = STdata.GetSampleOrdinal(geneID)
 
         If index = -1 Then
-            Return Internal.debug.stop({
-                $"target gene symbol({geneID}) is not found in your STdata matrix!",
-                $"target_symbol: {geneID}"
-            }, env)
+            If geneID.TextEquals("sum") OrElse
+                geneID.TextEquals("max") OrElse
+                geneID.TextEquals("avg") Then
+
+            Else
+                Return Internal.debug.stop({
+                    $"target gene symbol({geneID}) is not found in your STdata matrix!",
+                    $"target_symbol: {geneID}"
+                }, env)
+            End If
         End If
 
         Return New ggplotSpatialTranscriptomicsLayer With {

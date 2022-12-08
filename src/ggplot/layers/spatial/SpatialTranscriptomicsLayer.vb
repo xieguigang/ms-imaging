@@ -1,4 +1,5 @@
 Imports System.Drawing
+Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
 Imports ggplot
 Imports ggplot.elements.legend
@@ -24,10 +25,28 @@ Namespace layers.spatial
             Dim layer As Graphics2D = dimension_size.CreateGDIDevice(filled:=Color.Transparent)
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim fill As Brush = Brushes.Red
+            Dim type As IntensitySummary? = Nothing
+
+            Select Case geneID.ToLower
+                Case "sum" : type = IntensitySummary.Total
+                Case "max" : type = IntensitySummary.BasePeak
+                Case "avg", "mean" : type = IntensitySummary.Average
+            End Select
 
             For Each spot As SpotMap In spots
                 Dim poly As New Polygon2D(spot.SMX, spot.SMY)
-                Dim data As Double = STdata.GetGeneExpression(spot.barcode)(ordinal)
+                Dim spotData = STdata.GetGeneExpression(spot.barcode)
+                Dim data As Double
+
+                If type Is Nothing Then
+                    data = spotData(ordinal)
+                Else
+                    Select Case type.Value
+                        Case IntensitySummary.Average : data = spotData.Average
+                        Case IntensitySummary.BasePeak : data = spotData.Max
+                        Case IntensitySummary.Total : data = spotData.Sum
+                    End Select
+                End If
 
                 Call layer.FillEllipse(fill, poly.GetRectangle)
             Next

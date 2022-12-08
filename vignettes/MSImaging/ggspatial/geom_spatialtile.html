@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>create a new ms-imaging heatmap layer</title>
+    <title>add a spatial overlaps of the STdata on current SMdata imaging</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <style rel="stylesheet" type="text/css">
@@ -143,12 +143,12 @@
 
         <table style="width: 100%;">
             <tr>
-                <td>geom_msiheatmap {ggplot}</td>
+                <td>geom_spatialtile {ggspatial}</td>
                 <td style="text-align: right;">R Documentation</td>
             </tr>
         </table>
 
-        <h2>create a new ms-imaging heatmap layer</h2>
+        <h2>add a spatial overlaps of the STdata on current SMdata imaging</h2>
 
         <h3>Description</h3>
 
@@ -157,30 +157,15 @@
         <h3>Usage</h3>
 
         <div style="width: 100%; padding-left: 3%; color: black;">
-            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_msiheatmap</strong>(
-    <i>layer</i> = <span style='color: blue;'>NULL</span>,
-    <i>colors</i> = <span style='color: brown;'><strong>"viridis:turbo"</strong></span>);</code></pre>
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_spatialtile</strong>(<i>tile</i>, <i>geneID</i>, <i>STdata</i>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
 
         <table>
             
-<dt>layer</dt>
-<dd><p><p>value of this parameter can be:</p>
-
-<ol>
-<li>nothing: means rgb heatmap layer</li>
-<li>Total: means TIC</li>
-<li>BasePeak: means BPC</li>
-<li>Average: means average ions</li>
-</ol></p></dd>
-
-
-<dt>colors</dt>
-<dd><p><p>the color scaler name for the heatmap rendering, this <br />
- parameter only works when the <strong><code>layer</code></strong> <br />
- parameter value is not nothing.</p></p></dd>
+<dt>tile</dt>
+<dd><p><p>-</p></p></dd>
 
         </table>
 
@@ -195,8 +180,8 @@
         This function has no value returns.
 
         <hr />
-        <div style="text-align: center;">[Package <em>ggplot</em> version 1.0.0.0 <a
-                href="../ggplot.html">Index</a>]
+        <div style="text-align: center;">[Package <em>ggspatial</em> version 1.0.0.0 <a
+                href="../ggspatial.html">Index</a>]
         </div>
     </div>
 </body>
