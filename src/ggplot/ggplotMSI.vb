@@ -83,7 +83,10 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     ''' <see cref="dimension_size"/> is empty or else returns 
     ''' the <see cref="dimension_size"/>.
     ''' </summary>
-    ''' <param name="dims"></param>
+    ''' <param name="dims">
+    ''' use this canvas size value as default if the raw data
+    ''' file <see cref="dimension_size"/> value is empty.
+    ''' </param>
     ''' <returns></returns>
     Public Function GetDimensionSize(dims As Size) As Size
         If dimension_size.IsEmpty Then
@@ -100,33 +103,46 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     ''' <returns></returns>
     Public Overrides Function CreateReader(mapping As ggplot.ggplotReader) As ggplot.ggplotBase
         Select Case template
-            Case GetType(mzPack)
-                Dim mzpack As mzPack = DirectCast(data, mzPack)
-                Dim metadata = mzpack.metadata
-                Dim scan_x = Val(metadata.TryGetValue("width", [default]:=0))
-                Dim scan_y = Val(metadata.TryGetValue("height", [default]:=0))
+            Case GetType(mzPack) : Return createMzPackReader()
+            Case GetType(MSIHeatMap) : Return createHeatmap()
+            Case GetType(PixelData()) : Return createPixelReader()
+            Case GetType(PointPack) : Return createPointReader()
 
-                If dimension_size.IsEmpty AndAlso scan_x > 0 AndAlso scan_y > 0 Then
-                    dimension_size = New Size(scan_x, scan_y)
-                End If
-
-                Return New ggplotBase With {
-                    .reader = New MSIReader(mzpack)
-                }
-            Case GetType(MSIHeatMap)
-                Return New ggplotBase() With {
-                    .reader = New HeatMapReader(DirectCast(data, MSIHeatMap))
-                }
-            Case GetType(PixelData())
-                Return New ggplotBase() With {
-                    .reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})
-                }
-            Case GetType(PointPack)
-                Return New ggplotBase With {
-                    .reader = New MSIReader(DirectCast(data, PointPack))
-                }
             Case Else
                 Throw New NotImplementedException(template.FullName)
         End Select
+    End Function
+
+    Private Function createPointReader() As ggplotBase
+        Return New ggplotBase With {
+            .reader = New MSIReader(DirectCast(data, PointPack))
+        }
+    End Function
+
+    Private Function createPixelReader() As ggplotBase
+        Return New ggplotBase() With {
+            .reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})
+        }
+    End Function
+
+    Private Function createHeatmap() As ggplotBase
+        Return New ggplotBase() With {
+            .reader = New HeatMapReader(DirectCast(data, MSIHeatMap))
+        }
+    End Function
+
+    Private Function createMzPackReader() As ggplotBase
+        Dim mzpack As mzPack = DirectCast(data, mzPack)
+        Dim metadata = mzpack.metadata
+        Dim scan_x = Val(metadata.TryGetValue("width", [default]:=0))
+        Dim scan_y = Val(metadata.TryGetValue("height", [default]:=0))
+
+        If dimension_size.IsEmpty AndAlso scan_x > 0 AndAlso scan_y > 0 Then
+            dimension_size = New Size(scan_x, scan_y)
+        End If
+
+        Return New ggplotBase With {
+            .reader = New MSIReader(mzpack)
+        }
     End Function
 End Class

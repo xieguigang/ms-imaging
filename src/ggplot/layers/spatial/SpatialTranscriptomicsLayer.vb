@@ -12,9 +12,10 @@ Namespace layers.spatial
         Public Property STdata As HTSMatrixReader
         Public Property geneID As String
         Public Property label As String
+        Public Property ordinal As Integer
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim index As Integer = STdata.
+
         End Function
     End Class
 End Namespace
