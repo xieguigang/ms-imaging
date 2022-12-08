@@ -1,4 +1,5 @@
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
+Imports ggplot.colors
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports MSImaging.layers.spatial
@@ -21,6 +22,7 @@ Public Module ggplotSpatial
     Public Function geom_spatialtile(tile As SpatialMapping,
                                      geneID As String,
                                      STdata As Object,
+                                     Optional colorSet As Object = "viridis:turbo",
                                      Optional env As Environment = Nothing) As Object
 
         Dim STMatrix As MatrixViewer
@@ -56,7 +58,8 @@ Public Module ggplotSpatial
                 .ToArray,
             .STdata = STMatrix,
             .label = tile.label,
-            .ordinal = index
+            .ordinal = index,
+            .colorMap = ggplotColorMap.CreateColorMap(colorSet, 1, env)
         }
     End Function
 End Module
