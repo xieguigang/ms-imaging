@@ -4,10 +4,12 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports ggplot
+Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace layers
 
@@ -31,12 +33,20 @@ Namespace layers
                         End Function) _
                 .ToArray
 
+            Dim colorSet As String = "gray"
+
+            If Not colorMap Is Nothing Then
+                If TypeOf colorMap Is ggplotColorPalette Then
+                    colorSet = any.ToString(DirectCast(colorMap, ggplotColorPalette).colorMap)
+                End If
+            End If
+
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim black = rect.Size.CreateGDIDevice(filled:=Color.Black).ImageResource
             Dim TIC As Image = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,
                 dimension:=ggplot.GetDimensionSize(reader.dimension),
-                colorSet:="gray",
+                colorSet:=colorSet,
                 mapLevels:=250,
                 defaultFill:="black"
             ).AsGDIImage

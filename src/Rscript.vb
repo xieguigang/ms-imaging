@@ -265,10 +265,39 @@ Public Module Rscript
                 Select layer).FirstOrDefault
     End Function
 
+    ''' <summary>
+    ''' create a new ms-imaging heatmap layer
+    ''' </summary>
+    ''' <param name="layer">
+    ''' value of this parameter can be:
+    ''' 
+    ''' 1. nothing: means rgb heatmap layer
+    ''' 2. Total: means TIC
+    ''' 3. BasePeak: means BPC
+    ''' 4. Average: means average ions
+    ''' 
+    ''' </param>
+    ''' <param name="colors">
+    ''' the color scaler name for the heatmap rendering, this 
+    ''' parameter only works when the <paramref name="layer"/> 
+    ''' parameter value is not nothing.
+    ''' </param>
+    ''' <returns></returns>
     <ExportAPI("geom_msiheatmap")>
     <RApiReturn(GetType(ggplotLayer))>
-    Public Function geom_msiheatmap() As Object
-        Return New MSIHeatMapLayer
+    Public Function geom_msiheatmap(Optional layer As IntensitySummary? = Nothing,
+                                    Optional colors As Object = "turbo",
+                                    Optional env As Environment = Nothing) As Object
+        If layer Is Nothing Then
+            Return New MSIRGBHeatMapLayer
+        Else
+            Dim colorSet = RColorPalette.getColorSet(colors, [default]:="turbo")
+
+            Return New MSITICOverlap With {
+                .summary = layer,
+                .colorMap = ggplotColorMap.CreateColorMap(colorSet, 1, env)
+            }
+        End If
     End Function
 
     ''' <summary>

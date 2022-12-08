@@ -65,7 +65,10 @@ Imports Microsoft.VisualBasic.Imaging
 
 Namespace layers
 
-    Public Class MSIHeatMapLayer : Inherits ggplotMSILayer
+    ''' <summary>
+    ''' rgb render, just used for combine with the <see cref="MSIHeatMap"/> object
+    ''' </summary>
+    Public Class MSIRGBHeatMapLayer : Inherits ggplotMSILayer
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
