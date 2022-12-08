@@ -4,6 +4,7 @@ Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports MSImaging.layers.spatial
 Imports SMRUCC.genomics.Analysis.HTS.DataFrame
 Imports SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Components
 
 ''' <summary>
 ''' spatial mapping between the STdata and SMdata based on the ggplot framework
@@ -19,10 +20,22 @@ Public Module ggplotSpatial
     <ExportAPI("geom_spatialtile")>
     Public Function geom_spatialtile(tile As SpatialMapping,
                                      geneID As String,
-                                     STdata As HTSMatrixReader,
+                                     STdata As Object,
                                      Optional env As Environment = Nothing) As Object
 
-        Dim index As Integer = STdata.GetSampleOrdinal(geneID)
+        Dim STMatrix As MatrixViewer
+
+        If STdata Is Nothing Then
+            Return Internal.debug.stop("the required STdata matrix can not be nothing!", env)
+        ElseIf TypeOf STdata Is Matrix Then
+            STMatrix = New HTSMatrixViewer(DirectCast(STdata, Matrix))
+        ElseIf TypeOf STdata Is MatrixViewer Then
+            STMatrix = STdata
+        Else
+            Return Message.InCompatibleType(GetType(Matrix), STdata.GetType, env)
+        End If
+
+        Dim index As Integer = STMatrix.GetSampleOrdinal(geneID)
 
         If index = -1 Then
             If geneID.TextEquals("sum") OrElse
@@ -41,7 +54,7 @@ Public Module ggplotSpatial
             .spots = tile.spots _
                 .Where(Function(s) s.flag > 0) _
                 .ToArray,
-            .STdata = STdata,
+            .STdata = STMatrix,
             .label = tile.label,
             .ordinal = index
         }

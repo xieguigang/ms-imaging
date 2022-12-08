@@ -16,7 +16,7 @@ Namespace layers.spatial
     Public Class ggplotSpatialTranscriptomicsLayer : Inherits ggplotLayer
 
         Public Property spots As SpotMap()
-        Public Property STdata As HTSMatrixReader
+        Public Property STdata As MatrixViewer
         Public Property geneID As String
         Public Property label As String
         Public Property ordinal As Integer
