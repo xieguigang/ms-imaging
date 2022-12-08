@@ -14,7 +14,7 @@ Namespace layers.spatial
         Public Property label As String
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-
+            Dim index As Integer = STdata.
         End Function
     End Class
 End Namespace
