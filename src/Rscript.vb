@@ -286,12 +286,12 @@ Public Module Rscript
     <ExportAPI("geom_msiheatmap")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_msiheatmap(Optional layer As IntensitySummary? = Nothing,
-                                    Optional colors As Object = "turbo",
+                                    Optional colors As Object = "viridis:turbo",
                                     Optional env As Environment = Nothing) As Object
         If layer Is Nothing Then
             Return New MSIRGBHeatMapLayer
         Else
-            Dim colorSet = RColorPalette.getColorSet(colors, [default]:="turbo")
+            Dim colorSet = RColorPalette.getColorSet(colors, [default]:="viridis:turbo")
 
             Return New MSITICOverlap With {
                 .summary = layer,
