@@ -59,6 +59,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports ggplot
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Imaging.Math2D
 
 ''' <summary>
 ''' ggplot for ms-imaging
@@ -138,15 +139,21 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         Dim scan_y = Val(metadata.TryGetValue("height", [default]:=0))
         Dim println As Action(Of Object) = environment.WriteLineHandler
 
-        If dimension_size.IsEmpty AndAlso scan_x > 0 AndAlso scan_y > 0 Then
-            dimension_size = New Size(scan_x, scan_y)
+        If dimension_size.IsEmpty Then
+            If scan_x > 0 AndAlso scan_y > 0 Then
+                dimension_size = New Size(scan_x, scan_y)
 
-            ' show information data about the msimaging dimension
-            ' size parameter
-            Call println({
-                $"use the ms-imaging canvas size from the internal metadata!",
-                $"internal_canvas_size: [{scan_x}x{scan_y}]"
-            })
+                ' show information data about the msimaging dimension
+                ' size parameter
+                Call println({
+                    $"use the ms-imaging canvas size from the internal metadata!",
+                    $"internal_canvas_size: [{scan_x}x{scan_y}]"
+                })
+            Else
+                With New Polygon2D(mzpack.MS.Select(Function(scan) scan.GetMSIPixel))
+                    dimension_size = New Size(.width, .height)
+                End With
+            End If
         End If
 
         Return New ggplotBase With {

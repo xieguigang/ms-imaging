@@ -28,7 +28,6 @@ Public Module ggplotSpatial
             If geneID.TextEquals("sum") OrElse
                 geneID.TextEquals("max") OrElse
                 geneID.TextEquals("avg") Then
-
             Else
                 Return Internal.debug.stop({
                     $"target gene symbol({geneID}) is not found in your STdata matrix!",
