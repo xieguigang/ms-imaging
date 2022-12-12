@@ -103,8 +103,8 @@ Public Class MSIReader : Inherits ggplotReader
         If TypeOf data Is mzPack Then
             Dim raw As mzPack = DirectCast(data, mzPack)
 
-            If args.hasName("region") Then
-                Dim tissue As TissueRegion = args!region
+            If {"region", "tissue"}.Any(AddressOf args.hasName) Then
+                Dim tissue As TissueRegion = args.getValue(Of TissueRegion)({"region", "tissue"}, env)
                 Dim polygon As Polygon2D = tissue.GetPolygons.First
                 Dim rect = polygon.GetRectangle
                 Dim dims As New Size(rect.Width - rect.Left, rect.Height - rect.Top)
