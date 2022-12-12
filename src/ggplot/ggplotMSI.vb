@@ -116,13 +116,15 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
 
     Private Function createPointReader() As ggplotBase
         Return New ggplotBase With {
-            .reader = New MSIReader(DirectCast(data, PointPack))
+            .reader = New MSIReader(DirectCast(data, PointPack), Me)
         }
     End Function
 
     Private Function createPixelReader() As ggplotBase
         Return New ggplotBase() With {
-            .reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})
+            .reader = New MSIReader(New PointPack With {
+                .pixels = DirectCast(data, PixelData())
+            }, Me)
         }
     End Function
 
@@ -157,7 +159,7 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         End If
 
         Return New ggplotBase With {
-            .reader = New MSIReader(mzpack)
+            .reader = New MSIReader(mzpack, Me)
         }
     End Function
 End Class

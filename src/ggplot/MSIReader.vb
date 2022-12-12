@@ -62,10 +62,14 @@
 
 #End Region
 
+Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
+Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.mzData.mzWebCache
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
 Imports ggplot
+Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports SMRUCC.Rsharp.Runtime
 
 ''' <summary>
@@ -74,13 +78,16 @@ Imports SMRUCC.Rsharp.Runtime
 Public Class MSIReader : Inherits ggplotReader
 
     Public ReadOnly Property reader As PixelReader
+    Public ReadOnly Property ggplot As ggplotMSI
 
-    Sub New(raw As mzPack)
+    Sub New(raw As mzPack, ggplot As ggplotMSI)
         _reader = New ReadRawPack(mzpack:=raw)
+        _ggplot = ggplot
     End Sub
 
-    Sub New(pack As PointPack)
+    Sub New(pack As PointPack, ggplot As ggplotMSI)
         _reader = New ReadPixelPack(pack.pixels)
+        _ggplot = ggplot
     End Sub
 
     ''' <summary>
@@ -95,7 +102,50 @@ Public Class MSIReader : Inherits ggplotReader
 
         If TypeOf data Is mzPack Then
             Dim raw As mzPack = DirectCast(data, mzPack)
-            Dim points = raw.MS.Select(Function(scan) scan.GetMSIPixel).ToArray
+
+            If args.hasName("region") Then
+                Dim tissue As TissueRegion = args!region
+                Dim polygon As Polygon2D = tissue.GetPolygons.First
+                Dim rect = polygon.GetRectangle
+                Dim dims As New Size(rect.Width - rect.Left, rect.Height - rect.Top)
+                Dim offset = rect.Location
+                Dim dataPoints = raw.MS _
+                    .Where(Function(d) polygon.inside(d.GetMSIPixel)) _
+                    .Select(Function(scan)
+                                Dim metadata = scan.meta
+                                Dim p As Point = scan.GetMSIPixel
+
+                                metadata!x = p.X - offset.X
+                                metadata!y = p.Y - offset.Y
+
+                                Return New ScanMS1 With {
+                                    .BPC = scan.BPC,
+                                    .into = scan.into,
+                                    .mz = scan.mz,
+                                    .products = Nothing,
+                                    .rt = scan.rt,
+                                    .scan_id = scan.scan_id,
+                                    .TIC = scan.TIC,
+                                    .meta = metadata
+                                }
+                            End Function) _
+                    .ToArray
+
+                ggplot.dimension_size = dims
+                data = New mzPack With {
+                    .Application = FileApplicationClass.MSImaging,
+                    .Chromatogram = raw.Chromatogram,
+                    .metadata = raw.metadata,
+                    .MS = dataPoints,
+                    .Scanners = raw.Scanners,
+                    .source = raw.source,
+                    .Thumbnail = raw.Thumbnail
+                }
+            End If
+
+            Dim points As Point() = raw.MS _
+                .Select(Function(scan) scan.GetMSIPixel) _
+                .ToArray
 
             x = points.Select(Function(p) CDbl(p.X)).ToArray
             y = points.Select(Function(p) CDbl(p.Y)).ToArray
