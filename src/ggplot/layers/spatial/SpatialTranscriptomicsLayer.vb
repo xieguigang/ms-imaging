@@ -5,10 +5,10 @@ Imports ggplot
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports SMRUCC.genomics.Analysis.HTS.DataFrame
+Imports stdNum = System.Math
 
 Namespace layers.spatial
 
@@ -56,12 +56,27 @@ Namespace layers.spatial
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim dimension_size As Size = ggplot.GetDimensionSize(Nothing)
+            Dim println = stream.ggplot.environment.WriteLineHandler
             ' create a new transparent layer on
             ' current ms-imaging render layer
             Dim factor As Double = 4
             Dim layer As Graphics2D = dimension_size.Scale(factor).CreateGDIDevice(filled:=Color.Transparent)
             Dim data As Dictionary(Of String, Double) = loadSpots()
             Dim colors = DirectCast(colorMap, ggplotColorPalette).ColorHandler(ggplot, data.Values.ToArray)
+            Dim spotSizes = (From spot As SpotMap
+                             In spots
+                             Let poly = New Polygon2D(spot.SMX, spot.SMY)
+                             Select poly.GetRectangle.Size).ToArray
+            Dim sizeMean As New SizeF With {
+                .Width = spotSizes.Average(Function(s) s.Width),
+                .Height = spotSizes.Average(Function(s) s.Height)
+            }
+            sizeMean = New SizeF(
+                stdNum.Max(sizeMean.Width, sizeMean.Height) * factor,
+                stdNum.Max(sizeMean.Width, sizeMean.Height) * factor
+            )
+
+            Call println($"render {label}...")
 
             For Each spot As SpotMap In spots
                 Dim poly As New Polygon2D(spot.SMX, spot.SMY)
@@ -72,13 +87,9 @@ Namespace layers.spatial
                     x:=shape1.Left * factor,
                     y:=shape1.Top * factor
                 )
-                Dim size As New SizeF(
-                    width:=shape1.Width * factor,
-                    height:=shape1.Height * factor
-                )
                 Dim shape2 As New RectangleF With {
                     .Location = pos,
-                    .Size = size
+                    .Size = sizeMean
                 }
 
                 Call layer.FillEllipse(fill, shape2)
