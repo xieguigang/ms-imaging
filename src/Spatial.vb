@@ -42,8 +42,11 @@ Public Module ggplotSpatial
         If index = -1 Then
             If geneID.TextEquals("sum") OrElse
                 geneID.TextEquals("max") OrElse
-                geneID.TextEquals("avg") Then
+                geneID.TextEquals("avg") OrElse
+                geneID.TextEquals("mean") Then
+                ' do nothing
             Else
+                ' generate error for missing symbol id
                 Return Internal.debug.stop({
                     $"target gene symbol({geneID}) is not found in your STdata matrix!",
                     $"target_symbol: {geneID}"
