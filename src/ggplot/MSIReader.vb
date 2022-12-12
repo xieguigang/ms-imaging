@@ -90,6 +90,54 @@ Public Class MSIReader : Inherits ggplotReader
         _ggplot = ggplot
     End Sub
 
+    Private Sub readFromMzPack(raw As mzPack, env As Environment, ByRef x As Double(), ByRef y As Double())
+        If {"region", "tissue"}.Any(AddressOf args.hasName) Then
+            Dim tissue As TissueRegion = args.getValue(Of TissueRegion)({"region", "tissue"}, env)
+            Dim polygon As Polygon2D = tissue.GetPolygons.First
+            Dim rect = polygon.GetRectangle
+            Dim dims As Size = rect.Size.ToSize
+            Dim offset = rect.Location
+            Dim dataPoints = raw.MS _
+                .Where(Function(d) polygon.inside(d.GetMSIPixel)) _
+                .Select(Function(scan)
+                            Dim metadata As New Dictionary(Of String, String)(scan.meta)
+                            Dim p As Point = scan.GetMSIPixel
+
+                            metadata!x = p.X - offset.X
+                            metadata!y = p.Y - offset.Y
+
+                            Return New ScanMS1 With {
+                                .BPC = scan.BPC,
+                                .into = scan.into,
+                                .mz = scan.mz,
+                                .products = Nothing,
+                                .rt = scan.rt,
+                                .scan_id = scan.scan_id,
+                                .TIC = scan.TIC,
+                                .meta = metadata
+                            }
+                        End Function) _
+                .ToArray
+
+            If raw.metadata Is Nothing Then
+                raw.metadata = New Dictionary(Of String, String)
+            End If
+
+            raw.MS = dataPoints
+            raw.metadata!scan_x = dims.Width
+            raw.metadata!scan_y = dims.Height
+
+            ggplot.dimension_size = dims
+        End If
+
+        Dim points As Point() = raw.MS _
+            .Select(Function(scan) scan.GetMSIPixel) _
+            .ToArray
+
+        x = points.Select(Function(p) CDbl(p.X)).ToArray
+        y = points.Select(Function(p) CDbl(p.Y)).ToArray
+    End Sub
+
     ''' <summary>
     ''' returns the dimensions of the MSI raw data
     ''' </summary>
@@ -101,54 +149,7 @@ Public Class MSIReader : Inherits ggplotReader
         Dim y As Double()
 
         If TypeOf data Is mzPack Then
-            Dim raw As mzPack = DirectCast(data, mzPack)
-
-            If {"region", "tissue"}.Any(AddressOf args.hasName) Then
-                Dim tissue As TissueRegion = args.getValue(Of TissueRegion)({"region", "tissue"}, env)
-                Dim polygon As Polygon2D = tissue.GetPolygons.First
-                Dim rect = polygon.GetRectangle
-                Dim dims As New Size(rect.Width - rect.Left, rect.Height - rect.Top)
-                Dim offset = rect.Location
-                Dim dataPoints = raw.MS _
-                    .Where(Function(d) polygon.inside(d.GetMSIPixel)) _
-                    .Select(Function(scan)
-                                Dim metadata = scan.meta
-                                Dim p As Point = scan.GetMSIPixel
-
-                                metadata!x = p.X - offset.X
-                                metadata!y = p.Y - offset.Y
-
-                                Return New ScanMS1 With {
-                                    .BPC = scan.BPC,
-                                    .into = scan.into,
-                                    .mz = scan.mz,
-                                    .products = Nothing,
-                                    .rt = scan.rt,
-                                    .scan_id = scan.scan_id,
-                                    .TIC = scan.TIC,
-                                    .meta = metadata
-                                }
-                            End Function) _
-                    .ToArray
-
-                ggplot.dimension_size = dims
-                data = New mzPack With {
-                    .Application = FileApplicationClass.MSImaging,
-                    .Chromatogram = raw.Chromatogram,
-                    .metadata = raw.metadata,
-                    .MS = dataPoints,
-                    .Scanners = raw.Scanners,
-                    .source = raw.source,
-                    .Thumbnail = raw.Thumbnail
-                }
-            End If
-
-            Dim points As Point() = raw.MS _
-                .Select(Function(scan) scan.GetMSIPixel) _
-                .ToArray
-
-            x = points.Select(Function(p) CDbl(p.X)).ToArray
-            y = points.Select(Function(p) CDbl(p.Y)).ToArray
+            Call readFromMzPack(DirectCast(data, mzPack), env, x, y)
         ElseIf TypeOf data Is PointPack Then
             Dim pack As PointPack = DirectCast(data, PointPack)
 
