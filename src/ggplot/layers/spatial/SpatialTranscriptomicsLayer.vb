@@ -19,6 +19,7 @@ Namespace layers.spatial
         Public Property geneID As String
         Public Property label As String
         Public Property ordinal As Integer
+        Public Property spotSize As Double
 
         Private Function loadSpots() As Dictionary(Of String, Double)
             Dim type As IntensitySummary? = Nothing
@@ -59,8 +60,7 @@ Namespace layers.spatial
             Dim println = stream.ggplot.environment.WriteLineHandler
             ' create a new transparent layer on
             ' current ms-imaging render layer
-            Dim factor As Double = 4
-            Dim layer As Graphics2D = dimension_size.Scale(factor).CreateGDIDevice(filled:=Color.Transparent)
+            Dim layer As Graphics2D = dimension_size.Scale(spotSize).CreateGDIDevice(filled:=Color.Transparent)
             Dim data As Dictionary(Of String, Double) = loadSpots()
             Dim colors = DirectCast(colorMap, ggplotColorPalette).ColorHandler(ggplot, data.Values.ToArray)
             Dim spotSizes = (From spot As SpotMap
@@ -72,8 +72,8 @@ Namespace layers.spatial
                 .Height = spotSizes.Average(Function(s) s.Height)
             }
             sizeMean = New SizeF(
-                stdNum.Max(sizeMean.Width, sizeMean.Height) * factor,
-                stdNum.Max(sizeMean.Width, sizeMean.Height) * factor
+                stdNum.Max(sizeMean.Width, sizeMean.Height) * spotSize,
+                stdNum.Max(sizeMean.Width, sizeMean.Height) * spotSize
             )
             Dim offset As PointF = DirectCast(ggplot.base.reader, MSIReader).offset
 
@@ -85,8 +85,8 @@ Namespace layers.spatial
                 Dim fill As Brush = colors(val).GetBrush
                 Dim shape1 = poly.GetRectangle
                 Dim pos As New PointF(
-                    x:=(shape1.Left - offset.X) * factor,
-                    y:=(shape1.Top - offset.Y) * factor
+                    x:=(shape1.Left - offset.X) * spotSize,
+                    y:=(shape1.Top - offset.Y) * spotSize
                 )
                 Dim shape2 As New RectangleF With {
                     .Location = pos,
