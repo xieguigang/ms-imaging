@@ -79,6 +79,7 @@ Public Class MSIReader : Inherits ggplotReader
 
     Public ReadOnly Property reader As PixelReader
     Public ReadOnly Property ggplot As ggplotMSI
+    Public ReadOnly Property offset As PointF
 
     Sub New(raw As mzPack, ggplot As ggplotMSI)
         _reader = New ReadRawPack(mzpack:=raw)
@@ -127,7 +128,8 @@ Public Class MSIReader : Inherits ggplotReader
             raw.metadata!scan_x = dims.Width
             raw.metadata!scan_y = dims.Height
 
-            ggplot.dimension_size = dims
+            _offset = offset
+            _ggplot.dimension_size = dims
         End If
 
         Dim points As Point() = raw.MS _

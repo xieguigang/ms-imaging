@@ -75,6 +75,7 @@ Namespace layers.spatial
                 stdNum.Max(sizeMean.Width, sizeMean.Height) * factor,
                 stdNum.Max(sizeMean.Width, sizeMean.Height) * factor
             )
+            Dim offset As PointF = DirectCast(ggplot.base.reader, MSIReader).offset
 
             Call println($"render {label}...")
 
@@ -84,8 +85,8 @@ Namespace layers.spatial
                 Dim fill As Brush = colors(val).GetBrush
                 Dim shape1 = poly.GetRectangle
                 Dim pos As New PointF(
-                    x:=shape1.Left * factor,
-                    y:=shape1.Top * factor
+                    x:=(shape1.Left - offset.X) * factor,
+                    y:=(shape1.Top - offset.Y) * factor
                 )
                 Dim shape2 As New RectangleF With {
                     .Location = pos,
