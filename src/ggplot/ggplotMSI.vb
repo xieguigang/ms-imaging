@@ -104,7 +104,7 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     ''' <returns></returns>
     Public Overrides Function CreateReader(mapping As ggplot.ggplotReader) As ggplot.ggplotBase
         Select Case template
-            Case GetType(mzPack) : Return createMzPackReader()
+            Case GetType(mzPack) : Return createMzPackReader(mapping)
             Case GetType(MSIHeatMap) : Return createHeatmap()
             Case GetType(PixelData()) : Return createPixelReader()
             Case GetType(PointPack) : Return createPointReader()
@@ -116,13 +116,15 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
 
     Private Function createPointReader() As ggplotBase
         Return New ggplotBase With {
-            .reader = New MSIReader(DirectCast(data, PointPack))
+            .reader = New MSIReader(DirectCast(data, PointPack), Me)
         }
     End Function
 
     Private Function createPixelReader() As ggplotBase
         Return New ggplotBase() With {
-            .reader = New MSIReader(New PointPack With {.pixels = DirectCast(data, PixelData())})
+            .reader = New MSIReader(New PointPack With {
+                .pixels = DirectCast(data, PixelData())
+            }, Me)
         }
     End Function
 
@@ -132,7 +134,7 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         }
     End Function
 
-    Private Function createMzPackReader() As ggplotBase
+    Private Function createMzPackReader(mapping As ggplot.ggplotReader) As ggplotBase
         Dim mzpack As mzPack = DirectCast(data, mzPack)
         Dim metadata = mzpack.metadata
         Dim scan_x = Val(metadata.TryGetValue("width", [default]:=0))
@@ -157,7 +159,17 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         End If
 
         Return New ggplotBase With {
-            .reader = New MSIReader(mzpack)
+            .reader = New MSIReader(mzpack, Me) With {
+                .args = mapping.args,
+                .[class] = mapping.class,
+                .color = mapping.color,
+                .label = mapping.label,
+                .shape = mapping.shape,
+                .title = mapping.title,
+                .x = mapping.x,
+                .y = mapping.y,
+                .z = mapping.z
+            }
         }
     End Function
 End Class

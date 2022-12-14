@@ -85,4 +85,6 @@
 
   <Import Project="..\..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems" Label="Shared" />
 
+  <Import Project="..\..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems" Label="Shared" />
+
 </Project>

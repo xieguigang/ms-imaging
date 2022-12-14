@@ -81,6 +81,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HTS_matrix-netcore5", "..\.
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "designer-netcore5", "..\..\..\..\GCModeller\src\workbench\modules\ExperimentDesigner\designer-netcore5.vbproj", "{09129FBF-9B5B-4793-8988-0900A9A2A2C3}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_plot.interop", "..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.shproj", "{3DB4F673-68C2-41EA-B7DC-8CAF8BAB574D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1772,15 +1774,19 @@ Global
 		{B78B3B5E-BD52-40DC-923B-EA117FAC98BC} = {D9278681-8FC8-4D19-95BF-0EF77ECA7BA2}
 		{F164C11D-3B49-4F6C-AE28-1E973E0577C3} = {D9278681-8FC8-4D19-95BF-0EF77ECA7BA2}
 		{09129FBF-9B5B-4793-8988-0900A9A2A2C3} = {D9278681-8FC8-4D19-95BF-0EF77ECA7BA2}
+		{3DB4F673-68C2-41EA-B7DC-8CAF8BAB574D} = {41D05E2F-B5E2-4613-81A5-C385D4175C4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB6AE3CD-B26B-4DD4-9682-BED759F7A40E}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\..\GCModeller\src\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{186d2f67-97f7-4381-bcbf-8d5f86ce7dfb}*SharedItemsImports = 5
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{3db4f673-68c2-41ea-b7dc-8caf8bab574d}*SharedItemsImports = 13
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{5bd88dbb-f451-48f0-aa5d-e67e197fc713}*SharedItemsImports = 5
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{5bd88dbb-f451-48f0-aa5d-e67e197fc713}*SharedItemsImports = 5
 		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{5bd88dbb-f451-48f0-aa5d-e67e197fc713}*SharedItemsImports = 5
 		..\mzkit.interopArguments\mzkit.interopArguments.projitems*{c295c3af-3e62-4756-966a-3d0b90ded160}*SharedItemsImports = 13
 	EndGlobalSection

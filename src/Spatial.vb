@@ -23,6 +23,7 @@ Public Module ggplotSpatial
                                      geneID As String,
                                      STdata As Object,
                                      Optional colorSet As Object = "viridis:turbo",
+                                     Optional size As Double = 13,
                                      Optional env As Environment = Nothing) As Object
 
         Dim STMatrix As MatrixViewer
@@ -62,7 +63,8 @@ Public Module ggplotSpatial
             .STdata = STMatrix,
             .label = tile.label,
             .ordinal = index,
-            .colorMap = ggplotColorMap.CreateColorMap(colorSet, 1, env)
+            .colorMap = ggplotColorMap.CreateColorMap(colorSet, 1, env),
+            .spotSize = size
         }
     End Function
 End Module
