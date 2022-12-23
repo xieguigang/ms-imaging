@@ -70,6 +70,7 @@
     <ProjectReference Include="..\..\..\..\..\mzkit\src\assembly\assembly\assembly-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\mzkit\src\mzmath\ms2_math-core\mzmath-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\src\assembly\mzPack\mzpack.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\..\src\mzmath\SingleCells\SingleCells.vbproj" />
     <ProjectReference Include="..\..\..\..\src\visualize\MsImaging\MsImaging.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\src\visualize\TissueMorphology\TissueMorphology.vbproj" />
   </ItemGroup>
