@@ -67,14 +67,11 @@ Namespace layers.spatial
                              In spots
                              Let poly = New Polygon2D(spot.SMX, spot.SMY)
                              Select poly.GetRectangle.Size).ToArray
-            Dim sizeMean As New SizeF With {
-                .Width = spotSizes.Average(Function(s) s.Width),
-                .Height = spotSizes.Average(Function(s) s.Height)
-            }
-            sizeMean = New SizeF(
-                stdNum.Max(sizeMean.Width, sizeMean.Height) * spotSize,
-                stdNum.Max(sizeMean.Width, sizeMean.Height) * spotSize
-            )
+            'Dim sizeMean As New SizeF With {
+            '    .Width = spotSizes.Average(Function(s) s.Width),
+            '    .Height = spotSizes.Average(Function(s) s.Height)
+            '}
+            Dim sizeMean As New SizeF(spotSize, spotSize)
             Dim offset As PointF = DirectCast(ggplot.base.reader, MSIReader).offset
 
             Call println($"render {label}...")

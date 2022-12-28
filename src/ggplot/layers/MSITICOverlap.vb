@@ -8,7 +8,9 @@ Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.Linq
 Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace layers
@@ -42,14 +44,17 @@ Namespace layers
             End If
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim black = rect.Size.CreateGDIDevice(filled:=Color.Black).ImageResource
-            Dim TIC As Image = New RectangleRender(Drivers.Default, False).RenderPixels(
+            Dim black = reader.dimension.CreateGDIDevice(filled:=Color.Black).ImageResource
+            Dim TIC As Bitmap = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,
                 dimension:=ggplot.GetDimensionSize(reader.dimension),
                 colorSet:=colorSet,
                 mapLevels:=250,
                 defaultFill:="black"
-            ).AsGDIImage
+            ).AsGDIImage _
+             .DoCall(Function(img) New Bitmap(img))
+
+            TIC = New Drawing2D.HeatMap.RasterScaler(TIC).Scale(hqx:=HqxScales.Hqx_4x)
 
             stream.theme.gridFill = "transparent"
             stream.g.DrawImage(black, rect)
