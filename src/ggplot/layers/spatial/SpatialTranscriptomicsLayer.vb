@@ -8,7 +8,6 @@ Imports ggplot.layers
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports SMRUCC.genomics.Analysis.HTS.DataFrame
-Imports stdNum = System.Math
 
 Namespace layers.spatial
 

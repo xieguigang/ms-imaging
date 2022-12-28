@@ -22,7 +22,7 @@ Public Module ggplotSpatial
     Public Function geom_spatialtile(tile As SpatialMapping,
                                      geneID As String,
                                      STdata As Object,
-                                     Optional colorSet As Object = "viridis:turbo",
+                                     Optional colorSet As Object = "grays",
                                      Optional size As Double = 13,
                                      Optional env As Environment = Nothing) As Object
 

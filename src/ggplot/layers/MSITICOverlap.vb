@@ -10,6 +10,7 @@ Imports ggplot.layers
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Linq
 Imports any = Microsoft.VisualBasic.Scripting
 
@@ -44,7 +45,7 @@ Namespace layers
             End If
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim black = reader.dimension.CreateGDIDevice(filled:=Color.Black).ImageResource
+            Dim black = reader.dimension.Scale(2).CreateGDIDevice(filled:=Color.Black).ImageResource
             Dim TIC As Bitmap = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,
                 dimension:=ggplot.GetDimensionSize(reader.dimension),
