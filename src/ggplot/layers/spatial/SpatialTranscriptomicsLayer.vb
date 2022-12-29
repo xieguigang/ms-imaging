@@ -1,5 +1,7 @@
 Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
 Imports ggplot
 Imports ggplot.colors
@@ -47,6 +49,33 @@ Namespace layers.spatial
                 End If
 
                 Call spotVals.Add(spot.barcode, data)
+            Next
+
+            Return interpolate(spotVals)
+        End Function
+
+        Private Function interpolate(spotVals As Dictionary(Of String, Double)) As Dictionary(Of String, Double)
+            Dim STdims As New Polygon2D(spots.Select(Function(s) New PointF(s.spotXY(0), s.spotXY(1))).ToArray)
+            Dim layer As New SingleIonLayer With {
+                .DimensionSize = New Size(STdims.xpoints.Max, STdims.ypoints.Max),
+                .IonMz = "STdata",
+                .MSILayer = spots _
+                    .Select(Function(s)
+                                Return New PixelData With {
+                                    .intensity = spotVals(s.barcode),
+                                    .x = s.spotXY(0),
+                                    .y = s.spotXY(1),
+                                    .sampleTag = s.barcode
+                                }
+                            End Function) _
+                    .ToArray
+            }
+            Dim interpo As New SoftenScaler()
+
+            layer = interpo.DoIntensityScale(layer)
+
+            For Each spot As PixelData In layer.MSILayer
+                spotVals(spot.sampleTag) = spot.intensity
             Next
 
             Return spotVals
