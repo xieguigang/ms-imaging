@@ -1,0 +1,39 @@
+.\" man page create by R# package system.
+.TH GGPLOT 1 2000-01-01 "geom_msiheatmap" "geom_msiheatmap"
+.SH NAME
+geom_msiheatmap \- create a new ms-imaging heatmap layer
+.SH SYNOPSIS
+\fIgeom_msiheatmap(\fBlayer\fR as <integer> IntensitySummary = \fB<NULL>\fR, 
+\fBcolors\fR as any = "viridis:turbo", 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+create a new ms-imaging heatmap layer
+.PP
+.SH OPTIONS
+.PP
+\fBlayer\fB \fR\- 
+ value of this parameter can be:
+ 
+ 1. nothing: means rgb heatmap layer
+ 2. Total: means TIC
+ 3. BasePeak: means BPC
+ 4. Average: means average ions
+ 
+. 
+.PP
+.PP
+\fBcolors\fB \fR\- 
+ the color scaler name for the heatmap rendering, this 
+ parameter only works when the **`layer`** 
+ parameter value is not nothing.
+. 
+.PP
+.SH SEE ALSO
+ggplot
+.SH FILES
+.PP
+MSImaging.dll
+.PP
+.SH COPYRIGHT
+Copyright (c) 2021 この中二病に爆焔を！

@@ -1,0 +1,70 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "aes" "aes"
+.SH NAME
+aes \- Construct aesthetic mappings
+.SH SYNOPSIS
+\fIaes(\fBx\fR as any = \fB<NULL>\fR, 
+\fBy\fR as any = \fB<NULL>\fR, 
+\fBz\fR as any = \fB<NULL>\fR, 
+\fBlabel\fR as any = \fB<NULL>\fR, 
+\fBcolor\fR as any = \fB<NULL>\fR, 
+\fBtitle\fR as string = \fB<NULL>\fR, 
+\fBshape\fR as any = \fB<NULL>\fR, 
+\fBclass\fR as any = \fB<NULL>\fR, 
+..., 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Construct aesthetic mappings
+ 
+ Aesthetic mappings describe how variables in the data are mapped 
+ to visual properties (aesthetics) of geoms. Aesthetic mappings 
+ can be set in ggplot() and in individual layers.
+.PP
+.SH OPTIONS
+.PP
+\fBx\fB \fR\- 
+ List of name-value pairs in the form aesthetic = variable describing 
+ which variables in the layer data should be mapped to which aesthetics 
+ used by the paired geom/stat. The expression variable is evaluated 
+ within the layer data, so there is no need to refer to the original 
+ dataset (i.e., use ggplot(df, aes(variable)) instead of 
+ \fBggplot(df, aes(df$variable)))\fR. The names for x and y aesthetics 
+ are typically omitted because they are so common; all other aesthetics
+ must be named.
+. 
+.PP
+.PP
+\fBy\fB \fR\- -. 
+.PP
+.PP
+\fBcolor\fB \fR\- -. 
+.PP
+.PP
+\fBclass\fB \fR\- 
+ mapping data of the element class group.
+. 
+.PP
+.PP
+\fBenv\fB \fR\- -. 
+.PP
+.SH VALUE
+.PP
+A list with class uneval. Components of the list are either quosures 
+ or constants.
+.PP
+.SH DETAILS
+.PP
+This function also standardises aesthetic names by converting color to 
+ colour (also in substrings, e.g., point_color to point_colour) and 
+ translating old style R names to ggplot names (e.g., pch to shape and 
+ cex to size).
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.
