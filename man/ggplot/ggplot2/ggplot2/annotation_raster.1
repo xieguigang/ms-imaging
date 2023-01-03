@@ -1,0 +1,30 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "annotation_raster" "annotation_raster"
+.SH NAME
+annotation_raster \- annotation_raster: Annotation: high-performance rectangular tiling
+.SH SYNOPSIS
+\fIannotation_raster(\fBraster\fR as any);\fR
+.SH DESCRIPTION
+.PP
+annotation_raster: Annotation: high-performance rectangular tiling
+ 
+ This is a special version of geom_raster() optimised for static 
+ annotations that are the same in every panel. These annotations 
+ will not affect scales (i.e. the x and y axes will not grow to cover 
+ the range of the raster, and the raster must already have its own 
+ colours). This is useful for adding bitmap images.
+.PP
+.SH OPTIONS
+.PP
+\fBraster\fB \fR\- 
+ raster object to display, may be an array or a nativeRaster
+. 
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.
