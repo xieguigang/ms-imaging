@@ -1,0 +1,79 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "theme" "theme"
+.SH NAME
+theme \- Modify components of a theme
+.SH SYNOPSIS
+\fItheme(\fBtext\fR as <generic> textElement = \fB<NULL>\fR, 
+\fBaxis_text\fR as <generic> textElement = \fB<NULL>\fR, 
+\fBaxis_title\fR as <generic> textElement = \fB<NULL>\fR, 
+\fBaxis_line\fR as any = "stroke: black; stroke-width: 5px; stroke-dash: solid;", 
+\fBaxis_text_x\fR as <generic> textElement = \fB<NULL>\fR, 
+\fBlegend_background\fR as string = "white", 
+\fBlegend_text\fR as <generic> textElement = \fB<NULL>\fR, 
+\fBlegend_split\fR as integer = 6, 
+\fBplot_background\fR as string = \fB<NULL>\fR, 
+\fBplot_title\fR as <generic> textElement = \fB<NULL>\fR, 
+\fBpanel_background\fR as string = \fB<NULL>\fR, 
+\fBpanel_grid\fR as any = "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", 
+\fBpanel_border\fR as <generic> rectElement = \fB<NULL>\fR);\fR
+.SH DESCRIPTION
+.PP
+Modify components of a theme
+ 
+ Themes are a powerful way to customize the non-data components of 
+ your plots: i.e. titles, labels, fonts, background, gridlines, and 
+ legends. Themes can be used to give plots a consistent customized 
+ look. Modify a single plot's theme using theme(); see theme_update() 
+ if you want modify the active theme, to affect all subsequent plots. 
+ Use the themes available in complete themes if you would like to use 
+ a complete theme such as theme_bw(), theme_minimal(), and more. 
+ 
+ Theme elements are documented together according to inheritance, read
+ more about theme inheritance below.
+.PP
+.SH OPTIONS
+.PP
+\fBaxis_text\fB \fR\- -. 
+.PP
+.PP
+\fBtext\fB \fR\- all text elements (element_text()). 
+.PP
+.PP
+\fBplot_background\fB \fR\- background of the entire plot (element_rect(); inherits from rect). 
+.PP
+.PP
+\fBlegend_background\fB \fR\- background of legend (element_rect(); inherits from rect). 
+.PP
+.PP
+\fBpanel_background\fB \fR\- background of plotting area, drawn underneath plot (element_rect(); inherits from rect). 
+.PP
+.PP
+\fBlegend_text\fB \fR\- legend item labels (element_text(); inherits from text). 
+.PP
+.PP
+\fBaxis_line\fB \fR\- lines along axes (element_line()). Specify lines 
+ along all axes (axis.line), lines for each plane (using axis.line.x or 
+ axis.line.y), or individually for each axis (using axis.line.x.bottom, 
+ axis.line.x.top, axis.line.y.left, axis.line.y.right). \fBaxis.line.*.*\fR 
+ inherits from axis.line.* which inherits from axis.line, which in turn 
+ inherits from line. 
+.PP
+.SH DETAILS
+.PP
+Theme elements inherit properties from other theme elements hierarchically. 
+ For example, axis.title.x.bottom inherits from axis.title.x which inherits 
+ from axis.title, which in turn inherits from text. All text elements inherit
+ directly or indirectly from text; all lines inherit from line, and all 
+ rectangular objects inherit from rect. This means that you can modify the 
+ appearance of multiple elements by setting a single high-level component.
+ 
+ Learn more about setting these aesthetics In vignette("ggplot2-specs").
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.

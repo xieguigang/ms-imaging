@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Theme elements</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <style rel="stylesheet" type="text/css">
+        @media screen {
+            .container {
+                padding-right: 10px;
+                padding-left: 10px;
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 900px;
+            }
+        }
+
+        .rimage img {
+            /* from knitr - for examples and demos */
+            width: 96%;
+            margin-left: 2%;
+        }
+
+        .katex {
+            font-size: 1.1em;
+        }
+
+        code {
+            color: rgb(194, 42, 42);
+            background: inherit;
+            font-style:italic;
+            font-weight: bold;
+        }
+
+        body {
+            line-height: 1.4;
+            background: white;
+            color: black;
+        }
+
+        a:link {
+            background: white;
+            color: blue;
+        }
+
+        a:visited {
+            background: white;
+            color: rgb(50%, 0%, 50%);
+        }
+
+        h1 {
+            background: white;
+            color: rgb(55%, 55%, 55%);
+            font-family: monospace;
+            font-size: 1.4em;
+            /* x-large; */
+            text-align: center;
+        }
+
+        h2 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-size: 1.2em;
+            /* large; */
+            text-align: center;
+        }
+
+        h3 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-size: 1.2em;
+            /* large; */
+        }
+
+        h4 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-style: italic;
+            font-size: 1.2em;
+            /* large; */
+        }
+
+        h5 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+        }
+
+        h6 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-style: italic;
+        }
+
+        img.toplogo {
+            width: 4em;
+            vertical-align: middle;
+        }
+
+        img.arrow {
+            width: 30px;
+            height: 30px;
+            border: 0;
+        }
+
+        span.acronym {
+            font-size: small;
+        }
+
+        span.env {
+            font-family: monospace;
+        }
+
+        span.file {
+            font-family: monospace;
+        }
+
+        span.option {
+            font-family: monospace;
+        }
+
+        span.pkg {
+            font-weight: bold;
+        }
+
+        span.samp {
+            font-family: monospace;
+        }
+
+        div.vignettes a:hover {
+            background: rgb(85%, 85%, 85%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>element_rect {ggplot2}</td>
+                <td style="text-align: right;">R Documentation</td>
+            </tr>
+        </table>
+
+        <h2>Theme elements</h2>
+
+        <h3>Description</h3>
+
+        <p><br /> In conjunction with the theme system, the <code>element_</code> functions<br /> specify the display of how non-data components of the plot are <br /> drawn.<br /> <br /> borders and backgrounds.</p>
+
+        <h3>Usage</h3>
+
+        <div style="width: 100%; padding-left: 3%; color: black;">
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>element_rect</strong>(
+    <i>fill</i> = <span style='color: blue;'>NULL</span>,
+    <i>colour</i> = <span style='color: blue;'>NULL</span>,
+    <i>size</i> = 1,
+    <i>linetype</i> = Solid,
+    <i>color</i> = <span style='color: blue;'>NULL</span>,
+    <i>inherit.blank</i> = <span style='color: blue;'>FALSE</span>);</code></pre>
+        </div>
+
+        <h3>Arguments</h3>
+
+        <table>
+            
+<dt>fill</dt>
+<dd><p><p>Fill colour.</p></p></dd>
+
+
+<dt>color</dt>
+<dd><p><p>Line/border colour. Color is an alias for colour.</p></p></dd>
+
+
+<dt>colour</dt>
+<dd><p><p>Line/border colour. Color is an alias for colour.</p></p></dd>
+
+
+<dt>size</dt>
+<dd><p><p>Line/border size in mm; text size in pts.</p></p></dd>
+
+
+<dt>linetype</dt>
+<dd><p><p>Line type. An integer (0:8), a name (blank, solid, dashed, dotted, <br />
+ dotdash, longdash, twodash), or a string with an even number (up <br />
+ to eight) of hexadecimal digits which give the lengths in consecutive <br />
+ positions in the string.</p></p></dd>
+
+
+<dt>inherit.blank</dt>
+<dd><p><p>Should this element inherit the existence of an element_blank <br />
+ among its parents? If TRUE the existence of a blank element<br />
+ among its parents will cause this element to be blank as well. <br />
+ If FALSE any blank parent element will be ignored when calculating<br />
+ final element state.</p></p></dd>
+
+        </table>
+
+
+        <h3 style="display: none;">Details</h3>
+
+        
+
+
+        <h3>Value</h3>
+
+        this function returns data object of type <a href="/clr/ggplot/elements/rectElement.html">rectElement</a>.
+
+        <hr />
+        <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a
+                href="../ggplot2.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+</html>

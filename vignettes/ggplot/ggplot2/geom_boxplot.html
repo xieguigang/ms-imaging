@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A box and whiskers plot (in the style of Tukey)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <style rel="stylesheet" type="text/css">
+        @media screen {
+            .container {
+                padding-right: 10px;
+                padding-left: 10px;
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 900px;
+            }
+        }
+
+        .rimage img {
+            /* from knitr - for examples and demos */
+            width: 96%;
+            margin-left: 2%;
+        }
+
+        .katex {
+            font-size: 1.1em;
+        }
+
+        code {
+            color: rgb(194, 42, 42);
+            background: inherit;
+            font-style:italic;
+            font-weight: bold;
+        }
+
+        body {
+            line-height: 1.4;
+            background: white;
+            color: black;
+        }
+
+        a:link {
+            background: white;
+            color: blue;
+        }
+
+        a:visited {
+            background: white;
+            color: rgb(50%, 0%, 50%);
+        }
+
+        h1 {
+            background: white;
+            color: rgb(55%, 55%, 55%);
+            font-family: monospace;
+            font-size: 1.4em;
+            /* x-large; */
+            text-align: center;
+        }
+
+        h2 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-size: 1.2em;
+            /* large; */
+            text-align: center;
+        }
+
+        h3 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-size: 1.2em;
+            /* large; */
+        }
+
+        h4 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-style: italic;
+            font-size: 1.2em;
+            /* large; */
+        }
+
+        h5 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+        }
+
+        h6 {
+            background: white;
+            color: rgb(40%, 40%, 40%);
+            font-family: monospace;
+            font-style: italic;
+        }
+
+        img.toplogo {
+            width: 4em;
+            vertical-align: middle;
+        }
+
+        img.arrow {
+            width: 30px;
+            height: 30px;
+            border: 0;
+        }
+
+        span.acronym {
+            font-size: small;
+        }
+
+        span.env {
+            font-family: monospace;
+        }
+
+        span.file {
+            font-family: monospace;
+        }
+
+        span.option {
+            font-family: monospace;
+        }
+
+        span.pkg {
+            font-weight: bold;
+        }
+
+        span.samp {
+            font-family: monospace;
+        }
+
+        div.vignettes a:hover {
+            background: rgb(85%, 85%, 85%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>geom_boxplot {ggplot2}</td>
+                <td style="text-align: right;">R Documentation</td>
+            </tr>
+        </table>
+
+        <h2>A box and whiskers plot (in the style of Tukey)</h2>
+
+        <h3>Description</h3>
+
+        <p><br /> The boxplot compactly displays the distribution of a continuous variable. <br /> It visualises five summary statistics (the median, two hinges and two <br /> whiskers), and all "outlying" points individually.</p>
+
+        <h3>Usage</h3>
+
+        <div style="width: 100%; padding-left: 3%; color: black;">
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_boxplot</strong>(
+    <i>color</i> = <span style='color: blue;'>NULL</span>,
+    <i>width</i> = 1,
+    <i>alpha</i> = 0.95);</code></pre>
+        </div>
+
+        <h3>Arguments</h3>
+
+        <table>
+            
+        </table>
+
+
+        <h3 style="display: block;">Details</h3>
+
+        <h2>Orientation</h2>
+
+<p>This geom treats Each axis differently And, thus, can thus have two <br />
+ orientations. Often the orientation Is easy To deduce from a combination <br />
+ Of the given mappings And the types Of positional scales In use. Thus, <br />
+ ggplot2 will by Default Try To guess which orientation the layer should <br />
+ have. Under rare circumstances, the orientation Is ambiguous And guessing <br />
+ may fail. In that Case the orientation can be specified directly Using the <br />
+ orientation parameter, which can be either "x" Or "y". The value gives <br />
+ the axis that the geom should run along, "x" being the Default orientation <br />
+ you would expect For the geom.</p>
+
+<p>## Summary statistics<br />
+ The lower And upper hinges correspond To the first And third quartiles <br />
+ (the 25th And 75th percentiles). This differs slightly from the method <br />
+ used by the boxplot() Function, And may be apparent With small samples. <br />
+ See boxplot.stats() For For more information On how hinge positions are <br />
+ calculated For boxplot().</p>
+
+<p>The upper whisker extends from the hinge To the largest value no further <br />
+ than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or <br />
+ distance between the first And third quartiles). The lower whisker extends <br />
+ from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data <br />
+ beyond the End Of the whiskers are called "outlying" points And are plotted <br />
+ individually.</p>
+
+<p>In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a <br />
+ roughly 95% confidence interval for comparing medians. See McGill et al. <br />
+ (1978) for more details.</p>
+
+<p>## Aesthetics<br />
+ geom_boxplot() understands the following aesthetics (required aesthetics are <br />
+ in bold):</p>
+
+<ul>
+<li>x Or y</li>
+<li>lower Or xlower</li>
+<li>upper Or xupper</li>
+<li>middle Or xmiddle</li>
+<li>ymin Or xmin</li>
+<li>ymax Or xmax</li>
+<li>alpha</li>
+<li>colour</li>
+<li>fill</li>
+<li>group</li>
+<li>linetype</li>
+<li>shape</li>
+<li>size</li>
+<li><p>weight</p>
+
+<p>Learn more about setting these aesthetics In vignette("ggplot2-specs").</p>
+
+<h2>Computed variables</h2>
+
+<p>stat_boxplot() provides the following variables, some of which depend on the orientation:</p></li>
+<li><p>width: width of boxplot</p></li>
+<li>ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR</li>
+<li>lower Or xlower: lower hinge, 25% quantile</li>
+<li>notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)</li>
+<li>middle Or xmiddle: median, 50% quantile</li>
+<li>notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)</li>
+<li>upper Or xupper: upper hinge, 75% quantile</li>
+<li><p>ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR</p>
+
+<h2>References</h2>
+
+<blockquote>
+  <p>McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. <br />
+  The American Statistician 32, 12-16.</p>
+</blockquote></li>
+</ul>
+
+
+        <h3>Value</h3>
+
+        this function returns data object of type <a href="/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a>.
+
+        <hr />
+        <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a
+                href="../ggplot2.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+</html>

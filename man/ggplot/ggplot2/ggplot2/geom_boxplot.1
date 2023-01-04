@@ -1,0 +1,94 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-01-01 "geom_boxplot" "geom_boxplot"
+.SH NAME
+geom_boxplot \- A box and whiskers plot (in the style of Tukey)
+.SH SYNOPSIS
+\fIgeom_boxplot(\fBcolor\fR as list = \fB<NULL>\fR, 
+\fBwidth\fR as double = 1, 
+\fBalpha\fR as double = 0.95, 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+A box and whiskers plot (in the style of Tukey)
+ 
+ The boxplot compactly displays the distribution of a continuous variable. 
+ It visualises five summary statistics (the median, two hinges and two 
+ whiskers), and all "outlying" points individually.
+.PP
+.SH DETAILS
+.PP
+## Orientation
+ This geom treats Each axis differently And, thus, can thus have two 
+ orientations. Often the orientation Is easy To deduce from a combination 
+ Of the given mappings And the types Of positional scales In use. Thus, 
+ ggplot2 will by Default Try To guess which orientation the layer should 
+ have. Under rare circumstances, the orientation Is ambiguous And guessing 
+ may fail. In that Case the orientation can be specified directly Using the 
+ orientation parameter, which can be either "x" Or "y". The value gives 
+ the axis that the geom should run along, "x" being the Default orientation 
+ you would expect For the geom.
+
+ ## Summary statistics
+ The lower And upper hinges correspond To the first And third quartiles 
+ (the 25th And 75th percentiles). This differs slightly from the method 
+ used by the boxplot() Function, And may be apparent With small samples. 
+ See boxplot.stats() For For more information On how hinge positions are 
+ calculated For boxplot().
+
+ The upper whisker extends from the hinge To the largest value no further 
+ than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or 
+ distance between the first And third quartiles). The lower whisker extends 
+ from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data 
+ beyond the End Of the whiskers are called "outlying" points And are plotted 
+ individually.
+
+ In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a 
+ roughly 95% confidence interval for comparing medians. See McGill et al. 
+ (1978) for more details.
+
+ ## Aesthetics
+ geom_boxplot() understands the following aesthetics (required aesthetics are 
+ in bold):
+
+ + x Or y
+ + lower Or xlower
+ + upper Or xupper
+ + middle Or xmiddle
+ + ymin Or xmin
+ + ymax Or xmax
+ + alpha
+ + colour
+ + fill
+ + group
+ + linetype
+ + shape
+ + size
+ + weight
+
+ Learn more about setting these aesthetics In vignette("ggplot2-specs").
+
+ ## Computed variables
+ stat_boxplot() provides the following variables, some of which depend on the orientation:
+
+ + width: width of boxplot
+ + ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR
+ + lower Or xlower: lower hinge, 25% quantile
+ + notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)
+ + middle Or xmiddle: median, 50% quantile
+ + notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)
+ + upper Or xupper: upper hinge, 75% quantile
+ + ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR
+
+ ## References
+ 
+ > McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. 
+   The American Statistician 32, 12-16.
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.
