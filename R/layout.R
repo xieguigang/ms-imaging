@@ -26,7 +26,7 @@ const autoSize = function(dims, padding,
                           scale = 1, 
                           is_multiple_combine_wide = FALSE, 
                           ratio_threshold = 1.5) {
-                            
+
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
     scale   = .auto_size_internal(dims, padding, scale);
@@ -38,9 +38,21 @@ const autoSize = function(dims, padding,
 
         if (ratio > threshold) {
             # is w >> h
+            # keeps the height
+            # and scale width
+            scale = [
+                scale[2] * ratio_threshold,
+                scale[2]
+            ];
         } else {
             if (ratio < [-threshold]) {
                 # is h >> w
+                # keeps the width
+                # and scale the height
+                scale = [
+                    scale[1],
+                    scale[1] * ratio_threshold
+                ];
             } else {
                 # the ratio is nearly 1:1
                 # do nothing
