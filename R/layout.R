@@ -12,6 +12,9 @@ require(graphics2D);
 #' @param padding  the padding element is a numeric vector with 
 #'     four elements standards for css padding value: 
 #'     ``[top, right, bottom, left]``. 
+#' @param is_multiple_combine_wide the function will trying to
+#'     make the aspect ratio equals to 1:1 if this parameter value
+#'     is set to false by default.
 #' 
 #' @return this function returns a list object that contains 
 #'   the recommended size value for the MSImaging plot. the 
@@ -19,13 +22,39 @@ require(graphics2D);
 #'   a dimension vector with two elements standards for 
 #'   ``[w, h]``.
 #' 
-const autoSize = function(dims, padding, scale = 1) {
+const autoSize = function(dims, padding, 
+                          scale = 1, 
+                          is_multiple_combine_wide = FALSE, 
+                          ratio_threshold = 1.5) {
+                            
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
+    scale   = .auto_size_internal(dims, padding, scale);
 
-    .auto_size_internal(dims, padding, scale);
+    if (!is_multiple_combine_wide) {
+        # try to make the w/h ratio 1:1
+        let ratio as double = log(scale[1]/scale[2], 2);
+        let threshold as double = ratio_threshold;
+
+        if (ratio > threshold) {
+            # is w >> h
+        } else {
+            if (ratio < [-threshold]) {
+                # is h >> w
+            } else {
+                # the ratio is nearly 1:1
+                # do nothing
+            }
+        }
+    }
+
+    scale;
 }
 
+#' Evaluate the canvas size
+#' 
+#' @return A size numeric vector with two elements: w,h
+#' 
 const .auto_size_internal = function(dims, padding, scale = 1) {
     const vpad = padding[1] + padding[3];
     const hpad = padding[2] + padding[4]; 
