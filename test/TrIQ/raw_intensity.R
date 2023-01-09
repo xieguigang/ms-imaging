@@ -37,7 +37,7 @@ bitmap(file = `${@dir}/intensity_hist.png`, size = [1800, 1400]) {
 }
 
 bitmap(file = `${@dir}/logIntensity_hist.png`, size = [2000, 1400]) {
-	ggplot(data.frame(log_intensity = log(data[, "intensity"])), aes(x = "log_intensity"), padding = "padding:200px 500px 200px 200px;")
+	ggplot(data.frame(log_intensity = .Internal::log(data[, "intensity"])), aes(x = "log_intensity"), padding = "padding:200px 500px 200px 200px;")
 	  + geom_histogram(bins = 100,  color = "steelblue")
 	  + ggtitle("Frequency of intensity")
 	  + scale_x_continuous(labels = "G2")

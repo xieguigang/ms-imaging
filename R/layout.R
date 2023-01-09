@@ -33,7 +33,7 @@ const autoSize = function(dims, padding,
 
     if (!is_multiple_combine_wide) {
         # try to make the w/h ratio 1:1
-        let ratio as double = log(scale[1]/scale[2], 2);
+        let ratio as double = .Internal::log(scale[1]/scale[2], 2);
         let threshold as double = ratio_threshold;
 
         if (ratio > threshold) {
