@@ -25,7 +25,7 @@ require(graphics2D);
 const autoSize = function(dims, padding,
                           scale = 1, 
                           is_multiple_combine_wide = FALSE, 
-                          ratio_threshold = 1.25) {
+                          ratio_threshold = 1.3) {
 
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
