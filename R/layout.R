@@ -22,10 +22,10 @@ require(graphics2D);
 #'   a dimension vector with two elements standards for 
 #'   ``[w, h]``.
 #' 
-const autoSize = function(dims, padding, 
+const autoSize = function(dims, padding,
                           scale = 1, 
                           is_multiple_combine_wide = FALSE, 
-                          ratio_threshold = 1.5) {
+                          ratio_threshold = 1.25) {
 
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
