@@ -398,12 +398,24 @@ Public Module Rscript
     <ExportAPI("geom_MSIfilters")>
     Public Function geom_MSIfilters(<RLazyExpression> filters As Object, Optional env As Environment = Nothing) As Object
         If TypeOf filters Is BinaryExpression Then
-            Return New MSIFilterPipelineOption With {
-                .pipeline = BuildPipeline(filters, env, New RasterPipeline)
-            }
+            Dim pip As Object = BuildPipeline(filters, env, New RasterPipeline)
+
+            If TypeOf pip Is Message Then
+                Return pip
+            Else
+                Return New MSIFilterPipelineOption With {
+                   .pipeline = pip
+                }
+            End If
         ElseIf TypeOf filters Is FunctionInvoke Then
+            Dim eval As Object = DirectCast(filters, FunctionInvoke).Evaluate(env)
+
+            If TypeOf eval Is Message Then
+                Return eval
+            End If
+
             Return New MSIFilterPipelineOption With {
-                .pipeline = New RasterPipeline().Then(DirectCast(filters, FunctionInvoke).Evaluate(env))
+                .pipeline = New RasterPipeline().Then(eval)
             }
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
@@ -411,19 +423,44 @@ Public Module Rscript
     End Function
 
     <Extension>
-    Private Function BuildPipeline(bin As BinaryExpression, env As Environment, pip As RasterPipeline) As RasterPipeline
+    Private Function BuildPipeline(bin As BinaryExpression, env As Environment, pip As RasterPipeline) As Object
         Dim start As Expression = bin.left
         Dim right As Expression = bin.right
+        Dim pipEval As Object
 
         If TypeOf start Is BinaryExpression Then
-            pip = DirectCast(start, BinaryExpression).BuildPipeline(env, pip)
+            pipEval = DirectCast(start, BinaryExpression).BuildPipeline(env, pip)
+
+            If TypeOf pipEval Is Message Then
+                Return pipEval
+            Else
+                pip = pipEval
+            End If
         Else
-            pip.Add(start.Evaluate(env))
+            pipEval = start.Evaluate(env)
+
+            If TypeOf pipEval Is Message Then
+                Return pipEval
+            Else
+                Call pip.Add(pipEval)
+            End If
         End If
         If TypeOf right Is BinaryExpression Then
-            pip = DirectCast(right, BinaryExpression).BuildPipeline(env, pip)
+            pipEval = DirectCast(right, BinaryExpression).BuildPipeline(env, pip)
+
+            If TypeOf pipEval Is Message Then
+                Return pipEval
+            Else
+                pip = pipEval
+            End If
         Else
-            pip.Add(right.Evaluate(env))
+            pipEval = right.Evaluate(env)
+
+            If TypeOf pipEval Is Message Then
+                Return pipEval
+            Else
+                Call pip.Add(pipEval)
+            End If
         End If
 
         Return pip
