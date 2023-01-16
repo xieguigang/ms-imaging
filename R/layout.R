@@ -44,8 +44,8 @@ const autoSize = function(dims, padding,
         str(scale);
         print("log ratio value:");
         str(ratio);
-        print(`test of ratio(${ratio}) > threshold(${threshold}):`);
-        str(ratio > threshold);        
+        print(`test of ratio(${ratio}) > threshold(${threshold}) OR ratio(${ratio}) < [-threshold](${-threshold}):`);
+        str([ratio > threshold, ratio < [-threshold]]);        
 
         if (ratio > threshold) {
             # is w >> h
