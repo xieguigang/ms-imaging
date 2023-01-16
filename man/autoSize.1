@@ -3,12 +3,14 @@
 autoSize \- autoSize(dims, padding,
     <i>scale</i> = 1,
     <i>is.multiple.combine.wide</i> = <span style='color: blue;'>FALSE</span>,
-    <i>ratio.threshold</i> = 1.3)
+    <i>ratio.threshold</i> = 1.25,
+    <i>ratio.scale</i> = 1.5)
 .SH SYNOPSIS
 \fIautoSize(dims, padding,
     <i>scale</i> = 1,
     <i>is.multiple.combine.wide</i> = <span style='color: blue;'>FALSE</span>,
-    <i>ratio.threshold</i> = 1.3)\fR
+    <i>ratio.threshold</i> = 1.25,
+    <i>ratio.scale</i> = 1.5)\fR
 .SH OPTIONS
 .PP
 \fBdims\fB \fR\- . the dimension data of the MSImaging raw data. it should be a numeric vector with at least two element standards for ``[w, h]``; or a list object with at least two slot elements which are named ``w`` and ``h``.
@@ -23,7 +25,10 @@ autoSize \- autoSize(dims, padding,
 \fBis.multiple.combine.wide\fB \fR\- FALSE. 
 .PP
 .PP
-\fBratio.threshold\fB \fR\- 1.3. 
+\fBratio.threshold\fB \fR\- 1.25. 
+.PP
+.PP
+\fBratio.scale\fB \fR\- 1.5. 
 .PP
 .SH VALUE
 .PP
@@ -31,7 +36,7 @@ this function returns a list object that contains the recommended size value for
 .PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function.autoSize at layout.R:line 25
+SMRUCC/R#.declare_function.autoSize at layout.R:line 27
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2023
