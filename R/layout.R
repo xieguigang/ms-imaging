@@ -15,6 +15,8 @@ require(graphics2D);
 #' @param is_multiple_combine_wide the function will trying to
 #'     make the aspect ratio equals to 1:1 if this parameter value
 #'     is set to false by default.
+#' @param ratio_scale the scale of the ratio value should not be 1,
+#'     due to the reason of ``1`` means no changes.
 #' 
 #' @return this function returns a list object that contains 
 #'   the recommended size value for the MSImaging plot. the 
@@ -25,7 +27,8 @@ require(graphics2D);
 const autoSize = function(dims, padding,
                           scale = 1, 
                           is_multiple_combine_wide = FALSE, 
-                          ratio_threshold = 1.3) {
+                          ratio_threshold = 1.3,
+                          ratio_scale = 1.5) {
 
     dims    = graphics2D::sizeVector(dims);
     padding = graphics2D::paddingVector(padding); 
@@ -36,12 +39,20 @@ const autoSize = function(dims, padding,
         let ratio as double = .Internal::log(scale[1]/scale[2], 2);
         let threshold as double = ratio_threshold;
 
+        print("auto layout for non-multiple sample:");
+        print("the original layout size:");
+        str(scale);
+        print("log ratio value:");
+        str(ratio);
+        print(`test of ratio(${ratio}) > threshold(${threshold}):`);
+        str(ratio > threshold);        
+
         if (ratio > threshold) {
             # is w >> h
             # keeps the height
             # and scale width
             scale = [
-                scale[2] * ratio_threshold,
+                scale[2] * ratio_scale,
                 scale[2]
             ];
         } else {
@@ -51,7 +62,7 @@ const autoSize = function(dims, padding,
                 # and scale the height
                 scale = [
                     scale[1],
-                    scale[1] * ratio_threshold
+                    scale[1] * ratio_scale
                 ];
             } else {
                 # the ratio is nearly 1:1
