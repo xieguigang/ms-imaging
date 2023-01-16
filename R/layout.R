@@ -50,26 +50,29 @@ const autoSize = function(dims, padding,
 
         if (ratioW > threshold) {
             # is w >> h
-            # keeps the height
-            # and scale width
+            # keeps the width
+            # and up scale height by factor
             scale = [
-                scale[2] * ratio_scale,
-                scale[2]
+                scale[1],
+                scale[2] * ratio_scale
             ];
         } else {
             if (ratioH > [threshold]) {
                 # is h >> w
-                # keeps the width
-                # and scale the height
+                # keeps the height
+                # and up scale the width
                 scale = [
-                    scale[1],
-                    scale[1] * ratio_scale
+                    scale[1] * ratio_scale,
+                    scale[2] 
                 ];
             } else {
                 # the ratio is nearly 1:1
                 # do nothing
             }
         }
+
+        print("layout scale after the scaling:");
+        str(scale);
     }
 
     scale;
