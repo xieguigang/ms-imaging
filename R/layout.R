@@ -36,18 +36,19 @@ const autoSize = function(dims, padding,
 
     if (!is_multiple_combine_wide) {
         # try to make the w/h ratio 1:1
-        let ratio as double = .Internal::log(scale[1]/scale[2], 2);
+        let ratioW as double = .Internal::log(scale[1]/scale[2], 2);
+        let ratioH as double = .Internal::log(scale[2]/scale[1], 2);
         let threshold as double = ratio_threshold;
 
         print("auto layout for non-multiple sample:");
         print("the original layout size:");
         str(scale);
         print("log ratio value:");
-        str(ratio);
-        print(`test of ratio(${ratio}) > threshold(${threshold}) OR ratio(${ratio}) < [-threshold](${-threshold}):`);
-        str([ratio > threshold, ratio < [-threshold]]);        
+        str([ratioW, ratioH]);
+        print(`test of ratio(${ratioW}) > threshold(${threshold}) OR ratio(${ratioH}) > [threshold](${threshold}):`);
+        str([ratioW > threshold, ratioH > [threshold]]);        
 
-        if (ratio > threshold) {
+        if (ratioW > threshold) {
             # is w >> h
             # keeps the height
             # and scale width
@@ -56,7 +57,7 @@ const autoSize = function(dims, padding,
                 scale[2]
             ];
         } else {
-            if (ratio < [-threshold]) {
+            if (ratioH > [threshold]) {
                 # is h >> w
                 # keeps the width
                 # and scale the height
