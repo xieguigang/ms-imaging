@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::bf8cc1837d2a93304e4057b56762a448, Rscript\Library\MSI_app\src\ggplot\options\MSIDimensionSizeOption.vb"
+﻿#Region "Microsoft.VisualBasic::5c64fd25d4df6d70fc07147767da2655, Rscript\Library\MSI_app\src\ggplot\options\MSIDimensionSizeOption.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 9
     ' Comment Lines: 0
     '   Blank Lines: 3
-    '     File Size: 350 B
+    '     File Size: 349 B
 
 
     ' Class MSIDimensionSizeOption
@@ -66,4 +66,3 @@ Public Class MSIDimensionSizeOption : Inherits ggplotOption
         Return ggplot
     End Function
 End Class
-

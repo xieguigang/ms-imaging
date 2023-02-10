@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4e7dd36c103fc9d50c1c024ff8243ce7, Rscript\Library\MSI_app\src\Filters.vb"
+﻿#Region "Microsoft.VisualBasic::df51dca770ea63c1db55b2a2128c070c, Rscript\Library\MSI_app\src\Filters.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 30
     ' Comment Lines: 0
     '   Blank Lines: 7
-    '     File Size: 1.23 KB
+    '     File Size: 1.22 KB
 
 
     ' Module Filters
@@ -90,4 +90,3 @@ Module Filters
         Return New DenoiseScaler(q)
     End Function
 End Module
-

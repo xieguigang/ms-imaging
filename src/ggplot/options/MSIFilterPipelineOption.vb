@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::087f90f8dbe12fc4abdac053ca93ed70, Rscript\Library\MSI_app\src\ggplot\options\MSIFilterPipelineOption.vb"
+﻿#Region "Microsoft.VisualBasic::f496f1e7f2def8a997dcc54ed4760eb7, Rscript\Library\MSI_app\src\ggplot\options\MSIFilterPipelineOption.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 9
     ' Comment Lines: 0
     '   Blank Lines: 3
-    '     File Size: 403 B
+    '     File Size: 401 B
 
 
     ' Class MSIFilterPipelineOption
@@ -66,4 +66,3 @@ Public Class MSIFilterPipelineOption : Inherits ggplotOption
         Return ggplot
     End Function
 End Class
-
