@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::25c213636430d3222caef3913ca468fb, Rscript\Library\MSI_app\src\Rscript.vb"
+﻿#Region "Microsoft.VisualBasic::25c213636430d3222caef3913ca468fb, mzkit\Rscript\Library\MSI_app\src\Rscript.vb"
 
     ' Author:
     ' 
