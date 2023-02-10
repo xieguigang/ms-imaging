@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c3044223162cd933b4ab4b0481f8bc5e, mzkit\Rscript\Library\MSI_app\src\ggplot\MSIHeatMap.vb"
+﻿#Region "Microsoft.VisualBasic::00e392847b79576bafea5c52c466d014, Rscript\Library\MSI_app\src\ggplot\MSIHeatMap.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 24
     ' Comment Lines: 1
     '   Blank Lines: 5
-    '     File Size: 1.03 KB
+    '     File Size: 1005 B
 
 
     ' Class MSIHeatMap

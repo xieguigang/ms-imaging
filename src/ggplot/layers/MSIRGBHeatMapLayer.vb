@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ef39e5ba40258ad97a6f3cdaf60bf896, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\MSIHeatMapLayer.vb"
+﻿#Region "Microsoft.VisualBasic::71b4e8b3ed2b3500a34d489632ec5f00, Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBHeatMapLayer.vb"
 
     ' Author:
     ' 
@@ -38,13 +38,13 @@
     ' Code Statistics:
 
     '   Total Lines: 66
-    '    Code Lines: 59
-    ' Comment Lines: 0
+    '    Code Lines: 52
+    ' Comment Lines: 7
     '   Blank Lines: 7
-    '     File Size: 2.90 KB
+    '     File Size: 2.81 KB
 
 
-    '     Class MSIHeatMapLayer
+    '     Class MSIRGBHeatMapLayer
     ' 
     '         Function: legend, Plot
     ' 

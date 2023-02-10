@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::48ec1477be9268731ec8671f6591a7df, mzkit\Rscript\Library\MSI_app\src\ggplot\options\MSIGaussBlurOption.vb"
+﻿#Region "Microsoft.VisualBasic::48ec1477be9268731ec8671f6591a7df, Rscript\Library\MSI_app\src\ggplot\options\MSIGaussBlurOption.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 8
     ' Comment Lines: 0
     '   Blank Lines: 3
-    '     File Size: 301.00 B
+    '     File Size: 301 B
 
 
     ' Class MSIGaussBlurOption

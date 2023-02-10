@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::68cf5a3548f8863ff7744a851bc14ef9, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
+﻿#Region "Microsoft.VisualBasic::184a177d26f6d88f8d2133aad7ed38fa, Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
 
     ' Author:
     ' 
@@ -37,16 +37,16 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 41
-    '    Code Lines: 31
+    '   Total Lines: 42
+    '    Code Lines: 32
     ' Comment Lines: 0
     '   Blank Lines: 10
-    '     File Size: 1.70 KB
+    '     File Size: 1.73 KB
 
 
     '     Class ggplotMSILayer
     ' 
-    '         Properties: pixelDrawer, threshold
+    '         Properties: colorLevels, pixelDrawer, threshold
     ' 
     '         Function: (+2 Overloads) getIonlayer, MSIInterpolation
     ' 
