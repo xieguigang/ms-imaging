@@ -65,15 +65,16 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     print(savePng);
 
     # mzkit::ANOVAGroup
-    data = ANOVAGroup(met, sampleinfo);
-    ionName = ifelse(is.null(ionName), `M/Z: ${mz |> toString(format = "F3")}`, ionName);
-    combine_layout = combine_layout / sum(combine_layout);
-    width = size[1] - (padding_left + padding_right);
-    left = width * combine_layout[1];
-    right = width * combine_layout[2];
+    let data = ANOVAGroup(met, sampleinfo);
+    let width = size[1] - (padding_left + padding_right);
 
-    layout_left = `padding: ${padding_top}px ${padding_right + right}px ${padding_bottom}px ${padding_left}px;`;
-    layout_right = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_right + left + interval}px;`;
+    ionName = ifelse(is.null(ionName), `M/Z: ${mz |> toString(format = "F3")}`, ionName);
+    combine_layout = combine_layout / sum(combine_layout);   
+
+    let left  = width * combine_layout[1];
+    let right = width * combine_layout[2];
+    let layout_left = `padding: ${padding_top}px ${padding_right + right}px ${padding_bottom}px ${padding_left}px;`;
+    let layout_right = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_right + left + interval}px;`;
 
     if (is.null(colorMap)) {
         colorMap = lapply(sampleinfo, i -> i$color);
@@ -91,7 +92,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     print(data, max.print = 13);
 
     # chartting at left
-    bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
+    const bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
     # Add horizontal line at base mean 
     + geom_hline(yintercept = mean(data$intensity), linetype="dash", line.width = 6, color = "red")
     + ggStatPlot(colorMap)
@@ -113,7 +114,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     ;
 
     # ms-imaging at right
-    ion = ggplot(mzpack, padding = layout_right)
+    const ion = ggplot(mzpack, padding = layout_right)
     # rendering of a single ion m/z
     # default color palette is Jet color set
     + geom_msimaging(
