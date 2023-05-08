@@ -13,7 +13,7 @@ declare namespace MSImaging {
      * @param ratio_scale default value Is ``1.5``.
    */
    function autoSize(dims:any, padding:any, scale:object, is_multiple_combine_wide:boolean, ratio_threshold:number, ratio_scale:number): object;
-   module  {
+   module _ {
       /**
         * @param scale default value Is ``1``.
       */
