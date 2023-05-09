@@ -3,16 +3,6 @@
 // package_source=MSImaging
 
 declare namespace MSImaging {
-   /**
-   */
-   function default_MSIfilter(): object;
-   /**
-     * @param scale default value Is ``1``.
-     * @param is_multiple_combine_wide default value Is ``False``.
-     * @param ratio_threshold default value Is ``1.25``.
-     * @param ratio_scale default value Is ``1.5``.
-   */
-   function autoSize(dims:any, padding:any, scale:object, is_multiple_combine_wide:boolean, ratio_threshold:number, ratio_scale:number): object;
    module _ {
       /**
         * @param scale default value Is ``1``.
@@ -23,13 +13,19 @@ declare namespace MSImaging {
       function onLoad(): object;
    }
    /**
-     * @param tolerance default value Is ``Call "getOption"("mzdiff", "default" <- "da:0.3")``.
+     * @param scale default value Is ``1``.
+     * @param is_multiple_combine_wide default value Is ``False``.
+     * @param ratio_threshold default value Is ``1.25``.
+     * @param ratio_scale default value Is ``1.5``.
    */
-   function geom_red(mz:any, tolerance:any): object;
+   function autoSize(dims:any, padding:any, scale:object, is_multiple_combine_wide:boolean, ratio_threshold:number, ratio_scale:number): object;
+   /**
+   */
+   function default_MSIfilter(): object;
    /**
      * @param tolerance default value Is ``Call "getOption"("mzdiff", "default" <- "da:0.3")``.
    */
-   function geom_green(mz:any, tolerance:any): object;
+   function geom_blanket(mz:any, tolerance:any): object;
    /**
      * @param tolerance default value Is ``Call "getOption"("mzdiff", "default" <- "da:0.3")``.
    */
@@ -37,18 +33,11 @@ declare namespace MSImaging {
    /**
      * @param tolerance default value Is ``Call "getOption"("mzdiff", "default" <- "da:0.3")``.
    */
-   function geom_blanket(mz:any, tolerance:any): object;
+   function geom_green(mz:any, tolerance:any): object;
    /**
-     * @param layout default value Is ``[3, 3]``.
-     * @param colorSet default value Is ``"Jet"``.
-     * @param MSI_TrIQ default value Is ``0.8``.
-     * @param gaussian default value Is ``3``.
-     * @param size default value Is ``[2700, 2000]``.
-     * @param canvasPadding default value Is ``[50, 300, 50, 50]``.
-     * @param cellPadding default value Is ``[200, 100, 0, 100]``.
-     * @param strict default value Is ``True``.
+     * @param tolerance default value Is ``Call "getOption"("mzdiff", "default" <- "da:0.3")``.
    */
-   function PlotMSIMatrixHeatmap(ions_data:any, layout:object, colorSet:string, MSI_TrIQ:number, gaussian:object, size:object, canvasPadding:object, cellPadding:object, strict:boolean): object;
+   function geom_red(mz:any, tolerance:any): object;
    /**
      * @param savePng default value Is ``"./Rplot.png"``.
      * @param ionName default value Is ``NULL``.
@@ -70,4 +59,15 @@ declare namespace MSImaging {
    /**
    */
    function npixels(raw:any): object;
+   /**
+     * @param layout default value Is ``[3, 3]``.
+     * @param colorSet default value Is ``"Jet"``.
+     * @param MSI_TrIQ default value Is ``0.8``.
+     * @param gaussian default value Is ``3``.
+     * @param size default value Is ``[2700, 2000]``.
+     * @param canvasPadding default value Is ``[50, 300, 50, 50]``.
+     * @param cellPadding default value Is ``[200, 100, 0, 100]``.
+     * @param strict default value Is ``True``.
+   */
+   function PlotMSIMatrixHeatmap(ions_data:any, layout:object, colorSet:string, MSI_TrIQ:number, gaussian:object, size:object, canvasPadding:object, cellPadding:object, strict:boolean): object;
 }

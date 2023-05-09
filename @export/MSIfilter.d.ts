@@ -6,6 +6,15 @@
 */
 declare namespace MSIfilter {
    /**
+     * @param q default value Is ``0.01``.
+   */
+   function denoise_scale(q?:number): object;
+   /**
+     * @param k default value Is ``3``.
+     * @param q default value Is ``0.65``.
+   */
+   function knn_scale(k?:object, q?:number): object;
+   /**
      * @param base default value Is ``2``.
    */
    function log_scale(base?:number): object;
@@ -14,19 +23,10 @@ declare namespace MSIfilter {
    */
    function quantile_scale(q?:number): object;
    /**
-     * @param q default value Is ``0.6``.
-   */
-   function TrIQ_scale(q?:number): object;
-   /**
    */
    function soften_scale(): object;
    /**
-     * @param k default value Is ``3``.
-     * @param q default value Is ``0.65``.
+     * @param q default value Is ``0.6``.
    */
-   function knn_scale(k?:object, q?:number): object;
-   /**
-     * @param q default value Is ``0.01``.
-   */
-   function denoise_scale(q?:number): object;
+   function TrIQ_scale(q?:number): object;
 }
