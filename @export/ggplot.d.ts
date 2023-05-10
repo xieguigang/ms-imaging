@@ -22,7 +22,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``0.85``.
    */
-   function MSI_knnfill(k?:object, qcut?:number): object;
+   function MSI_knnfill(k?: object, qcut?: number): object;
    /**
     * options for gauss filter of the MS-imaging buffer
     * 
@@ -32,7 +32,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``30``.
    */
-   function MSI_gaussblur(levels?:object): object;
+   function MSI_gaussblur(levels?: object): object;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 
@@ -42,14 +42,14 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function MSI_dimension(dims:any, env?:object): object;
+   function MSI_dimension(dims: any, env?: object): object;
    /**
     * create a pixel point pack object for create ggplot
     * 
     * 
      * @param pixels A pixel point vector for create a data pack
    */
-   function pixelPack(pixels:object): object;
+   function pixelPack(pixels: object): object;
    /**
     * create R,G,B layers from the given dataframe columns data
     * 
@@ -68,7 +68,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function MSIheatmap(R:any, G?:any, B?:any, matrix?:object, env?:object): any;
+   function MSIheatmap(R: any, G?: any, B?: any, matrix?: object, env?: object): any;
    /**
     * create a new ms-imaging heatmap layer
     * 
@@ -89,7 +89,7 @@ declare namespace ggplot {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_msiheatmap(layer?:object, colors?:any, env?:object): object;
+   function geom_msiheatmap(layer?: object, colors?: any, env?: object): object;
    /**
     * 
     * 
@@ -117,26 +117,26 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_msimaging(mz:number, tolerance?:any, pixel_render?:boolean, TrIQ?:number, color?:any, knnFill?:boolean, colorLevels?:object, env?:object): object;
+   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, env?: object): object;
    /**
      * @param color default value Is ``'white'``.
    */
-   function geom_MSIruler(color?:any): any;
+   function geom_MSIruler(color?: any): any;
    /**
     * config of the background of the MS-imaging charting plot.
     * 
     * 
      * @param background the background color value or character vector ``TIC`` or ``BPC``.
    */
-   function geom_MSIbackground(background:any): any;
+   function geom_MSIbackground(background: any): any;
    /**
      * @param env default value Is ``null``.
    */
-   function geom_MSIfilters(filters:any, env?:object): any;
+   function geom_MSIfilters(filters: any, env?: object): any;
    /**
      * @param tolerance default value Is ``'da:0.1'``.
      * @param pixel_render default value Is ``false``.
      * @param env default value Is ``null``.
    */
-   function geom_color(mz:number, color:any, tolerance?:any, pixel_render?:boolean, env?:object): object;
+   function geom_color(mz: number, color: any, tolerance?: any, pixel_render?: boolean, env?: object): object;
 }

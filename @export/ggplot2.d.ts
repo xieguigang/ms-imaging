@@ -56,7 +56,7 @@ declare namespace ggplot2 {
      * @return a ggplot base layer object which can be rendering to graphics by 
      *  invoke the ``plot`` function.
    */
-   function ggplot(data?:any, mapping?:any, colorSet?:any, args?:object, environment?:object): object;
+   function ggplot(data?: any, mapping?: any, colorSet?: any, args?: object, environment?: object): object;
    /**
     * ### Construct aesthetic mappings
     *  
@@ -104,7 +104,7 @@ declare namespace ggplot2 {
      * @return A list with class uneval. Components of the list are either quosures 
      *  or constants.
    */
-   function aes(x?:any, y?:any, z?:any, label?:any, color?:any, title?:string, shape?:any, class?:any, args?:object, env?:object): object;
+   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
    /**
     * ### Scatter Points
     *  
@@ -141,7 +141,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_point(mapping?:object, color?:any, shape?:object, stroke?:any, size?:number, show_legend?:boolean, alpha?:number, env?:object): object;
+   function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: number, show_legend?: boolean, alpha?: number, env?: object): object;
    /**
     * ### Text
     *  
@@ -235,7 +235,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_text(mapping?:object, data?:any, stat?:string, position?:string, parse?:boolean, nudge_x?:number, nudge_y?:number, check_overlap?:boolean, na_rm?:boolean, show_legend?:boolean, inherit_aes?:boolean, color?:any, which?:object, alpha?:number, size?:number, args?:object, env?:object): object;
+   function geom_text(mapping?: object, data?: any, stat?: string, position?: string, parse?: boolean, nudge_x?: number, nudge_y?: number, check_overlap?: boolean, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, color?: any, which?: object, alpha?: number, size?: number, args?: object, env?: object): object;
    /**
     * ## Histograms and frequency polygons
     *  
@@ -254,7 +254,7 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_histogram(bins:object, color?:any, alpha?:number, range?:any, env?:object): object;
+   function geom_histogram(bins: object, color?: any, alpha?: number, range?: any, env?: object): object;
    /**
     * ### Connect observations
     *  
@@ -279,7 +279,7 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_line(mapping?:object, color?:any, width?:number, show_legend?:boolean, alpha?:number, env?:object): object;
+   function geom_line(mapping?: object, color?: any, width?: number, show_legend?: boolean, alpha?: number, env?: object): object;
    /**
     * 
     * 
@@ -293,7 +293,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_hline(yintercept:number, color?:any, line_width?:number, linetype?:object): object;
+   function geom_hline(yintercept: number, color?: any, line_width?: number, linetype?: object): object;
    /**
     * ## Reference lines: horizontal, vertical, and diagonal
     *  
@@ -313,7 +313,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_vline(xintercept:number, color?:any, line_width?:number, linetype?:object): object;
+   function geom_vline(xintercept: number, color?: any, line_width?: number, linetype?: object): object;
    /**
     * ## Connect observations
     *  
@@ -330,7 +330,7 @@ declare namespace ggplot2 {
      * @param mapping default value Is ``null``.
      * @param alpha default value Is ``1``.
    */
-   function geom_convexHull(mapping?:object, alpha?:number): object;
+   function geom_convexHull(mapping?: object, alpha?: number): object;
    /**
     * ## A box and whiskers plot (in the style of Tukey)
     *  
@@ -414,21 +414,21 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_boxplot(color?:object, width?:number, alpha?:number, env?:object): object;
+   function geom_boxplot(color?: object, width?: number, alpha?: number, env?: object): object;
    /**
      * @param color default value Is ``null``.
      * @param width default value Is ``1``.
      * @param alpha default value Is ``0.95``.
      * @param env default value Is ``null``.
    */
-   function geom_barplot(color?:object, width?:number, alpha?:number, env?:object): object;
+   function geom_barplot(color?: object, width?: number, alpha?: number, env?: object): object;
    /**
      * @param color default value Is ``null``.
      * @param width default value Is ``0.9``.
      * @param alpha default value Is ``0.95``.
      * @param env default value Is ``null``.
    */
-   function geom_violin(color?:object, width?:number, alpha?:number, env?:object): object;
+   function geom_violin(color?: object, width?: number, alpha?: number, env?: object): object;
    /**
      * @param mapping default value Is ``null``.
      * @param data default value Is ``null``.
@@ -439,15 +439,15 @@ declare namespace ggplot2 {
      * @param color default value Is ``null``.
      * @param env default value Is ``null``.
    */
-   function geom_jitter(mapping?:object, data?:any, stat?:any, width?:number, radius?:number, alpha?:number, color?:object, env?:object): object;
+   function geom_jitter(mapping?: object, data?: any, stat?: any, width?: number, radius?: number, alpha?: number, color?: object, env?: object): object;
    /**
    */
-   function geom_scatterpie(data:string): object;
+   function geom_scatterpie(data: string): object;
    /**
      * @param colors default value Is ``null``.
      * @param env default value Is ``null``.
    */
-   function geom_scatterheatmap(data:string, colors?:string, env?:object): object;
+   function geom_scatterheatmap(data: string, colors?: string, env?: object): object;
    /**
    */
    function geom_pie(): object;
@@ -463,7 +463,7 @@ declare namespace ggplot2 {
     * 
      * @param raster raster object to display, may be an array or a nativeRaster
    */
-   function annotation_raster(raster:any): any;
+   function annotation_raster(raster: any): any;
    /**
     * ## Modify axis, legend, and plot labels
     *  
@@ -518,16 +518,16 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function labs(x?:string, y?:string, title?:string, subtitle?:string, caption?:string, tag?:any, alt?:any, alt_insight?:any, args?:object, env?:object): object;
+   function labs(x?: string, y?: string, title?: string, subtitle?: string, caption?: string, tag?: any, alt?: any, alt_insight?: any, args?: object, env?: object): object;
    /**
    */
-   function stat_pvalue_manual(comparisons:object): object;
+   function stat_pvalue_manual(comparisons: object): object;
    /**
      * @param method default value Is ``'anova'``.
      * @param ref_group default value Is ``'.all.'``.
      * @param hide_ns default value Is ``true``.
    */
-   function stat_compare_means(method?:string, ref_group?:string, hide_ns?:boolean): object;
+   function stat_compare_means(method?: string, ref_group?: string, hide_ns?: boolean): object;
    /**
     * ## Create significance layer
     * 
@@ -535,7 +535,7 @@ declare namespace ggplot2 {
      * @param test 
      * + default value Is ``'t.test'``.
    */
-   function geom_signif(comparisons:object, test?:string): object;
+   function geom_signif(comparisons: object, test?: string): object;
    /**
     * ## Modify axis, legend, and plot labels
     *  
@@ -559,7 +559,7 @@ declare namespace ggplot2 {
      * @param label The title of the respective axis (for xlab() or ylab()) or 
      *  of the plot (for ggtitle()).
    */
-   function xlab(label:string): object;
+   function xlab(label: string): object;
    /**
     * ## Modify axis, legend, and plot labels
     *  
@@ -583,7 +583,7 @@ declare namespace ggplot2 {
      * @param label The title of the respective axis (for xlab() or ylab()) or 
      *  of the plot (for ggtitle()).
    */
-   function ylab(label:string): object;
+   function ylab(label: string): object;
    /**
     * ## Modify components of a theme
     *  
@@ -646,7 +646,7 @@ declare namespace ggplot2 {
      * @param panel_border 
      * + default value Is ``null``.
    */
-   function theme(text?:object, axis_text?:object, axis_title?:object, axis_line?:any, axis_text_x?:object, legend_background?:string, legend_text?:object, legend_split?:object, plot_background?:string, plot_title?:object, panel_background?:string, panel_grid?:any, panel_border?:object): object;
+   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_border?: object): object;
    /**
     * 
     * 
@@ -672,7 +672,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function element_line(colour?:any, size?:any, linetype?:any, lineend?:any, color?:any): object;
+   function element_line(colour?: any, size?: any, linetype?: any, lineend?: any, color?: any): object;
    /**
     * ### Modify axis, legend, and plot labels
     *  
@@ -698,7 +698,7 @@ declare namespace ggplot2 {
      * @param text_wrap 
      * + default value Is ``false``.
    */
-   function ggtitle(title:string, text_wrap?:boolean): object;
+   function ggtitle(title: string, text_wrap?: boolean): object;
    /**
     * ### Create your own discrete scale
     *  
@@ -735,7 +735,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function scale_colour_manual(values:any, alpha?:number, env?:object): object;
+   function scale_colour_manual(values: any, alpha?: number, env?: object): object;
    /**
     * Position scales for continuous data (x & y)
     * 
@@ -753,7 +753,7 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function scale_x_continuous(labels?:string, limits?:number, env?:object): object;
+   function scale_x_continuous(labels?: string, limits?: number, env?: object): object;
    /**
     * ### Position scales for continuous data (x & y)
     * 
@@ -771,7 +771,7 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function scale_y_continuous(labels?:string, limits?:number, env?:object): object;
+   function scale_y_continuous(labels?: string, limits?: number, env?: object): object;
    /**
     * ### Position scales for continuous data (x & y)
     * 
@@ -824,7 +824,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``false``.
    */
-   function element_text(family?:string, face?:string, size?:number, hjust?:number, vjust?:number, angle?:number, lineheight?:number, color?:string, margin?:number, debug?:boolean, inherit_blank?:boolean): object;
+   function element_text(family?: string, face?: string, size?: number, hjust?: number, vjust?: number, angle?: number, lineheight?: number, color?: string, margin?: number, debug?: boolean, inherit_blank?: boolean): object;
    /**
     * ## Theme elements
     *  
@@ -863,5 +863,5 @@ declare namespace ggplot2 {
      * @param env 
      * + default value Is ``null``.
    */
-   function element_rect(fill?:any, colour?:any, size?:number, linetype?:object, color?:any, inherit_blank?:boolean, env?:object): object;
+   function element_rect(fill?: any, colour?: any, size?: number, linetype?: object, color?: any, inherit_blank?: boolean, env?: object): object;
 }
