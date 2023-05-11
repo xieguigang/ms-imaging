@@ -14,6 +14,40 @@ declare namespace ggplot {
      * @param env default value Is ``null``.
    */
    function geom_color(mz:number, color:any, tolerance?:any, pixel_render?:boolean, env?:object): object;
+    * configs the parameters for do Knn fill of the pixels
+    * 
+    * 
+     * @param k -
+     * 
+     * + default value Is ``3``.
+     * @param qcut the query block area percentage threshold value, 
+     *  the higher cutoff of this parameter, the less fitting 
+     *  will be perfermen on the pixels, the lower cutoff of 
+     *  this parameter, the more interpolation will be.
+     * 
+     * + default value Is ``0.85``.
+   */
+   function MSI_knnfill(k?: object, qcut?: number): object;
+   /**
+    * options for gauss filter of the MS-imaging buffer
+    * 
+    * > the gauss blur function is not working well on the linux platform
+    * 
+     * @param levels -
+     * 
+     * + default value Is ``30``.
+   */
+   function MSI_gaussblur(levels?: object): object;
+   /**
+    * options for config the canvas dimension size of the ms-imaging raw data scans
+    * 
+    * 
+     * @param dims -
+     * @param env -
+     * 
+     * + default value Is ``null``.
+   */
+   function MSI_dimension(dims: any, env?: object): object;
    /**
     * config of the background of the MS-imaging charting plot.
     * 
@@ -21,10 +55,12 @@ declare namespace ggplot {
      * @param background the background color value or character vector ``TIC`` or ``BPC``.
    */
    function geom_MSIbackground(background:any): any;
+   function pixelPack(pixels: object): object;
    /**
      * @param env default value Is ``null``.
    */
    function geom_MSIfilters(filters:any, env?:object): any;
+   function MSIheatmap(R: any, G?: any, B?: any, matrix?: object, env?: object): any;
    /**
     * create a new ms-imaging heatmap layer
     * 
@@ -45,7 +81,7 @@ declare namespace ggplot {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_msiheatmap(layer?:object, colors?:any, env?:object): object;
+   function geom_msiheatmap(layer?: object, colors?: any, env?: object): object;
    /**
     * 
     * 
@@ -73,11 +109,11 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_msimaging(mz:number, tolerance?:any, pixel_render?:boolean, TrIQ?:number, color?:any, knnFill?:boolean, colorLevels?:object, env?:object): object;
+   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, env?: object): object;
    /**
      * @param color default value Is ``'white'``.
    */
-   function geom_MSIruler(color?:any): any;
+   function geom_MSIruler(color?: any): any;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 
@@ -88,6 +124,7 @@ declare namespace ggplot {
      * + default value Is ``null``.
    */
    function MSI_dimension(dims:any, env?:object): object;
+   function geom_MSIbackground(background: any): any;
    /**
     * options for gauss filter of the MS-imaging buffer
     * 
@@ -98,6 +135,7 @@ declare namespace ggplot {
      * + default value Is ``30``.
    */
    function MSI_gaussblur(levels?:object): object;
+   function geom_MSIfilters(filters: any, env?: object): any;
    /**
     * configs the parameters for do Knn fill of the pixels
     * 
@@ -139,4 +177,5 @@ declare namespace ggplot {
      * @param pixels A pixel point vector for create a data pack
    */
    function pixelPack(pixels:object): object;
+   function geom_color(mz: number, color: any, tolerance?: any, pixel_render?: boolean, env?: object): object;
 }

@@ -18,5 +18,5 @@ declare namespace ggplot3 {
      * @param angle 
      * + default value Is ``[31.5,65,125]``.
    */
-   function view_camera(view_distance?:object, fov?:object, angle?:any): object;
+   function view_camera(view_distance?: object, fov?: object, angle?: any): object;
 }

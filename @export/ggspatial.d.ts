@@ -19,5 +19,5 @@ declare namespace ggspatial {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_spatialtile(tile:object, geneID:string, STdata:any, colorSet?:any, size?:number, env?:object): any;
+   function geom_spatialtile(tile: object, geneID: string, STdata: any, colorSet?: any, size?: number, env?: object): any;
 }
