@@ -73,6 +73,9 @@ Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace layers
 
+    ''' <summary>
+    ''' do overlaps of the TIC imaging plot in grayscale
+    ''' </summary>
     Public Class MSITICOverlap : Inherits ggplotLayer
 
         Public Property summary As IntensitySummary

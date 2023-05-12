@@ -75,8 +75,8 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
@@ -227,9 +227,9 @@ Public Module Rscript
         Dim maxHeight As Integer = Aggregate pt As Point In pixels Into Max(pt.Y)
 
         Return New MSIHeatMap With {
-            .R = MSIHeatMap.CreateLayer(R, pixels, DirectCast(REnv.asVector(Of Double)(matrix(R)), Double())),
-            .B = If(missingLayer(B), Nothing, MSIHeatMap.CreateLayer(B, pixels, DirectCast(REnv.asVector(Of Double)(matrix(B)), Double()))),
-            .G = If(missingLayer(G), Nothing, MSIHeatMap.CreateLayer(G, pixels, DirectCast(REnv.asVector(Of Double)(matrix(G)), Double()))),
+            .R = MSIHeatMap.CreateLayer(R, pixels, CLRVector.asNumeric(matrix(R))),
+            .B = If(missingLayer(B), Nothing, MSIHeatMap.CreateLayer(B, pixels, CLRVector.asNumeric(matrix(B)))),
+            .G = If(missingLayer(G), Nothing, MSIHeatMap.CreateLayer(G, pixels, CLRVector.asNumeric(matrix(G)))),
             .dimension = New Size(maxWidth, maxHeight)
         }
     End Function

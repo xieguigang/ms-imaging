@@ -71,8 +71,8 @@ Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
 
@@ -83,7 +83,7 @@ Namespace layers
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim args As list = reader.args
-            Dim mz As Double() = DirectCast(REnv.asVector(Of Double)(args.getByName("mz")), Double())
+            Dim mz As Double() = CLRVector.asNumeric(args.getByName("mz"))
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
             Dim knnfill As Boolean = args.getValue(Of Boolean)("knnfill", ggplot.environment, False)
 
