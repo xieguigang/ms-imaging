@@ -56,6 +56,7 @@
 
 Imports System.Data
 Imports System.Drawing
+Imports BioNovoGene.Analytical.MassSpectrometry
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
@@ -63,13 +64,13 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports ggplot
 Imports ggplot.colors
 Imports ggplot.layers
+Imports ggplotMSImaging.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
-Imports MSImaging.layers
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
 Imports SMRUCC.Rsharp.Runtime
@@ -150,7 +151,7 @@ Public Module Rscript
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("pixelPack")>
-    Public Function createPixelPack(pixels As PixelData()) As PointPack
+    Public Function createPixelPack(pixels As MSImaging.PixelData()) As PointPack
         Return New PointPack With {.pixels = pixels}
     End Function
 
