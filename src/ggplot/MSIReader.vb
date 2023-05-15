@@ -154,8 +154,8 @@ Public Class MSIReader : Inherits ggplotReader
     ''' <param name="env"></param>
     ''' <returns></returns>
     Public Overrides Function getMapData(data As Object, env As Environment) As ggplotData
-        Dim x As Double()
-        Dim y As Double()
+        Dim x As Double() = Nothing
+        Dim y As Double() = Nothing
 
         If TypeOf data Is mzPack Then
             Call readFromMzPack(DirectCast(data, mzPack), env, x, y)
@@ -199,5 +199,18 @@ End Class
 Public Class PointPack
 
     Public Property pixels As PixelData()
+
+    ''' <summary>
+    ''' 这个函数会自动校准位置，尽量将目标多边形区域放置在中间
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function GetDimensionSize() As Size
+        Dim rect As RectangleF = New Polygon2D(pixels).GetRectangle
+        Dim offset As PointF = rect.Location
+        Dim right As Double = offset.X + rect.Width + offset.X
+        Dim height As Double = offset.Y + rect.Height + offset.Y
+
+        Return New Size(right, height)
+    End Function
 
 End Class

@@ -64,6 +64,9 @@ Imports ggplot
 Imports ggplot.colors
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
+Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports MSImaging.layers
@@ -274,6 +277,29 @@ Public Module Rscript
                 .colorMap = ggplotColorMap.CreateColorMap(colorSet, 1, env)
             }
         End If
+    End Function
+
+    <ExportAPI("raster_blending")>
+    Public Function raster_blending(pixels As PixelScanIntensity(), <RRawVectorArgument> dims As Object,
+                                    Optional scale As String = "gray",
+                                    Optional levels As Integer = 255,
+                                    Optional env As Environment = Nothing) As Bitmap
+
+        Dim dimSize = InteropArgumentHelper.getSize(dims, env, "0,0").SizeParser
+
+        If dimSize.IsEmpty Then
+            dimSize = New Polygon2D(pixels).GetSize
+        End If
+
+        Dim raster = Drawer.RenderSummaryLayer(
+            layer:=pixels,
+            dimension:=dimSize,
+            colorSet:=scale,
+            mapLevels:=levels
+        ).AsGDIImage
+        Dim scaleRaster As New RasterScaler(raster)
+
+        Return scaleRaster.Scale(hqx:=hqx.HqxScales.Hqx_4x)
     End Function
 
     ''' <summary>
