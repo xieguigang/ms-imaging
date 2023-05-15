@@ -56,7 +56,6 @@
 
 Imports System.Data
 Imports System.Drawing
-Imports System.Runtime.CompilerServices
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
@@ -68,7 +67,6 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports MSImaging.layers
-Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
 Imports SMRUCC.Rsharp.Runtime
@@ -187,8 +185,11 @@ Public Module Rscript
     ''' <param name="G"></param>
     ''' <param name="B"></param>
     ''' <param name="env"></param>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' this function generate the data source object for the ggplot
+    ''' </returns>
     <ExportAPI("MSIheatmap")>
+    <RApiReturn(GetType(MSIHeatMap))>
     Public Function CreateMSIheatmap(R As Object,
                                      Optional G As Object = Nothing,
                                      Optional B As Object = Nothing,
@@ -430,50 +431,17 @@ Public Module Rscript
         End If
     End Function
 
-    <Extension>
-    Private Function BuildPipeline(bin As BinaryExpression, env As Environment, pip As RasterPipeline) As Object
-        Dim start As Expression = bin.left
-        Dim right As Expression = bin.right
-        Dim pipEval As Object
-
-        If TypeOf start Is BinaryExpression Then
-            pipEval = DirectCast(start, BinaryExpression).BuildPipeline(env, pip)
-
-            If TypeOf pipEval Is Message Then
-                Return pipEval
-            Else
-                pip = pipEval
-            End If
-        Else
-            pipEval = start.Evaluate(env)
-
-            If TypeOf pipEval Is Message Then
-                Return pipEval
-            Else
-                Call pip.Add(pipEval)
-            End If
-        End If
-        If TypeOf right Is BinaryExpression Then
-            pipEval = DirectCast(right, BinaryExpression).BuildPipeline(env, pip)
-
-            If TypeOf pipEval Is Message Then
-                Return pipEval
-            Else
-                pip = pipEval
-            End If
-        Else
-            pipEval = right.Evaluate(env)
-
-            If TypeOf pipEval Is Message Then
-                Return pipEval
-            Else
-                Call pip.Add(pipEval)
-            End If
-        End If
-
-        Return pip
-    End Function
-
+    ''' <summary>
+    ''' Draw a ion m/z layer with a specific color channel
+    ''' </summary>
+    ''' <param name="mz"></param>
+    ''' <param name="color">
+    ''' this parameter usually be used for the r/g/b triple layer overlaps
+    ''' </param>
+    ''' <param name="tolerance"></param>
+    ''' <param name="pixel_render"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_color")>
     <RApiReturn(GetType(ggplotLayer))>
     Public Function geom_color(mz As Double, color As Object,
