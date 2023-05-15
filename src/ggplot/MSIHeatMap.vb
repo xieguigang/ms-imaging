@@ -66,6 +66,10 @@ Public Class MSIHeatMap
 
     Public Property dimension As Size
 
+    Public Overrides Function ToString() As String
+        Return $"[{dimension.Width} x {dimension.Height}]"
+    End Function
+
     Public Shared Function CreateLayer(layerName As String, pixels As Point(), heatmap As Vector) As SingleIonLayer
         ' scale to [0,1]
         heatmap = (heatmap - heatmap.Min) / (heatmap.Max - heatmap.Min)
@@ -81,6 +85,45 @@ Public Class MSIHeatMap
                             }
                         End Function) _
                 .ToArray
+        }
+    End Function
+
+    Private Shared Function MeasureWidth(layerR As SingleIonLayer, layerG As SingleIonLayer, layerB As SingleIonLayer) As Integer
+        Return {
+            layerR.DimensionSize.Width,
+            layerG.DimensionSize.Width,
+            layerB.DimensionSize.Width
+        }.Max
+    End Function
+
+    Private Shared Function MeasureHeight(layerR As SingleIonLayer, layerG As SingleIonLayer, layerB As SingleIonLayer) As Integer
+        Return {
+            layerR.DimensionSize.Height,
+            layerG.DimensionSize.Height,
+            layerB.DimensionSize.Height
+        }.Max
+    End Function
+
+    ''' <summary>
+    ''' Create a heatmap imaging plot source data object
+    ''' </summary>
+    ''' <param name="layerR"></param>
+    ''' <param name="layerG"></param>
+    ''' <param name="layerB"></param>
+    ''' <returns></returns>
+    Public Shared Function UnionLayers(layerR As SingleIonLayer, layerG As SingleIonLayer, layerB As SingleIonLayer) As MSIHeatMap
+        Dim w As Integer = MeasureWidth(layerR, layerG, layerB)
+        Dim h As Integer = MeasureHeight(layerR, layerG, layerB)
+        Dim dims As New Size With {
+            .Width = w,
+            .Height = h
+        }
+
+        Return New MSIHeatMap With {
+            .R = layerR,
+            .G = layerG,
+            .B = layerB,
+            .dimension = dims
         }
     End Function
 End Class

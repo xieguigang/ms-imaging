@@ -1,56 +1,56 @@
 ﻿#Region "Microsoft.VisualBasic::25c213636430d3222caef3913ca468fb, mzkit\Rscript\Library\MSI_app\src\Rscript.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 444
-    '    Code Lines: 306
-    ' Comment Lines: 91
-    '   Blank Lines: 47
-    '     File Size: 16.33 KB
+' Summaries:
 
 
-    ' Module Rscript
-    ' 
-    '     Function: BuildPipeline, ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt
-    '               geom_color, geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging
-    '               geom_MSIruler, getChannel, KnnFill, unionlayers, unionLayers
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 444
+'    Code Lines: 306
+' Comment Lines: 91
+'   Blank Lines: 47
+'     File Size: 16.33 KB
+
+
+' Module Rscript
+' 
+'     Function: BuildPipeline, ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt
+'               geom_color, geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging
+'               geom_MSIruler, getChannel, KnnFill, unionlayers, unionLayers
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -151,32 +151,6 @@ Public Module Rscript
         Return New PointPack With {.pixels = pixels}
     End Function
 
-    Private Function unionLayers(layerR As SingleIonLayer, layerG As SingleIonLayer, layerB As SingleIonLayer) As MSIHeatMap
-        Dim w As Integer = {
-            layerR.DimensionSize.Width,
-            layerG.DimensionSize.Width,
-            layerB.DimensionSize.Width
-        }.Max
-
-        Dim h As Integer = {
-            layerR.DimensionSize.Height,
-            layerG.DimensionSize.Height,
-            layerB.DimensionSize.Height
-        }.Max
-
-        Dim dims As New Size With {
-            .Width = w,
-            .Height = h
-        }
-
-        Return New MSIHeatMap With {
-            .R = layerR,
-            .G = layerG,
-            .B = layerB,
-            .dimension = dims
-        }
-    End Function
-
     ''' <summary>
     ''' create R,G,B layers from the given dataframe columns data
     ''' </summary>
@@ -196,7 +170,7 @@ Public Module Rscript
                                      Optional matrix As dataframe = Nothing,
                                      Optional env As Environment = Nothing) As Object
         If matrix Is Nothing Then
-            Return unionLayers(layerR:=R, layerG:=G, layerB:=B)
+            Return MSIHeatMap.UnionLayers(layerR:=R, layerG:=G, layerB:=B)
         Else
             R = any.ToString(R)
             G = any.ToString(G)
