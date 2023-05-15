@@ -302,9 +302,9 @@ Public Module Rscript
     End Function
 
     ''' <summary>
-    ''' 
+    ''' Do ms-imaging based on a set of given metabolite ions m/z
     ''' </summary>
-    ''' <param name="mz"></param>
+    ''' <param name="mz">A set of target ion m/z values for do imaging</param>
     ''' <param name="tolerance">
     ''' the mass tolerance error vaue for load intensity 
     ''' data for each pixels from the raw data files.
@@ -318,6 +318,10 @@ Public Module Rscript
     ''' the color set name
     ''' </param>
     ''' <param name="knnFill"></param>
+    ''' <param name="raster">
+    ''' the raster annotation image to overlaps, this parameter works when
+    ''' the <paramref name="pixel_render"/> is set to value TRUE.
+    ''' </param>
     ''' <param name="env"></param>
     ''' <returns></returns>
     <ExportAPI("geom_msimaging")>
@@ -330,10 +334,12 @@ Public Module Rscript
                                    Optional color As Object = "viridis:turbo",
                                    Optional knnFill As Boolean = True,
                                    Optional colorLevels As Integer = 120,
+                                   Optional raster As Object = Nothing,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
         Dim colors As ggplotColorMap = Nothing
+        Dim rasterLayer As Bitmap = InteropArgumentHelper.getRasterImage(raster)
 
         If Not color Is Nothing Then
             colors = ggplotColorMap.CreateColorMap(
@@ -361,7 +367,8 @@ Public Module Rscript
             .TrIQ = TrIQ,
             .colorMap = colors,
             .colorLevels = colorLevels,
-            .alpha = 1
+            .alpha = 1,
+            .raster = rasterLayer
         }
     End Function
 

@@ -80,6 +80,13 @@ Namespace layers
 
         Public Property TrIQ As Double = 0.65
 
+        ''' <summary>
+        ''' the annotation overlaps only works when <see cref="pixelDrawer"/>
+        ''' option is set to true
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property raster As Bitmap
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim args As list = reader.args
@@ -97,7 +104,11 @@ Namespace layers
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
-            Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
+            Dim engine As Renderer = If(
+                pixelDrawer,
+                New Blender.PixelRender(heatmapRender:=False, overlaps:=raster),
+                New RectangleRender(ggplot.driver, heatmapRender:=False)
+            )
             Dim colorSet As String
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim rawInto As Double() = ion.GetIntensity
