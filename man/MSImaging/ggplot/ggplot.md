@@ -1,7 +1,7 @@
 # ggplot
 
 the ggplot api plugin for do MS-Imaging rendering
-> @``T:MSImaging.ggplotMSI`` is the ms-imaging render.
+> @``T:ggplotMSImaging.ggplotMSI`` is the ms-imaging render.
 
 + [MSI_knnfill](ggplot/MSI_knnfill.1) configs the parameters for do Knn fill of the pixels
 + [MSI_gaussblur](ggplot/MSI_gaussblur.1) options for gauss filter of the MS-imaging buffer
@@ -9,8 +9,9 @@ the ggplot api plugin for do MS-Imaging rendering
 + [pixelPack](ggplot/pixelPack.1) create a pixel point pack object for create ggplot
 + [MSIheatmap](ggplot/MSIheatmap.1) create R,G,B layers from the given dataframe columns data
 + [geom_msiheatmap](ggplot/geom_msiheatmap.1) create a new ms-imaging heatmap layer
-+ [geom_msimaging](ggplot/geom_msimaging.1) 
++ [raster_blending](ggplot/raster_blending.1) 
++ [geom_msimaging](ggplot/geom_msimaging.1) Do ms-imaging based on a set of given metabolite ions m/z
 + [geom_MSIruler](ggplot/geom_MSIruler.1) 
 + [geom_MSIbackground](ggplot/geom_MSIbackground.1) config of the background of the MS-imaging charting plot.
 + [geom_MSIfilters](ggplot/geom_MSIfilters.1) 
-+ [geom_color](ggplot/geom_color.1) 
++ [geom_color](ggplot/geom_color.1) Draw a ion m/z layer with a specific color channel

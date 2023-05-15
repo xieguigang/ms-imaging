@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title></title>
+    <title>Do ms-imaging based on a set of given metabolite ions m/z</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <style rel="stylesheet" type="text/css">
@@ -148,7 +148,7 @@
             </tr>
         </table>
 
-        <h2></h2>
+        <h2>Do ms-imaging based on a set of given metabolite ions m/z</h2>
 
         <h3>Description</h3>
 
@@ -163,7 +163,8 @@
     <i>TrIQ</i> = 0.99,
     <i>color</i> = <span style='color: brown;'><strong>"viridis:turbo"</strong></span>,
     <i>knnFill</i> = <span style='color: blue;'>TRUE</span>,
-    <i>colorLevels</i> = 120);</code></pre>
+    <i>colorLevels</i> = 120,
+    <i>raster</i> = <span style='color: blue;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -171,7 +172,7 @@
         <table>
             
 <dt>mz</dt>
-<dd><p><p>-</p></p></dd>
+<dd><p><p>A set of target ion m/z values for do imaging</p></p></dd>
 
 
 <dt>tolerance</dt>
@@ -194,6 +195,11 @@
 
 <dt>knnFill</dt>
 <dd><p><p>-</p></p></dd>
+
+
+<dt>raster</dt>
+<dd><p><p>the raster annotation image to overlaps, this parameter works when<br />
+ the <strong><code>pixel_render</code></strong> is set to value TRUE.</p></p></dd>
 
 
 <dt>env</dt>

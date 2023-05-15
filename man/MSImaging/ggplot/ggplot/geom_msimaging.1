@@ -1,7 +1,7 @@
 .\" man page create by R# package system.
 .TH GGPLOT 1 2000-Jan "geom_msimaging" "geom_msimaging"
 .SH NAME
-geom_msimaging \- 
+geom_msimaging \- Do ms-imaging based on a set of given metabolite ions m/z
 .SH SYNOPSIS
 \fIgeom_msimaging(\fBmz\fR as double, 
 \fBtolerance\fR as any = "da:0.1", 
@@ -10,10 +10,15 @@ geom_msimaging \-
 \fBcolor\fR as any = "viridis:turbo", 
 \fBknnFill\fR as boolean = TRUE, 
 \fBcolorLevels\fR as integer = 120, 
+\fBraster\fR as any = \fB<NULL>\fR, 
 [\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Do ms-imaging based on a set of given metabolite ions m/z
+.PP
 .SH OPTIONS
 .PP
-\fBmz\fB \fR\- -. 
+\fBmz\fB \fR\- A set of target ion m/z values for do imaging. 
 .PP
 .PP
 \fBtolerance\fB \fR\- 
@@ -37,6 +42,12 @@ geom_msimaging \-
 .PP
 .PP
 \fBknnFill\fB \fR\- -. 
+.PP
+.PP
+\fBraster\fB \fR\- 
+ the raster annotation image to overlaps, this parameter works when
+ the **`pixel_render`** is set to value TRUE.
+. 
 .PP
 .PP
 \fBenv\fB \fR\- -. 

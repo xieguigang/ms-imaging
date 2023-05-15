@@ -1,6 +1,6 @@
 ﻿// export R# package module type define for javascript/typescript language
 //
-// ref=MSImaging.ggplotSpatial@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+// ref=ggplotMSImaging.ggplotSpatial@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 /**
  * spatial mapping between the STdata and SMdata based on the ggplot framework

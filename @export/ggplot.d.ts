@@ -1,17 +1,28 @@
 ﻿// export R# package module type define for javascript/typescript language
 //
-// ref=MSImaging.Rscript@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+// ref=ggplotMSImaging.Rscript@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 /**
  * the ggplot api plugin for do MS-Imaging rendering
  * 
- * > @``T:MSImaging.ggplotMSI`` is the ms-imaging render.
+ * > @``T:ggplotMSImaging.ggplotMSI`` is the ms-imaging render.
 */
 declare namespace ggplot {
    /**
-     * @param tolerance default value Is ``'da:0.1'``.
-     * @param pixel_render default value Is ``false``.
-     * @param env default value Is ``null``.
+    * Draw a ion m/z layer with a specific color channel
+    * 
+    * 
+     * @param mz -
+     * @param color this parameter usually be used for the r/g/b triple layer overlaps
+     * @param tolerance -
+     * 
+     * + default value Is ``'da:0.1'``.
+     * @param pixel_render -
+     * 
+     * + default value Is ``false``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
    */
    function geom_color(mz: number, color: any, tolerance?: any, pixel_render?: boolean, env?: object): object;
    /**
@@ -47,9 +58,10 @@ declare namespace ggplot {
    */
    function geom_msiheatmap(layer?: object, colors?: any, env?: object): object;
    /**
+    * Do ms-imaging based on a set of given metabolite ions m/z
     * 
     * 
-     * @param mz -
+     * @param mz A set of target ion m/z values for do imaging
      * @param tolerance the mass tolerance error vaue for load intensity 
      *  data for each pixels from the raw data files.
      * 
@@ -69,11 +81,15 @@ declare namespace ggplot {
      * + default value Is ``true``.
      * @param colorLevels 
      * + default value Is ``120``.
+     * @param raster the raster annotation image to overlaps, this parameter works when
+     *  the **`pixel_render`** is set to value TRUE.
+     * 
+     * + default value Is ``null``.
      * @param env -
      * 
      * + default value Is ``null``.
    */
-   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, env?: object): object;
+   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, raster?: any, env?: object): object;
    /**
      * @param color default value Is ``'white'``.
    */
@@ -130,8 +146,9 @@ declare namespace ggplot {
      * @param env -
      * 
      * + default value Is ``null``.
+     * @return this function generate the data source object for the ggplot
    */
-   function MSIheatmap(R: any, G?: any, B?: any, matrix?: object, env?: object): any;
+   function MSIheatmap(R: any, G?: any, B?: any, matrix?: object, env?: object): object;
    /**
     * create a pixel point pack object for create ggplot
     * 
@@ -139,4 +156,10 @@ declare namespace ggplot {
      * @param pixels A pixel point vector for create a data pack
    */
    function pixelPack(pixels: object): object;
+   /**
+     * @param scale default value Is ``'gray'``.
+     * @param levels default value Is ``255``.
+     * @param env default value Is ``null``.
+   */
+   function raster_blending(pixels: object, dims: any, scale?: string, levels?: object, env?: object): object;
 }

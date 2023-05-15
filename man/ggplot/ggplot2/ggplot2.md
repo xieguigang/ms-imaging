@@ -19,6 +19,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_scatterpie](ggplot2/geom_scatterpie.1) 
 + [geom_scatterheatmap](ggplot2/geom_scatterheatmap.1) 
 + [geom_pie](ggplot2/geom_pie.1) 
++ [geom_raster](ggplot2/geom_raster.1) 
 + [annotation_raster](ggplot2/annotation_raster.1) annotation_raster: Annotation: high-performance rectangular tiling
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
 + [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) 

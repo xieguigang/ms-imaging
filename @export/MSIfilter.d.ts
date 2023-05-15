@@ -1,6 +1,6 @@
 ﻿// export R# package module type define for javascript/typescript language
 //
-// ref=MSImaging.Filters@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+// ref=ggplotMSImaging.Filters@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 /**
 */

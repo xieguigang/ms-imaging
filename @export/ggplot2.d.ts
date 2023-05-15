@@ -398,6 +398,11 @@ declare namespace ggplot2 {
    */
    function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: number, show_legend?: boolean, alpha?: number, env?: object): object;
    /**
+     * @param layout default value Is ``null``.
+     * @param env default value Is ``null``.
+   */
+   function geom_raster(bitmap: any, layout?: any, env?: object): any;
+   /**
      * @param colors default value Is ``null``.
      * @param env default value Is ``null``.
    */
