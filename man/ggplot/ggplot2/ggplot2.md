@@ -28,11 +28,13 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_signif](ggplot2/geom_signif.1) ## Create significance layer
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
++ [coord_flip](ggplot2/coord_flip.1) Swapping X- and Y-Axes
 + [theme](ggplot2/theme.1) ## Modify components of a theme
 + [element_blank](ggplot2/element_blank.1) 
 + [element_line](ggplot2/element_line.1) Theme element: line.
 + [ggtitle](ggplot2/ggtitle.1) ### Modify axis, legend, and plot labels
 + [scale_colour_manual](ggplot2/scale_colour_manual.1) ### Create your own discrete scale
++ [scale_fill_manual](ggplot2/scale_fill_manual.1) 
 + [scale_x_continuous](ggplot2/scale_x_continuous.1) Position scales for continuous data (x & y)
 + [scale_y_continuous](ggplot2/scale_y_continuous.1) ### Position scales for continuous data (x & y)
 + [scale_y_reverse](ggplot2/scale_y_reverse.1) ### Position scales for continuous data (x & y)
