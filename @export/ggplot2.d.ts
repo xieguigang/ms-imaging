@@ -71,6 +71,12 @@ declare namespace ggplot2 {
    */
    function annotation_raster(raster: any): any;
    /**
+    * Swapping X- and Y-Axes
+    * 
+    * 
+   */
+   function coord_flip(): object;
+   /**
     * 
     * 
    */
@@ -188,9 +194,10 @@ declare namespace ggplot2 {
      * @param color default value Is ``'black'``.
      * @param width default value Is ``0.7``.
      * @param size default value Is ``0.25``.
+     * @param show_legend default value Is ``true``.
      * @param env default value Is ``null``.
    */
-   function geom_bar(stat?: any, position?: any, color?: any, width?: number, size?: number, env?: object): object;
+   function geom_bar(stat?: any, position?: any, color?: any, width?: number, size?: number, show_legend?: boolean, env?: object): object;
    /**
      * @param color default value Is ``null``.
      * @param width default value Is ``1``.
@@ -718,6 +725,11 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
    */
    function scale_colour_manual(values: any, alpha?: number, env?: object): object;
+   /**
+     * @param alpha default value Is ``1``.
+     * @param env default value Is ``null``.
+   */
+   function scale_fill_manual(values: any, alpha?: number, env?: object): object;
    /**
     * Position scales for continuous data (x & y)
     * 
