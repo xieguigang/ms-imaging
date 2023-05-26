@@ -39,6 +39,8 @@ declare namespace ggplot2 {
      * @param color -
      * 
      * + default value Is ``null``.
+     * @param fill 
+     * + default value Is ``null``.
      * @param title 
      * + default value Is ``null``.
      * @param shape 
@@ -54,7 +56,7 @@ declare namespace ggplot2 {
      * @return A list with class uneval. Components of the list are either quosures 
      *  or constants.
    */
-   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
+   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, fill?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
    /**
     * annotation_raster: Annotation: high-performance rectangular tiling
     *  
@@ -180,6 +182,15 @@ declare namespace ggplot2 {
      * + default value Is ``false``.
    */
    function element_text(family?: string, face?: string, size?: number, hjust?: number, vjust?: number, angle?: number, lineheight?: number, color?: string, margin?: number, debug?: boolean, inherit_blank?: boolean): object;
+   /**
+     * @param stat default value Is ``'identity'``.
+     * @param position default value Is ``'stack'``.
+     * @param color default value Is ``'black'``.
+     * @param width default value Is ``0.7``.
+     * @param size default value Is ``0.25``.
+     * @param env default value Is ``null``.
+   */
+   function geom_bar(stat?: any, position?: any, color?: any, width?: number, size?: number, env?: object): object;
    /**
      * @param color default value Is ``null``.
      * @param width default value Is ``1``.

@@ -13,6 +13,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_path](ggplot2/geom_path.1) ## Connect observations
 + [geom_convexHull](ggplot2/geom_convexHull.1) 
 + [geom_boxplot](ggplot2/geom_boxplot.1) ## A box and whiskers plot (in the style of Tukey)
++ [geom_bar](ggplot2/geom_bar.1) 
 + [geom_barplot](ggplot2/geom_barplot.1) 
 + [geom_violin](ggplot2/geom_violin.1) 
 + [geom_jitter](ggplot2/geom_jitter.1) 
