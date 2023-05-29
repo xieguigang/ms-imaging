@@ -1,5 +1,7 @@
 ﻿// export R# package module type define for javascript/typescript language
 //
+//    imports "ggplot3" from "ggplot";
+//
 // ref=ggplot.ggplot3@ggplot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 /**

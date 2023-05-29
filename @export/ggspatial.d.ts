@@ -1,5 +1,7 @@
 ﻿// export R# package module type define for javascript/typescript language
 //
+//    imports "ggspatial" from "MSImaging";
+//
 // ref=ggplotMSImaging.ggplotSpatial@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 /**
