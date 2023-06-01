@@ -41,6 +41,10 @@ declare namespace ggplot2 {
      * @param color -
      * 
      * + default value Is ``null``.
+     * @param colour 
+     * + default value Is ``null``.
+     * @param alpha 
+     * + default value Is ``null``.
      * @param fill 
      * + default value Is ``null``.
      * @param title 
@@ -58,7 +62,7 @@ declare namespace ggplot2 {
      * @return A list with class uneval. Components of the list are either quosures 
      *  or constants.
    */
-   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, fill?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
+   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
    /**
     * annotation_raster: Annotation: high-performance rectangular tiling
     *  
@@ -191,13 +195,38 @@ declare namespace ggplot2 {
    */
    function element_text(family?: string, face?: string, size?: number, hjust?: number, vjust?: number, angle?: number, lineheight?: number, color?: string, margin?: number, debug?: boolean, inherit_blank?: boolean): object;
    /**
-     * @param stat default value Is ``'identity'``.
-     * @param position default value Is ``'stack'``.
-     * @param color default value Is ``'black'``.
-     * @param width default value Is ``0.7``.
-     * @param size default value Is ``0.25``.
-     * @param show_legend default value Is ``true``.
-     * @param env default value Is ``null``.
+    * ### Bar charts
+    *  
+    *  There are two types of bar charts: geom_bar() and geom_col(). geom_bar() 
+    *  makes the height of the bar proportional to the number of cases in each
+    *  group (or if the weight aesthetic is supplied, the sum of the weights).
+    *  If you want the heights of the bars to represent values in the data, use 
+    *  geom_col() instead. geom_bar() uses stat_count() by default: it counts 
+    *  the number of cases at each x position. geom_col() uses stat_identity():
+    *  it leaves the data as is.
+    * 
+    * 
+     * @param stat -
+     * 
+     * + default value Is ``'identity'``.
+     * @param position -
+     * 
+     * + default value Is ``'stack'``.
+     * @param color -
+     * 
+     * + default value Is ``'black'``.
+     * @param width -
+     * 
+     * + default value Is ``0.7``.
+     * @param size -
+     * 
+     * + default value Is ``0.25``.
+     * @param show_legend -
+     * 
+     * + default value Is ``true``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
    */
    function geom_bar(stat?: any, position?: any, color?: any, width?: number, size?: number, show_legend?: boolean, env?: object): object;
    /**
@@ -292,6 +321,77 @@ declare namespace ggplot2 {
    */
    function geom_boxplot(color?: object, width?: number, alpha?: number, env?: object): object;
    /**
+    * ### Bar charts
+    *  
+    *  There are two types of bar charts: geom_bar() and geom_col(). geom_bar() 
+    *  makes the height of the bar proportional to the number of cases in each
+    *  group (or if the weight aesthetic is supplied, the sum of the weights).
+    *  If you want the heights of the bars to represent values in the data, use 
+    *  geom_col() instead. geom_bar() uses stat_count() by default: it counts 
+    *  the number of cases at each x position. geom_col() uses stat_identity():
+    *  it leaves the data as is.
+    * 
+    * 
+     * @param mapping Set of aesthetic mappings created by aes(). If specified
+     *  and inherit.aes = TRUE (the default), it is combined with the default mapping 
+     *  at the top level of the plot. You must supply mapping if there is no plot 
+     *  mapping.
+     * 
+     * + default value Is ``null``.
+     * @param data The data to be displayed in this layer. There are three options:
+     *  If NULL, the Default, the data Is inherited from the plot data As specified 
+     *  In the Call To ggplot().
+     *  A data.frame, Or other Object, will override the plot data. All objects will be
+     *  fortified To produce a data frame. See fortify() For which variables will be
+     *  created.
+     *  A Function will be called With a Single argument, the plot data. The Return 
+     *  value must be a data.frame, And will be used As the layer data. A Function 
+     *  can be created from a formula (e.g. ~ head(.x, 10)).
+     * 
+     * + default value Is ``null``.
+     * @param position Position adjustment, either as a string naming the 
+     *  adjustment (e.g. "jitter" to use position_jitter), or the result of a call 
+     *  to a position adjustment function. Use the latter if you need to change the
+     *  settings of the adjustment.
+     * 
+     * + default value Is ``'stack'``.
+     * @param just Adjustment for column placement. Set to 0.5 by default, 
+     *  meaning that columns will be centered about axis breaks. Set to 0 or 1 to place 
+     *  columns to the left/right of axis breaks. Note that this argument may have 
+     *  unintended behaviour when used with alternative positions, e.g. position_dodge().
+     * 
+     * + default value Is ``0.5``.
+     * @param width Bar width. By default, set to 90% of the resolution() of
+     *  the data.
+     * 
+     * + default value Is ``0``.
+     * @param na_rm If FALSE, the default, missing values are removed with a
+     *  warning. If TRUE, missing values are silently removed.
+     * 
+     * + default value Is ``false``.
+     * @param show_legend logical. Should this layer be included in the legends? 
+     *  NA, the default, includes if any aesthetics are mapped. FALSE never includes, 
+     *  and TRUE always includes. It can also be a named logical vector to finely select 
+     *  the aesthetics to display.
+     * 
+     * + default value Is ``null``.
+     * @param inherit_aes If FALSE, overrides the default aesthetics, rather 
+     *  than combining with them. This is most useful for helper functions that define 
+     *  both data and aesthetics and shouldn't inherit behaviour from the default plot 
+     *  specification, e.g. borders().
+     * 
+     * + default value Is ``true``.
+     * @param args Other arguments passed on to layer(). These are often aesthetics,
+     *  used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They 
+     *  may also be parameters to the paired geom/stat.
+     * 
+     * + default value Is ``null``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
+   */
+   function geom_col(mapping?: any, data?: any, position?: any, just?: number, width?: number, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, args?: object, env?: object): any;
+   /**
      * @param mapping default value Is ``null``.
      * @param alpha default value Is ``1``.
    */
@@ -316,6 +416,11 @@ declare namespace ggplot2 {
    */
    function geom_histogram(bins: object, color?: any, alpha?: number, range?: any, env?: object): object;
    /**
+    * ### Reference line defined by Y intercept. Useful for annotating plots.
+    *  
+    *  Using the described geometry, you can insert a simple geometric 
+    *  object into your data visualization – a line defined by a position 
+    *  on the Y axis.
     * 
     * 
      * @param yintercept -

@@ -1,0 +1,93 @@
+.\" man page create by R# package system.
+.TH GGPLOT2 1 2000-Jan "geom_col" "geom_col"
+.SH NAME
+geom_col \- Bar charts
+.SH SYNOPSIS
+\fIgeom_col(\fBmapping\fR as any = \fB<NULL>\fR, 
+\fBdata\fR as any = \fB<NULL>\fR, 
+\fBposition\fR as any = "stack", 
+\fBjust\fR as double = 0.5, 
+\fBwidth\fR as double = 0, 
+\fBna_rm\fR as boolean = FALSE, 
+\fBshow_legend\fR as boolean = \fB<NULL>\fR, 
+\fBinherit_aes\fR as boolean = TRUE, 
+\fBargs\fR as list = \fB<NULL>\fR, 
+[\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Bar charts
+ 
+ There are two types of bar charts: geom_bar() and geom_col(). geom_bar() 
+ makes the height of the bar proportional to the number of cases in each
+ group (or if the weight aesthetic is supplied, the sum of the weights).
+ If you want the heights of the bars to represent values in the data, use 
+ geom_col() instead. geom_bar() uses stat_count() by default: it counts 
+ the number of cases at each x position. geom_col() uses stat_identity():
+ it leaves the data as is.
+.PP
+.SH OPTIONS
+.PP
+\fBmapping\fB \fR\- Set of aesthetic mappings created by aes(). If specified
+ and inherit.aes = TRUE (the default), it is combined with the default mapping 
+ at the top level of the plot. You must supply mapping if there is no plot 
+ mapping.. 
+.PP
+.PP
+\fBdata\fB \fR\- The data to be displayed in this layer. There are three options:
+ If NULL, the Default, the data Is inherited from the plot data As specified 
+ In the Call To ggplot().
+ A data.frame, Or other Object, will override the plot data. All objects will be
+ fortified To produce a data frame. See fortify() For which variables will be
+ created.
+ A Function will be called With a Single argument, the plot data. The Return 
+ value must be a data.frame, And will be used As the layer data. A Function 
+ can be created from a formula (e.g. ~ head(.x, 10)).. 
+.PP
+.PP
+\fBposition\fB \fR\- Position adjustment, either as a string naming the 
+ adjustment (e.g. "jitter" to use position_jitter), or the result of a call 
+ to a position adjustment function. Use the latter if you need to change the
+ settings of the adjustment.. 
+.PP
+.PP
+\fBjust\fB \fR\- Adjustment for column placement. Set to 0.5 by default, 
+ meaning that columns will be centered about axis breaks. Set to 0 or 1 to place 
+ columns to the left/right of axis breaks. Note that this argument may have 
+ unintended behaviour when used with alternative positions, e.g. position_dodge().. 
+.PP
+.PP
+\fBwidth\fB \fR\- Bar width. By default, set to 90% of the resolution() of
+ the data.. 
+.PP
+.PP
+\fBna_rm\fB \fR\- If FALSE, the default, missing values are removed with a
+ warning. If TRUE, missing values are silently removed.. 
+.PP
+.PP
+\fBshow_legend\fB \fR\- logical. Should this layer be included in the legends? 
+ NA, the default, includes if any aesthetics are mapped. FALSE never includes, 
+ and TRUE always includes. It can also be a named logical vector to finely select 
+ the aesthetics to display.. 
+.PP
+.PP
+\fBinherit_aes\fB \fR\- If FALSE, overrides the default aesthetics, rather 
+ than combining with them. This is most useful for helper functions that define 
+ both data and aesthetics and shouldn't inherit behaviour from the default plot 
+ specification, e.g. borders().. 
+.PP
+.PP
+\fBargs\fB \fR\- Other arguments passed on to layer(). These are often aesthetics,
+ used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They 
+ may also be parameters to the paired geom/stat.. 
+.PP
+.PP
+\fBenv\fB \fR\- -. 
+.PP
+.SH SEE ALSO
+ggplot2
+.SH FILES
+.PP
+ggplot.dll
+.PP
+.SH COPYRIGHT
+Copyright xieguigang<xie.guigang@gcmodeller.org> 2021, all rights reserved.

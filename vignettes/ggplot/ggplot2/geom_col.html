@@ -143,7 +143,7 @@
 
         <table style="width: 100%;">
             <tr>
-                <td>geom_bar {ggplot2}</td>
+                <td>geom_col {ggplot2}</td>
                 <td style="text-align: right;">R Documentation</td>
             </tr>
         </table>
@@ -157,41 +157,83 @@
         <h3>Usage</h3>
 
         <div style="width: 100%; padding-left: 3%; color: black;">
-            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_bar</strong>(
-    <i>stat</i> = <span style='color: brown;'><strong>"identity"</strong></span>,
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_col</strong>(
+    <i>mapping</i> = <span style='color: blue;'>NULL</span>,
+    <i>data</i> = <span style='color: blue;'>NULL</span>,
     <i>position</i> = <span style='color: brown;'><strong>"stack"</strong></span>,
-    <i>color</i> = <span style='color: #000000;'><strong>"black"</strong></span>,
-    <i>width</i> = 0.7,
-    <i>size</i> = 0.25,
-    <i>show.legend</i> = <span style='color: blue;'>TRUE</span>);</code></pre>
+    <i>just</i> = 0.5,
+    <i>width</i> = 0,
+    <i>na.rm</i> = <span style='color: blue;'>FALSE</span>,
+    <i>show.legend</i> = <span style='color: blue;'>NULL</span>,
+    <i>inherit.aes</i> = <span style='color: blue;'>TRUE</span>,
+    <i>args</i> = <span style='color: blue;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
 
         <table>
             
-<dt>stat</dt>
-<dd><p><p>-</p></p></dd>
+<dt>mapping</dt>
+<dd><p><p>Set of aesthetic mappings created by aes(). If specified<br />
+ and inherit.aes = TRUE (the default), it is combined with the default mapping <br />
+ at the top level of the plot. You must supply mapping if there is no plot <br />
+ mapping.</p></p></dd>
+
+
+<dt>data</dt>
+<dd><p><p>The data to be displayed in this layer. There are three options:<br />
+ If NULL, the Default, the data Is inherited from the plot data As specified <br />
+ In the Call To ggplot().<br />
+ A data.frame, Or other Object, will override the plot data. All objects will be<br />
+ fortified To produce a data frame. See fortify() For which variables will be<br />
+ created.<br />
+ A Function will be called With a Single argument, the plot data. The Return <br />
+ value must be a data.frame, And will be used As the layer data. A Function <br />
+ can be created from a formula (e.g. ~ head(.x, 10)).</p></p></dd>
 
 
 <dt>position</dt>
-<dd><p><p>-</p></p></dd>
+<dd><p><p>Position adjustment, either as a string naming the <br />
+ adjustment (e.g. "jitter" to use position_jitter), or the result of a call <br />
+ to a position adjustment function. Use the latter if you need to change the<br />
+ settings of the adjustment.</p></p></dd>
 
 
-<dt>color</dt>
-<dd><p><p>-</p></p></dd>
+<dt>just</dt>
+<dd><p><p>Adjustment for column placement. Set to 0.5 by default, <br />
+ meaning that columns will be centered about axis breaks. Set to 0 or 1 to place <br />
+ columns to the left/right of axis breaks. Note that this argument may have <br />
+ unintended behaviour when used with alternative positions, e.g. position_dodge().</p></p></dd>
 
 
 <dt>width</dt>
-<dd><p><p>-</p></p></dd>
+<dd><p><p>Bar width. By default, set to 90% of the resolution() of<br />
+ the data.</p></p></dd>
 
 
-<dt>size</dt>
-<dd><p><p>-</p></p></dd>
+<dt>na.rm</dt>
+<dd><p><p>If FALSE, the default, missing values are removed with a<br />
+ warning. If TRUE, missing values are silently removed.</p></p></dd>
 
 
 <dt>show.legend</dt>
-<dd><p><p>-</p></p></dd>
+<dd><p><p>logical. Should this layer be included in the legends? <br />
+ NA, the default, includes if any aesthetics are mapped. FALSE never includes, <br />
+ and TRUE always includes. It can also be a named logical vector to finely select <br />
+ the aesthetics to display.</p></p></dd>
+
+
+<dt>inherit.aes</dt>
+<dd><p><p>If FALSE, overrides the default aesthetics, rather <br />
+ than combining with them. This is most useful for helper functions that define <br />
+ both data and aesthetics and shouldn't inherit behaviour from the default plot <br />
+ specification, e.g. borders().</p></p></dd>
+
+
+<dt>args</dt>
+<dd><p><p>Other arguments passed on to layer(). These are often aesthetics,<br />
+ used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They <br />
+ may also be parameters to the paired geom/stat.</p></p></dd>
 
 
 <dt>env</dt>
@@ -207,7 +249,7 @@
 
         <h3>Value</h3>
 
-        this function returns data object of type <a href="/clr/ggplot/layers/geom_bar.html">geom_bar</a>.
+        this function returns data object of type <i>any</i> kind.
 
         <hr />
         <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a

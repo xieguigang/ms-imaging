@@ -1,7 +1,7 @@
 .\" man page create by R# package system.
 .TH GGPLOT2 1 2000-Jan "geom_bar" "geom_bar"
 .SH NAME
-geom_bar \- 
+geom_bar \- Bar charts
 .SH SYNOPSIS
 \fIgeom_bar(\fBstat\fR as any = "identity", 
 \fBposition\fR as any = "stack", 
@@ -10,6 +10,40 @@ geom_bar \-
 \fBsize\fR as double = 0.25, 
 \fBshow_legend\fR as boolean = TRUE, 
 [\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+Bar charts
+ 
+ There are two types of bar charts: geom_bar() and geom_col(). geom_bar() 
+ makes the height of the bar proportional to the number of cases in each
+ group (or if the weight aesthetic is supplied, the sum of the weights).
+ If you want the heights of the bars to represent values in the data, use 
+ geom_col() instead. geom_bar() uses stat_count() by default: it counts 
+ the number of cases at each x position. geom_col() uses stat_identity():
+ it leaves the data as is.
+.PP
+.SH OPTIONS
+.PP
+\fBstat\fB \fR\- -. 
+.PP
+.PP
+\fBposition\fB \fR\- -. 
+.PP
+.PP
+\fBcolor\fB \fR\- -. 
+.PP
+.PP
+\fBwidth\fB \fR\- -. 
+.PP
+.PP
+\fBsize\fB \fR\- -. 
+.PP
+.PP
+\fBshow_legend\fB \fR\- -. 
+.PP
+.PP
+\fBenv\fB \fR\- -. 
+.PP
 .SH SEE ALSO
 ggplot2
 .SH FILES

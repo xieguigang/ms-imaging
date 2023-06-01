@@ -145,7 +145,11 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="geom_hline">
     <a href="./ggplot2/geom_hline.html">geom_hline</a>
   </td>
-  <td></td>
+  <td><h3>Reference line defined by Y intercept. Useful for annotating plots.</h3>
+
+<p>Using the described geometry, you can insert a simple geometric <br />
+ object into your data visualization – a line defined by a position <br />
+ on the Y axis.</p></td>
 </tr>
 <tr>
   <td id="geom_vline">
@@ -186,10 +190,32 @@ table caption {font-size:14px;font-weight:bolder;}
  whiskers), and all "outlying" points individually.</p></td>
 </tr>
 <tr>
+  <td id="geom_col">
+    <a href="./ggplot2/geom_col.html">geom_col</a>
+  </td>
+  <td><h3>Bar charts</h3>
+
+<p>There are two types of bar charts: geom_bar() and geom_col(). geom_bar() <br />
+ makes the height of the bar proportional to the number of cases in each<br />
+ group (or if the weight aesthetic is supplied, the sum of the weights).<br />
+ If you want the heights of the bars to represent values in the data, use <br />
+ geom_col() instead. geom_bar() uses stat_count() by default: it counts <br />
+ the number of cases at each x position. geom_col() uses stat_identity():<br />
+ it leaves the data as is.</p></td>
+</tr>
+<tr>
   <td id="geom_bar">
     <a href="./ggplot2/geom_bar.html">geom_bar</a>
   </td>
-  <td></td>
+  <td><h3>Bar charts</h3>
+
+<p>There are two types of bar charts: geom_bar() and geom_col(). geom_bar() <br />
+ makes the height of the bar proportional to the number of cases in each<br />
+ group (or if the weight aesthetic is supplied, the sum of the weights).<br />
+ If you want the heights of the bars to represent values in the data, use <br />
+ geom_col() instead. geom_bar() uses stat_count() by default: it counts <br />
+ the number of cases at each x position. geom_col() uses stat_identity():<br />
+ it leaves the data as is.</p></td>
 </tr>
 <tr>
   <td id="geom_barplot">
