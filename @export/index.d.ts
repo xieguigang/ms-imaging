@@ -7,7 +7,7 @@ declare namespace MSImaging {
       /**
         * @param scale default value Is ``1``.
       */
-      function auto_size_internal(dims: any, padding: any, scale?: object): object;
+      function auto_size_internal(dims: any, padding: any, scale?: any): object;
       /**
       */
       function onLoad(): object;
@@ -18,7 +18,7 @@ declare namespace MSImaging {
      * @param ratio_threshold default value Is ``1.25``.
      * @param ratio_scale default value Is ``1.5``.
    */
-   function autoSize(dims: any, padding: any, scale?: object, is_multiple_combine_wide?: boolean, ratio_threshold?: number, ratio_scale?: number): object;
+   function autoSize(dims: any, padding: any, scale?: any, is_multiple_combine_wide?: any, ratio_threshold?: any, ratio_scale?: any): object;
    /**
    */
    function default_MSIfilter(): object;
@@ -55,7 +55,7 @@ declare namespace MSImaging {
      * @param TrIQ default value Is ``0.65``.
      * @param backcolor default value Is ``black``.
    */
-   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: string, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: string, ggStatPlot?: any, padding_top?: object, padding_right?: object, padding_bottom?: object, padding_left?: object, interval?: object, combine_layout?: any, jitter_size?: object, TrIQ?: number, backcolor?: string): object;
+   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any): object;
    /**
    */
    function npixels(raw: any): object;
@@ -69,5 +69,5 @@ declare namespace MSImaging {
      * @param cellPadding default value Is ``[200, 100, 0, 100]``.
      * @param strict default value Is ``true``.
    */
-   function PlotMSIMatrixHeatmap(ions_data: any, layout?: any, colorSet?: string, MSI_TrIQ?: number, gaussian?: object, size?: any, canvasPadding?: any, cellPadding?: any, strict?: boolean): object;
+   function PlotMSIMatrixHeatmap(ions_data: any, layout?: any, colorSet?: any, MSI_TrIQ?: any, gaussian?: any, size?: any, canvasPadding?: any, cellPadding?: any, strict?: any): object;
 }
