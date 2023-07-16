@@ -81,33 +81,40 @@ Namespace layers.spatial
         Public Property spotSize As Double
 
         Private Function loadSpots() As Dictionary(Of String, Double)
-            Dim type As IntensitySummary? = Nothing
             Dim spotVals As New Dictionary(Of String, Double)
-            Dim data As Double
 
-            Select Case geneID.ToLower
-                Case "sum" : type = IntensitySummary.Total
-                Case "max" : type = IntensitySummary.BasePeak
-                Case "avg", "mean" : type = IntensitySummary.Average
-            End Select
+            If STdata Is Nothing Then
+                For Each spot As SpotMap In spots
+                    spotVals(spot.barcode) = spot.heatmap
+                Next
+            Else
+                Dim type As IntensitySummary? = Nothing
+                Dim data As Double
 
-            For Each spot As SpotMap In spots
-                Dim spotData As Double() = STdata.GetGeneExpression(spot.barcode)
+                Select Case geneID.ToLower
+                    Case "sum" : type = IntensitySummary.Total
+                    Case "max" : type = IntensitySummary.BasePeak
+                    Case "avg", "mean" : type = IntensitySummary.Average
+                End Select
 
-                If type Is Nothing Then
-                    ' rendering for a specific gene id
-                    ' which is indexed via ordinal in the matrix column
-                    data = spotData(ordinal)
-                Else
-                    Select Case type.Value
-                        Case IntensitySummary.Average : data = spotData.Average
-                        Case IntensitySummary.BasePeak : data = spotData.Max
-                        Case IntensitySummary.Total : data = spotData.Sum
-                    End Select
-                End If
+                For Each spot As SpotMap In spots
+                    Dim spotData As Double() = STdata.GetGeneExpression(spot.barcode)
 
-                Call spotVals.Add(spot.barcode, data)
-            Next
+                    If type Is Nothing Then
+                        ' rendering for a specific gene id
+                        ' which is indexed via ordinal in the matrix column
+                        data = spotData(ordinal)
+                    Else
+                        Select Case type.Value
+                            Case IntensitySummary.Average : data = spotData.Average
+                            Case IntensitySummary.BasePeak : data = spotData.Max
+                            Case IntensitySummary.Total : data = spotData.Sum
+                        End Select
+                    End If
+
+                    Call spotVals.Add(spot.barcode, data)
+                Next
+            End If
 
             Return interpolate(spotVals)
         End Function

@@ -74,16 +74,16 @@ Public Module ggplotSpatial
     ''' <returns></returns>
     <ExportAPI("geom_spatialtile")>
     Public Function geom_spatialtile(tile As SpatialMapping,
-                                     geneID As String,
-                                     STdata As Object,
+                                     Optional geneID As String = Nothing,
+                                     Optional STdata As Object = Nothing,
                                      Optional colorSet As Object = "grays",
                                      Optional size As Double = 13,
                                      Optional env As Environment = Nothing) As Object
 
-        Dim STMatrix As MatrixViewer
+        Dim STMatrix As MatrixViewer = Nothing
 
         If STdata Is Nothing Then
-            Return Internal.debug.stop("the required STdata matrix can not be nothing!", env)
+            ' Return Internal.debug.stop("the required STdata matrix can not be nothing!", env)
         ElseIf TypeOf STdata Is Matrix Then
             STMatrix = New HTSMatrixViewer(DirectCast(STdata, Matrix))
         ElseIf TypeOf STdata Is MatrixViewer Then
@@ -92,20 +92,24 @@ Public Module ggplotSpatial
             Return Message.InCompatibleType(GetType(Matrix), STdata.GetType, env)
         End If
 
-        Dim index As Integer = STMatrix.GetSampleOrdinal(geneID)
+        Dim index As Integer = -1
 
-        If index = -1 Then
-            If geneID.TextEquals("sum") OrElse
-                geneID.TextEquals("max") OrElse
-                geneID.TextEquals("avg") OrElse
-                geneID.TextEquals("mean") Then
-                ' do nothing
-            Else
-                ' generate error for missing symbol id
-                Return Internal.debug.stop({
-                    $"target gene symbol({geneID}) is not found in your STdata matrix!",
-                    $"target_symbol: {geneID}"
-                }, env)
+        If Not STMatrix Is Nothing Then
+            index = STMatrix.GetSampleOrdinal(geneID)
+
+            If index = -1 Then
+                If geneID.TextEquals("sum") OrElse
+                    geneID.TextEquals("max") OrElse
+                    geneID.TextEquals("avg") OrElse
+                    geneID.TextEquals("mean") Then
+                    ' do nothing
+                Else
+                    ' generate error for missing symbol id
+                    Return Internal.debug.stop({
+                        $"target gene symbol({geneID}) is not found in your STdata matrix!",
+                        $"target_symbol: {geneID}"
+                    }, env)
+                End If
             End If
         End If
 
