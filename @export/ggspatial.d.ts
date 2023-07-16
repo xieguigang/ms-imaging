@@ -14,6 +14,10 @@ declare namespace ggspatial {
     * 
     * 
      * @param tile -
+     * @param geneID 
+     * + default value Is ``null``.
+     * @param STdata 
+     * + default value Is ``null``.
      * @param colorSet 
      * + default value Is ``'grays'``.
      * @param size 
@@ -21,5 +25,5 @@ declare namespace ggspatial {
      * @param env 
      * + default value Is ``null``.
    */
-   function geom_spatialtile(tile: object, geneID: string, STdata: any, colorSet?: any, size?: number, env?: object): any;
+   function geom_spatialtile(tile: object, geneID?: string, STdata?: any, colorSet?: any, size?: number, env?: object): any;
 }
