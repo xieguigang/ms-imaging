@@ -186,8 +186,17 @@ Public Module Rscript
                                      <RRawVectorArgument>
                                      Optional dims As Object = "0,0",
                                      Optional env As Environment = Nothing) As Object
+
+        Dim size = InteropArgumentHelper.getSize(dims, env, [default]:="0,0")
+        Dim dimVals As Size = size.SizeParser
+
         If matrix Is Nothing Then
-            Return MSIHeatMap.UnionLayers(layerR:=R, layerG:=G, layerB:=B)
+            Return MSIHeatMap.UnionLayers(
+                layerR:=R,
+                layerG:=G,
+                layerB:=B,
+                dims:=dims
+            )
         Else
             R = any.ToString(R)
             G = any.ToString(G)
@@ -215,8 +224,6 @@ Public Module Rscript
                         Return New Point(t(0), t(1))
                     End Function) _
             .ToArray
-        Dim size = InteropArgumentHelper.getSize(dims, env, [default]:="0,0")
-        Dim dimVals As Size = size.SizeParser
 
         If dimVals.IsEmpty Then
             Dim maxWidth As Integer = Aggregate pt As Point In pixels Into Max(pt.X)

@@ -6,7 +6,7 @@
     "run_dll": {
       "commandName": "Executable",
       "executablePath": "G:\\GCModeller\\src\\R-sharp\\App\\net6.0\\Rscript.exe",
-      "commandLineArgs": "\"G:/mzkit/src/mzkit/rstudio/pipeline/MSImaging/singleIon.R\" --app 100 --mzlist \"289.0935\" --save \"C:\\Users\\Administrator\\Desktop\\aaaa.png\" --backcolor \"#000000\" --colors \"viridis:turbo\" --mzdiff \"da:0.1\" --title \"\" --overlap-tic --SetDllDirectory G:/mzkit/dist/bin/Rstudio/host"
+      "commandLineArgs": "\"C:/Program Files/BioNovoGene/mzkit_win32/Rstudio/pipeline/MSImaging/tripleIon.R\" --app 102 --mzlist \"228.0016,650.4378,346.044\" --save \"C:\\Users\\Administrator\\Desktop\\aaaargb.png\" --mzdiff \"da:0.1\" --SetDllDirectory \"G:\\mzkit\\dist\\bin\\Rstudio\\host\""
     }
   }
 }

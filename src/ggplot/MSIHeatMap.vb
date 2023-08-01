@@ -111,13 +111,20 @@ Public Class MSIHeatMap
     ''' <param name="layerG"></param>
     ''' <param name="layerB"></param>
     ''' <returns></returns>
-    Public Shared Function UnionLayers(layerR As SingleIonLayer, layerG As SingleIonLayer, layerB As SingleIonLayer) As MSIHeatMap
-        Dim w As Integer = MeasureWidth(layerR, layerG, layerB)
-        Dim h As Integer = MeasureHeight(layerR, layerG, layerB)
-        Dim dims As New Size With {
-            .Width = w,
-            .Height = h
-        }
+    Public Shared Function UnionLayers(layerR As SingleIonLayer,
+                                       layerG As SingleIonLayer,
+                                       layerB As SingleIonLayer,
+                                       Optional dims As Size = Nothing) As MSIHeatMap
+
+        If dims.IsEmpty Then
+            Dim w As Integer = MeasureWidth(layerR, layerG, layerB)
+            Dim h As Integer = MeasureHeight(layerR, layerG, layerB)
+
+            dims = New Size With {
+                .Width = w,
+                .Height = h
+            }
+        End If
 
         Return New MSIHeatMap With {
             .R = layerR,
