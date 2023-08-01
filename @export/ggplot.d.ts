@@ -145,19 +145,25 @@ declare namespace ggplot {
      * @param matrix -
      * 
      * + default value Is ``null``.
+     * @param dims 
+     * + default value Is ``'0,0'``.
      * @param env -
      * 
      * + default value Is ``null``.
      * @return this function generate the data source object for the ggplot
    */
-   function MSIheatmap(R: any, G?: any, B?: any, matrix?: object, env?: object): object;
+   function MSIheatmap(R: any, G?: any, B?: any, matrix?: object, dims?: any, env?: object): object;
    /**
     * create a pixel point pack object for create ggplot
     * 
     * 
      * @param pixels A pixel point vector for create a data pack
+     * @param dims 
+     * + default value Is ``[0,0]``.
+     * @param env 
+     * + default value Is ``null``.
    */
-   function pixelPack(pixels: object): object;
+   function pixelPack(pixels: object, dims?: any, env?: object): object;
    /**
      * @param scale default value Is ``'gray'``.
      * @param levels default value Is ``255``.

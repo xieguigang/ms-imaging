@@ -131,6 +131,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     + labs(x = "Dimension(X)", y = "Dimension(Y)")
     + scale_x_continuous(labels = "F0")
     + scale_y_continuous(labels = "F0")
+    + theme(panel.grid = element_blank())
     ;
 
     plot(ggplot(padding = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_left}px;`) 
