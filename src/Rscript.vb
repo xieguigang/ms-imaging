@@ -195,7 +195,7 @@ Public Module Rscript
                 layerR:=R,
                 layerG:=G,
                 layerB:=B,
-                dims:=dims
+                dims:=dimVals
             )
         Else
             R = any.ToString(R)
