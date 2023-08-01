@@ -183,6 +183,8 @@ Public Module Rscript
                                      Optional G As Object = Nothing,
                                      Optional B As Object = Nothing,
                                      Optional matrix As dataframe = Nothing,
+                                     <RRawVectorArgument>
+                                     Optional dims As Object = "0,0",
                                      Optional env As Environment = Nothing) As Object
         If matrix Is Nothing Then
             Return MSIHeatMap.UnionLayers(layerR:=R, layerG:=G, layerB:=B)
@@ -213,14 +215,21 @@ Public Module Rscript
                         Return New Point(t(0), t(1))
                     End Function) _
             .ToArray
-        Dim maxWidth As Integer = Aggregate pt As Point In pixels Into Max(pt.X)
-        Dim maxHeight As Integer = Aggregate pt As Point In pixels Into Max(pt.Y)
+        Dim size = InteropArgumentHelper.getSize(dims, env, [default]:="0,0")
+        Dim dimVals As Size = size.SizeParser
+
+        If dimVals.IsEmpty Then
+            Dim maxWidth As Integer = Aggregate pt As Point In pixels Into Max(pt.X)
+            Dim maxHeight As Integer = Aggregate pt As Point In pixels Into Max(pt.Y)
+
+            dimVals = New Size(maxWidth, maxHeight)
+        End If
 
         Return New MSIHeatMap With {
             .R = MSIHeatMap.CreateLayer(R, pixels, CLRVector.asNumeric(matrix(R))),
             .B = If(missingLayer(B), Nothing, MSIHeatMap.CreateLayer(B, pixels, CLRVector.asNumeric(matrix(B)))),
             .G = If(missingLayer(G), Nothing, MSIHeatMap.CreateLayer(G, pixels, CLRVector.asNumeric(matrix(G)))),
-            .dimension = New Size(maxWidth, maxHeight)
+            .dimension = dimVals
         }
     End Function
 
