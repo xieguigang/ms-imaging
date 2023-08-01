@@ -151,8 +151,19 @@ Public Module Rscript
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("pixelPack")>
-    Public Function createPixelPack(pixels As MSImaging.PixelData()) As PointPack
-        Return New PointPack With {.pixels = pixels}
+    <RApiReturn(GetType(PointPack))>
+    Public Function createPixelPack(pixels As MsImaging.PixelData(),
+                                    <RRawVectorArgument(GetType(Integer))>
+                                    Optional dims As Object = "0,0",
+                                    Optional env As Environment = Nothing) As Object
+
+        Dim size = InteropArgumentHelper.getSize(dims, env, [default]:="0,0")
+        Dim dimVals As Size = size.SizeParser
+
+        Return New PointPack With {
+            .pixels = pixels,
+            .dimension = dimVals
+        }
     End Function
 
     ''' <summary>

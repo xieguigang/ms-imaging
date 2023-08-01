@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MSImaging": {
+      "commandName": "Project"
+    },
+    "run_dll": {
+      "commandName": "Executable",
+      "executablePath": "G:\\GCModeller\\src\\R-sharp\\App\\net6.0\\Rscript.exe",
+      "commandLineArgs": "\"G:/mzkit/src/mzkit/rstudio/pipeline/MSImaging/singleIon.R\" --app 100 --mzlist \"289.0935\" --save \"C:\\Users\\Administrator\\Desktop\\aaaa.png\" --backcolor \"#000000\" --colors \"viridis:turbo\" --mzdiff \"da:0.1\" --title \"\" --overlap-tic --SetDllDirectory G:/mzkit/dist/bin/Rstudio/host"
+    }
+  }
+}
