@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,15 +163,15 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_col</strong>(
-    <i>mapping</i> = <span style='color: blue;'>NULL</span>,
-    <i>data</i> = <span style='color: blue;'>NULL</span>,
+    <i>mapping</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>data</i> = <span style='color: blue !important;'>NULL</span>,
     <i>position</i> = <span style='color: brown;'><strong>"stack"</strong></span>,
-    <i>just</i> = 0.5,
-    <i>width</i> = 0,
-    <i>na.rm</i> = <span style='color: blue;'>FALSE</span>,
-    <i>show.legend</i> = <span style='color: blue;'>NULL</span>,
-    <i>inherit.aes</i> = <span style='color: blue;'>TRUE</span>,
-    <i>args</i> = <span style='color: blue;'>NULL</span>);</code></pre>
+    <i>just</i> = <span style='color: green;'>0.5</span>,
+    <i>width</i> = <span style='color: green;'>0</span>,
+    <i>na.rm</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>show.legend</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>inherit.aes</i> = <span style='color: blue !important;'>TRUE</span>,
+    <i>args</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -250,6 +255,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <i>any</i> kind.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a

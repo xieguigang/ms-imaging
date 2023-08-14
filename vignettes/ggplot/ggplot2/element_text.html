@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,17 +163,17 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>element_text</strong>(
-    <i>family</i> = <span style='color: blue;'>NULL</span>,
-    <i>face</i> = <span style='color: blue;'>NULL</span>,
-    <i>size</i> = 0,
-    <i>hjust</i> = 0,
-    <i>vjust</i> = 0,
-    <i>angle</i> = 0,
-    <i>lineheight</i> = 0,
-    <i>color</i> = <span style='color: blue;'>NULL</span>,
-    <i>margin</i> = 0,
-    <i>debug</i> = <span style='color: blue;'>FALSE</span>,
-    <i>inherit.blank</i> = <span style='color: blue;'>FALSE</span>);</code></pre>
+    <i>family</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>face</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>size</i> = <span style='color: green;'>0</span>,
+    <i>hjust</i> = <span style='color: green;'>0</span>,
+    <i>vjust</i> = <span style='color: green;'>0</span>,
+    <i>angle</i> = <span style='color: green;'>0</span>,
+    <i>lineheight</i> = <span style='color: green;'>0</span>,
+    <i>color</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>margin</i> = <span style='color: green;'>0</span>,
+    <i>debug</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>inherit.blank</i> = <span style='color: blue !important;'>FALSE</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -235,6 +240,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <a href="/clr/ggplot/elements/textElement.html">textElement</a>.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a

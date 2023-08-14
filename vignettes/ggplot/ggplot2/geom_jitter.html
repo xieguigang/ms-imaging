@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,13 +163,13 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_jitter</strong>(
-    <i>mapping</i> = <span style='color: blue;'>NULL</span>,
-    <i>data</i> = <span style='color: blue;'>NULL</span>,
+    <i>mapping</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>data</i> = <span style='color: blue !important;'>NULL</span>,
     <i>stat</i> = <span style='color: brown;'><strong>"identity"</strong></span>,
-    <i>width</i> = 0.5,
-    <i>radius</i> = 10,
-    <i>alpha</i> = 0.85,
-    <i>color</i> = <span style='color: blue;'>NULL</span>);</code></pre>
+    <i>width</i> = <span style='color: green;'>0.5</span>,
+    <i>radius</i> = <span style='color: green;'>10</span>,
+    <i>alpha</i> = <span style='color: green;'>0.85</span>,
+    <i>color</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -182,6 +187,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <a href="/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a>.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a

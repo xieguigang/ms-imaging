@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,22 +163,22 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_text</strong>(
-    <i>mapping</i> = <span style='color: blue;'>NULL</span>,
-    <i>data</i> = <span style='color: blue;'>NULL</span>,
+    <i>mapping</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>data</i> = <span style='color: blue !important;'>NULL</span>,
     <i>stat</i> = <span style='color: brown;'><strong>"identity"</strong></span>,
     <i>position</i> = <span style='color: brown;'><strong>"identity"</strong></span>,
-    <i>parse</i> = <span style='color: blue;'>FALSE</span>,
-    <i>nudge.x</i> = 0,
-    <i>nudge.y</i> = 0,
-    <i>check.overlap</i> = <span style='color: blue;'>FALSE</span>,
-    <i>na.rm</i> = <span style='color: blue;'>FALSE</span>,
-    <i>show.legend</i> = <span style='color: blue;'>FALSE</span>,
-    <i>inherit.aes</i> = <span style='color: blue;'>TRUE</span>,
+    <i>parse</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>nudge.x</i> = <span style='color: green;'>0</span>,
+    <i>nudge.y</i> = <span style='color: green;'>0</span>,
+    <i>check.overlap</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>na.rm</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>show.legend</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>inherit.aes</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>color</i> = <span style='color: #4682B4;'><strong>"steelblue"</strong></span>,
-    <i>which</i> = <span style='color: blue;'>NULL</span>,
-    <i>alpha</i> = 1,
-    <i>size</i> = <span style='color: blue;'>NULL</span>,
-    <i>...</i> = <span style='color: blue;'>NULL</span>);</code></pre>
+    <i>which</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>alpha</i> = <span style='color: green;'>1</span>,
+    <i>size</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>...</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -280,6 +285,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <a href="/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a>.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a
