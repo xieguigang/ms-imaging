@@ -36,12 +36,14 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @param z 
      * + default value Is ``null``.
-     * @param label 
-     * + default value Is ``null``.
-     * @param color -
+     * @param label data source for the scatter annotation label text
      * 
      * + default value Is ``null``.
-     * @param colour 
+     * @param color The color mapping name
+     * 
+     * + default value Is ``null``.
+     * @param colour the alias name of the color parameter
+     * 
      * + default value Is ``null``.
      * @param alpha 
      * + default value Is ``null``.
