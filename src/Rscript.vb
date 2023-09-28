@@ -401,9 +401,18 @@ Public Module Rscript
         }
     End Function
 
+    ''' <summary>
+    ''' Draw ruler overlaps of the ms-imaging
+    ''' </summary>
+    ''' <param name="color"></param>
+    ''' <param name="width">
+    ''' the ruler width on the imaging plot, unit of this parameter value is ``um``.
+    ''' </param>
+    ''' <returns></returns>
     <ExportAPI("geom_MSIruler")>
-    Public Function geom_MSIruler(<RRawVectorArgument> Optional color As Object = "white") As Object
+    Public Function geom_MSIruler(<RRawVectorArgument> Optional color As Object = "white", Optional width As Double = 1000) As Object
         Return New MSIRuler With {
+            .width = width,
             .color = RColorPalette.GetRawColor(color, [default]:="white")
         }
     End Function

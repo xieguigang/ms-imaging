@@ -66,7 +66,8 @@ Namespace layers
 
     Public Class MSIRuler : Inherits ggplotLayer
 
-        Public Property color As Color
+        Public Property color As Color = Color.White
+        Public Property width As Double = 1000
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
@@ -76,13 +77,14 @@ Namespace layers
             Dim dimsize As Size = ggplot.GetDimensionSize(reader.dimension)
             Dim rect As Rectangle = stream.canvas.PlotRegion
 
-            Call New Ruler(stream.theme).DrawOnCanvas(
-                g:=stream.g,
-                dimsize:=dimsize,
-                rect:=rect,
-                color:=color,
-                resolution:=resolution
-            )
+            Call New Ruler(stream.theme) With {.width = width} _
+                .DrawOnCanvas(
+                    g:=stream.g,
+                    dimsize:=dimsize,
+                    rect:=rect,
+                    color:=color,
+                    resolution:=resolution
+                )
 
             Return Nothing
         End Function
