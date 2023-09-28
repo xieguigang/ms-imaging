@@ -67,7 +67,7 @@ Namespace layers
     Public Class MSIRuler : Inherits ggplotLayer
 
         Public Property color As Color = Color.White
-        Public Property width As Double = 1000
+        Public Property width As Double? = 1000
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot

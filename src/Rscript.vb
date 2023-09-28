@@ -410,7 +410,10 @@ Public Module Rscript
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_MSIruler")>
-    Public Function geom_MSIruler(<RRawVectorArgument> Optional color As Object = "white", Optional width As Double = 1000) As Object
+    Public Function geom_MSIruler(<RRawVectorArgument>
+                                  Optional color As Object = "white",
+                                  Optional width As Double? = Nothing) As Object
+
         Return New MSIRuler With {
             .width = width,
             .color = RColorPalette.GetRawColor(color, [default]:="white")
