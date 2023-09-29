@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.IO
+Imports System.Runtime.CompilerServices
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports Microsoft.VisualBasic.Language
 Imports SMRUCC.Rsharp.Interpreter
@@ -16,9 +17,12 @@ Module BuildFilters
 
         If Program.isException(vals) Then
             Return DirectCast(vals, Message)
+        Else
+            Return FromArray(REnv.asVector(Of Object)(vals))
         End If
+    End Function
 
-        Dim v As Array = REnv.asVector(Of Object)(vals)
+    Public Function FromArray(v As Array) As RasterPipeline
         Dim scales As New List(Of Scaler)
 
         If REnv.isVector(Of String)(v) Then
@@ -33,6 +37,12 @@ Module BuildFilters
             pip = pip.Then(opt)
         Next
 
+        Return pip
+    End Function
+
+    Public Function FromFile(file As Stream) As RasterPipeline
+        Dim lines As String() = New StreamReader(file).ReadToEnd.LineTokens
+        Dim pip As RasterPipeline = RasterPipeline.Parse(lines)
         Return pip
     End Function
 End Module

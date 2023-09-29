@@ -56,6 +56,7 @@
 
 Imports System.Data
 Imports System.Drawing
+Imports System.IO
 Imports BioNovoGene.Analytical.MassSpectrometry
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
@@ -71,6 +72,8 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
+Imports SMRUCC.Rsharp.Interpreter
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.DataSets
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
@@ -80,6 +83,7 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
+Imports renv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
@@ -458,6 +462,7 @@ Public Module Rscript
     Public Function geom_MSIfilters(<RLazyExpression>
                                     <RRawVectorArgument>
                                     Optional filters As Object = Nothing,
+                                    <RRawVectorArgument>
                                     Optional file As Object = Nothing,
                                     Optional env As Environment = Nothing) As Object
 
@@ -491,6 +496,28 @@ Public Module Rscript
                     .pipeline = eval.TryCast(Of RasterPipeline)
                 }
             End If
+        ElseIf Not filters Is Nothing Then
+            Dim val As Object = DirectCast(filters, Expression).Evaluate(env)
+
+            If Program.isException(val) Then
+                Return val
+            End If
+
+            If val Is Nothing Then
+                Return Internal.debug.stop("input filter could not be nothing", env)
+            ElseIf val.GetType.IsArray Then
+                Return BuildFilters.FromArray(val)
+            Else
+                Return BuildFilters.FromArray(renv.asVector(Of Object)(val))
+            End If
+        ElseIf Not file Is Nothing Then
+            Dim buf = SMRUCC.Rsharp.GetFileStream(file, FileAccess.Read, env)
+
+            If buf Like GetType(Message) Then
+                Return buf.TryCast(Of Message)
+            End If
+
+            Return BuildFilters.FromFile(buf.TryCast(Of Stream))
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
         End If
