@@ -444,8 +444,21 @@ Public Module Rscript
         End If
     End Function
 
+    ''' <summary>
+    ''' Options for apply the filter pieline on the imaging outputs
+    ''' </summary>
+    ''' <param name="filters"></param>
+    ''' <param name="file">
+    ''' this function also could read the filter pipeline file for construct the raster pipeline
+    ''' </param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_MSIfilters")>
-    Public Function geom_MSIfilters(<RLazyExpression> filters As Object, Optional env As Environment = Nothing) As Object
+    Public Function geom_MSIfilters(<RLazyExpression>
+                                    <RRawVectorArgument>
+                                    Optional filters As Object = Nothing,
+                                    Optional file As Object = Nothing,
+                                    Optional env As Environment = Nothing) As Object
         If TypeOf filters Is BinaryExpression Then
             Dim pip As Object = BuildPipeline(filters, env, New RasterPipeline)
 
