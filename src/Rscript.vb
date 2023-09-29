@@ -72,6 +72,7 @@ Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.DataSets
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
@@ -459,6 +460,7 @@ Public Module Rscript
                                     Optional filters As Object = Nothing,
                                     Optional file As Object = Nothing,
                                     Optional env As Environment = Nothing) As Object
+
         If TypeOf filters Is BinaryExpression Then
             Dim pip As Object = BuildPipeline(filters, env, New RasterPipeline)
 
@@ -479,6 +481,16 @@ Public Module Rscript
             Return New MSIFilterPipelineOption With {
                 .pipeline = New RasterPipeline().Then(eval)
             }
+        ElseIf TypeOf filters Is VectorLiteral Then
+            Dim eval = DirectCast(filters, VectorLiteral).FromVector(env)
+
+            If eval Like GetType(Message) Then
+                Return eval.TryCast(Of Message)
+            Else
+                Return New MSIFilterPipelineOption With {
+                    .pipeline = eval.TryCast(Of RasterPipeline)
+                }
+            End If
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
         End If
