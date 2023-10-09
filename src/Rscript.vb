@@ -56,6 +56,7 @@
 
 Imports System.Data
 Imports System.Drawing
+Imports System.IO
 Imports BioNovoGene.Analytical.MassSpectrometry
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
@@ -71,7 +72,10 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
+Imports SMRUCC.Rsharp.Interpreter
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Closure
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.DataSets
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.Operators
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
@@ -79,6 +83,7 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
+Imports renv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
@@ -401,9 +406,21 @@ Public Module Rscript
         }
     End Function
 
+    ''' <summary>
+    ''' Draw ruler overlaps of the ms-imaging
+    ''' </summary>
+    ''' <param name="color"></param>
+    ''' <param name="width">
+    ''' the ruler width on the imaging plot, unit of this parameter value is ``um``.
+    ''' </param>
+    ''' <returns></returns>
     <ExportAPI("geom_MSIruler")>
-    Public Function geom_MSIruler(<RRawVectorArgument> Optional color As Object = "white") As Object
+    Public Function geom_MSIruler(<RRawVectorArgument>
+                                  Optional color As Object = "white",
+                                  Optional width As Double? = Nothing) As Object
+
         Return New MSIRuler With {
+            .width = width,
             .color = RColorPalette.GetRawColor(color, [default]:="white")
         }
     End Function
@@ -432,8 +449,23 @@ Public Module Rscript
         End If
     End Function
 
+    ''' <summary>
+    ''' Options for apply the filter pieline on the imaging outputs
+    ''' </summary>
+    ''' <param name="filters"></param>
+    ''' <param name="file">
+    ''' this function also could read the filter pipeline file for construct the raster pipeline
+    ''' </param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_MSIfilters")>
-    Public Function geom_MSIfilters(<RLazyExpression> filters As Object, Optional env As Environment = Nothing) As Object
+    Public Function geom_MSIfilters(<RLazyExpression>
+                                    <RRawVectorArgument>
+                                    Optional filters As Object = Nothing,
+                                    <RRawVectorArgument>
+                                    Optional file As Object = Nothing,
+                                    Optional env As Environment = Nothing) As Object
+
         If TypeOf filters Is BinaryExpression Then
             Dim pip As Object = BuildPipeline(filters, env, New RasterPipeline)
 
@@ -454,6 +486,38 @@ Public Module Rscript
             Return New MSIFilterPipelineOption With {
                 .pipeline = New RasterPipeline().Then(eval)
             }
+        ElseIf TypeOf filters Is VectorLiteral Then
+            Dim eval = DirectCast(filters, VectorLiteral).FromVector(env)
+
+            If eval Like GetType(Message) Then
+                Return eval.TryCast(Of Message)
+            Else
+                Return New MSIFilterPipelineOption With {
+                    .pipeline = eval.TryCast(Of RasterPipeline)
+                }
+            End If
+        ElseIf Not filters Is Nothing Then
+            Dim val As Object = DirectCast(filters, Expression).Evaluate(env)
+
+            If Program.isException(val) Then
+                Return val
+            End If
+
+            If val Is Nothing Then
+                Return Internal.debug.stop("input filter could not be nothing", env)
+            ElseIf val.GetType.IsArray Then
+                Return BuildFilters.FromArray(val)
+            Else
+                Return BuildFilters.FromArray(renv.asVector(Of Object)(val))
+            End If
+        ElseIf Not file Is Nothing Then
+            Dim buf = SMRUCC.Rsharp.GetFileStream(file, FileAccess.Read, env)
+
+            If buf Like GetType(Message) Then
+                Return buf.TryCast(Of Message)
+            End If
+
+            Return BuildFilters.FromFile(buf.TryCast(Of Stream))
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
         End If
