@@ -35,9 +35,20 @@ declare namespace ggplot {
    */
    function geom_MSIbackground(background: any): any;
    /**
-     * @param env default value Is ``null``.
+    * Options for apply the filter pieline on the imaging outputs
+    * 
+    * 
+     * @param filters -
+     * 
+     * + default value Is ``null``.
+     * @param file this function also could read the filter pipeline file for construct the raster pipeline
+     * 
+     * + default value Is ``null``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
    */
-   function geom_MSIfilters(filters: any, env?: object): any;
+   function geom_MSIfilters(filters?: any, file?: any, env?: object): any;
    /**
     * create a new ms-imaging heatmap layer
     * 
@@ -93,9 +104,17 @@ declare namespace ggplot {
    */
    function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, raster?: any, env?: object): object;
    /**
-     * @param color default value Is ``'white'``.
+    * Draw ruler overlaps of the ms-imaging
+    * 
+    * 
+     * @param color -
+     * 
+     * + default value Is ``'white'``.
+     * @param width the ruler width on the imaging plot, unit of this parameter value is ``um``.
+     * 
+     * + default value Is ``null``.
    */
-   function geom_MSIruler(color?: any): any;
+   function geom_MSIruler(color?: any, width?: number): any;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 

@@ -5,6 +5,8 @@
 // ref=ggplotMSImaging.Filters@MSImaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 /**
+ * Helper function module for create the image filter pipeline
+ * 
 */
 declare namespace MSIfilter {
    /**
@@ -12,12 +14,24 @@ declare namespace MSIfilter {
    */
    function denoise_scale(q?: number): object;
    /**
-     * @param k default value Is ``3``.
-     * @param q default value Is ``0.65``.
+    * Trying to fill the missing spatial spot on the imaging via knn method
+    * 
+    * 
+     * @param k -
+     * 
+     * + default value Is ``3``.
+     * @param q -
+     * 
+     * + default value Is ``0.65``.
    */
    function knn_scale(k?: object, q?: number): object;
    /**
-     * @param base default value Is ``2``.
+    * Normalized the raw input intensity value via log(N)
+    * 
+    * 
+     * @param base log(N), N=2 by default
+     * 
+     * + default value Is ``2``.
    */
    function log_scale(base?: number): object;
    /**
@@ -25,10 +39,18 @@ declare namespace MSIfilter {
    */
    function quantile_scale(q?: number): object;
    /**
+    * Make convolution of the spatial data for make the imaging render result soften
+    * 
+    * 
    */
    function soften_scale(): object;
    /**
-     * @param q default value Is ``0.6``.
+    * Trim the raw input intensity value via the TrIQ algorithm
+    * 
+    * 
+     * @param q -
+     * 
+     * + default value Is ``0.6``.
    */
    function TrIQ_scale(q?: number): object;
 }

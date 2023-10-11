@@ -10,7 +10,7 @@
     <meta name="keywords" content="R#; MSIfilter; MSImaging" />
     <meta name="generator" content="https://github.com/rsharp-lang" />
     <meta name="theme-color" content="#333" />
-    <meta name="description" content="..." />
+    <meta name="description" content="Helper function module for create the image filter pipeline..." />
     <meta class="foundation-data-attribute-namespace" />
     <meta class="foundation-mq-xxlarge" />
     <meta class="foundation-mq-xlarge" />
@@ -63,10 +63,10 @@ table caption {font-size:14px;font-weight:bolder;}
     <p style="     font-size: 1.125em;     line-height: .8em;     margin-left: 0.5%;     background-color: #fbfbfb;     padding: 24px; ">
       <code>
         <span style="color: blue;">require</span>(<span style="color: black; font-weight: bold;">MSImaging</span>);
-                               <br /><br /><span style="color: green;">{$desc_comments}</span><br /><span style="color: blue;">imports</span><span style="color: brown"> "MSIfilter"</span><span style="color: blue;"> from</span><span style="color: brown"> "MSImaging"</span>;
+                               <br /><br /><span style="color: green;">#' Helper function module for create the image filter pipeline</span><br /><span style="color: blue;">imports</span><span style="color: brown"> "MSIfilter"</span><span style="color: blue;"> from</span><span style="color: brown"> "MSImaging"</span>;
                            </code>
     </p>
-    <p></p>
+    <p><p>Helper function module for create the image filter pipeline</p></p>
     <blockquote>
       <p style="font-style: italic; font-size: 0.9em;">
                            
@@ -78,7 +78,7 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="log_scale">
     <a href="./MSIfilter/log_scale.html">log_scale</a>
   </td>
-  <td></td>
+  <td><p>Normalized the raw input intensity value via log(N)</p></td>
 </tr>
 <tr>
   <td id="quantile_scale">
@@ -90,19 +90,19 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="TrIQ_scale">
     <a href="./MSIfilter/TrIQ_scale.html">TrIQ_scale</a>
   </td>
-  <td></td>
+  <td><p>Trim the raw input intensity value via the TrIQ algorithm</p></td>
 </tr>
 <tr>
   <td id="soften_scale">
     <a href="./MSIfilter/soften_scale.html">soften_scale</a>
   </td>
-  <td></td>
+  <td><p>Make convolution of the spatial data for make the imaging render result soften</p></td>
 </tr>
 <tr>
   <td id="knn_scale">
     <a href="./MSIfilter/knn_scale.html">knn_scale</a>
   </td>
-  <td></td>
+  <td><p>Trying to fill the missing spatial spot on the imaging via knn method</p></td>
 </tr>
 <tr>
   <td id="denoise_scale">
