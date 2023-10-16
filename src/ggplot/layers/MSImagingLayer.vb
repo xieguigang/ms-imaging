@@ -152,7 +152,7 @@ Namespace layers
                 Return New legendColorMapElement With {
                     .width = stream.canvas.Padding.Right * (3 / 4),
                     .height = rect.Height,
-                    .colorMapLegend = New ColorMapLegend(colorSet, 100) With {
+                    .colorMapLegend = New ColorMapLegend(colorSet, colorLevels) With {
                         .format = "G3",
                         .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
                         .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(stream.g.Dpi),

@@ -507,9 +507,9 @@ Public Module Rscript
             If val Is Nothing Then
                 Return Internal.debug.stop("input filter could not be nothing", env)
             ElseIf val.GetType.IsArray Then
-                Return BuildFilters.FromArray(val)
+                Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromArray(val)}
             Else
-                Return BuildFilters.FromArray(renv.asVector(Of Object)(val))
+                Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromArray(renv.asVector(Of Object)(val))}
             End If
         ElseIf Not file Is Nothing Then
             Dim buf = SMRUCC.Rsharp.GetFileStream(file, FileAccess.Read, env)
@@ -518,7 +518,7 @@ Public Module Rscript
                 Return buf.TryCast(Of Message)
             End If
 
-            Return BuildFilters.FromFile(buf.TryCast(Of Stream))
+            Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromFile(buf.TryCast(Of Stream))}
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
         End If
