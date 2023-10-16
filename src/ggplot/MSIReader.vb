@@ -72,7 +72,6 @@
 Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.mzData.mzWebCache
-Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
 Imports ggplot
@@ -176,47 +175,5 @@ Public Class MSIReader : Inherits ggplotReader
     End Function
 End Class
 
-Public Class HeatMapReader : Inherits ggplotReader
 
-    Public ReadOnly Property heatmap As MSIHeatMap
 
-    Sub New(heatmap As MSIHeatMap)
-        Me.heatmap = heatmap
-    End Sub
-
-    Public Overrides Function getMapData(data As Object, env As Environment) As ggplotData
-        Dim raw As MSIHeatMap = DirectCast(data, MSIHeatMap)
-        Dim x As Double() = New Double() {0, raw.dimension.Width}
-        Dim y As Double() = New Double() {0, raw.dimension.Height}
-
-        Return New ggplotData With {
-           .x = axisMap.FromNumeric(x),
-           .y = axisMap.FromNumeric(y)
-        }
-    End Function
-
-End Class
-
-Public Class PointPack
-
-    Public Property pixels As PixelData()
-    Public Property dimension As Size
-
-    ''' <summary>
-    ''' 这个函数会自动校准位置，尽量将目标多边形区域放置在中间
-    ''' </summary>
-    ''' <returns></returns>
-    Public Function GetDimensionSize() As Size
-        If dimension.IsEmpty Then
-            Dim rect As RectangleF = New Polygon2D(pixels).GetRectangle
-            Dim offset As PointF = rect.Location
-            Dim right As Double = offset.X + rect.Width + offset.X
-            Dim height As Double = offset.Y + rect.Height + offset.Y
-
-            Return New Size(right, height)
-        Else
-            Return dimension
-        End If
-    End Function
-
-End Class
