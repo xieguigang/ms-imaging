@@ -65,6 +65,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports ggplot
 Imports ggplot.colors
 Imports ggplot.layers
+Imports ggplotMSImaging.data
 Imports ggplotMSImaging.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging

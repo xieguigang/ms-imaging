@@ -76,6 +76,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
 Imports ggplot
 Imports ggplot.elements
+Imports ggplotMSImaging.data
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports SMRUCC.Rsharp.Runtime
 
