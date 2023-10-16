@@ -70,12 +70,23 @@ Namespace layers
         Public Property threshold As QuantizationThreshold
         Public Property colorLevels As Integer = 255
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="layer"></param>
+        ''' <param name="ggplot"></param>
+        ''' <returns></returns>
+        ''' <remarks>
+        ''' both filter and the <paramref name="layer"/> null reference error has been handled at here
+        ''' </remarks>
         Public Shared Function ApplyRasterFilter(layer As SingleIonLayer, ggplot As ggplotMSI) As SingleIonLayer
             If Not ggplot.filter Is Nothing Then
-                layer = ggplot.filter(layer)
-                layer.MSILayer = layer.MSILayer _
-                    .Where(Function(p) p.intensity >= 1) _
-                    .ToArray
+                If layer IsNot Nothing Then
+                    layer = ggplot.filter(layer)
+                    layer.MSILayer = layer.MSILayer _
+                        .Where(Function(p) p.intensity >= 1) _
+                        .ToArray
+                End If
             End If
 
             Return layer

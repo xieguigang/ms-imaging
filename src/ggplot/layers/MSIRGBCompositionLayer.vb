@@ -122,21 +122,9 @@ Namespace layers
                 dims = getDimSize(redLayer, greenLayer, blueLayer)
             End If
 
-            If Not redLayer Is Nothing Then
-                If Not ggplot.filter Is Nothing Then
-                    redLayer = ggplot.filter(redLayer)
-                End If
-            End If
-            If Not blueLayer Is Nothing Then
-                If Not ggplot.filter Is Nothing Then
-                    blueLayer = ggplot.filter(blueLayer)
-                End If
-            End If
-            If Not greenLayer Is Nothing Then
-                If Not ggplot.filter Is Nothing Then
-                    greenLayer = ggplot.filter(greenLayer)
-                End If
-            End If
+            redLayer = ApplyRasterFilter(redLayer, ggplot)
+            greenLayer = ApplyRasterFilter(greenLayer, ggplot)
+            blueLayer = ApplyRasterFilter(blueLayer, ggplot)
 
             Using buf As Graphics2D = dims.CreateGDIDevice(filled:=Color.Black)
                 Call engine.ChannelCompositions(
@@ -149,7 +137,7 @@ Namespace layers
                     background:=stream.theme.gridFill
                 )
 
-                Dim rgb As Image = buf.ImageResource
+                Dim rgb As Image = ApplyGauss(buf.ImageResource, ggplot)
 
                 ' scale size to the plot region
                 ' rgb = Drawer.ScaleLayer(CType(rgb, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
