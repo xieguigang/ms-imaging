@@ -11,7 +11,7 @@ require(ggplot);
 
 options(memory.load = "max");
 
-bitmap(file = `./mouse-embryos_RGB.png`, size = [3000, 3600]) {
+bitmap(file = `./mouse-embryos_RGB.png`, size = [3000, 3300]) {
     
     # load mzpack/imzML raw data file
     # and config ggplot data source driver 
