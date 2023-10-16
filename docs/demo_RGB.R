@@ -1,14 +1,15 @@
-imports "package_utils" from "devkit";
+# imports "package_utils" from "devkit";
 
-package_utils::attach("D:\mzkit\Rscript\Library\mzkit_app");
-package_utils::attach("D:\mzkit\Rscript\Library\MSI_app"); 
+setwd(@dir);
+
+# package_utils::attach("../../mzkit_app");
+# package_utils::attach("../../MSI_app"); 
 
 require(MSImaging);
 require(mzkit);
 require(ggplot);
 
 options(memory.load = "max");
-setwd(@dir);
 
 bitmap(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.png`, size = [3300, 2000]) {
     
@@ -19,11 +20,13 @@ bitmap(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.png`, size = [3300, 2000]
            padding = "padding: 200px 600px 200px 250px;"
     ) 
        # rendering of rgb channels ion m/z
-       + geom_red(mz = 741.5303, tolerance = "da:0.3")
-       + geom_green(mz = 743.5468, tolerance = "da:0.3")
-       + geom_blue(mz = 798.5414, tolerance = "da:0.3")
-	   + theme(panel.background = "black")
-	   + default_MSIfilter() 
+       + geom_red(mz = 743.5468, tolerance = "da:0.3")
+       + geom_green(mz = 798.5414, tolerance = "da:0.3")
+       + geom_blue(mz = 741.5303, tolerance = "da:0.3")
+	   + theme(panel.background = "black", panel.grid = element_blank())
+	   + geom_MSIfilters(
+            TrIQ_scale(0.999)
+       )
        # add ggplot charting elements
        + ggtitle("HR2MSI mouse urinary bladder S096 - Figure1")
        + labs(x = "Dimension(X)", y = "Dimension(Y)")
