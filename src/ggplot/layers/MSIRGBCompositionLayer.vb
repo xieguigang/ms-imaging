@@ -64,8 +64,6 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace layers
@@ -137,14 +135,7 @@ Namespace layers
                     background:=stream.theme.gridFill
                 )
 
-                Dim rgb As Image = ApplyGauss(buf.ImageResource, ggplot)
-
-                ' scale size to the plot region
-                ' rgb = Drawer.ScaleLayer(CType(rgb, Bitmap), rect.Width, rect.Height, InterpolationMode.Bilinear)
-                rgb = New RasterScaler(CType(rgb, Bitmap)).Scale(hqx:=HqxScales.Hqx_4x)
-                rgb = New RasterScaler(CType(rgb, Bitmap)).Scale(rect.Width, rect.Height)
-
-                stream.g.DrawImage(rgb, rect)
+                stream.g.DrawImage(ScaleImageImpls(buf.ImageResource, stream), rect)
             End Using
 
             Return New legendGroupElement With {

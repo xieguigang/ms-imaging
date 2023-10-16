@@ -1,60 +1,59 @@
 ﻿#Region "Microsoft.VisualBasic::71b4e8b3ed2b3500a34d489632ec5f00, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBHeatMapLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 66
-    '    Code Lines: 52
-    ' Comment Lines: 7
-    '   Blank Lines: 7
-    '     File Size: 2.81 KB
+' Summaries:
 
 
-    '     Class MSIRGBHeatMapLayer
-    ' 
-    '         Function: legend, Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 66
+'    Code Lines: 52
+' Comment Lines: 7
+'   Blank Lines: 7
+'     File Size: 2.81 KB
+
+
+'     Class MSIRGBHeatMapLayer
+' 
+'         Function: legend, Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
@@ -76,13 +75,9 @@ Namespace layers
             Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim data = DirectCast(ggplot.data, MSIHeatMap)
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=True)
-            Dim redLayer As SingleIonLayer = data.R
-            Dim greenLayer As SingleIonLayer = data.G
-            Dim blueLayer As SingleIonLayer = data.B
-            'Dim cut As IQuantizationThreshold = AddressOf If(threshold, New TrIQThreshold).ThresholdValue
-            'Dim qcutRed As DoubleRange = {0, cut(redLayer?.GetIntensity)}
-            'Dim qcutGreen As DoubleRange = {0, cut(greenLayer?.GetIntensity)}
-            'Dim qcutBlue As DoubleRange = {0, cut(blueLayer?.GetIntensity)}
+            Dim redLayer As SingleIonLayer = ApplyRasterFilter(data.R, ggplot)
+            Dim greenLayer As SingleIonLayer = ApplyRasterFilter(data.G, ggplot)
+            Dim blueLayer As SingleIonLayer = ApplyRasterFilter(data.B, ggplot)
             Dim dims As Size = data.dimension
 
             MSI = engine.ChannelCompositions(
@@ -92,9 +87,8 @@ Namespace layers
                 dimension:=dims,
                 background:=stream.theme.gridFill
             ).AsGDIImage
-            MSI = Drawer.ScaleLayer(MSI, rect.Width, rect.Height, InterpolationMode.Bilinear)
 
-            Call stream.g.DrawImage(MSI, rect)
+            Call stream.g.DrawImage(ScaleImageImpls(MSI, stream), rect)
 
             Return New legendGroupElement With {
                 .legends = (From legend As LegendObject In {

@@ -65,8 +65,6 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -137,13 +135,7 @@ Namespace layers
                 mapLevels:=colorLevels
             ).AsGDIImage
 
-            ' scale size to the plot region
-            ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
-            MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(hqx:=HqxScales.Hqx_4x)
-            MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(rect.Width, rect.Height)
-            MSI = ApplyGauss(MSI, ggplot)
-
-            Call stream.g.DrawImage(MSI, rect)
+            Call stream.g.DrawImage(ScaleImageImpls(MSI, stream), rect)
 
             If mz.Length > 1 Then
                 Return Nothing

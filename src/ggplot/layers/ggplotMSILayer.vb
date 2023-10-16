@@ -59,7 +59,10 @@ Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
+Imports ggplot
 Imports ggplot.layers
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Filters
 
 Namespace layers
@@ -134,6 +137,19 @@ Namespace layers
             Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(mz, base.reader, mzdiff)
 
             Return ion
+        End Function
+
+        Public Shared Function ScaleImageImpls(MSI As Image, stream As ggplotPipeline) As Image
+            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim ggplot As ggplotMSI = stream.ggplot
+
+            ' scale size to the plot region
+            ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
+            MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(hqx:=HqxScales.Hqx_4x)
+            MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(rect.Width, rect.Height)
+            MSI = ApplyGauss(MSI, ggplot)
+
+            Return MSI
         End Function
     End Class
 End Namespace
