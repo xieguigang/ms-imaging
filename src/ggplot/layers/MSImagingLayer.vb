@@ -67,7 +67,6 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
-Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -116,21 +115,9 @@ Namespace layers
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim rawInto As Double() = ion.GetIntensity
             Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
-
-            If Not ggplot.filter Is Nothing Then
-                ion = ggplot.filter(ion)
-                ion.MSILayer = ion.MSILayer _
-                    .Where(Function(p) p.intensity >= 1) _
-                    .ToArray
-            End If
-
-            Dim TrIQ As Double = Double.MaxValue  ' New TrIQThreshold().ThresholdValue(ion.GetIntensity, Me.TrIQ)
             Dim theme As Theme = stream.theme
-            Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)
 
-            'If knnfill Then
-            '    ion = ion.KnnFill(3, 3, 0.8)
-            'End If
+            ion = ApplyRasterFilter(ion, ggplot)
 
             If colorMap Is Nothing Then
                 colorSet = stream.theme.colorSet
@@ -154,16 +141,7 @@ Namespace layers
             ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
             MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(hqx:=HqxScales.Hqx_4x)
             MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(rect.Width, rect.Height)
-
-            If gaussBlurs > 0 Then
-                Dim bitmap As New Bitmap(MSI)
-
-                For i As Integer = 0 To gaussBlurs
-                    bitmap = GaussBlur.GaussBlur(bitmap)
-                Next
-
-                MSI = bitmap
-            End If
+            MSI = ApplyGauss(MSI, ggplot)
 
             Call stream.g.DrawImage(MSI, rect)
 

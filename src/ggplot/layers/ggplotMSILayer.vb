@@ -1,64 +1,66 @@
 ﻿#Region "Microsoft.VisualBasic::184a177d26f6d88f8d2133aad7ed38fa, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 42
-    '    Code Lines: 32
-    ' Comment Lines: 0
-    '   Blank Lines: 10
-    '     File Size: 1.73 KB
+' Summaries:
 
 
-    '     Class ggplotMSILayer
-    ' 
-    '         Properties: colorLevels, pixelDrawer, threshold
-    ' 
-    '         Function: (+2 Overloads) getIonlayer, MSIInterpolation
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 42
+'    Code Lines: 32
+' Comment Lines: 0
+'   Blank Lines: 10
+'     File Size: 1.73 KB
+
+
+'     Class ggplotMSILayer
+' 
+'         Properties: colorLevels, pixelDrawer, threshold
+' 
+'         Function: (+2 Overloads) getIonlayer, MSIInterpolation
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
+Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot.layers
+Imports Microsoft.VisualBasic.Imaging.Filters
 
 Namespace layers
 
@@ -67,6 +69,33 @@ Namespace layers
         Public Property pixelDrawer As Boolean = False
         Public Property threshold As QuantizationThreshold
         Public Property colorLevels As Integer = 255
+
+        Public Shared Function ApplyRasterFilter(layer As SingleIonLayer, ggplot As ggplotMSI) As SingleIonLayer
+            If Not ggplot.filter Is Nothing Then
+                layer = ggplot.filter(layer)
+                layer.MSILayer = layer.MSILayer _
+                    .Where(Function(p) p.intensity >= 1) _
+                    .ToArray
+            End If
+
+            Return layer
+        End Function
+
+        Public Shared Function ApplyGauss(MSI As Image, ggplot As ggplotMSI) As Image
+            Dim gaussBlurs As Integer = ggplot.args.getValue("gauss_blur", ggplot.environment, 0)
+#Disable Warning
+            If gaussBlurs > 0 Then
+                Dim bitmap As New Bitmap(MSI)
+#Enable Warning
+                For i As Integer = 0 To gaussBlurs
+                    bitmap = GaussBlur.GaussBlur(bitmap)
+                Next
+
+                MSI = bitmap
+            End If
+
+            Return MSI
+        End Function
 
         Public Shared Function MSIInterpolation(layer As SingleIonLayer, ggplot As ggplot.ggplot) As SingleIonLayer
             If layer Is Nothing Then
