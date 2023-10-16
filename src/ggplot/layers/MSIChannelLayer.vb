@@ -72,13 +72,15 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
 Imports ggplot.colors
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 
 Namespace layers
 
+    ''' <summary>
+    ''' The rgb color channel heatmap plot
+    ''' </summary>
     Public Class MSIChannelLayer : Inherits ggplotMSILayer
 
         Public Enum Channels

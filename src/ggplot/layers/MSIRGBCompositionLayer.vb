@@ -60,7 +60,6 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports ggplot
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
@@ -71,6 +70,9 @@ Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace layers
 
+    ''' <summary>
+    ''' The rgb composition rendering layer
+    ''' </summary>
     Public Class MSIRGBCompositionLayer : Inherits ggplotMSILayer
 
         Public Property red As ggplotMSILayer
@@ -86,6 +88,13 @@ Namespace layers
             End Get
         End Property
 
+        ''' <summary>
+        ''' Try get the dimension size of the canvas based on the layer data
+        ''' </summary>
+        ''' <param name="redLayer"></param>
+        ''' <param name="greenLayer"></param>
+        ''' <param name="blueLayer"></param>
+        ''' <returns></returns>
         Private Shared Function getDimSize(redLayer As SingleIonLayer, greenLayer As SingleIonLayer, blueLayer As SingleIonLayer) As Size
             Dim dimSizes As Size() = (From layer As SingleIonLayer
                                       In {redLayer, greenLayer, blueLayer}

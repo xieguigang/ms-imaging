@@ -76,6 +76,9 @@ Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace layers
 
+    ''' <summary>
+    ''' The single ion ms-imaging plot layer
+    ''' </summary>
     Public Class MSImagingLayer : Inherits ggplotMSILayer
 
         Public Property TrIQ As Double = 0.65
