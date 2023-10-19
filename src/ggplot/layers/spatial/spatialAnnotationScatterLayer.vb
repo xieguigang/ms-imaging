@@ -25,12 +25,13 @@ Namespace layers.spatial
                 Return Nothing
             End If
 
-            Dim dims = DirectCast(stream.ggplot, ggplotMSI).dimension_size
+            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim paddingTop = rect.Top
 
             For i As Integer = 0 To x.Length - 1
                 b = color.ComputeIfAbsent(colors(i), Function(c) New SolidBrush(c.TranslateColor.Alpha(opacity)))
                 xi = stream.scale.TranslateX(x(i))
-                yi = stream.scale.TranslateY(dims.Height - y(i))
+                yi = rect.Bottom - stream.scale.TranslateY(y(i)) + paddingTop
                 stream.g.DrawCircle(New PointF(xi, yi), size, b)
             Next
 
