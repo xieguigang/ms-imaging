@@ -140,7 +140,12 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         + theme(plot.title = element_text(family = "Cambria Math", size = 32))
     );
     plot(bar);
-    plot(ion);            
+
+    if (is.null(regions)) {
+        plot(ion);         
+    } else {
+        plot(ion + geom_spatialScatter(regions$x, regions$y, regions$colors));
+    }       
 
     dev.off();
 }
