@@ -73,6 +73,8 @@ Public Module ggplotSpatial
     Public Function geom_spatialScatter(<RRawVectorArgument> x As Object,
                                         <RRawVectorArgument> y As Object,
                                         <RRawVectorArgument> colors As Object,
+                                        Optional size As Single = 3,
+                                        Optional alpha As Single = 0.8,
                                         Optional env As Environment = Nothing) As Object
 
         Dim px As Double() = CLRVector.asNumeric(x)
@@ -87,7 +89,14 @@ Public Module ggplotSpatial
             colorSet = colorSet(0).Replicate(px.Length).ToArray
         End If
 
-
+        Return New SpatialAnnotationScatterLayer With {
+            .x = px,
+            .y = py,
+            .size = size,
+            .alpha = alpha,
+            .colors = colorSet,
+            .showLegend = False
+        }
     End Function
 
     ''' <summary>
