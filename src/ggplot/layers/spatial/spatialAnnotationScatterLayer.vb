@@ -25,12 +25,12 @@ Namespace layers.spatial
                 Return Nothing
             End If
 
-            Dim top As Double = stream.scale.TranslateY(0)
+            Dim dims = DirectCast(stream.ggplot, ggplotMSI).dimension_size
 
             For i As Integer = 0 To x.Length - 1
                 b = color.ComputeIfAbsent(colors(i), Function(c) New SolidBrush(c.TranslateColor.Alpha(opacity)))
                 xi = stream.scale.TranslateX(x(i))
-                yi = top - stream.scale.TranslateY(y(i))
+                yi = stream.scale.TranslateY(dims.Height - y(i))
                 stream.g.DrawCircle(New PointF(xi, yi), size, b)
             Next
 
