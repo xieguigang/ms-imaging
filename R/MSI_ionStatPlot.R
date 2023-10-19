@@ -57,7 +57,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  combine_layout = [4, 5], 
                                  jitter_size    = 8, 
                                  TrIQ           = 0.65,
-                                 backcolor      = "black") {
+                                 backcolor      = "black", 
+                                 regions        = NULL) {
 
     bitmap(file = savePng, size = size, fill = "white");
 

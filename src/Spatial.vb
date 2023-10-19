@@ -60,12 +60,35 @@ Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.genomics.Analysis.HTS.DataFrame
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
+Imports SMRUCC.Rsharp.Runtime.Interop
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 ''' <summary>
 ''' spatial mapping between the STdata and SMdata based on the ggplot framework
 ''' </summary>
 <Package("ggspatial")>
 Public Module ggplotSpatial
+
+    <ExportAPI("geom_spatialScatter")>
+    Public Function geom_spatialScatter(<RRawVectorArgument> x As Object,
+                                        <RRawVectorArgument> y As Object,
+                                        <RRawVectorArgument> colors As Object,
+                                        Optional env As Environment = Nothing) As Object
+
+        Dim px As Double() = CLRVector.asNumeric(x)
+        Dim py As Double() = CLRVector.asNumeric(y)
+        Dim colorSet As String() = CLRVector.asCharacter(colors)
+
+        If colorSet Is Nothing Then
+            Return Internal.debug.stop("invalid color set value!", env)
+        End If
+
+        If colorSet.Length = 1 Then
+            colorSet = colorSet(0).Replicate(px.Length).ToArray
+        End If
+
+
+    End Function
 
     ''' <summary>
     ''' add a spatial overlaps of the STdata on current SMdata imaging
