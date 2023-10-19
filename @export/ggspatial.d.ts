@@ -10,6 +10,12 @@
 */
 declare namespace ggspatial {
    /**
+     * @param size default value Is ``3``.
+     * @param alpha default value Is ``0.800000011920929``.
+     * @param env default value Is ``null``.
+   */
+   function geom_spatialScatter(x: any, y: any, colors: any, size?: number, alpha?: number, env?: object): any;
+   /**
     * add a spatial overlaps of the STdata on current SMdata imaging
     * 
     * 

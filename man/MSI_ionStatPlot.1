@@ -15,7 +15,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>combine.layout</i> = [4, 5],
     <i>jitter.size</i> = <span style='color: green;'>8</span>,
     <i>TrIQ</i> = <span style='color: green;'>0.65</span>,
-    <i>backcolor</i> = black)
+    <i>backcolor</i> = black,
+    <i>regions</i> = <span style='color: blue !important;'>NULL</span>)
 .SH SYNOPSIS
 \fIMSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>savePng</i> = ./Rplot.png,
@@ -32,7 +33,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>combine.layout</i> = [4, 5],
     <i>jitter.size</i> = <span style='color: green;'>8</span>,
     <i>TrIQ</i> = <span style='color: green;'>0.65</span>,
-    <i>backcolor</i> = black)\fR
+    <i>backcolor</i> = black,
+    <i>regions</i> = <span style='color: blue !important;'>NULL</span>)\fR
 .SH OPTIONS
 .PP
 \fBmzpack\fB \fR\- . a mzpack data object used for do MS-imaging or other data object that contains the ms-imaging layer data and could be recognized by the ggplot ms-imaging function.
@@ -90,6 +92,9 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 .PP
 .PP
 \fBbackcolor\fB \fR\- black. the background color of the MS-imaging plot
+.PP
+.PP
+\fBregions\fB \fR\- NULL. 
 .PP
 .SH FILES
 .PP

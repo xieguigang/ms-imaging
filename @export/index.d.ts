@@ -54,8 +54,9 @@ declare namespace MSImaging {
      * @param jitter_size default value Is ``8``.
      * @param TrIQ default value Is ``0.65``.
      * @param backcolor default value Is ``black``.
+     * @param regions default value Is ``null``.
    */
-   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any): object;
+   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any, regions?: any): object;
    /**
    */
    function npixels(raw: any): object;

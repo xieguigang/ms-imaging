@@ -1,3 +1,4 @@
+imports "ggspatial" from "MSImaging";
 
 #' Stat plot combine with the MS-imaging
 #' 
