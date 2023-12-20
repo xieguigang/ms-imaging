@@ -1,54 +1,54 @@
 ﻿#Region "Microsoft.VisualBasic::6dee4e9c98144a17456a79fb58513c0b, mzkit\Rscript\Library\MSI_app\src\Spatial.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 70
-    '    Code Lines: 53
-    ' Comment Lines: 10
-    '   Blank Lines: 7
-    '     File Size: 2.65 KB
+' Summaries:
 
 
-    ' Module ggplotSpatial
-    ' 
-    '     Function: geom_spatialtile
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 70
+'    Code Lines: 53
+' Comment Lines: 10
+'   Blank Lines: 7
+'     File Size: 2.65 KB
+
+
+' Module ggplotSpatial
+' 
+'     Function: geom_spatialtile
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -69,7 +69,18 @@ Imports SMRUCC.Rsharp.Runtime.Vectorization
 <Package("ggspatial")>
 Public Module ggplotSpatial
 
+    ''' <summary>
+    ''' draw scatter layer with a given x and y coordinates.
+    ''' </summary>
+    ''' <param name="x">a numeric vector of pixel x</param>
+    ''' <param name="y">a numeric vector of pixel y</param>
+    ''' <param name="colors">the colors for rendering each scatter spot</param>
+    ''' <param name="size">the spot size for the drawing</param>
+    ''' <param name="alpha">the transparency alpha value for drawing the scatter points.</param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_spatialScatter")>
+    <RApiReturn(GetType(SpatialAnnotationScatterLayer))>
     Public Function geom_spatialScatter(<RRawVectorArgument> x As Object,
                                         <RRawVectorArgument> y As Object,
                                         <RRawVectorArgument> colors As Object,
@@ -102,9 +113,18 @@ Public Module ggplotSpatial
     ''' <summary>
     ''' add a spatial overlaps of the STdata on current SMdata imaging
     ''' </summary>
-    ''' <param name="tile"></param>
+    ''' <param name="tile">A collection of the spatial spot mapping</param>
+    ''' <param name="STdata">the spatial transcriptomics data matrix</param>
+    ''' <param name="geneID">
+    ''' the gene ID for pull the spatial expression from the <paramref name="STdata"/>. 
+    ''' </param>
+    ''' <param name="colorSet">
+    ''' the color set data for rendering the gene expression spatial heatmap
+    ''' </param>
+    ''' <param name="size">the spot size when drawing the spatial expression</param>
     ''' <returns></returns>
     <ExportAPI("geom_spatialtile")>
+    <RApiReturn(GetType(ggplotSpatialTranscriptomicsLayer))>
     Public Function geom_spatialtile(tile As SpatialMapping,
                                      Optional geneID As String = Nothing,
                                      Optional STdata As Object = Nothing,
