@@ -28,8 +28,12 @@
 
         <pre>
             <code id="clr_ts">
-#namespace ggplot.layers
+# namespace ggplot.layers
 export class geom_bar {
+   # the bar height evaluation method, value could be 
+   #  
+   #  1. identity
+   #  2. percentage
    stat: string;
    position: string;
    groupWidth: double;

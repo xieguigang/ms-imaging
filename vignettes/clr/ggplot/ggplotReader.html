@@ -28,15 +28,20 @@
 
         <pre>
             <code id="clr_ts">
-#namespace ggplot
+# namespace ggplot
 export class ggplotReader {
+   # the x axis mapping
    x: string;
+   # the y axis mapping
    y: string;
+   # the z axis mapping
    z: string;
    color: <i>any</i> kind;
    shape: <i>any</i> kind;
    class: <i>any</i> kind;
+   # the legend title label text
    title: string;
+   # the scatter text label mapping
    label: <i>any</i> kind;
    args: list;
    isPlain2D: boolean;
