@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>evaluate of the canvas size and padding</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>autoSize {MSImaging}</td>
+                <td style="text-align: right;">R Documentation</td>
+            </tr>
+        </table>
+
+        <h2>evaluate of the canvas size and padding</h2>
+
+        <h3>Description</h3>
+
+        
+
+        <h3>Usage</h3>
+
+        <div style="width: 100%; padding-left: 3%; color: black;">
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>autoSize</strong>(<i>dims</i>, <i>padding</i>,
+    <i>scale</i> = <span style='color: green;'>1</span>,
+    <i>is.multiple.combine.wide</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>ratio.threshold</i> = <span style='color: green;'>1.25</span>,
+    <i>ratio.scale</i> = <span style='color: green;'>1.5</span>);</code></pre>
+        </div>
+
+        <h3>Arguments</h3>
+
+        <table>
+            
+<dt>dims</dt>
+<dd><p>the dimension data of the MSImaging raw data. it should be a numeric vector with at least two element standards for ``[w, h]``; or a list object with at least two slot elements which are named ``w`` and ``h``.</p></dd>
+
+
+<dt>scale</dt>
+<dd><p>a numeric factor for describ the pixel scale size in MSImaging rendering process. default value is 1 means no scale, just rendering of the origina size!</p></dd>
+
+
+<dt>padding</dt>
+<dd><p>the padding element is a numeric vector with four elements standards for css padding value: ``[top, right, bottom, left]``.</p></dd>
+
+
+<dt>is.multiple.combine.wide</dt>
+<dd><p>the function will trying to make the aspect ratio equals to 1:1 if this parameter value is set to false by default.</p></dd>
+
+
+<dt>ratio.scale</dt>
+<dd><p>the scale of the ratio value should not be 1, due to the reason of ``1`` means no changes.</p></dd>
+
+        </table>
+
+
+        <h3 style="display: none;">Details</h3>
+
+        
+
+
+        <h3>Value</h3>
+
+        this function returns a list object that contains the recommended size value for the MSImaging plot. the result value contains two slot elements: size element is a dimension vector with two elements standards for ``[w, h]``.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
+
+        <hr />
+        <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a
+                href="../MSImaging.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
+<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript">r_highlights("example_r");</script>
+
+</html>
