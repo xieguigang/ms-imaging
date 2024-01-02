@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        
+        fill the lower bound with a specific threshold value
 
         <h3>Declare</h3>        
 
@@ -30,6 +30,10 @@
             <code id="clr_ts">
 # namespace BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 export class QuantileScaler {
+   # the quantile or percentail threshold value for define the intensity lower bound.
+   q: double;
+   # set the method for measure the signal intensity lower bound value: true means measure with percentage and false means measure with the quantile algorithm.
+   percentail: boolean;
 }
 </code>
         </pre>
