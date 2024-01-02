@@ -4,9 +4,16 @@ Imports Microsoft.VisualBasic.Imaging.Math2D
 
 Namespace data
 
+    ''' <summary>
+    ''' A collection of the pixel data 
+    ''' </summary>
     Public Class PointPack
 
         Public Property pixels As PixelData()
+        ''' <summary>
+        ''' the canvas size of the ms-imaging
+        ''' </summary>
+        ''' <returns></returns>
         Public Property dimension As Size
 
         ''' <summary>
