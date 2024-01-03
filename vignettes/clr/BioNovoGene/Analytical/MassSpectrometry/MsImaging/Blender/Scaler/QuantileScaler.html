@@ -22,14 +22,14 @@
 
         <h3>Description</h3>
 
-        <p>fill the lower bound with a specific threshold value</p>
+        <p>fill the lower bound with a specific threshold value</p><br /><p>this class extends from <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/Scaler/Scaler.html">Scaler</a> class.</p>
 
         <h3>Declare</h3>        
 
         <pre>
             <code id="clr_ts">
 # namespace BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
-export class QuantileScaler {
+export class QuantileScaler extends <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/Scaler/Scaler.html">Scaler</a> {
    # the quantile or percentail threshold value for define the intensity lower bound.
    q: double;
    # set the method for measure the signal intensity lower bound value: true means measure with percentage and false means measure with the quantile algorithm.
