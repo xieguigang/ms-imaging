@@ -416,6 +416,7 @@ Public Module Rscript
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_MSIruler")>
+    <RApiReturn(GetType(MSIRuler))>
     Public Function geom_MSIruler(<RRawVectorArgument>
                                   Optional color As Object = "white",
                                   Optional width As Double? = Nothing) As Object
@@ -434,6 +435,7 @@ Public Module Rscript
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_MSIbackground")>
+    <RApiReturn(GetType(MSIBackgroundOption), GetType(MSITICOverlap))>
     Public Function geom_MSIbackground(background As Object) As Object
         If TypeOf background Is String AndAlso (CStr(background).ToUpper = "TIC" OrElse CStr(background).ToUpper = "BPC") Then
             Return New MSITICOverlap With {
@@ -460,6 +462,7 @@ Public Module Rscript
     ''' <param name="env"></param>
     ''' <returns></returns>
     <ExportAPI("geom_MSIfilters")>
+    <RApiReturn(GetType(MSIFilterPipelineOption))>
     Public Function geom_MSIfilters(<RLazyExpression>
                                     <RRawVectorArgument>
                                     Optional filters As Object = Nothing,
