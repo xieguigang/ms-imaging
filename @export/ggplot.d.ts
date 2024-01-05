@@ -33,7 +33,7 @@ declare namespace ggplot {
     * 
      * @param background the background color value or character vector ``TIC`` or ``BPC``.
    */
-   function geom_MSIbackground(background: any): any;
+   function geom_MSIbackground(background: any): object|object;
    /**
     * Options for apply the filter pieline on the imaging outputs
     * 
@@ -48,7 +48,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_MSIfilters(filters?: any, file?: any, env?: object): any;
+   function geom_MSIfilters(filters?: any, file?: any, env?: object): object;
    /**
     * create a new ms-imaging heatmap layer
     * 
@@ -114,7 +114,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_MSIruler(color?: any, width?: number): any;
+   function geom_MSIruler(color?: any, width?: number): object;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 

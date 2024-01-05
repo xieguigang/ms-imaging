@@ -17,7 +17,8 @@ declare namespace ggplot3 {
      * + default value Is ``-75``.
      * @param fov 
      * + default value Is ``100000``.
-     * @param angle 
+     * @param angle should be a numeric vector with 3 elements, the camera view angle to the canvas
+     * 
      * + default value Is ``[31.5,65,125]``.
    */
    function view_camera(view_distance?: object, fov?: object, angle?: any): object;
