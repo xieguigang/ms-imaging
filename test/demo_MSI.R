@@ -3,11 +3,11 @@ imports "ggplot2" from "../assembly/net6.0/ggplot.dll";
 
 setwd(@dir);
 
-package_utils::attach("../../mzkit_app");
 package_utils::attach("../../MSI_app"); 
+package_utils::attach("../../mzkit_app");
 
-require(MSImaging);
-require(mzkit);
+# require(MSImaging);
+# require(mzkit);
 require(ggplot);
 
 options(memory.load = "max");
