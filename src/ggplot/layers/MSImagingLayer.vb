@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -94,7 +95,7 @@ Namespace layers
 
             Dim engine As Renderer = If(pixelDrawer,
                 New PixelRender(heatmapRender:=False, overlaps:=raster),
-                New RectangleRender(ggplot.driver, heatmapRender:=False)
+                New RectangleRender(Drivers.GDI, heatmapRender:=False)
             )
             Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
 
