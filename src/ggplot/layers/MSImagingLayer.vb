@@ -1,61 +1,62 @@
 ﻿#Region "Microsoft.VisualBasic::edf0259baae39ef56e9320d5a17e0f0b, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\MSImagingLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 129
-    '    Code Lines: 103
-    ' Comment Lines: 5
-    '   Blank Lines: 21
-    '     File Size: 5.44 KB
+' Summaries:
 
 
-    '     Class MSImagingLayer
-    ' 
-    '         Properties: TrIQ
-    ' 
-    '         Function: Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 129
+'    Code Lines: 103
+' Comment Lines: 5
+'   Blank Lines: 21
+'     File Size: 5.44 KB
+
+
+'     Class MSImagingLayer
+' 
+'         Properties: TrIQ
+' 
+'         Function: Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
 Imports System.Drawing
+Imports System.Runtime.InteropServices
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
@@ -87,6 +88,34 @@ Namespace layers
         ''' <returns></returns>
         Public Property raster As Bitmap
 
+        Private Function MSIHeatmapRender(ion As SingleIonLayer, theme As Theme, ggplot As ggplotMSI,
+                                          <Out> ByRef colorSet As String,
+                                          <Out> ByRef colorLevels As Integer) As Image
+
+            Dim engine As Renderer = If(pixelDrawer,
+                New Blender.PixelRender(heatmapRender:=False, overlaps:=raster),
+                New RectangleRender(ggplot.driver, heatmapRender:=False)
+            )
+            Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
+
+            If colorMap Is Nothing Then
+                colorSet = theme.colorSet
+            Else
+                colorSet = any.ToString(colorMap.colorMap)
+            End If
+            If colorLevels <= 0 Then
+                colorLevels = 30
+            End If
+
+            Return engine.RenderPixels(
+                pixels:=ion.MSILayer,
+                dimension:=dimension_size,
+                colorSet:=colorSet,
+                defaultFill:=ggplot.ggplotTheme.gridFill,
+                mapLevels:=colorLevels
+            ).AsGDIImage
+        End Function
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim args As list = reader.args
@@ -104,67 +133,52 @@ Namespace layers
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
-            Dim engine As Renderer = If(
-                pixelDrawer,
-                New Blender.PixelRender(heatmapRender:=False, overlaps:=raster),
-                New RectangleRender(ggplot.driver, heatmapRender:=False)
-            )
-            Dim colorSet As String
+            Dim colorSet As String = Nothing
+            Dim colorLevels As Integer
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim rawInto As Double() = ion.GetIntensity
-            Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
             Dim theme As Theme = stream.theme
 
             ion = ApplyRasterFilter(ion, ggplot)
 
-            If colorMap Is Nothing Then
-                colorSet = stream.theme.colorSet
-            Else
-                colorSet = any.ToString(colorMap.colorMap)
-            End If
-
-            If colorLevels <= 0 Then
-                colorLevels = 30
-            End If
-
-            MSI = engine.RenderPixels(
-                pixels:=ion.MSILayer,
-                dimension:=dimension_size,
-                colorSet:=colorSet,
-                defaultFill:=ggplot.ggplotTheme.gridFill,
-                mapLevels:=colorLevels
-            ).AsGDIImage
+            MSI = MSIHeatmapRender(ion, theme, ggplot, colorSet, colorLevels)
             MSI = ScaleImageImpls(MSI, stream)
-
+            Call MSI.SaveAs("E:\mzkit\Rscript\Library\MSI_app\test\HR2MSI_mouse_urinary_bladder_S096.png")
             Call stream.g.DrawImage(MSI, rect)
 
             If mz.Length > 1 Then
                 Return Nothing
             Else
-                Dim ticks As Double() = rawInto.Range.CreateAxisTicks
-
-                If ticks.Any(Function(t) t = 0.0) Then
-                    ticks = {rawInto.Min} _
-                        .JoinIterates(ticks.Where(Function(t) t > 0)) _
-                        .OrderBy(Function(d) d) _
-                        .ToArray
-                End If
-
-                Return New legendColorMapElement With {
-                    .width = stream.canvas.Padding.Right * (3 / 4),
-                    .height = rect.Height,
-                    .colorMapLegend = New ColorMapLegend(colorSet, colorLevels) With {
-                        .format = "G3",
-                        .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
-                        .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(stream.g.Dpi),
-                        .ticks = ticks,
-                        .title = $"m/z {mz(Scan0).ToString("F3")}",
-                        .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(stream.g.Dpi),
-                        .noblank = True,
-                        .legendOffsetLeft = stream.canvas.Padding.Right / 10
-                    }
-                }
+                Return ScalerLegend(mz, rawInto, stream, colorSet, colorLevels)
             End If
+        End Function
+
+        Private Function ScalerLegend(mz As Double(), rawInto As Double(), stream As ggplotPipeline, colorSet As String, colorLevels As Integer) As legendColorMapElement
+            Dim theme As Theme = stream.theme
+            Dim ticks As Double() = rawInto.Range.CreateAxisTicks
+            Dim rect As Rectangle = stream.canvas.PlotRegion
+
+            If ticks.Any(Function(t) t = 0.0) Then
+                ticks = {rawInto.Min} _
+                    .JoinIterates(ticks.Where(Function(t) t > 0)) _
+                    .OrderBy(Function(d) d) _
+                    .ToArray
+            End If
+
+            Return New legendColorMapElement With {
+                .width = stream.canvas.Padding.Right * (3 / 4),
+                .height = rect.Height,
+                .colorMapLegend = New ColorMapLegend(colorSet, colorLevels) With {
+                    .format = "G3",
+                    .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
+                    .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(stream.g.Dpi),
+                    .ticks = ticks,
+                    .title = $"m/z {mz(Scan0).ToString("F3")}",
+                    .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(stream.g.Dpi),
+                    .noblank = True,
+                    .legendOffsetLeft = stream.canvas.Padding.Right / 10
+                }
+            }
         End Function
     End Class
 
