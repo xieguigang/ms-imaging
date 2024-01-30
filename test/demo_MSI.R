@@ -18,7 +18,7 @@ svg(file = "./HR2MSI_mouse_urinary_bladder_S096.svg", size = [3300, 2000]) {
     # and config ggplot data source driver 
     # as MSImaging data reader
     ggplot(open.mzpack(system.file("data/HR2MSI mouse urinary bladder S096 - Figure1.cdf", package = "MSImaging")), 
-           mapping = aes(driver = MSImaging()), 
+           mapping = aes(), 
            padding = "padding: 200px 600px 200px 250px;"
     ) 
 	   + geom_MSIbackground("black")

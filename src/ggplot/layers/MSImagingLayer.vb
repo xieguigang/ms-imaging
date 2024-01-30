@@ -134,8 +134,9 @@ Namespace layers
                 defaultFill:=ggplot.ggplotTheme.gridFill,
                 mapLevels:=colorLevels
             ).AsGDIImage
+            MSI = ScaleImageImpls(MSI, stream)
 
-            Call stream.g.DrawImage(ScaleImageImpls(MSI, stream), rect)
+            Call stream.g.DrawImage(MSI, rect)
 
             If mz.Length > 1 Then
                 Return Nothing
