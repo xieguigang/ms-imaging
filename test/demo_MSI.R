@@ -24,7 +24,7 @@ svg(file = "./HR2MSI_mouse_urinary_bladder_S096.svg", size = [3300, 2000]) {
 	   + geom_MSIbackground("black")
        # rendering of a single ion m/z
        # default color palette is Jet color set
-       + geom_msimaging(mz = 741.5303, tolerance = "da:0.3", color = "jet")
+       + geom_msimaging(mz = 741.5303, tolerance = "da:0.3", color = "fleximaging")
 	   + default_MSIfilter() 	   
 	   + geom_MSIruler()
        # add ggplot charting elements
