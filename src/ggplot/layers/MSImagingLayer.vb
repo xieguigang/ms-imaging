@@ -93,7 +93,7 @@ Namespace layers
                                           <Out> ByRef colorLevels As Integer) As Image
 
             Dim engine As Renderer = If(pixelDrawer,
-                New Blender.PixelRender(heatmapRender:=False, overlaps:=raster),
+                New PixelRender(heatmapRender:=False, overlaps:=raster),
                 New RectangleRender(ggplot.driver, heatmapRender:=False)
             )
             Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
@@ -134,16 +134,18 @@ Namespace layers
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
             Dim colorSet As String = Nothing
-            Dim colorLevels As Integer
+            Dim colorLevels As Integer = Me.colorLevels
             Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
             Dim rawInto As Double() = ion.GetIntensity
             Dim theme As Theme = stream.theme
 
             ion = ApplyRasterFilter(ion, ggplot)
-
             MSI = MSIHeatmapRender(ion, theme, ggplot, colorSet, colorLevels)
+            Call MSI.SaveAs("E:\mzkit\Rscript\Library\MSI_app\test\HR2MSI_mouse_urinary_bladder_S0961.png")
             MSI = ScaleImageImpls(MSI, stream)
-            Call MSI.SaveAs("E:\mzkit\Rscript\Library\MSI_app\test\HR2MSI_mouse_urinary_bladder_S096.png")
+
+            Call MSI.SaveAs("E:\mzkit\Rscript\Library\MSI_app\test\HR2MSI_mouse_urinary_bladder_S0962.png")
+
             Call stream.g.DrawImage(MSI, rect)
 
             If mz.Length > 1 Then
