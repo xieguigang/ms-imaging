@@ -142,10 +142,7 @@ Namespace layers
 
             ion = ApplyRasterFilter(ion, ggplot)
             MSI = MSIHeatmapRender(ion, theme, ggplot, colorSet, colorLevels)
-            Call MSI.SaveAs("E:\mzkit\Rscript\Library\MSI_app\test\HR2MSI_mouse_urinary_bladder_S0961.png")
             MSI = ScaleImageImpls(MSI, stream)
-
-            Call MSI.SaveAs("E:\mzkit\Rscript\Library\MSI_app\test\HR2MSI_mouse_urinary_bladder_S0962.png")
 
             Call stream.g.DrawImage(MSI, rect)
 
