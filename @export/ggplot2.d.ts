@@ -640,6 +640,10 @@ declare namespace ggplot2 {
    */
    function geom_text(mapping?: object, data?: any, stat?: string, position?: string, parse?: boolean, nudge_x?: number, nudge_y?: number, check_overlap?: boolean, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, color?: any, which?: object, alpha?: number, size?: number, args?: object, env?: object): object;
    /**
+     * @param mapping default value Is ``null``.
+   */
+   function geom_tile(mapping?: object): any;
+   /**
      * @param color default value Is ``null``.
      * @param width default value Is ``0.9``.
      * @param alpha default value Is ``0.95``.
@@ -834,6 +838,13 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
    */
    function scale_colour_manual(values: any, alpha?: number, env?: object): object;
+   /**
+     * @param palette default value Is ``'YlGnBu'``.
+     * @param direction default value Is ``1``.
+     * @param alpha default value Is ``1``.
+     * @param env default value Is ``null``.
+   */
+   function scale_fill_distiller(palette?: string, direction?: object, alpha?: number, env?: object): object;
    /**
      * @param alpha default value Is ``1``.
      * @param env default value Is ``null``.
