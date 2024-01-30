@@ -69,7 +69,7 @@ Namespace layers
 
     Public MustInherit Class ggplotMSILayer : Inherits ggplotLayer
 
-        Public Property pixelDrawer As Boolean = False
+        Public Property pixelDrawer As Boolean = True
         Public Property threshold As QuantizationThreshold
         Public Property colorLevels As Integer = 255
 

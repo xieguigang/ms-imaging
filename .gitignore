@@ -354,3 +354,5 @@ MigrationBackup/
 MSImaging.zip
 *.dll
 data/Mouse_Urinary_Bladder_260x134pixels.mzPack
+test/HR2MSI_mouse_urinary_bladder_S0961.png
+test/HR2MSI_mouse_urinary_bladder_S0962.png
