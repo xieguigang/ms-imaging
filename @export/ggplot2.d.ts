@@ -960,10 +960,12 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @param panel_grid 
      * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
+     * @param panel_grid_major 
+     * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
      * @param panel_border 
      * + default value Is ``null``.
    */
-   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_border?: object): object;
+   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
    /**
     * ## Modify axis, legend, and plot labels
     *  
