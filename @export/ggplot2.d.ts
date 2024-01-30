@@ -844,7 +844,7 @@ declare namespace ggplot2 {
      * @param alpha default value Is ``1``.
      * @param env default value Is ``null``.
    */
-   function scale_fill_distiller(palette?: string, direction?: object, alpha?: number, env?: object): any;
+   function scale_fill_distiller(palette?: string, direction?: object, alpha?: number, env?: object): object;
    /**
      * @param alpha default value Is ``1``.
      * @param env default value Is ``null``.
