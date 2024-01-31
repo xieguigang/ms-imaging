@@ -90,7 +90,7 @@ Public Class MSIReader : Inherits ggplotReader
     Public ReadOnly Property offset As PointF
 
     Sub New(raw As mzPack, ggplot As ggplotMSI)
-        _reader = New ReadRawPack(mzpack:=raw)
+        _reader = New ReadRawPack(mzpack:=raw, verbose:=False)
         _ggplot = ggplot
     End Sub
 
