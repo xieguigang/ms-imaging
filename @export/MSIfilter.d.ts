@@ -14,6 +14,18 @@ declare namespace MSIfilter {
    */
    function denoise_scale(q?: number): object;
    /**
+    * removes low intensity spots
+    * 
+    * 
+     * @param threshold -
+     * 
+     * + default value Is ``0.05``.
+     * @param quantile -
+     * 
+     * + default value Is ``false``.
+   */
+   function intensity_cut(threshold?: number, quantile?: boolean): object;
+   /**
     * Trying to fill the missing spatial spot on the imaging via knn method
     * 
     * 
