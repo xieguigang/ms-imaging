@@ -65,6 +65,18 @@ Imports SMRUCC.Rsharp.Runtime.Interop
 Module Filters
 
     ''' <summary>
+    ''' removes low intensity spots
+    ''' </summary>
+    ''' <param name="threshold"></param>
+    ''' <param name="quantile"></param>
+    ''' <returns></returns>
+    ''' 
+    <ExportAPI("intensity_cut")>
+    Public Function intensity_cut(Optional threshold As Double = 0.05, Optional quantile As Boolean = False) As IntensityCutScaler
+        Return New IntensityCutScaler(threshold, quantile)
+    End Function
+
+    ''' <summary>
     ''' Normalized the raw input intensity value via log(N)
     ''' </summary>
     ''' <param name="base">log(N), N=2 by default</param>
