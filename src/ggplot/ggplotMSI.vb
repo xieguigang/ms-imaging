@@ -64,6 +64,7 @@ Imports ggplot
 Imports ggplotMSImaging.data
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging.Math2D
+Imports SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' ggplot for ms-imaging
@@ -144,17 +145,20 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
         Dim scan_x = Val(metadata.TryGetValue("width", [default]:=0))
         Dim scan_y = Val(metadata.TryGetValue("height", [default]:=0))
         Dim println As Action(Of Object) = environment.WriteLineHandler
+        Dim verbose As Boolean = environment.globalEnvironment.verboseOption(opt:=False)
 
         If dimension_size.IsEmpty Then
             If scan_x > 0 AndAlso scan_y > 0 Then
                 dimension_size = New Size(scan_x, scan_y)
 
-                ' show information data about the msimaging dimension
-                ' size parameter
-                Call println({
-                    $"use the ms-imaging canvas size from the internal metadata!",
-                    $"internal_canvas_size: [{scan_x}x{scan_y}]"
-                })
+                If verbose Then
+                    ' show information data about the msimaging dimension
+                    ' size parameter
+                    Call println({
+                        $"use the ms-imaging canvas size from the internal metadata!",
+                        $"internal_canvas_size: [{scan_x}x{scan_y}]"
+                    })
+                End If
             Else
                 With New Polygon2D(mzpack.MS.Select(Function(scan) scan.GetMSIPixel))
                     dimension_size = New Size(.width, .height)
