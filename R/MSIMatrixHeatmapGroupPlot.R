@@ -7,6 +7,7 @@
 #'       1. type  precursor type information string
 #'       2. title   the ion metabolite name
 #'       3. layer   the MSI ion layer data
+#'       4. mz      the target ion m/z value
 #' 
 const PlotMSIMatrixHeatmap = function(ions_data, 
                                       layout        = [3,3],
