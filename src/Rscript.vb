@@ -313,6 +313,17 @@ Public Module Rscript
         End If
     End Function
 
+    ''' <summary>
+    ''' rendering a gdi+ heatmap for create raster annotation in ggplot layer
+    ''' </summary>
+    ''' <param name="pixels">the pixels data</param>
+    ''' <param name="dims">the spatial dimension size of the sample data</param>
+    ''' <param name="scale">the color palette name</param>
+    ''' <param name="levels">the color scaler levels</param>
+    ''' <param name="env"></param>
+    ''' <returns>
+    ''' a gdi+ raster image
+    ''' </returns>
     <ExportAPI("raster_blending")>
     Public Function raster_blending(pixels As PixelScanIntensity(), <RRawVectorArgument> dims As Object,
                                     Optional scale As String = "gray",
@@ -360,7 +371,7 @@ Public Module Rscript
     ''' <param name="env"></param>
     ''' <returns></returns>
     <ExportAPI("geom_msimaging")>
-    <RApiReturn(GetType(ggplotLayer))>
+    <RApiReturn(GetType(ggplotLayer), GetType(MSImagingLayer))>
     Public Function geom_msimaging(mz As Double(),
                                    Optional tolerance As Object = "da:0.1",
                                    Optional pixel_render As Boolean = False,
@@ -433,7 +444,12 @@ Public Module Rscript
     ''' <param name="background">
     ''' the background color value or character vector ``TIC`` or ``BPC``.
     ''' </param>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' this function returns clr object in types based on the <paramref name="background"/> parameter:
+    ''' 
+    ''' 1. "TIC" or "BPC": <see cref="MSITICOverlap"/>
+    ''' 2. html color code: <see cref="MSIBackgroundOption"/>
+    ''' </returns>
     <ExportAPI("geom_MSIbackground")>
     <RApiReturn(GetType(MSIBackgroundOption), GetType(MSITICOverlap))>
     Public Function geom_MSIbackground(background As Object) As Object
@@ -539,7 +555,7 @@ Public Module Rscript
     ''' <param name="env"></param>
     ''' <returns></returns>
     <ExportAPI("geom_color")>
-    <RApiReturn(GetType(ggplotLayer))>
+    <RApiReturn(GetType(ggplotLayer), GetType(MSIChannelLayer))>
     Public Function geom_color(mz As Double, color As Object,
                                Optional tolerance As Object = "da:0.1",
                                Optional pixel_render As Boolean = False,
