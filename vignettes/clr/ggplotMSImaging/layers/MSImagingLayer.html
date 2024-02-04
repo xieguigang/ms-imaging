@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ggplotMSImaging.layers.MSImagingLayer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>MSImagingLayer {ggplotMSImaging.layers}</td>
+                <td style="text-align: right;">.NET clr documentation</td>
+            </tr>
+        </table>
+
+        <h2>MSImagingLayer</h2>
+
+        <h3>Description</h3>
+
+        <p>The single ion ms-imaging plot layer</p>
+
+        <h3>Declare</h3>        
+
+        <pre>
+            <code id="clr_ts">
+# namespace ggplotMSImaging.layers
+export class MSImagingLayer extends <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a> {
+   TrIQ: double;
+   # the annotation overlaps only works when <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a>.<a href="#">pixelDrawer</a>
+   #  option is set to true
+   raster: <a href="/vignettes/clr/System/Drawing/Bitmap.html">Bitmap</a>;
+   pixelDrawer: boolean;
+   threshold: <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/QuantizationThreshold.html">QuantizationThreshold</a>;
+   colorLevels: integer;
+   reader: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>;
+   colorMap: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a>;
+   showLegend: boolean;
+   which: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a>;
+   zindex: integer;
+   alpha: double;
+}
+</code>
+        </pre>
+
+        <h3>.NET clr type reference tree</h3>
+
+        <ol>
+<li>this class extends from <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a> class: <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a></li>
+<li>use by <i>property</i> member <code>raster</code>: <a href="/vignettes/clr/System/Drawing/Bitmap.html">Bitmap</a></li>
+<li>use by <i>property</i> member <code>threshold</code>: <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/QuantizationThreshold.html">QuantizationThreshold</a></li>
+<li>use by <i>property</i> member <code>reader</code>: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a></li>
+<li>use by <i>property</i> member <code>colorMap</code>: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a></li>
+<li>use by <i>property</i> member <code>which</code>: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a></li>
+</ol>
+
+
+        <hr />
+        <div style="text-align: center;">[Package <em>{$package}</em> version {$version} <a
+                href="../{$package}.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
+<script type="text/javascript">r_highlights("clr_ts");</script>
+
+</html>

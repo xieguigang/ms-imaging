@@ -26,12 +26,16 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_color(mz: number, color: any, tolerance?: any, pixel_render?: boolean, env?: object): object;
+   function geom_color(mz: number, color: any, tolerance?: any, pixel_render?: boolean, env?: object): object|object;
    /**
     * config of the background of the MS-imaging charting plot.
     * 
     * 
      * @param background the background color value or character vector ``TIC`` or ``BPC``.
+     * @return this function returns clr object in types based on the **`background`** parameter:
+     *  
+     *  1. "TIC" or "BPC": @``T:ggplotMSImaging.layers.MSITICOverlap``
+     *  2. html color code: @``T:ggplotMSImaging.MSIBackgroundOption``
    */
    function geom_MSIbackground(background: any): object|object;
    /**
@@ -102,7 +106,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, raster?: any, env?: object): object;
+   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, raster?: any, env?: object): object|object;
    /**
     * Draw ruler overlaps of the ms-imaging
     * 
@@ -184,9 +188,21 @@ declare namespace ggplot {
    */
    function pixelPack(pixels: object, dims?: any, env?: object): object;
    /**
-     * @param scale default value Is ``'gray'``.
-     * @param levels default value Is ``255``.
-     * @param env default value Is ``null``.
+    * rendering a gdi+ heatmap for create raster annotation in ggplot layer
+    * 
+    * 
+     * @param pixels the pixels data
+     * @param dims the spatial dimension size of the sample data
+     * @param scale the color palette name
+     * 
+     * + default value Is ``'gray'``.
+     * @param levels the color scaler levels
+     * 
+     * + default value Is ``255``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
+     * @return a gdi+ raster image
    */
    function raster_blending(pixels: object, dims: any, scale?: string, levels?: object, env?: object): object;
 }

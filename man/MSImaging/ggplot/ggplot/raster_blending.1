@@ -1,13 +1,37 @@
 .\" man page create by R# package system.
 .TH GGPLOT 1 2000-Jan "raster_blending" "raster_blending"
 .SH NAME
-raster_blending \- 
+raster_blending \- rendering a gdi+ heatmap for create raster annotation in ggplot layer
 .SH SYNOPSIS
 \fIraster_blending(\fBpixels\fR as <generic> PixelScanIntensity[], 
 \fBdims\fR as any, 
 \fBscale\fR as string = "gray", 
 \fBlevels\fR as integer = 255, 
 [\fB<Environment>\fR]);\fR
+.SH DESCRIPTION
+.PP
+rendering a gdi+ heatmap for create raster annotation in ggplot layer
+.PP
+.SH OPTIONS
+.PP
+\fBpixels\fB \fR\- the pixels data. 
+.PP
+.PP
+\fBdims\fB \fR\- the spatial dimension size of the sample data. 
+.PP
+.PP
+\fBscale\fB \fR\- the color palette name. 
+.PP
+.PP
+\fBlevels\fB \fR\- the color scaler levels. 
+.PP
+.PP
+\fBenv\fB \fR\- -. 
+.PP
+.SH VALUE
+.PP
+a gdi+ raster image
+.PP
 .SH SEE ALSO
 ggplot
 .SH FILES
