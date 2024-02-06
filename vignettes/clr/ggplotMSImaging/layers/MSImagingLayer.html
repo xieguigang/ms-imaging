@@ -30,19 +30,19 @@
             <code id="clr_ts">
 # namespace ggplotMSImaging.layers
 export class MSImagingLayer extends <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a> {
-   TrIQ: double;
+   alpha: double;
+   colorLevels: integer;
+   colorMap: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a>;
+   pixelDrawer: boolean;
    # the annotation overlaps only works when <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a>.<a href="#">pixelDrawer</a>
    #  option is set to true
    raster: <a href="/vignettes/clr/System/Drawing/Bitmap.html">Bitmap</a>;
-   pixelDrawer: boolean;
-   threshold: <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/QuantizationThreshold.html">QuantizationThreshold</a>;
-   colorLevels: integer;
    reader: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>;
-   colorMap: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a>;
    showLegend: boolean;
+   threshold: <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/QuantizationThreshold.html">QuantizationThreshold</a>;
+   TrIQ: double;
    which: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a>;
    zindex: integer;
-   alpha: double;
 }
 </code>
         </pre>
@@ -51,10 +51,10 @@ export class MSImagingLayer extends <a href="/vignettes/clr/ggplotMSImaging/laye
 
         <ol>
 <li>this class extends from <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a> class: <a href="/vignettes/clr/ggplotMSImaging/layers/ggplotMSILayer.html">ggplotMSILayer</a></li>
-<li>use by <i>property</i> member <code>raster</code>: <a href="/vignettes/clr/System/Drawing/Bitmap.html">Bitmap</a></li>
-<li>use by <i>property</i> member <code>threshold</code>: <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/QuantizationThreshold.html">QuantizationThreshold</a></li>
-<li>use by <i>property</i> member <code>reader</code>: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a></li>
 <li>use by <i>property</i> member <code>colorMap</code>: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a></li>
+<li>use by <i>property</i> member <code>raster</code>: <a href="/vignettes/clr/System/Drawing/Bitmap.html">Bitmap</a></li>
+<li>use by <i>property</i> member <code>reader</code>: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a></li>
+<li>use by <i>property</i> member <code>threshold</code>: <a href="/vignettes/clr/BioNovoGene/Analytical/MassSpectrometry/MsImaging/Blender/QuantizationThreshold.html">QuantizationThreshold</a></li>
 <li>use by <i>property</i> member <code>which</code>: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a></li>
 </ol>
 

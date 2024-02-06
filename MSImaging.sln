@@ -2010,6 +2010,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\..\GCModeller\src\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{186d2f67-97f7-4381-bcbf-8d5f86ce7dfb}*SharedItemsImports = 5
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{3db4f673-68c2-41ea-b7dc-8caf8bab574d}*SharedItemsImports = 13
+		..\..\..\..\GCModeller\src\R-sharp\Library\shares\dataframeHelper\dataframeHelper.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{4cc33e9a-b266-4207-a62a-dcb5518c176e}*SharedItemsImports = 5
 		..\..\..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13

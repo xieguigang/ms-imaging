@@ -37,6 +37,9 @@
             <code id="clr_ts">
 # namespace ggplot.colors
 export class ggplotColorMap {
+   # value range of this property value is in [0, 1], controls 
+   #  the transparent alpha channel value.
+   alpha: double;
    # for each data object, this property value has different meanings:
    # 
    # <ol>
@@ -46,9 +49,6 @@ export class ggplotColorMap {
    # <li><a href="/vignettes/clr/ggplot/colors/ggplotColorCustomSet.html">ggplotColorCustomSet</a>: a character vector of the color list</li>
    # </ol>
    colorMap: <i>any</i> kind;
-   # value range of this property value is in [0, 1], controls 
-   #  the transparent alpha channel value.
-   alpha: double;
 }
 </code>
         </pre>
