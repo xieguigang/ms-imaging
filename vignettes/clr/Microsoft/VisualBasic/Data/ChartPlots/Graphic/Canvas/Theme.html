@@ -30,72 +30,72 @@
             <code id="clr_ts">
 # namespace Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 export class Theme {
+   # 坐标轴上的标签的字体样式
+   axisLabelCSS: string;
+   axisStroke: string;
+   # 坐标轴上的标尺的字体样式
+   axisTickCSS: string;
+   axisTickPadding: double;
+   axisTickStroke: string;
    # 背景色
    background: string;
-   # 绘图区域的位置与布局
-   padding: string;
+   colorSet: string;
+   drawAxis: boolean;
+   # 是否再作图区显示网格？
+   drawGrid: boolean;
+   drawLabels: boolean;
+   # 是否显示图例
+   drawLegend: boolean;
+   # Swapping X- and Y-Axes?
+   flipAxis: boolean;
+   # the background of the charting plot region
+   gridFill: string;
+   gridStrokeX: string;
+   gridStrokeY: string;
+   htmlLabel: boolean;
+   legendBoxBackground: string;
+   # 图例的边框线条样式
+   legendBoxStroke: string;
+   # 图例标签字体样式
+   legendLabelCSS: string;
+   # 图例的布局位置
+   legendLayout: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Layout.html">Layout</a>;
+   legendSplitSize: integer;
+   legendTickAxisStroke: string;
+   # 这个是为绘制colorMap的图例的标尺准备的
+   legendTickCSS: string;
+   legendTickFormat: string;
+   # 图例标题字体样式
+   legendTitleCSS: string;
+   # 绘制的线条的样式
+   lineStroke: string;
    # 大标题字体样式
    mainCSS: string;
    mainTextColor: string;
    mainTextWrap: boolean;
+   # 绘图区域的位置与布局
+   padding: string;
+   # 数据点的大小值
+   pointSize: integer;
    # 副标题字体样式
    subtitleCSS: string;
-   # 图例标题字体样式
-   legendTitleCSS: string;
-   # 这个是为绘制colorMap的图例的标尺准备的
-   legendTickCSS: string;
-   legendTickAxisStroke: string;
-   legendTickFormat: string;
-   # 图例标签字体样式
-   legendLabelCSS: string;
-   legendSplitSize: integer;
-   # 图例的布局位置
-   legendLayout: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Layout.html">Layout</a>;
-   # 图例的边框线条样式
-   legendBoxStroke: string;
-   legendBoxBackground: string;
+   tagColor: string;
    # 在图表之中的某一个数据点的显示字体样式
    tagCSS: string;
-   tagColor: string;
    # 在图表上的数字标签的格式
    tagFormat: string;
    # 数据点与数据标签之间的连接线的样式
    tagLinkStroke: string;
-   # 数据点的大小值
-   pointSize: integer;
    # X坐标轴的布局
    xAxisLayout: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/XAxisLayoutStyles.html">XAxisLayoutStyles</a>;
-   xAxisRotate: double;
    xAxisReverse: boolean;
-   # Swapping X- and Y-Axes?
-   flipAxis: boolean;
-   # Y坐标轴的布局
-   yAxisLayout: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YAxisLayoutStyles.html">YAxisLayoutStyles</a>;
-   yAxislabelPosition: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YlabelPosition.html">YlabelPosition</a>;
-   # 坐标轴上的标签的字体样式
-   axisLabelCSS: string;
-   # 坐标轴上的标尺的字体样式
-   axisTickCSS: string;
-   axisTickStroke: string;
-   axisTickPadding: double;
-   axisStroke: string;
+   xAxisRotate: double;
    # 一般为F2或者G3
    XaxisTickFormat: string;
+   yAxislabelPosition: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YlabelPosition.html">YlabelPosition</a>;
+   # Y坐标轴的布局
+   yAxisLayout: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YAxisLayoutStyles.html">YAxisLayoutStyles</a>;
    YaxisTickFormat: string;
-   drawAxis: boolean;
-   # 是否显示图例
-   drawLegend: boolean;
-   drawLabels: boolean;
-   # 是否再作图区显示网格？
-   drawGrid: boolean;
-   # 绘制的线条的样式
-   lineStroke: string;
-   gridStrokeX: string;
-   gridStrokeY: string;
-   # the background of the charting plot region
-   gridFill: string;
-   htmlLabel: boolean;
-   colorSet: string;
 }
 </code>
         </pre>
@@ -105,8 +105,8 @@ export class Theme {
         <ol>
 <li>use by <i>property</i> member <code>legendLayout</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Layout.html">Layout</a></li>
 <li>use by <i>property</i> member <code>xAxisLayout</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/XAxisLayoutStyles.html">XAxisLayoutStyles</a></li>
-<li>use by <i>property</i> member <code>yAxisLayout</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YAxisLayoutStyles.html">YAxisLayoutStyles</a></li>
 <li>use by <i>property</i> member <code>yAxislabelPosition</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YlabelPosition.html">YlabelPosition</a></li>
+<li>use by <i>property</i> member <code>yAxisLayout</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Axis/YAxisLayoutStyles.html">YAxisLayoutStyles</a></li>
 </ol>
 
 

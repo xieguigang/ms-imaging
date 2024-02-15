@@ -67,10 +67,24 @@ Imports Microsoft.VisualBasic.Imaging.Filters
 
 Namespace layers
 
+    ''' <summary>
+    ''' ms-imaging rendering
+    ''' </summary>
     Public MustInherit Class ggplotMSILayer : Inherits ggplotLayer
 
+        ''' <summary>
+        ''' the engine for do heatmap rendering:
+        ''' 
+        ''' + true: <see cref="PixelRender"/> is recommended when running on windows
+        ''' + false: <see cref="RectangleRender"/> is working for unix platform
+        ''' </summary>
+        ''' <returns></returns>
         Public Property pixelDrawer As Boolean = True
         Public Property threshold As QuantizationThreshold
+        ''' <summary>
+        ''' the color level for the heatmap rendering
+        ''' </summary>
+        ''' <returns></returns>
         Public Property colorLevels As Integer = 255
 
         ''' <summary>

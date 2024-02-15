@@ -89,6 +89,10 @@ Namespace layers
             Blue
         End Enum
 
+        ''' <summary>
+        ''' check of the red/green/blue channel
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property channel As Channels
             Get
                 Dim color As String = DirectCast(colorMap, ggplotColorLiteral).ToColor.ToHtmlColor

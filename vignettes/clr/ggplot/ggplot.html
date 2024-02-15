@@ -30,29 +30,29 @@
             <code id="clr_ts">
 # namespace ggplot
 export class ggplot extends <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Plot.html">Plot</a> {
-   ggplotTheme: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Theme.html">Theme</a>;
-   is3D: boolean;
+   args: list;
+   base: <a href="/vignettes/clr/ggplot/ggplotBase.html">ggplotBase</a>;
+   clearCanvas: boolean;
    # dataframe, list, and others
    data: <i>any</i> kind;
-   layers: <a href="/vignettes/clr/System/Collections/Generic/List`1.html">List`1</a>;
-   base: <a href="/vignettes/clr/ggplot/ggplotBase.html">ggplotBase</a>;
-   args: list;
+   # the driver flag for the graphics device
+   driver: <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Driver/Drivers.html">Drivers</a>;
    # the runtime environment for current ggplot object, 
    #  which is comes from the first 
    #  @<code>M:ggplot.ggplot2.ggplot(System.Object,System.Object,System.Object,SMRUCC.Rsharp.Runtime.Internal.Object.list,SMRUCC.Rsharp.Runtime.Environment)</code> 
    #  function calls.
    environment: <a href="/vignettes/clr/SMRUCC/Rsharp/Runtime/Environment.html">Environment</a>;
-   # the driver flag for the graphics device
-   driver: <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Driver/Drivers.html">Drivers</a>;
-   titleOffset: double;
-   clearCanvas: boolean;
+   ggplotTheme: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Theme.html">Theme</a>;
+   is3D: boolean;
+   layers: <a href="/vignettes/clr/System/Collections/Generic/List`1.html">List`1</a>;
+   legendTitle: string;
+   main: string;
    # works on 2D chart plot
    panelBorder: <a href="/vignettes/clr/ggplot/elements/rectElement.html">rectElement</a>;
+   titleOffset: double;
    xlabel: string;
    ylabel: string;
    zlabel: string;
-   legendTitle: string;
-   main: string;
 }
 </code>
         </pre>
@@ -61,11 +61,11 @@ export class ggplot extends <a href="/vignettes/clr/Microsoft/VisualBasic/Data/C
 
         <ol>
 <li>this class extends from <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Plot.html">Plot</a> class: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Plot.html">Plot</a></li>
-<li>use by <i>property</i> member <code>ggplotTheme</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Theme.html">Theme</a></li>
-<li>use by <i>property</i> member <code>data</code>: <i>any</i> kind</li>
-<li>use by <i>property</i> member <code>layers</code>: <a href="/vignettes/clr/System/Collections/Generic/List`1.html">List`1</a></li>
 <li>use by <i>property</i> member <code>base</code>: <a href="/vignettes/clr/ggplot/ggplotBase.html">ggplotBase</a></li>
+<li>use by <i>property</i> member <code>data</code>: <i>any</i> kind</li>
 <li>use by <i>property</i> member <code>driver</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Driver/Drivers.html">Drivers</a></li>
+<li>use by <i>property</i> member <code>ggplotTheme</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Theme.html">Theme</a></li>
+<li>use by <i>property</i> member <code>layers</code>: <a href="/vignettes/clr/System/Collections/Generic/List`1.html">List`1</a></li>
 <li>use by <i>property</i> member <code>panelBorder</code>: <a href="/vignettes/clr/ggplot/elements/rectElement.html">rectElement</a></li>
 </ol>
 
