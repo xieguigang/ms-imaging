@@ -1,4 +1,4 @@
-# MSIfilter
+﻿# MSIfilter
 
 Helper function module for create the image filter pipeline
 
