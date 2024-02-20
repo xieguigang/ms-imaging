@@ -51,14 +51,14 @@
         <table>
             
 <dt>mapping</dt>
-<dd><p><p>Set of aesthetic mappings created by aes() or aes_(). If specified and <br />
+<dd><p>Set of aesthetic mappings created by aes() or aes_(). If specified and <br />
  inherit.aes = TRUE (the default), it is combined with the default mapping <br />
  at the top level of the plot. You must supply mapping if there is no plot <br />
- mapping.</p></p></dd>
+ mapping. [as <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>]</p></dd>
 
 
 <dt>data</dt>
-<dd><p><p>The data to be displayed in this layer. There are three options:</p>
+<dd><p>The data to be displayed in this layer. There are three options:</p>
 
 <p>If NULL, the Default, the data Is inherited from the plot data As <br />
  specified In the Call To ggplot().</p>
@@ -69,75 +69,75 @@
 
 <p>A Function will be called With a Single argument, the plot data. The Return <br />
  value must be a data.frame, And will be used As the layer data. A Function <br />
- can be created from a formula (e.g. ~ head(.x, 10)).</p></p></dd>
+ can be created from a formula (e.g. ~ head(.x, 10)).</p></dd>
 
 
 <dt>stat</dt>
-<dd><p><p>The statistical transformation to use on the data for this layer, as a <br />
- string.</p></p></dd>
+<dd><p>The statistical transformation to use on the data for this layer, as a <br />
+ string. [as string]</p></dd>
 
 
 <dt>position</dt>
-<dd><p><p>Position adjustment, either as a string, or the result of a call to a <br />
+<dd><p>Position adjustment, either as a string, or the result of a call to a <br />
  position adjustment function. Cannot be jointy specified with nudge_x or <br />
- nudge_y.</p></p></dd>
+ nudge_y. [as string]</p></dd>
 
 
 <dt>parse</dt>
-<dd><p><p>If TRUE, the labels will be parsed into expressions and displayed as <br />
- described in ?plotmath.</p></p></dd>
+<dd><p>If TRUE, the labels will be parsed into expressions and displayed as <br />
+ described in ?plotmath. [as boolean]</p></dd>
 
 
 <dt>nudge.x</dt>
-<dd><p><p>Horizontal and vertical adjustment to nudge labels by. Useful for <br />
+<dd><p>Horizontal and vertical adjustment to nudge labels by. Useful for <br />
  offsetting text from points, particularly on discrete scales. Cannot be <br />
- jointly specified with position.</p></p></dd>
+ jointly specified with position. [as double]</p></dd>
 
 
 <dt>nudge.y</dt>
-<dd><p><p>Horizontal and vertical adjustment to nudge labels by. Useful for <br />
+<dd><p>Horizontal and vertical adjustment to nudge labels by. Useful for <br />
  offsetting text from points, particularly on discrete scales. Cannot be <br />
- jointly specified with position.</p></p></dd>
+ jointly specified with position. [as double]</p></dd>
 
 
 <dt>check.overlap</dt>
-<dd><p><p>If TRUE, text that overlaps previous text in the same layer will not be <br />
+<dd><p>If TRUE, text that overlaps previous text in the same layer will not be <br />
  plotted. check_overlap happens at draw time and in the order of the data. <br />
  Therefore data should be arranged by the label column before calling <br />
- geom_text(). Note that this argument is not supported by geom_label().</p></p></dd>
+ geom_text(). Note that this argument is not supported by geom_label(). [as boolean]</p></dd>
 
 
 <dt>na.rm</dt>
-<dd><p><p>If False, the Default, missing values are removed With a warning. <br />
- If True, missing values are silently removed.</p></p></dd>
+<dd><p>If False, the Default, missing values are removed With a warning. <br />
+ If True, missing values are silently removed. [as boolean]</p></dd>
 
 
 <dt>show.legend</dt>
-<dd><p><p>logical. Should this layer be included in the legends? NA, the default, <br />
+<dd><p>logical. Should this layer be included in the legends? NA, the default, <br />
  includes if any aesthetics are mapped. FALSE never includes, and TRUE <br />
  always includes. It can also be a named logical vector to finely select<br />
- the aesthetics to display.</p></p></dd>
+ the aesthetics to display. [as boolean]</p></dd>
 
 
 <dt>inherit.aes</dt>
-<dd><p><p>If False, Overrides the Default aesthetics, rather than combining With <br />
+<dd><p>If False, Overrides the Default aesthetics, rather than combining With <br />
  them. This Is most useful For helper functions that define both data And <br />
  aesthetics And shouldn't inherit behaviour from the default plot <br />
- specification, e.g. borders().</p></p></dd>
+ specification, e.g. borders(). [as boolean]</p></dd>
 
 
 <dt>color</dt>
-<dd><p><p>-</p></p></dd>
+<dd><p>-</p></dd>
 
 
 <dt>args</dt>
-<dd><p><p>Other arguments passed On To layer(). These are often aesthetics, used To <br />
+<dd><p>Other arguments passed On To layer(). These are often aesthetics, used To <br />
  Set an aesthetic To a fixed value, Like colour = "red" Or size = 3. They<br />
- may also be parameters To the paired geom/stat.</p></p></dd>
+ may also be parameters To the paired geom/stat. [as list]</p></dd>
 
 
 <dt>env</dt>
-<dd><p><p>-</p></p></dd>
+<dd><p>[as <a href="/vignettes/clr/SMRUCC/Rsharp/Runtime/Environment.html">Environment</a>]</p></dd>
 
         </table>
 
