@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Microsoft.VisualBasic.MIME.Html.CSS.CSSFont</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>CSSFont {Microsoft.VisualBasic.MIME.Html.CSS}</td>
+                <td style="text-align: right;">.NET clr documentation</td>
+            </tr>
+        </table>
+
+        <h2>CSSFont</h2>
+
+        <h3>Description</h3>
+
+        <pre><code class="CSS">font-style: style; font-size: size; font-family: Name;
+</code></pre>
+
+<p>这个简写属性用于一次设置元素字体的两个或更多方面。使用 <code>icon</code> 等关键字可以适当地设置元素的字体，使之与用户计算机环境中的某个方面一致。<br />
+ 注意，如果没有使用这些关键词，至少要指定字体大小和字体系列。<br />
+ 可以按顺序设置如下属性：</p>
+
+<ul>
+<li>font-style</li>
+<li>font-variant</li>
+<li>font-weight</li>
+<li>font-size/line-height</li>
+<li><p>font-family</p>
+
+<p>可以不设置其中的某个值，比如 <code>font:100% verdana;</code> 也是允许的。未设置的属性会使用其默认值。</p></li>
+</ul>
+
+        <h3>Declare</h3>        
+
+        <pre>
+            <code id="clr_ts">
+# namespace Microsoft.VisualBasic.MIME.Html.CSS
+export class CSSFont extends <a href="/vignettes/clr/Microsoft/VisualBasic/MIME/Html/CSS/ICSSValue.html">ICSSValue</a> {
+   color: string;
+   # Css string for set font style
+   CSSValue: string;
+   # A string representation of the <a href="/vignettes/clr/System/Drawing/FontFamily.html">FontFamily</a> for the new System.Drawing.Font.
+   family: string;
+   # 该属性设置元素的字体大小。注意，实际上它设置的是字体中字符框的高度；实际的字符字形可能比这些框高或矮（通常会矮）。
+   #  各关键字对应的字体必须比一个最小关键字相应字体要高，并且要小于下一个最大关键字对应的字体。
+   # 
+   # <ul>
+   # <li><code>xx-small</code>: 把字体的尺寸设置为不同的尺寸，从 xx-small 到 xx-large。</li>
+   # <li><code>x-small</code></li>
+   # <li><code>small</code></li>
+   # <li><code>medium</code>:  默认值：medium。</li>
+   # <li><code>large</code></li>
+   # <li><code>x-large</code></li>
+   # <li><code>xx-large</code></li>
+   # <li><code>smaller</code>: 把 font-size 设置为比父元素更小的尺寸。</li>
+   # <li><code>larger</code>:  把 font-size 设置为比父元素更大的尺寸。</li>
+   # <li><code>length</code>:  把 font-size 设置为一个固定的值。</li>
+   # <li><code>%</code>:       把 font-size 设置为基于父元素的一个百分比值。</li>
+   # <li><code>inherit</code>: 规定应该从父元素继承字体尺寸。</li>
+   # </ul>
+   size: double;
+   # The <a href="/vignettes/clr/System/Drawing/FontStyle.html">FontStyle</a> of the new font.
+   style: <a href="/vignettes/clr/System/Drawing/FontStyle.html">FontStyle</a>;
+   # <code>font-variant</code>属性设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，
+   #  但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小。
+   # 
+   # <ul>
+   # <li><code>normal</code>:     默认值。浏览器会显示一个标准的字体。</li>
+   # <li><code>small-caps</code>: 浏览器会显示小型大写字母的字体。</li>
+   # <li><code>inherit</code>:    规定应该从父元素继承 font-variant 属性的值。</li>
+   # </ul>
+   variant: string;
+   # 该属性用于设置显示元素的文本中所用的字体加粗。数字值 400 相当于 关键字 normal，700 等价于 bold。
+   #  每个数字值对应的字体加粗必须至少与下一个最小数字一样细，而且至少与下一个最大数字一样粗。
+   # 
+   # <ul>
+   # <li><code>normal</code>:  默认值。定义标准的字符。</li>
+   # <li><code>bold</code>:    定义粗体字符。</li>
+   # <li><code>bolder</code>:  定义更粗的字符。</li>
+   # <li><code>lighter</code>: 定义更细的字符。</li>
+   # <li><code>100</code>: 定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。</li>
+   # <li><code>200</code>: 同上</li>
+   # <li><code>300</code>: 同上</li>
+   # <li><code>400</code>: 同上</li>
+   # <li><code>500</code>: 同上</li>
+   # <li><code>600</code>: 同上</li>
+   # <li><code>700</code>: 同上</li>
+   # <li><code>800</code>: 同上</li>
+   # <li><code>900</code>: 同上</li>
+   # <li><code>inherit</code>: 规定应该从父元素继承字体的粗细。</li>
+   # </ul>
+   weight: double;
+}
+</code>
+        </pre>
+
+        <h3>.NET clr type reference tree</h3>
+
+        <ol>
+<li>this class extends from <a href="/vignettes/clr/Microsoft/VisualBasic/MIME/Html/CSS/ICSSValue.html">ICSSValue</a> class: <a href="/vignettes/clr/Microsoft/VisualBasic/MIME/Html/CSS/ICSSValue.html">ICSSValue</a></li>
+<li>use by <i>property</i> member <code>style</code>: <a href="/vignettes/clr/System/Drawing/FontStyle.html">FontStyle</a></li>
+</ol>
+
+
+        <hr />
+        <div style="text-align: center;">[Package <em>{$package}</em> version {$version} <a
+                href="../{$package}.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
+<script type="text/javascript">r_highlights("clr_ts");</script>
+
+</html>
