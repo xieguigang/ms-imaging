@@ -30,9 +30,17 @@
             <code id="clr_ts">
 # namespace Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 export class LegendStyles extends <a href="/vignettes/clr/System/Enum.html">Enum</a> {
+   # 矩形
+   [@desc "rect"]
+   Rectangle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 2;
+
    # 圆形
    [@desc "circle"]
    Circle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 4;
+
+   # 实线
+   [@desc "line"]
+   SolidLine: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 8;
 
    # 虚线
    [@desc "dash"]
@@ -42,28 +50,20 @@ export class LegendStyles extends <a href="/vignettes/clr/System/Enum.html">Enum
    [@desc "diamond"]
    Diamond: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 32;
 
+   # 三角形
+   Triangle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 64;
+
    # 六边形
    Hexagon: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 128;
 
    # 五角星
    Pentacle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 256;
 
-   # 矩形
-   [@desc "rect"]
-   Rectangle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 2;
-
-   # 圆角矩形
-   RoundRectangle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 1024;
-
-   # 实线
-   [@desc "line"]
-   SolidLine: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 8;
-
    # 正方形
    Square: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 512;
 
-   # 三角形
-   Triangle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 64;
+   # 圆角矩形
+   RoundRectangle: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a> = 1024;
 
 }
 </code>
@@ -73,16 +73,16 @@ export class LegendStyles extends <a href="/vignettes/clr/System/Enum.html">Enum
 
         <ol>
 <li>this class extends from <a href="/vignettes/clr/System/Enum.html">Enum</a> class: <a href="/vignettes/clr/System/Enum.html">Enum</a></li>
+<li>use by <i>field</i> member <code>Rectangle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 <li>use by <i>field</i> member <code>Circle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
+<li>use by <i>field</i> member <code>SolidLine</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 <li>use by <i>field</i> member <code>DashLine</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 <li>use by <i>field</i> member <code>Diamond</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
+<li>use by <i>field</i> member <code>Triangle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 <li>use by <i>field</i> member <code>Hexagon</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 <li>use by <i>field</i> member <code>Pentacle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
-<li>use by <i>field</i> member <code>Rectangle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
-<li>use by <i>field</i> member <code>RoundRectangle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
-<li>use by <i>field</i> member <code>SolidLine</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 <li>use by <i>field</i> member <code>Square</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
-<li>use by <i>field</i> member <code>Triangle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
+<li>use by <i>field</i> member <code>RoundRectangle</code>: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Legend/LegendStyles.html">LegendStyles</a></li>
 </ol>
 
 
