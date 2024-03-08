@@ -22,14 +22,10 @@
 
         <h3>Description</h3>
 
-        <ul>
-<li><a href="/vignettes/clr/ggplot/colors/ggplotColorLiteral.html">ggplotColorLiteral</a>: target color value is a single color value
+        + <a href="/vignettes/clr/ggplot/colors/ggplotColorLiteral.html">ggplotColorLiteral</a>: target color value is a single color value
+ + <a href="/vignettes/clr/ggplot/colors/ggplotColorPalette.html">ggplotColorPalette</a>: target color string is a color scaler name
+ + <a href="/vignettes/clr/ggplot/colors/ggplotColorFactorMap.html">ggplotColorFactorMap</a>: target color value is a mapping of factor string to color name
 
-<ul>
-<li><a href="/vignettes/clr/ggplot/colors/ggplotColorPalette.html">ggplotColorPalette</a>: target color string is a color scaler name</li>
-<li><a href="/vignettes/clr/ggplot/colors/ggplotColorFactorMap.html">ggplotColorFactorMap</a>: target color value is a mapping of factor string to color name</li>
-</ul></li>
-</ul>
 
         <h3>Declare</h3>        
 
@@ -41,13 +37,11 @@ export class ggplotColorMap {
    #  the transparent alpha channel value.
    alpha: double;
    # for each data object, this property value has different meanings:
-   # 
-   # <ol>
-   # <li><a href="/vignettes/clr/ggplot/colors/ggplotColorLiteral.html">ggplotColorLiteral</a>: a single color value</li>
-   # <li><a href="/vignettes/clr/ggplot/colors/ggplotColorPalette.html">ggplotColorPalette</a>: a color set name string</li>
-   # <li><a href="/vignettes/clr/ggplot/colors/ggplotColorFactorMap.html">ggplotColorFactorMap</a>: a list mapping of factor to color value</li>
-   # <li><a href="/vignettes/clr/ggplot/colors/ggplotColorCustomSet.html">ggplotColorCustomSet</a>: a character vector of the color list</li>
-   # </ol>
+   #  
+   #  1. <a href="/vignettes/clr/ggplot/colors/ggplotColorLiteral.html">ggplotColorLiteral</a>: a single color value
+   #  2. <a href="/vignettes/clr/ggplot/colors/ggplotColorPalette.html">ggplotColorPalette</a>: a color set name string
+   #  3. <a href="/vignettes/clr/ggplot/colors/ggplotColorFactorMap.html">ggplotColorFactorMap</a>: a list mapping of factor to color value
+   #  4. <a href="/vignettes/clr/ggplot/colors/ggplotColorCustomSet.html">ggplotColorCustomSet</a>: a character vector of the color list
    colorMap: <i>any</i> kind;
 }
 </code>

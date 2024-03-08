@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p><br /> There are two types of bar charts: geom_bar() and geom_col(). geom_bar() <br /> makes the height of the bar proportional to the number of cases in each<br /> group (or if the weight aesthetic is supplied, the sum of the weights).<br /> If you want the heights of the bars to represent values in the data, use <br /> geom_col() instead. geom_bar() uses stat_count() by default: it counts <br /> the number of cases at each x position. geom_col() uses stat_identity():<br /> it leaves the data as is.</p>
+         <br /> There are two types of bar charts: geom<em>bar() and geom_col(). geom_bar() <br /> makes the height of the bar proportional to the number of cases in each<br /> group (or if the weight aesthetic is supplied, the sum of the weights).<br /> If you want the heights of the bars to represent values in the data, use <br /> geom_col() instead. geom_bar() uses stat_count() by default: it counts <br /> the number of cases at each x position. geom_col() uses stat</em>identity():<br /> it leaves the data as is.
 
         <h3>Usage</h3>
 
@@ -44,65 +44,65 @@
         <table>
             
 <dt>mapping</dt>
-<dd><p>Set of aesthetic mappings created by aes(). If specified<br />
- and inherit.aes = TRUE (the default), it is combined with the default mapping <br />
- at the top level of the plot. You must supply mapping if there is no plot <br />
+<dd><p>Set of aesthetic mappings created by aes(). If specified
+ and inherit.aes = TRUE (the default), it is combined with the default mapping 
+ at the top level of the plot. You must supply mapping if there is no plot 
  mapping.</p></dd>
 
 
 <dt>data</dt>
-<dd><p>The data to be displayed in this layer. There are three options:<br />
- If NULL, the Default, the data Is inherited from the plot data As specified <br />
- In the Call To ggplot().<br />
- A data.frame, Or other Object, will override the plot data. All objects will be<br />
- fortified To produce a data frame. See fortify() For which variables will be<br />
- created.<br />
- A Function will be called With a Single argument, the plot data. The Return <br />
- value must be a data.frame, And will be used As the layer data. A Function <br />
+<dd><p>The data to be displayed in this layer. There are three options:
+ If NULL, the Default, the data Is inherited from the plot data As specified 
+ In the Call To ggplot().
+ A data.frame, Or other Object, will override the plot data. All objects will be
+ fortified To produce a data frame. See fortify() For which variables will be
+ created.
+ A Function will be called With a Single argument, the plot data. The Return 
+ value must be a data.frame, And will be used As the layer data. A Function 
  can be created from a formula (e.g. ~ head(.x, 10)).</p></dd>
 
 
 <dt>position</dt>
-<dd><p>Position adjustment, either as a string naming the <br />
- adjustment (e.g. "jitter" to use position_jitter), or the result of a call <br />
- to a position adjustment function. Use the latter if you need to change the<br />
+<dd><p>Position adjustment, either as a string naming the 
+ adjustment (e.g. "jitter" to use position_jitter), or the result of a call 
+ to a position adjustment function. Use the latter if you need to change the
  settings of the adjustment.</p></dd>
 
 
 <dt>just</dt>
-<dd><p>Adjustment for column placement. Set to 0.5 by default, <br />
- meaning that columns will be centered about axis breaks. Set to 0 or 1 to place <br />
- columns to the left/right of axis breaks. Note that this argument may have <br />
+<dd><p>Adjustment for column placement. Set to 0.5 by default, 
+ meaning that columns will be centered about axis breaks. Set to 0 or 1 to place 
+ columns to the left/right of axis breaks. Note that this argument may have 
  unintended behaviour when used with alternative positions, e.g. position_dodge(). [as double]</p></dd>
 
 
 <dt>width</dt>
-<dd><p>Bar width. By default, set to 90% of the resolution() of<br />
+<dd><p>Bar width. By default, set to 90% of the resolution() of
  the data. [as double]</p></dd>
 
 
 <dt>na.rm</dt>
-<dd><p>If FALSE, the default, missing values are removed with a<br />
+<dd><p>If FALSE, the default, missing values are removed with a
  warning. If TRUE, missing values are silently removed. [as boolean]</p></dd>
 
 
 <dt>show.legend</dt>
-<dd><p>logical. Should this layer be included in the legends? <br />
- NA, the default, includes if any aesthetics are mapped. FALSE never includes, <br />
- and TRUE always includes. It can also be a named logical vector to finely select <br />
+<dd><p>logical. Should this layer be included in the legends? 
+ NA, the default, includes if any aesthetics are mapped. FALSE never includes, 
+ and TRUE always includes. It can also be a named logical vector to finely select 
  the aesthetics to display. [as boolean]</p></dd>
 
 
 <dt>inherit.aes</dt>
-<dd><p>If FALSE, overrides the default aesthetics, rather <br />
- than combining with them. This is most useful for helper functions that define <br />
- both data and aesthetics and shouldn't inherit behaviour from the default plot <br />
+<dd><p>If FALSE, overrides the default aesthetics, rather 
+ than combining with them. This is most useful for helper functions that define 
+ both data and aesthetics and shouldn't inherit behaviour from the default plot 
  specification, e.g. borders(). [as boolean]</p></dd>
 
 
 <dt>args</dt>
-<dd><p>Other arguments passed on to layer(). These are often aesthetics,<br />
- used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They <br />
+<dd><p>Other arguments passed on to layer(). These are often aesthetics,
+ used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They 
  may also be parameters to the paired geom/stat. [as list]</p></dd>
 
 

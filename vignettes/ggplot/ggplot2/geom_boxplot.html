@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p><br /> The boxplot compactly displays the distribution of a continuous variable. <br /> It visualises five summary statistics (the median, two hinges and two <br /> whiskers), and all "outlying" points individually.</p>
+         <br /> The boxplot compactly displays the distribution of a continuous variable. <br /> It visualises five summary statistics (the median, two hinges and two <br /> whiskers), and all "outlying" points individually.
 
         <h3>Usage</h3>
 
@@ -44,75 +44,80 @@
 
         <h2>Orientation</h2>
 
-<p>This geom treats Each axis differently And, thus, can thus have two <br />
- orientations. Often the orientation Is easy To deduce from a combination <br />
- Of the given mappings And the types Of positional scales In use. Thus, <br />
- ggplot2 will by Default Try To guess which orientation the layer should <br />
- have. Under rare circumstances, the orientation Is ambiguous And guessing <br />
- may fail. In that Case the orientation can be specified directly Using the <br />
- orientation parameter, which can be either "x" Or "y". The value gives <br />
- the axis that the geom should run along, "x" being the Default orientation <br />
- you would expect For the geom.</p>
 
-<p>## Summary statistics<br />
- The lower And upper hinges correspond To the first And third quartiles <br />
- (the 25th And 75th percentiles). This differs slightly from the method <br />
- used by the boxplot() Function, And may be apparent With small samples. <br />
- See boxplot.stats() For For more information On how hinge positions are <br />
- calculated For boxplot().</p>
+ This geom treats Each axis differently And, thus, can thus have two 
+ orientations. Often the orientation Is easy To deduce from a combination 
+ Of the given mappings And the types Of positional scales In use. Thus, 
+ ggplot2 will by Default Try To guess which orientation the layer should 
+ have. Under rare circumstances, the orientation Is ambiguous And guessing 
+ may fail. In that Case the orientation can be specified directly Using the 
+ orientation parameter, which can be either "x" Or "y". The value gives 
+ the axis that the geom should run along, "x" being the Default orientation 
+ you would expect For the geom.
 
-<p>The upper whisker extends from the hinge To the largest value no further <br />
- than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or <br />
- distance between the first And third quartiles). The lower whisker extends <br />
- from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data <br />
- beyond the End Of the whiskers are called "outlying" points And are plotted <br />
- individually.</p>
+ <h2>Summary statistics</h2>
 
-<p>In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a <br />
- roughly 95% confidence interval for comparing medians. See McGill et al. <br />
- (1978) for more details.</p>
 
-<p>## Aesthetics<br />
- geom_boxplot() understands the following aesthetics (required aesthetics are <br />
- in bold):</p>
+ The lower And upper hinges correspond To the first And third quartiles 
+ (the 25th And 75th percentiles). This differs slightly from the method 
+ used by the boxplot() Function, And may be apparent With small samples. 
+ See boxplot.stats() For For more information On how hinge positions are 
+ calculated For boxplot().
 
-<ul>
-<li>x Or y</li>
-<li>lower Or xlower</li>
-<li>upper Or xupper</li>
-<li>middle Or xmiddle</li>
-<li>ymin Or xmin</li>
-<li>ymax Or xmax</li>
-<li>alpha</li>
-<li>colour</li>
-<li>fill</li>
-<li>group</li>
-<li>linetype</li>
-<li>shape</li>
-<li>size</li>
-<li><p>weight</p>
+ The upper whisker extends from the hinge To the largest value no further 
+ than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or 
+ distance between the first And third quartiles). The lower whisker extends 
+ from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data 
+ beyond the End Of the whiskers are called "outlying" points And are plotted 
+ individually.
 
-<p>Learn more about setting these aesthetics In vignette("ggplot2-specs").</p>
+ In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a 
+ roughly 95% confidence interval for comparing medians. See McGill et al. 
+ (1978) for more details.
 
-<h2>Computed variables</h2>
+ <h2>Aesthetics</h2>
 
-<p>stat_boxplot() provides the following variables, some of which depend on the orientation:</p></li>
-<li><p>width: width of boxplot</p></li>
-<li>ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR</li>
-<li>lower Or xlower: lower hinge, 25% quantile</li>
-<li>notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)</li>
-<li>middle Or xmiddle: median, 50% quantile</li>
-<li>notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)</li>
-<li>upper Or xupper: upper hinge, 75% quantile</li>
-<li><p>ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR</p>
 
-<h2>References</h2>
+ geom_boxplot() understands the following aesthetics (required aesthetics are 
+ in bold):
 
-<blockquote>
-  <p>McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. <br />
-  The American Statistician 32, 12-16.</p>
-</blockquote></li>
-</ul>
+ + x Or y
+ + lower Or xlower
+ + upper Or xupper
+ + middle Or xmiddle
+ + ymin Or xmin
+ + ymax Or xmax
+ + alpha
+ + colour
+ + fill
+ + group
+ + linetype
+ + shape
+ + size
+ + weight
+
+ Learn more about setting these aesthetics In vignette("ggplot2-specs").
+
+ <h2>Computed variables</h2>
+
+
+ stat_boxplot() provides the following variables, some of which depend on the orientation:
+
+ + width: width of boxplot
+ + ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR
+ + lower Or xlower: lower hinge, 25% quantile
+ + notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)
+ + middle Or xmiddle: median, 50% quantile
+ + notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)
+ + upper Or xupper: upper hinge, 75% quantile
+ + ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR
+
+ <h2>References</h2>
+
+
+ 
+ > McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. 
+   The American Statistician 32, 12-16.
 
         <h3 style="display: block">Authors</h3>
 

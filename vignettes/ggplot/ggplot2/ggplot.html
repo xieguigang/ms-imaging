@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p><br /> <code>ggplot()</code> initializes a ggplot object. It can be used to declare <br /> the input data frame for a graphic and to specify the set of <br /> plot aesthetics intended to be common throughout all subsequent <br /> layers unless specifically overridden.</p>
+         <br /> <code>ggplot()</code> initializes a ggplot object. It can be used to declare <br /> the input data frame for a graphic and to specify the set of <br /> plot aesthetics intended to be common throughout all subsequent <br /> layers unless specifically overridden.
 
         <h3>Usage</h3>
 
@@ -39,18 +39,24 @@
         <table>
             
 <dt>data</dt>
-<dd><p>Default dataset to use for plot. If not already a data.frame, <br />
- will be converted to one by fortify(). If not specified, must be <br />
- supplied in each layer added to the plot.</p></dd>
+<dd><p>
+ Default dataset to use for plot. If not already a data.frame, 
+ will be converted to one by fortify(). If not specified, must be 
+ supplied in each layer added to the plot.
+ </p></dd>
 
 
 <dt>mapping</dt>
-<dd><p>Default list of aesthetic mappings to use for plot. If not specified, <br />
- must be supplied in each layer added to the plot.</p></dd>
+<dd><p>
+ Default list of aesthetic mappings to use for plot. If not specified, 
+ must be supplied in each layer added to the plot.
+ </p></dd>
 
 
 <dt>args</dt>
-<dd><p>Other arguments passed on to methods. Not currently used. [as list]</p></dd>
+<dd><p>
+ Other arguments passed on to methods. Not currently used.
+ . [as list]</p></dd>
 
 
 <dt>environment</dt>
@@ -61,27 +67,26 @@
 
         <h3 style="display: block;">Details</h3>
 
-        <p><code>ggplot()</code> is used to construct the initial plot object, and is <br />
- almost always followed by + to add component to the plot. There <br />
- are three common ways to invoke <code>ggplot()</code>:</p>
-
-<ul>
-<li><code>ggplot(df, aes(x, y, other aesthetics))</code></li>
-<li><code>ggplot(df)</code></li>
-<li><p><code>ggplot()</code></p>
-
-<p>The first method Is recommended If all layers use the same data <br />
-And the same Set Of aesthetics, although this method can also be <br />
-used To add a layer Using data from another data frame. See the <br />
-first example below. The second method specifies the Default <br />
-data frame To use For the plot, but no aesthetics are defined up <br />
-front. This Is useful When one data frame Is used predominantly <br />
-As layers are added, but the aesthetics may vary from one layer <br />
-To another. The third method initializes a skeleton ggplot Object<br />
-which Is fleshed out As layers are added. This method Is useful <br />
-When multiple data frames are used To produce different layers, <br />
-As Is often the Case In complex graphics.</p></li>
-</ul>
+        <code>ggplot()</code> is used to construct the initial plot object, and is 
+ almost always followed by + to add component to the plot. There 
+ are three common ways to invoke <code>ggplot()</code>:
+ 
+ + <code>ggplot(df, aes(x, y, other aesthetics))</code>
+ + <code>ggplot(df)</code>
+ + <code>ggplot()</code>
+ 
+ 
+ The first method Is recommended If all layers use the same data 
+ And the same Set Of aesthetics, although this method can also be 
+ used To add a layer Using data from another data frame. See the 
+ first example below. The second method specifies the Default 
+ data frame To use For the plot, but no aesthetics are defined up 
+ front. This Is useful When one data frame Is used predominantly 
+ As layers are added, but the aesthetics may vary from one layer 
+ To another. The third method initializes a skeleton ggplot Object
+ which Is fleshed out As layers are added. This method Is useful 
+ When multiple data frames are used To produce different layers, 
+ As Is often the Case In complex graphics.
 
         <h3 style="display: block">Authors</h3>
 
@@ -89,8 +94,8 @@ As Is often the Case In complex graphics.</p></li>
 
         <h3>Value</h3>
 
-        <p>a ggplot base layer object which can be rendering to graphics by <br />
- invoke the <code>plot</code> function.</p><h4>clr value class</h4><ul><li><a href="/vignettes/clr/ggplot/ggplot.html">ggplot</a></li></ul>
+        a ggplot base layer object which can be rendering to graphics by 
+ invoke the <code>plot</code> function.<h4>clr value class</h4><ul><li><a href="/vignettes/clr/ggplot/ggplot.html">ggplot</a></li></ul>
 
         <h3 style="display: none;">Examples</h3>
 
