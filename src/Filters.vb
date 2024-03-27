@@ -119,8 +119,11 @@ Module Filters
     ''' <returns></returns>
     <ExportAPI("knn_scale")>
     <RApiReturn(GetType(KNNScaler))>
-    Public Function knnScaler(Optional k As Integer = 3, Optional q As Double = 0.65) As KNNScaler
-        Return New KNNScaler(k, q)
+    Public Function knnScaler(Optional k As Integer = 3,
+                              Optional q As Double = 0.65,
+                              Optional random As Boolean = False) As KNNScaler
+
+        Return New KNNScaler(k, q, random)
     End Function
 
     <ExportAPI("denoise_scale")>

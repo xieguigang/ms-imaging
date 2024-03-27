@@ -527,6 +527,10 @@ Public Module Rscript
                 Return Internal.debug.stop("input filter could not be nothing", env)
             ElseIf val.GetType.IsArray Then
                 Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromArray(val)}
+            ElseIf TypeOf val Is RasterPipeline Then
+                Return New MSIFilterPipelineOption With {.pipeline = val}
+            ElseIf TypeOf val Is Scaler Then
+                Return New MSIFilterPipelineOption With {.pipeline = New RasterPipeline(DirectCast(val, Scaler))}
             Else
                 Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromArray(renv.asVector(Of Object)(val))}
             End If
