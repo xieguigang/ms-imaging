@@ -35,8 +35,10 @@ declare namespace MSIfilter {
      * @param q -
      * 
      * + default value Is ``0.65``.
+     * @param random 
+     * + default value Is ``false``.
    */
-   function knn_scale(k?: object, q?: number): object;
+   function knn_scale(k?: object, q?: number, random?: boolean): object;
    /**
     * Normalized the raw input intensity value via log(N)
     * 
