@@ -42,7 +42,9 @@
 
         <h3 style="display: block;">Details</h3>
 
-        <h2>Orientation</h2>
+        
+<h2>Orientation</h2>
+
 
 
  This geom treats Each axis differently And, thus, can thus have two 
@@ -55,9 +57,7 @@
  the axis that the geom should run along, "x" being the Default orientation 
  you would expect For the geom.
 
- <h2>Summary statistics</h2>
-
-
+ ## Summary statistics
  The lower And upper hinges correspond To the first And third quartiles 
  (the 25th And 75th percentiles). This differs slightly from the method 
  used by the boxplot() Function, And may be apparent With small samples. 
@@ -75,9 +75,7 @@
  roughly 95% confidence interval for comparing medians. See McGill et al. 
  (1978) for more details.
 
- <h2>Aesthetics</h2>
-
-
+ ## Aesthetics
  geom_boxplot() understands the following aesthetics (required aesthetics are 
  in bold):
 
@@ -98,9 +96,7 @@
 
  Learn more about setting these aesthetics In vignette("ggplot2-specs").
 
- <h2>Computed variables</h2>
-
-
+ ## Computed variables
  stat_boxplot() provides the following variables, some of which depend on the orientation:
 
  + width: width of boxplot
@@ -112,9 +108,7 @@
  + upper Or xupper: upper hinge, 75% quantile
  + ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR
 
- <h2>References</h2>
-
-
+ ## References
  
  > McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. 
    The American Statistician 32, 12-16.
