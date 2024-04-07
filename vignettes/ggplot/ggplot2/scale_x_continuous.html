@@ -37,7 +37,12 @@
         <table>
             
 <dt>labels</dt>
-<dd><p>[as string]</p></dd>
+<dd><p>One of:
+ 
+ + <code>NULL</code> for no labels
+ + waiver() for the default labels computed by the transformation object
+ + A character vector giving labels (must be same length As breaks)
+ + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation. [as string]</p></dd>
 
         </table>
 
