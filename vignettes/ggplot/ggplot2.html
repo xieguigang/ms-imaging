@@ -66,7 +66,7 @@ table caption {font-size:14px;font-weight:bolder;}
                                <br /><br /><span style="color: green;">#' Create Elegant Data Visualisations Using the Grammar of Graphics</span><br /><span style="color: blue;">imports</span><span style="color: brown"> "ggplot2"</span><span style="color: blue;"> from</span><span style="color: brown"> "ggplot"</span>;
                            </code>
     </p>
-    <p>Create Elegant Data Visualisations Using the Grammar of Graphics</p>
+    <p><p>Create Elegant Data Visualisations Using the Grammar of Graphics</p></p>
     <blockquote>
       <p style="font-style: italic; font-size: 0.9em;">
                            
@@ -85,136 +85,100 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="ggplot">
     <a href="./ggplot2/ggplot.html">ggplot</a>
   </td>
-  <td>
-<h3>Create a new ggplot</h3>
+  <td><h3>Create a new ggplot</h3>
 
-
-
- 
- <code>ggplot()</code> initializes a ggplot object. It can be used to declare 
+<p><code>ggplot()</code> initializes a ggplot object. It can be used to declare 
  the input data frame for a graphic and to specify the set of 
  plot aesthetics intended to be common throughout all subsequent 
- layers unless specifically overridden.</td>
+ layers unless specifically overridden.</p></td>
 </tr>
 <tr>
   <td id="aes">
     <a href="./ggplot2/aes.html">aes</a>
   </td>
-  <td>
-<h3>Construct aesthetic mappings</h3>
+  <td><h3>Construct aesthetic mappings</h3>
 
-
-
- 
- Aesthetic mappings describe how variables in the data are mapped 
+<p>Aesthetic mappings describe how variables in the data are mapped 
  to visual properties (aesthetics) of geoms. Aesthetic mappings 
- can be set in ggplot() and in individual layers.</td>
+ can be set in ggplot() and in individual layers.</p></td>
 </tr>
 <tr>
   <td id="geom_point">
     <a href="./ggplot2/geom_point.html">geom_point</a>
   </td>
-  <td>
-<h3>Scatter Points</h3>
+  <td><h3>Scatter Points</h3>
 
-
-
- 
- The point geom is used to create scatterplots. The scatterplot is most 
+<p>The point geom is used to create scatterplots. The scatterplot is most 
  useful for displaying the relationship between two continuous variables. 
  It can be used to compare one continuous and one categorical variable, 
  or two categorical variables, but a variation like geom_jitter(), 
  geom<em>count(), or geom</em>bin2d() is usually more appropriate. A bubblechart 
- is a scatterplot with a third variable mapped to the size of points.</td>
+ is a scatterplot with a third variable mapped to the size of points.</p></td>
 </tr>
 <tr>
   <td id="geom_text">
     <a href="./ggplot2/geom_text.html">geom_text</a>
   </td>
-  <td>
-<h3>Text</h3>
+  <td><h3>Text</h3>
 
-
-
- 
- Text geoms are useful for labeling plots. They can be used by themselves 
+<p>Text geoms are useful for labeling plots. They can be used by themselves 
  as scatterplots or in combination with other geoms, for example, for 
  labeling points or for annotating the height of bars. geom_text() adds 
  only text to the plot. geom_label() draws a rectangle behind the text, 
- making it easier to read.</td>
+ making it easier to read.</p></td>
 </tr>
 <tr>
   <td id="geom_histogram">
     <a href="./ggplot2/geom_histogram.html">geom_histogram</a>
   </td>
-  <td>
-<h2>Histograms and frequency polygons</h2>
+  <td><h2>Histograms and frequency polygons</h2>
 
-
-
- 
- Visualise the distribution of a single continuous variable by dividing 
+<p>Visualise the distribution of a single continuous variable by dividing 
  the x axis into bins and counting the number of observations in each bin. 
- Histograms (geom_histogram()) display the counts with bars;</td>
+ Histograms (geom_histogram()) display the counts with bars;</p></td>
 </tr>
 <tr>
   <td id="geom_line">
     <a href="./ggplot2/geom_line.html">geom_line</a>
   </td>
-  <td>
-<h3>Connect observations</h3>
+  <td><h3>Connect observations</h3>
 
-
-
- 
- geom_path() connects the observations in the order in which they appear in 
+<p>geom_path() connects the observations in the order in which they appear in 
  the data. geom_line() connects them in order of the variable on the x axis. 
  geom_step() creates a stairstep plot, highlighting exactly when changes 
- occur. The group aesthetic determines which cases are connected together.</td>
+ occur. The group aesthetic determines which cases are connected together.</p></td>
 </tr>
 <tr>
   <td id="geom_hline">
     <a href="./ggplot2/geom_hline.html">geom_hline</a>
   </td>
-  <td>
-<h3>Reference line defined by Y intercept. Useful for annotating plots.</h3>
+  <td><h3>Reference line defined by Y intercept. Useful for annotating plots.</h3>
 
-
-
- 
- Using the described geometry, you can insert a simple geometric 
+<p>Using the described geometry, you can insert a simple geometric 
  object into your data visualization – a line defined by a position 
- on the Y axis.</td>
+ on the Y axis.</p></td>
 </tr>
 <tr>
   <td id="geom_vline">
     <a href="./ggplot2/geom_vline.html">geom_vline</a>
   </td>
-  <td>
-<h2>Reference lines: horizontal, vertical, and diagonal</h2>
+  <td><h2>Reference lines: horizontal, vertical, and diagonal</h2>
 
-
-
- 
- These geoms add reference lines (sometimes called rules) to a plot, 
+<p>These geoms add reference lines (sometimes called rules) to a plot, 
  either horizontal, vertical, or diagonal (specified by slope and
- intercept). These are useful for annotating plots.</td>
+ intercept). These are useful for annotating plots.</p></td>
 </tr>
 <tr>
   <td id="geom_path">
     <a href="./ggplot2/geom_path.html">geom_path</a>
   </td>
-  <td>
-<h2>Connect observations</h2>
+  <td><h2>Connect observations</h2>
 
-
-
- 
- geom_path() connects the observations in the order in which they 
+<p>geom_path() connects the observations in the order in which they 
  appear in the data. geom_line() connects them in order of the 
  variable on the x axis. geom_step() creates a stairstep plot, highlighting 
  exactly when changes occur. The group aesthetic determines which 
- cases are connected together.</td>
+ cases are connected together.</p></td>
 </tr>
 <tr>
   <td id="geom_convexHull">
@@ -226,51 +190,39 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="geom_boxplot">
     <a href="./ggplot2/geom_boxplot.html">geom_boxplot</a>
   </td>
-  <td>
-<h2>A box and whiskers plot (in the style of Tukey)</h2>
+  <td><h2>A box and whiskers plot (in the style of Tukey)</h2>
 
-
-
- 
- The boxplot compactly displays the distribution of a continuous variable. 
+<p>The boxplot compactly displays the distribution of a continuous variable. 
  It visualises five summary statistics (the median, two hinges and two 
- whiskers), and all "outlying" points individually.</td>
+ whiskers), and all "outlying" points individually.</p></td>
 </tr>
 <tr>
   <td id="geom_col">
     <a href="./ggplot2/geom_col.html">geom_col</a>
   </td>
-  <td>
-<h3>Bar charts</h3>
+  <td><h3>Bar charts</h3>
 
-
-
- 
- There are two types of bar charts: geom<em>bar() and geom_col(). geom</em>bar() 
+<p>There are two types of bar charts: geom<em>bar() and geom_col(). geom</em>bar() 
  makes the height of the bar proportional to the number of cases in each
  group (or if the weight aesthetic is supplied, the sum of the weights).
  If you want the heights of the bars to represent values in the data, use 
  geom<em>col() instead. geom_bar() uses stat</em>count() by default: it counts 
  the number of cases at each x position. geom<em>col() uses stat</em>identity():
- it leaves the data as is.</td>
+ it leaves the data as is.</p></td>
 </tr>
 <tr>
   <td id="geom_bar">
     <a href="./ggplot2/geom_bar.html">geom_bar</a>
   </td>
-  <td>
-<h3>Bar charts</h3>
+  <td><h3>Bar charts</h3>
 
-
-
- 
- There are two types of bar charts: geom<em>bar() and geom_col(). geom</em>bar() 
+<p>There are two types of bar charts: geom<em>bar() and geom_col(). geom</em>bar() 
  makes the height of the bar proportional to the number of cases in each
  group (or if the weight aesthetic is supplied, the sum of the weights).
  If you want the heights of the bars to represent values in the data, use 
  geom<em>col() instead. geom_bar() uses stat</em>count() by default: it counts 
  the number of cases at each x position. geom<em>col() uses stat</em>identity():
- it leaves the data as is.</td>
+ it leaves the data as is.</p></td>
 </tr>
 <tr>
   <td id="geom_barplot">
@@ -324,31 +276,27 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="annotation_raster">
     <a href="./ggplot2/annotation_raster.html">annotation_raster</a>
   </td>
-  <td>annotation_raster: Annotation: high-performance rectangular tiling
+  <td><p>annotation_raster: Annotation: high-performance rectangular tiling
  
  This is a special version of geom_raster() optimised for static 
  annotations that are the same in every panel. These annotations 
  will not affect scales (i.e. the x and y axes will not grow to cover 
  the range of the raster, and the raster must already have its own 
- colours). This is useful for adding bitmap images.</td>
+ colours). This is useful for adding bitmap images.</p></td>
 </tr>
 <tr>
   <td id="labs">
     <a href="./ggplot2/labs.html">labs</a>
   </td>
-  <td>
-<h2>Modify axis, legend, and plot labels</h2>
+  <td><h2>Modify axis, legend, and plot labels</h2>
 
-
-
- 
- Good labels are critical for making your plots accessible to 
+<p>Good labels are critical for making your plots accessible to 
  a wider audience. Always ensure the axis and legend labels 
  display the full variable name. Use the plot title and subtitle 
  to explain the main findings. It's common to use the caption 
  to provide information about the data source. tag can be used 
  for adding identification tags to differentiate between multiple 
- plots.</td>
+ plots.</p></td>
 </tr>
 <tr>
   <td id="stat_pvalue_manual">
@@ -366,65 +314,49 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="geom_signif">
     <a href="./ggplot2/geom_signif.html">geom_signif</a>
   </td>
-  <td>
-<h2>Create significance layer</h2>
-
-
-</td>
+  <td><h2>Create significance layer</h2></td>
 </tr>
 <tr>
   <td id="xlab">
     <a href="./ggplot2/xlab.html">xlab</a>
   </td>
-  <td>
-<h2>Modify axis, legend, and plot labels</h2>
+  <td><h2>Modify axis, legend, and plot labels</h2>
 
-
-
- 
- Good labels are critical for making your plots accessible to a 
+<p>Good labels are critical for making your plots accessible to a 
  wider audience. Always ensure the axis and legend labels display 
  the full variable name. Use the plot title and subtitle to 
  explain the main findings. It's common to use the caption to 
  provide information about the data source. tag can be used for 
  adding identification tags to differentiate between multiple 
- plots.</td>
+ plots.</p></td>
 </tr>
 <tr>
   <td id="ylab">
     <a href="./ggplot2/ylab.html">ylab</a>
   </td>
-  <td>
-<h2>Modify axis, legend, and plot labels</h2>
+  <td><h2>Modify axis, legend, and plot labels</h2>
 
-
-
- 
- Good labels are critical for making your plots accessible to a 
+<p>Good labels are critical for making your plots accessible to a 
  wider audience. Always ensure the axis and legend labels display 
  the full variable name. Use the plot title and subtitle to 
  explain the main findings. It's common to use the caption to 
  provide information about the data source. tag can be used for 
  adding identification tags to differentiate between multiple 
- plots.</td>
+ plots.</p></td>
 </tr>
 <tr>
   <td id="coord_flip">
     <a href="./ggplot2/coord_flip.html">coord_flip</a>
   </td>
-  <td>Swapping X- and Y-Axes</td>
+  <td><p>Swapping X- and Y-Axes</p></td>
 </tr>
 <tr>
   <td id="theme">
     <a href="./ggplot2/theme.html">theme</a>
   </td>
-  <td>
-<h2>Modify components of a theme</h2>
+  <td><h2>Modify components of a theme</h2>
 
-
-
- 
- Themes are a powerful way to customize the non-data components of 
+<p>Themes are a powerful way to customize the non-data components of 
  your plots: i.e. titles, labels, fonts, background, gridlines, and 
  legends. Themes can be used to give plots a consistent customized 
  look. Modify a single plot's theme using theme(); see theme_update() 
@@ -433,7 +365,7 @@ table caption {font-size:14px;font-weight:bolder;}
  a complete theme such as theme<em>bw(), theme</em>minimal(), and more. 
  
  Theme elements are documented together according to inheritance, read
- more about theme inheritance below.</td>
+ more about theme inheritance below.</p></td>
 </tr>
 <tr>
   <td id="element_blank">
@@ -445,38 +377,30 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="element_line">
     <a href="./ggplot2/element_line.html">element_line</a>
   </td>
-  <td>Theme element: line.</td>
+  <td><p>Theme element: line.</p></td>
 </tr>
 <tr>
   <td id="ggtitle">
     <a href="./ggplot2/ggtitle.html">ggtitle</a>
   </td>
-  <td>
-<h3>Modify axis, legend, and plot labels</h3>
+  <td><h3>Modify axis, legend, and plot labels</h3>
 
-
-
- 
- Good labels are critical for making your plots accessible 
+<p>Good labels are critical for making your plots accessible 
  to a wider audience. Always ensure the axis and legend 
  labels display the full variable name. Use the plot title 
  and subtitle to explain the main findings. It's common to 
  use the caption to provide information about the data 
  source. tag can be used for adding identification tags to 
- differentiate between multiple plots.</td>
+ differentiate between multiple plots.</p></td>
 </tr>
 <tr>
   <td id="scale_colour_manual">
     <a href="./ggplot2/scale_colour_manual.html">scale_colour_manual</a>
   </td>
-  <td>
-<h3>Create your own discrete scale</h3>
+  <td><h3>Create your own discrete scale</h3>
 
-
-
- 
- These functions allow you to specify your own set of 
- mappings from levels in the data to aesthetic values.</td>
+<p>These functions allow you to specify your own set of 
+ mappings from levels in the data to aesthetic values.</p></td>
 </tr>
 <tr>
   <td id="scale_fill_manual">
@@ -494,55 +418,39 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="scale_x_continuous">
     <a href="./ggplot2/scale_x_continuous.html">scale_x_continuous</a>
   </td>
-  <td>Position scales for continuous data (x & y)</td>
+  <td><p>Position scales for continuous data (x & y)</p></td>
 </tr>
 <tr>
   <td id="scale_y_continuous">
     <a href="./ggplot2/scale_y_continuous.html">scale_y_continuous</a>
   </td>
-  <td>
-<h3>Position scales for continuous data (x & y)</h3>
-
-
-</td>
+  <td><h3>Position scales for continuous data (x & y)</h3></td>
 </tr>
 <tr>
   <td id="scale_y_reverse">
     <a href="./ggplot2/scale_y_reverse.html">scale_y_reverse</a>
   </td>
-  <td>
-<h3>Position scales for continuous data (x & y)</h3>
-
-
-</td>
+  <td><h3>Position scales for continuous data (x & y)</h3></td>
 </tr>
 <tr>
   <td id="element_text">
     <a href="./ggplot2/element_text.html">element_text</a>
   </td>
-  <td>
-<h3>Theme elements</h3>
+  <td><h3>Theme elements</h3>
 
-
-
- 
- text.</td>
+<p>text.</p></td>
 </tr>
 <tr>
   <td id="element_rect">
     <a href="./ggplot2/element_rect.html">element_rect</a>
   </td>
-  <td>
-<h2>Theme elements</h2>
+  <td><h2>Theme elements</h2>
 
-
-
- 
- In conjunction with the theme system, the <code>element_</code> functions
+<p>In conjunction with the theme system, the <code>element_</code> functions
  specify the display of how non-data components of the plot are 
  drawn.
  
- borders and backgrounds.</td>
+ borders and backgrounds.</p></td>
 </tr></tbody>
       </table>
     </div>

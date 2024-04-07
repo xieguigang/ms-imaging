@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-         <br /> Text geoms are useful for labeling plots. They can be used by themselves <br /> as scatterplots or in combination with other geoms, for example, for <br /> labeling points or for annotating the height of bars. geom<em>text() adds <br /> only text to the plot. geom</em>label() draws a rectangle behind the text, <br /> making it easier to read.
+        <p><br /> Text geoms are useful for labeling plots. They can be used by themselves <br /> as scatterplots or in combination with other geoms, for example, for <br /> labeling points or for annotating the height of bars. geom<em>text() adds <br /> only text to the plot. geom</em>label() draws a rectangle behind the text, <br /> making it easier to read.</p>
 
         <h3>Usage</h3>
 
@@ -51,17 +51,14 @@
         <table>
             
 <dt>mapping</dt>
-<dd><p>
- Set of aesthetic mappings created by aes() or aes_(). If specified and 
+<dd><p>Set of aesthetic mappings created by aes() or aes_(). If specified and 
  inherit.aes = TRUE (the default), it is combined with the default mapping 
  at the top level of the plot. You must supply mapping if there is no plot 
- mapping.
- . [as <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>]</p></dd>
+ mapping. [as <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>]</p></dd>
 
 
 <dt>data</dt>
-<dd><p>
- The data to be displayed in this layer. There are three options:
+<dd><p>The data to be displayed in this layer. There are three options:
  
  If NULL, the Default, the data Is inherited from the plot data As 
  specified In the Call To ggplot().
@@ -72,87 +69,71 @@
  
  A Function will be called With a Single argument, the plot data. The Return 
  value must be a data.frame, And will be used As the layer data. A Function 
- can be created from a formula (e.g. ~ head(.x, 10)).
- </p></dd>
+ can be created from a formula (e.g. ~ head(.x, 10)).</p></dd>
 
 
 <dt>stat</dt>
-<dd><p>
- The statistical transformation to use on the data for this layer, as a 
- string.
- . [as string]</p></dd>
+<dd><p>The statistical transformation to use on the data for this layer, as a 
+ string. [as string]</p></dd>
 
 
 <dt>position</dt>
-<dd><p>
- Position adjustment, either as a string, or the result of a call to a 
+<dd><p>Position adjustment, either as a string, or the result of a call to a 
  position adjustment function. Cannot be jointy specified with nudge_x or 
- nudge_y.
- . [as string]</p></dd>
+ nudge_y. [as string]</p></dd>
 
 
 <dt>parse</dt>
-<dd><p>
- If TRUE, the labels will be parsed into expressions and displayed as 
- described in ?plotmath.
- . [as boolean]</p></dd>
+<dd><p>If TRUE, the labels will be parsed into expressions and displayed as 
+ described in ?plotmath. [as boolean]</p></dd>
 
 
 <dt>nudge.x</dt>
-<dd><p>
- Horizontal and vertical adjustment to nudge labels by. Useful for 
+<dd><p>Horizontal and vertical adjustment to nudge labels by. Useful for 
  offsetting text from points, particularly on discrete scales. Cannot be 
- jointly specified with position.
- . [as double]</p></dd>
+ jointly specified with position. [as double]</p></dd>
 
 
 <dt>nudge.y</dt>
-<dd><p>
- Horizontal and vertical adjustment to nudge labels by. Useful for 
+<dd><p>Horizontal and vertical adjustment to nudge labels by. Useful for 
  offsetting text from points, particularly on discrete scales. Cannot be 
- jointly specified with position.
- . [as double]</p></dd>
+ jointly specified with position. [as double]</p></dd>
 
 
 <dt>check.overlap</dt>
-<dd><p>text(). Note that this argument is not supported by geom. [as boolean]</p></dd>
+<dd><p>If TRUE, text that overlaps previous text in the same layer will not be 
+ plotted. check_overlap happens at draw time and in the order of the data. 
+ Therefore data should be arranged by the label column before calling 
+ geom<em>text(). Note that this argument is not supported by geom</em>label(). [as boolean]</p></dd>
 
 
 <dt>na.rm</dt>
-<dd><p>
- If False, the Default, missing values are removed With a warning. 
- If True, missing values are silently removed.
- . [as boolean]</p></dd>
+<dd><p>If False, the Default, missing values are removed With a warning. 
+ If True, missing values are silently removed. [as boolean]</p></dd>
 
 
 <dt>show.legend</dt>
-<dd><p>
- logical. Should this layer be included in the legends? NA, the default, 
+<dd><p>logical. Should this layer be included in the legends? NA, the default, 
  includes if any aesthetics are mapped. FALSE never includes, and TRUE 
  always includes. It can also be a named logical vector to finely select
- the aesthetics to display.
- . [as boolean]</p></dd>
+ the aesthetics to display. [as boolean]</p></dd>
 
 
 <dt>inherit.aes</dt>
-<dd><p>
- If False, Overrides the Default aesthetics, rather than combining With 
+<dd><p>If False, Overrides the Default aesthetics, rather than combining With 
  them. This Is most useful For helper functions that define both data And 
  aesthetics And shouldn't inherit behaviour from the default plot 
- specification, e.g. borders().
- . [as boolean]</p></dd>
+ specification, e.g. borders(). [as boolean]</p></dd>
 
 
 <dt>color</dt>
-<dd><p></p></dd>
+<dd><p>-</p></dd>
 
 
 <dt>args</dt>
-<dd><p>
- Other arguments passed On To layer(). These are often aesthetics, used To 
+<dd><p>Other arguments passed On To layer(). These are often aesthetics, used To 
  Set an aesthetic To a fixed value, Like colour = "red" Or size = 3. They
- may also be parameters To the paired geom/stat.
- . [as list]</p></dd>
+ may also be parameters To the paired geom/stat. [as list]</p></dd>
 
 
 <dt>env</dt>

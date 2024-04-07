@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-         <br /> The boxplot compactly displays the distribution of a continuous variable. <br /> It visualises five summary statistics (the median, two hinges and two <br /> whiskers), and all "outlying" points individually.
+        <p><br /> The boxplot compactly displays the distribution of a continuous variable. <br /> It visualises five summary statistics (the median, two hinges and two <br /> whiskers), and all "outlying" points individually.</p>
 
         <h3>Usage</h3>
 
@@ -42,12 +42,9 @@
 
         <h3 style="display: block;">Details</h3>
 
-        
-<h2>Orientation</h2>
+        <h2>Orientation</h2>
 
-
-
- This geom treats Each axis differently And, thus, can thus have two 
+<p>This geom treats Each axis differently And, thus, can thus have two 
  orientations. Often the orientation Is easy To deduce from a combination 
  Of the given mappings And the types Of positional scales In use. Thus, 
  ggplot2 will by Default Try To guess which orientation the layer should 
@@ -55,31 +52,31 @@
  may fail. In that Case the orientation can be specified directly Using the 
  orientation parameter, which can be either "x" Or "y". The value gives 
  the axis that the geom should run along, "x" being the Default orientation 
- you would expect For the geom.
+ you would expect For the geom.</p>
 
- ## Summary statistics
+<p>## Summary statistics
  The lower And upper hinges correspond To the first And third quartiles 
  (the 25th And 75th percentiles). This differs slightly from the method 
  used by the boxplot() Function, And may be apparent With small samples. 
  See boxplot.stats() For For more information On how hinge positions are 
- calculated For boxplot().
+ calculated For boxplot().</p>
 
- The upper whisker extends from the hinge To the largest value no further 
+<p>The upper whisker extends from the hinge To the largest value no further 
  than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or 
  distance between the first And third quartiles). The lower whisker extends 
  from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data 
  beyond the End Of the whiskers are called "outlying" points And are plotted 
- individually.
+ individually.</p>
 
- In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a 
+<p>In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a 
  roughly 95% confidence interval for comparing medians. See McGill et al. 
- (1978) for more details.
+ (1978) for more details.</p>
 
- ## Aesthetics
+<p>## Aesthetics
  geom_boxplot() understands the following aesthetics (required aesthetics are 
- in bold):
+ in bold):</p>
 
- + x Or y
+<p>+ x Or y
  + lower Or xlower
  + upper Or xupper
  + middle Or xmiddle
@@ -92,26 +89,26 @@
  + linetype
  + shape
  + size
- + weight
+ + weight</p>
 
- Learn more about setting these aesthetics In vignette("ggplot2-specs").
+<p>Learn more about setting these aesthetics In vignette("ggplot2-specs").</p>
 
- ## Computed variables
- stat_boxplot() provides the following variables, some of which depend on the orientation:
+<p>## Computed variables
+ stat_boxplot() provides the following variables, some of which depend on the orientation:</p>
 
- + width: width of boxplot
+<p>+ width: width of boxplot
  + ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR
  + lower Or xlower: lower hinge, 25% quantile
  + notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)
  + middle Or xmiddle: median, 50% quantile
  + notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)
  + upper Or xupper: upper hinge, 75% quantile
- + ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR
+ + ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR</p>
 
- ## References
+<p>## References
  
  > McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. 
-   The American Statistician 32, 12-16.
+   The American Statistician 32, 12-16.</p>
 
         <h3 style="display: block">Authors</h3>
 
