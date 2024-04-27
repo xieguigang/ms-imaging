@@ -1,58 +1,58 @@
-﻿#Region "Microsoft.VisualBasic::bfc6d792259dd7b52d5a7aea754dbe59, mzkit\Rscript\Library\MSI_app\src\ggplot\ggplotMSI.vb"
+﻿#Region "Microsoft.VisualBasic::ad25e7e9cf5b521d872332e2d599a816, G:/mzkit/Rscript/Library/MSI_app/src//ggplot/ggplotMSI.vb"
 
-' Author:
-' 
-'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-' 
-' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 120
-'    Code Lines: 82
-' Comment Lines: 24
-'   Blank Lines: 14
-'     File Size: 4.28 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Class ggplotMSI
-' 
-'     Properties: dimension_size, filter
-' 
-'     Constructor: (+1 Overloads) Sub New
-'     Function: createHeatmap, createMzPackReader, createPixelReader, createPointReader, CreateReader
-'               GetDimensionSize
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 125
+    '    Code Lines: 87
+    ' Comment Lines: 24
+    '   Blank Lines: 14
+    '     File Size: 4.58 KB
+
+
+    ' Class ggplotMSI
+    ' 
+    '     Properties: dimension_size, filter
+    ' 
+    '     Constructor: (+1 Overloads) Sub New
+    '     Function: createHeatmap, createMzPackReader, createPixelReader, createPointReader, CreateReader
+    '               GetDimensionSize
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f0a4922ee7f6c79b75210a0ed0ae2809, mzkit\Rscript\Library\MSI_app\src\ggplot\layers\MSIRuler.vb"
+﻿#Region "Microsoft.VisualBasic::d37c299753ed710be45237f19906a6e9, G:/mzkit/Rscript/Library/MSI_app/src//ggplot/layers/MSIRuler.vb"
 
     ' Author:
     ' 
@@ -37,16 +37,16 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 33
-    '    Code Lines: 27
+    '   Total Lines: 35
+    '    Code Lines: 29
     ' Comment Lines: 0
     '   Blank Lines: 6
-    '     File Size: 1.09 KB
+    '     File Size: 1.25 KB
 
 
     '     Class MSIRuler
     ' 
-    '         Properties: color
+    '         Properties: color, width
     ' 
     '         Function: Plot
     ' 

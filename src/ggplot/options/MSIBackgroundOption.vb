@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2cae5eda78eeb59cef5ea9038802b767, mzkit\Rscript\Library\MSI_app\src\ggplot\options\MSIBackgroundOption.vb"
+﻿#Region "Microsoft.VisualBasic::5693d6261fa2a890f66915d6c118b3e7, G:/mzkit/Rscript/Library/MSI_app/src//ggplot/options/MSIBackgroundOption.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 9
     ' Comment Lines: 4
     '   Blank Lines: 3
-    '     File Size: 478 B
+    '     File Size: 493 B
 
 
     ' Class MSIBackgroundOption

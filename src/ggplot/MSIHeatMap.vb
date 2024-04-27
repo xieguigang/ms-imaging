@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::00e392847b79576bafea5c52c466d014, mzkit\Rscript\Library\MSI_app\src\ggplot\MSIHeatMap.vb"
+﻿#Region "Microsoft.VisualBasic::5b0f5e3839e06902efd5545c0dbdc171, G:/mzkit/Rscript/Library/MSI_app/src//ggplot/MSIHeatMap.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 30
-    '    Code Lines: 24
-    ' Comment Lines: 1
-    '   Blank Lines: 5
-    '     File Size: 1005 B
+    '   Total Lines: 80
+    '    Code Lines: 60
+    ' Comment Lines: 8
+    '   Blank Lines: 12
+    '     File Size: 2.79 KB
 
 
     ' Class MSIHeatMap
     ' 
     '     Properties: B, dimension, G, R
     ' 
-    '     Function: CreateLayer
+    '     Function: CreateLayer, MeasureHeight, MeasureWidth, ToString, UnionLayers
     ' 
     ' /********************************************************************************/
 
