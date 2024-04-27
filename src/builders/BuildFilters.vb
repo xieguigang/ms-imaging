@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a6bad37fe62124d92b5f1ad6bd9ffcde, G:/mzkit/Rscript/Library/MSI_app/src//builders/BuildFilters.vb"
+﻿#Region "Microsoft.VisualBasic::d2915c553f741b7adeb0be5305f9ffc0, G:/mzkit/Rscript/Library/MSI_app/src//builders/BuildFilters.vb"
 
     ' Author:
     ' 
@@ -100,4 +100,3 @@ Module BuildFilters
         Return pip
     End Function
 End Module
-
