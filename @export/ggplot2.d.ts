@@ -392,7 +392,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_col(mapping?: any, data?: any, position?: any, just?: number, width?: number, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, args?: object, env?: object): any;
+   function geom_col(mapping?: any, data?: any, position?: any, just?: number, width?: number, na_rm?: boolean, show_legend?: object, inherit_aes?: boolean, args?: object, env?: object): any;
    /**
      * @param mapping default value Is ``null``.
      * @param alpha default value Is ``1``.
@@ -638,7 +638,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_text(mapping?: object, data?: any, stat?: string, position?: string, parse?: boolean, nudge_x?: number, nudge_y?: number, check_overlap?: boolean, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, color?: any, which?: object, alpha?: number, size?: number, args?: object, env?: object): object;
+   function geom_text(mapping?: object, data?: any, stat?: string, position?: string, parse?: boolean, nudge_x?: number, nudge_y?: number, check_overlap?: boolean, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, color?: any, which?: object, alpha?: number, size?: object, args?: object, env?: object): object;
    /**
      * @param mapping default value Is ``null``.
    */

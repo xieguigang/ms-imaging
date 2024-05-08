@@ -118,7 +118,7 @@ declare namespace ggplot {
      * 
      * + default value Is ``null``.
    */
-   function geom_MSIruler(color?: any, width?: number): object;
+   function geom_MSIruler(color?: any, width?: object): object;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 
