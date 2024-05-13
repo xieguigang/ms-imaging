@@ -802,6 +802,49 @@ declare namespace ggplot2 {
    */
    function labs(x?: string, y?: string, title?: string, subtitle?: string, caption?: string, tag?: any, alt?: any, alt_insight?: any, args?: object, env?: object): object;
    /**
+    * Sequential, diverging and qualitative colour scales from ColorBrewer
+    * 
+    * > The brewer scales provide sequential, diverging and qualitative colour
+    * >  schemes from ColorBrewer. These are particularly well suited to display 
+    * >  discrete values on a map. See https://colorbrewer2.org for more 
+    * >  information.
+    * >  
+    * >  The brewer scales were carefully designed and tested on discrete data. 
+    * >  They were not designed to be extended to continuous data, but results 
+    * >  often look good. Your mileage may vary.
+    * >  
+    * >  The following palettes are available for use with these scales:
+    * >  
+    * >  #### Diverging
+    * >  BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral
+    * >  
+    * >  #### Qualitative
+    * >  Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3
+    * >  
+    * >  #### Sequential
+    * >  Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd
+    * >  
+    * >  Modify the palette through the palette argument.
+    * 
+     * @param name The name of the scale. Used as the axis or legend title. If waiver(), the default,
+     *  the name of the scale is taken from the first mapping used for that aesthetic. 
+     *  If NULL, the legend title will be omitted.
+     * 
+     * + default value Is ``["BrBG","PiYG","PRGn","PuOr","RdBu","RdGy","RdYlBu","RdYlGn","Spectral","Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3","Blues","BuGn","BuPu","GnBu","Greens","Greys","Oranges","OrRd","PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr","YlOrRd"]``.
+     * @param direction Sets the order Of colours In the scale. If 1, the Default, colours are 
+     *  As output by RColorBrewer:brewer.pal(). If -1, the order of colours 
+     *  Is reversed.
+     * 
+     * + default value Is ``1``.
+     * @param alpha color alpha channel value between [0,1]
+     * 
+     * + default value Is ``1``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
+   */
+   function scale_color_brewer(name?: any, direction?: object, alpha?: number, env?: object): object;
+   /**
     * ### Create your own discrete scale
     *  
     *  These functions allow you to specify your own set of 

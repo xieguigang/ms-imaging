@@ -36,6 +36,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [element_line](ggplot2/element_line.1) Theme element: line.
 + [ggtitle](ggplot2/ggtitle.1) ### Modify axis, legend, and plot labels
 + [scale_colour_manual](ggplot2/scale_colour_manual.1) ### Create your own discrete scale
++ [scale_color_brewer](ggplot2/scale_color_brewer.1) Sequential, diverging and qualitative colour scales from ColorBrewer
 + [scale_fill_manual](ggplot2/scale_fill_manual.1) 
 + [scale_fill_distiller](ggplot2/scale_fill_distiller.1) 
 + [scale_x_continuous](ggplot2/scale_x_continuous.1) Position scales for continuous data (x & y)
