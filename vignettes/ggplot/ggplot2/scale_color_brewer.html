@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sequential, diverging and qualitative colour scales from ColorBrewer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>scale_color_brewer {ggplot2}</td>
+                <td style="text-align: right;">R Documentation</td>
+            </tr>
+        </table>
+
+        <h2>Sequential, diverging and qualitative colour scales from ColorBrewer</h2>
+
+        <h3>Description</h3>
+
+        
+
+        <h3>Usage</h3>
+
+        <div style="width: 100%; padding-left: 3%; color: black;">
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>scale_color_brewer</strong>(
+    <i>name</i> = ["BrBG","PiYG","PRGn","PuOr","RdBu","RdGy","RdYlBu","RdYlGn","Spectral","Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3","Blues","BuGn","BuPu","GnBu","Greens","Greys","Oranges","OrRd","PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr","YlOrRd"],
+    <i>direction</i> = <span style='color: green;'>1</span>,
+    <i>alpha</i> = <span style='color: green;'>1</span>);</code></pre>
+        </div>
+
+        <h3>Arguments</h3>
+
+        <table>
+            
+<dt>name</dt>
+<dd><p>The name of the scale. Used as the axis or legend title. If waiver(), the default,
+ the name of the scale is taken from the first mapping used for that aesthetic. 
+ If NULL, the legend title will be omitted.</p></dd>
+
+
+<dt>direction</dt>
+<dd><p>Sets the order Of colours In the scale. If 1, the Default, colours are 
+ As output by RColorBrewer:brewer.pal(). If -1, the order of colours 
+ Is reversed. [as integer]</p></dd>
+
+
+<dt>alpha</dt>
+<dd><p>color alpha channel value between [0,1]. [as double]</p></dd>
+
+
+<dt>env</dt>
+<dd><p>[as <a href="/vignettes/clr/SMRUCC/Rsharp/Runtime/Environment.html">Environment</a>]</p></dd>
+
+        </table>
+
+
+        <h3 style="display: block;">Details</h3>
+
+        <p>The brewer scales provide sequential, diverging and qualitative colour
+ schemes from ColorBrewer. These are particularly well suited to display 
+ discrete values on a map. See<a href='https://colorbrewer2.org' title='https://colorbrewer2.org'>https://colorbrewer2.org</a>for more 
+ information.
+ 
+ The brewer scales were carefully designed and tested on discrete data. 
+ They were not designed to be extended to continuous data, but results 
+ often look good. Your mileage may vary.
+ 
+ The following palettes are available for use with these scales:
+ 
+ #### Diverging
+ BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral
+ 
+ #### Qualitative
+ Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3
+ 
+ #### Sequential
+ Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd
+ 
+ Modify the palette through the palette argument.</p>
+
+        <h3 style="display: block">Authors</h3>
+
+        SMRUCC
+
+        <h3>Value</h3>
+
+        this function returns data object of type <a href="/vignettes/clr/ggplot/options/ggplotOption.html">ggplotOption</a>.<h4>clr value class</h4><ul><li><a href="/vignettes/clr/ggplot/options/ggplotOption.html">ggplotOption</a></li></ul>
+
+        <h3 style="display: none;">Examples</h3>
+
+        
+
+        <hr />
+        <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a
+                href="../ggplot2.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
+<script type="text/javascript">r_highlights("example_r");</script>
+
+</html>
