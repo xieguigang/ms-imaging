@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ef32a8f86807cbbca8082826abcd79cf, E:/mzkit/Rscript/Library/MSI_app/src//ggplot/options/MSIGaussBlurOption.vb"
+﻿#Region "Microsoft.VisualBasic::ef32a8f86807cbbca8082826abcd79cf, Rscript\Library\MSI_app\src\ggplot\options\MSIGaussBlurOption.vb"
 
     ' Author:
     ' 

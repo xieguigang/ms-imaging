@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f896ce30e1949a6164047f1ced0b5ab5, E:/mzkit/Rscript/Library/MSI_app/src//ggplot/layers/MSIChannelLayer.vb"
+﻿#Region "Microsoft.VisualBasic::f896ce30e1949a6164047f1ced0b5ab5, Rscript\Library\MSI_app\src\ggplot\layers\MSIChannelLayer.vb"
 
     ' Author:
     ' 

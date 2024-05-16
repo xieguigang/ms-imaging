@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::764bf83f7186e089ddf0c0526a751393, E:/mzkit/Rscript/Library/MSI_app/src//ggplot/layers/MSIRGBCompositionLayer.vb"
+﻿#Region "Microsoft.VisualBasic::764bf83f7186e089ddf0c0526a751393, Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBCompositionLayer.vb"
 
     ' Author:
     ' 
