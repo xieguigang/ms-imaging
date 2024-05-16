@@ -35,6 +35,7 @@ svg(file = "./HR2MSI_mouse_urinary_bladder_S096.svg", size = [3300, 2000]) {
 	   + theme(     
             panel.grid.major = element_blank(),
             panel.grid.minor = element_blank(),
+            panel.grid = element_blank(),
             plot.background = "white"
         )
         ;
