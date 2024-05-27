@@ -991,6 +991,8 @@ declare namespace ggplot2 {
      * @param legend_text legend item labels (element_text(); inherits from text)
      * 
      * + default value Is ``null``.
+     * @param legend_tick 
+     * + default value Is ``null``.
      * @param legend_split 
      * + default value Is ``6``.
      * @param plot_background background of the entire plot (element_rect(); inherits from rect)
@@ -1008,7 +1010,7 @@ declare namespace ggplot2 {
      * @param panel_border 
      * + default value Is ``null``.
    */
-   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
+   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
    /**
     * ## Modify axis, legend, and plot labels
     *  
