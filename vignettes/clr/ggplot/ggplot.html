@@ -30,10 +30,11 @@
             <code id="clr_ts">
 # namespace ggplot
 export class ggplot extends <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Plot.html">Plot</a> {
+   # a tuple list of the plot arguments
    args: list;
    base: <a href="/vignettes/clr/ggplot/ggplotBase.html">ggplotBase</a>;
    clearCanvas: boolean;
-   # dataframe, list, and others
+   # the source data for the ggplot chartting plot, data value type could be dataframe, list, and others
    data: <i>any</i> kind;
    # the driver flag for the graphics device
    driver: <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Driver/Drivers.html">Drivers</a>;
@@ -42,8 +43,11 @@ export class ggplot extends <a href="/vignettes/clr/Microsoft/VisualBasic/Data/C
    #  @<code>M:ggplot.ggplot2.ggplot(System.Object,System.Object,System.Object,SMRUCC.Rsharp.Runtime.Internal.Object.list,SMRUCC.Rsharp.Runtime.Environment)</code> 
    #  function calls.
    environment: <a href="/vignettes/clr/SMRUCC/Rsharp/Runtime/Environment.html">Environment</a>;
+   # the theme of the plot
    ggplotTheme: <a href="/vignettes/clr/Microsoft/VisualBasic/Data/ChartPlots/Graphic/Canvas/Theme.html">Theme</a>;
+   # does the given plot data has [x,y,z] axis data?
    is3D: boolean;
+   # the plot layers: scatter, line, bar, etc
    layers: <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">iterates(ggplotLayer)</a>;
    legendTitle: string;
    main: string;

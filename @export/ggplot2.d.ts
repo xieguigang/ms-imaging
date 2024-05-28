@@ -85,6 +85,7 @@ declare namespace ggplot2 {
    */
    function coord_flip(): object;
    /**
+    * means nothing
     * 
     * 
    */
@@ -403,7 +404,7 @@ declare namespace ggplot2 {
     *  
     *  Visualise the distribution of a single continuous variable by dividing 
     *  the x axis into bins and counting the number of observations in each bin. 
-    *  Histograms (geom_histogram()) display the counts with bars;
+    *  Histograms (``geom_histogram()``) display the counts with bars;
     * 
     * 
      * @param bins Number of bins. Overridden by binwidth. Defaults to 30.
@@ -541,7 +542,11 @@ declare namespace ggplot2 {
     * ## Create significance layer
     * 
     * 
-     * @param test 
+     * @param comparisons the comparision groups tuple list, each tuple value should be 
+     *  two group label for extract the corresponding sample vector 
+     *  from the ggplot input raw dataframe for run the ``t.test``.
+     * @param test the stats test method between two groups: t.test or wilcox.test
+     * 
      * + default value Is ``'t.test'``.
    */
    function geom_signif(comparisons: object, test?: string): object;
@@ -936,12 +941,29 @@ declare namespace ggplot2 {
    */
    function scale_y_reverse(): object;
    /**
-     * @param method default value Is ``'anova'``.
-     * @param ref_group default value Is ``'.all.'``.
-     * @param hide_ns default value Is ``true``.
+    * default create anova test for compares all groups
+    * 
+    * 
+     * @param method -
+     * 
+     * + default value Is ``'anova'``.
+     * @param ref_group -
+     * 
+     * + default value Is ``'.all.'``.
+     * @param hide_ns hide not sig result?
+     * 
+     * + default value Is ``true``.
    */
    function stat_compare_means(method?: string, ref_group?: string, hide_ns?: boolean): object;
    /**
+    * set stats p-value for the plot
+    * 
+    * 
+     * @param comparisons a dataframe object that should contains the data fiels at least:
+     *  
+     *  + group1: the label name of the group 1
+     *  + group2: the label name of the group 2
+     *  + pvalue: a numeric vector of the t-test pvalue between group 1 and group 2.
    */
    function stat_pvalue_manual(comparisons: object): object;
    /**
@@ -1013,6 +1035,17 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
    */
    function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_title?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
+   /**
+    * ### A waiver object.
+    *  
+    *  A waiver is a "flag" object, similar to NULL, that indicates the calling 
+    *  function should just use the default value. It is used in certain functions 
+    *  to distinguish between displaying nothing (NULL) and displaying a default 
+    *  value calculated elsewhere (waiver())
+    * 
+    * 
+   */
+   function waiver(): object;
    /**
     * ## Modify axis, legend, and plot labels
     *  

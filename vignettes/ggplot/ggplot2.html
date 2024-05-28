@@ -135,7 +135,7 @@ table caption {font-size:14px;font-weight:bolder;}
 
 <p>Visualise the distribution of a single continuous variable by dividing 
  the x axis into bins and counting the number of observations in each bin. 
- Histograms (geom_histogram()) display the counts with bars;</p></td>
+ Histograms (<code>geom_histogram()</code>) display the counts with bars;</p></td>
 </tr>
 <tr>
   <td id="geom_line">
@@ -302,13 +302,13 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="stat_pvalue_manual">
     <a href="./ggplot2/stat_pvalue_manual.html">stat_pvalue_manual</a>
   </td>
-  <td></td>
+  <td><p>set stats p-value for the plot</p></td>
 </tr>
 <tr>
   <td id="stat_compare_means">
     <a href="./ggplot2/stat_compare_means.html">stat_compare_means</a>
   </td>
-  <td></td>
+  <td><p>default create anova test for compares all groups</p></td>
 </tr>
 <tr>
   <td id="geom_signif">
@@ -371,7 +371,18 @@ table caption {font-size:14px;font-weight:bolder;}
   <td id="element_blank">
     <a href="./ggplot2/element_blank.html">element_blank</a>
   </td>
-  <td></td>
+  <td><p>means nothing</p></td>
+</tr>
+<tr>
+  <td id="waiver">
+    <a href="./ggplot2/waiver.html">waiver</a>
+  </td>
+  <td><h3>A waiver object.</h3>
+
+<p>A waiver is a "flag" object, similar to NULL, that indicates the calling 
+ function should just use the default value. It is used in certain functions 
+ to distinguish between displaying nothing (NULL) and displaying a default 
+ value calculated elsewhere (waiver())</p></td>
 </tr>
 <tr>
   <td id="element_line">

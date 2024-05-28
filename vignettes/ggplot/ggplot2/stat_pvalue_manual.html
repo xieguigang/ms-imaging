@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>stat_pvalue_manual</title>
+    <title>set stats p-value for the plot</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
@@ -18,11 +18,11 @@
             </tr>
         </table>
 
-        <h2>stat_pvalue_manual</h2>
+        <h2>set stats p-value for the plot</h2>
 
         <h3>Description</h3>
 
-        stat_pvalue_manual
+        
 
         <h3>Usage</h3>
 
@@ -34,6 +34,13 @@
 
         <table>
             
+<dt>comparisons</dt>
+<dd><p>a dataframe object that should contains the data fiels at least:
+ 
+ + group1: the label name of the group 1
+ + group2: the label name of the group 2
+ + pvalue: a numeric vector of the t-test pvalue between group 1 and group 2. [as <a href="/vignettes/clr/SMRUCC/Rsharp/Runtime/Internal/Object/dataframe.html">dataframe</a>]</p></dd>
+
         </table>
 
 
@@ -43,7 +50,7 @@
 
         <h3 style="display: block">Authors</h3>
 
-        SMRUCC
+        SMRUCC genomics institute
 
         <h3>Value</h3>
 

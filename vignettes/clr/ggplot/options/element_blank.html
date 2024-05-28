@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        
+        <p>a flag object for indicates the NULL or default value</p>
 
         <h3>Declare</h3>        
 
@@ -30,6 +30,13 @@
             <code id="clr_ts">
 # namespace ggplot.options
 export class element_blank {
+   # does current blank value means ggplot2 liked waiver object?
+   #  
+   #  A waiver is a "flag" object, similar to NULL, that indicates the calling function 
+   #  should just use the default value. It is used in certain functions to distinguish 
+   #  between displaying nothing (NULL) and displaying a default value calculated 
+   #  elsewhere (waiver())
+   waiver: boolean;
 }
 </code>
         </pre>
