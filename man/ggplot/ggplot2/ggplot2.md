@@ -25,14 +25,15 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_tile](ggplot2/geom_tile.1) 
 + [annotation_raster](ggplot2/annotation_raster.1) annotation_raster: Annotation: high-performance rectangular tiling
 + [labs](ggplot2/labs.1) ## Modify axis, legend, and plot labels
-+ [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) 
-+ [stat_compare_means](ggplot2/stat_compare_means.1) 
++ [stat_pvalue_manual](ggplot2/stat_pvalue_manual.1) set stats p-value for the plot
++ [stat_compare_means](ggplot2/stat_compare_means.1) default create anova test for compares all groups
 + [geom_signif](ggplot2/geom_signif.1) ## Create significance layer
 + [xlab](ggplot2/xlab.1) ## Modify axis, legend, and plot labels
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
 + [coord_flip](ggplot2/coord_flip.1) Swapping X- and Y-Axes
 + [theme](ggplot2/theme.1) ## Modify components of a theme
-+ [element_blank](ggplot2/element_blank.1) 
++ [element_blank](ggplot2/element_blank.1) means nothing
++ [waiver](ggplot2/waiver.1) ### A waiver object.
 + [element_line](ggplot2/element_line.1) Theme element: line.
 + [ggtitle](ggplot2/ggtitle.1) ### Modify axis, legend, and plot labels
 + [scale_colour_manual](ggplot2/scale_colour_manual.1) ### Create your own discrete scale

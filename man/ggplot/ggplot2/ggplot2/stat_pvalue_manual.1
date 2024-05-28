@@ -1,9 +1,25 @@
 .\" man page create by R# package system.
 .TH GGPLOT2 1 2000-Jan "stat_pvalue_manual" "stat_pvalue_manual"
 .SH NAME
-stat_pvalue_manual \- 
+stat_pvalue_manual \- set stats p-value for the plot
 .SH SYNOPSIS
 \fIstat_pvalue_manual(\fBcomparisons\fR as <generic> dataframe);\fR
+.SH DESCRIPTION
+.PP
+set stats p-value for the plot
+.PP
+.SH OPTIONS
+.PP
+\fBcomparisons\fB \fR\- 
+ 
+ a dataframe object that should contains the data fiels at least:
+ 
+ + group1: the label name of the group 1
+ + group2: the label name of the group 2
+ + pvalue: a numeric vector of the t-test pvalue between group 1 and group 2.
+ 
+. 
+.PP
 .SH SEE ALSO
 ggplot2
 .SH FILES

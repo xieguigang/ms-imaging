@@ -1,39 +1,39 @@
 ﻿.TH MSI_IONSTATPLOT 1 2024-May "" "Stat plot combine with the MS-imaging"
 .SH NAME
 MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
-    <i>savePng</i> = ./Rplot.png,
+    <i>savePng</i> = <span style='color: brown;'><strong>'./Rplot.png'</strong></span>,
     <i>ionName</i> = <span style='color: blue !important;'>NULL</span>,
-    <i>size</i> = [2400, 1000],
+    <i>size</i> = [<span style='color: green;'>1000</span>],
     <i>colorMap</i> = <span style='color: blue !important;'>NULL</span>,
-    <i>MSI.colorset</i> = viridis:turbo,
+    <i>MSI.colorset</i> = <span style='color: brown;'><strong>'viridis:turbo'</strong></span>,
     <i>ggStatPlot</i> = <span style='color: blue !important;'>NULL</span>,
     <i>padding.top</i> = <span style='color: green;'>150</span>,
     <i>padding.right</i> = <span style='color: green;'>200</span>,
     <i>padding.bottom</i> = <span style='color: green;'>150</span>,
     <i>padding.left</i> = <span style='color: green;'>150</span>,
     <i>interval</i> = <span style='color: green;'>50</span>,
-    <i>combine.layout</i> = [4, 5],
+    <i>combine.layout</i> = [<span style='color: green;'>5</span>],
     <i>jitter.size</i> = <span style='color: green;'>8</span>,
     <i>TrIQ</i> = <span style='color: green;'>0.65</span>,
-    <i>backcolor</i> = black,
+    <i>backcolor</i> = <span style='color: #000000;'><strong>'black'</strong></span>,
     <i>regions</i> = <span style='color: blue !important;'>NULL</span>)
 .SH SYNOPSIS
 \fIMSI_ionStatPlot(mzpack, mz, met, sampleinfo,
-    <i>savePng</i> = ./Rplot.png,
+    <i>savePng</i> = <span style='color: brown;'><strong>'./Rplot.png'</strong></span>,
     <i>ionName</i> = <span style='color: blue !important;'>NULL</span>,
-    <i>size</i> = [2400, 1000],
+    <i>size</i> = [<span style='color: green;'>1000</span>],
     <i>colorMap</i> = <span style='color: blue !important;'>NULL</span>,
-    <i>MSI.colorset</i> = viridis:turbo,
+    <i>MSI.colorset</i> = <span style='color: brown;'><strong>'viridis:turbo'</strong></span>,
     <i>ggStatPlot</i> = <span style='color: blue !important;'>NULL</span>,
     <i>padding.top</i> = <span style='color: green;'>150</span>,
     <i>padding.right</i> = <span style='color: green;'>200</span>,
     <i>padding.bottom</i> = <span style='color: green;'>150</span>,
     <i>padding.left</i> = <span style='color: green;'>150</span>,
     <i>interval</i> = <span style='color: green;'>50</span>,
-    <i>combine.layout</i> = [4, 5],
+    <i>combine.layout</i> = [<span style='color: green;'>5</span>],
     <i>jitter.size</i> = <span style='color: green;'>8</span>,
     <i>TrIQ</i> = <span style='color: green;'>0.65</span>,
-    <i>backcolor</i> = black,
+    <i>backcolor</i> = <span style='color: #000000;'><strong>'black'</strong></span>,
     <i>regions</i> = <span style='color: blue !important;'>NULL</span>)\fR
 .SH OPTIONS
 .PP
@@ -49,7 +49,7 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 \fBsampleinfo\fB \fR\- . a data list set which could be used for defined the sample group information and the plot color value. this list data should be contains at least 3 required data fields: 1. group: the sample group name, used for display as the title label of each group data 2. id: a character vector that contains the necessary sample id reference to get the required sample data for each data group 3. color: a single character string value in html color format for specific the color of the bar/box/violin stat plot.
 .PP
 .PP
-\fBsavePng\fB \fR\- ./Rplot.png. the filepath to save the image plot output.
+\fBsavePng\fB \fR\- './Rplot.png'. the filepath to save the image plot output.
 .PP
 .PP
 \fBionName\fB \fR\- NULL. the display title string. the ion m/z value will be used if this parameter leaves default NULL.
@@ -61,7 +61,7 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 \fBcolorMap\fB \fR\- NULL. a list object that contains the color set value that used for rendering the stat chartting, example as box/bar/violin. this list data object the key names should be the sample group tag and the corresponding value must be the sample intensity data value.
 .PP
 .PP
-\fBMSI.colorset\fB \fR\- viridis:turbo. 
+\fBMSI.colorset\fB \fR\- 'viridis:turbo'. 
 .PP
 .PP
 \fBggStatPlot\fB \fR\- NULL. default is bar plot.
@@ -91,7 +91,7 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 \fBTrIQ\fB \fR\- 0.65. 
 .PP
 .PP
-\fBbackcolor\fB \fR\- black. the background color of the MS-imaging plot
+\fBbackcolor\fB \fR\- 'black'. the background color of the MS-imaging plot
 .PP
 .PP
 \fBregions\fB \fR\- NULL. 
