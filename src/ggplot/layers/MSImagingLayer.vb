@@ -71,6 +71,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
@@ -159,6 +160,7 @@ Namespace layers
             Dim theme As Theme = stream.theme
             Dim ticks As Double() = rawInto.Range.CreateAxisTicks
             Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
 
             If ticks.Any(Function(t) t = 0.0) Then
                 ticks = {rawInto.Min} _
@@ -173,10 +175,10 @@ Namespace layers
                 .colorMapLegend = New ColorMapLegend(colorSet, colorLevels) With {
                     .format = "G3",
                     .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
-                    .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(stream.g.Dpi),
+                    .tickFont = css.GetFont(CSSFont.TryParse(theme.legendTickCSS)),
                     .ticks = ticks,
                     .title = $"m/z {mz(Scan0).ToString("F3")}",
-                    .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(stream.g.Dpi),
+                    .titleFont = css.GetFont(CSSFont.TryParse(theme.legendTitleCSS)),
                     .noblank = True,
                     .legendOffsetLeft = stream.canvas.Padding.Right / 10
                 }
