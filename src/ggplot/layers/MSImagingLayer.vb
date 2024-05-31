@@ -174,7 +174,7 @@ Namespace layers
                 .height = rect.Height,
                 .colorMapLegend = New ColorMapLegend(colorSet, colorLevels) With {
                     .format = "G3",
-                    .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
+                    .tickAxisStroke = css.GetPen(Stroke.TryParse(theme.legendTickAxisStroke)),
                     .tickFont = css.GetFont(CSSFont.TryParse(theme.legendTickCSS)),
                     .ticks = ticks,
                     .title = $"m/z {mz(Scan0).ToString("F3")}",
