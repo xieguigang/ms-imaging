@@ -120,6 +120,32 @@ declare namespace ggplot {
    */
    function geom_MSIruler(color?: any, width?: object): object;
    /**
+    * Create a plot layer of outline for the sample data
+    * 
+    * 
+     * @param threshold the intensity threshold for make spatial spot binariation, for clean sample,
+     *  leaves this parameter default zero, for sample with background, set this 
+     *  parameter in range (0,1) for make spot cutoff.
+     * 
+     * + default value Is ``0``.
+     * @param scale contour tracing pixel rectangle scale size
+     * 
+     * + default value Is ``5``.
+     * @param degree -
+     * 
+     * + default value Is ``20``.
+     * @param resolution -
+     * 
+     * + default value Is ``1000``.
+     * @param q -
+     * 
+     * + default value Is ``0.1``.
+     * @param line_stroke -
+     * 
+     * + default value Is ``'stroke: width; stroke-width: 6px; stroke-dash: solid;'``.
+   */
+   function geom_sample_outline(threshold?: number, scale?: object, degree?: number, resolution?: object, q?: number, line_stroke?: any): object;
+   /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 
     * 
