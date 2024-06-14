@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports ggplot
 Imports ggplot.elements.legend
@@ -39,7 +40,6 @@ Namespace layers
             End If
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim shape = ContourLayer.GetOutline(spots.X, spots.Y, contour_scale)
             Dim xscale = d3js.scale.linear.domain(values:={0.0, summary.size.Width}).range(values:=New Double() {rect.Left, rect.Right})
             Dim yscale = d3js.scale.linear.domain(values:={0.0, summary.size.Height}).range(values:=New Double() {rect.Top, rect.Bottom})
             Dim scale As New DataScaler() With {
@@ -48,10 +48,10 @@ Namespace layers
                 .X = xscale,
                 .Y = yscale
             }
-
-            If degree > 0 Then
-                shape = shape.Bspline(degree, resolution).FilterSmallPolygon(q)
-            End If
+            Dim shape As GeneralPath = MSIRegionPlot.MeasureRegionPolygon(
+                spots.X.ToArray,
+                spots.Y.ToArray,
+                contour_scale, degree, resolution, q)
 
             For Each region As PointF() In shape.GetPolygons
                 region = region _
