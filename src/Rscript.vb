@@ -73,6 +73,7 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Math2D
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Interpreter
@@ -438,6 +439,40 @@ Public Module Rscript
             .width = width,
             .color = RColorPalette.GetRawColor(color, [default]:="white")
         }
+    End Function
+
+    ''' <summary>
+    ''' Create a plot layer of outline for the sample data
+    ''' </summary>
+    ''' <param name="threshold">
+    ''' the intensity threshold for make spatial spot binariation, for clean sample,
+    ''' leaves this parameter default zero, for sample with background, set this 
+    ''' parameter in range (0,1) for make spot cutoff.
+    ''' </param>
+    ''' <param name="scale">contour tracing pixel rectangle scale size</param>
+    ''' <param name="degree"></param>
+    ''' <param name="resolution"></param>
+    ''' <param name="q"></param>
+    ''' <param name="line_stroke"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_sample_outline")>
+    Public Function geom_sample_outline(Optional threshold As Double = 0,
+                                        Optional scale As Integer = 5,
+                                        Optional degree As Single = 20,
+                                        Optional resolution As Integer = 1000,
+                                        Optional q As Double = 0.1,
+                                        Optional line_stroke As Object = "stroke: width; stroke-width: 6px; stroke-dash: solid;") As MSISampleOutline
+
+        Dim line As Stroke = Stroke.TryParse(InteropArgumentHelper.getStrokePenCSS(line_stroke, "stroke: width; stroke-width: 6px; stroke-dash: solid;"))
+        Dim outline As New MSISampleOutline With {
+            .line_stroke = line,
+            .contour_scale = scale,
+            .degree = degree,
+            .q = q,
+            .resolution = resolution
+        }
+
+        Return outline
     End Function
 
     ''' <summary>
