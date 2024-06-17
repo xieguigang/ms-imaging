@@ -479,9 +479,9 @@ Public Module Rscript
                                         Optional degree As Single = 20,
                                         Optional resolution As Integer = 1000,
                                         Optional q As Double = 0.1,
-                                        Optional line_stroke As Object = "stroke: width; stroke-width: 6px; stroke-dash: solid;") As MSISampleOutline
+                                        Optional line_stroke As Object = "stroke: white; stroke-width: 6px; stroke-dash: solid;") As MSISampleOutline
 
-        Dim line As Stroke = ggplotExtensions.GetStroke(line_stroke, "stroke: width; stroke-width: 6px; stroke-dash: solid;")
+        Dim line As Stroke = ggplotExtensions.GetStroke(line_stroke, "stroke: white; stroke-width: 6px; stroke-dash: solid;")
         Dim outline As New MSISampleOutline With {
             .line_stroke = line,
             .contour_scale = scale,
