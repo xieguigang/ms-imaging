@@ -3,7 +3,8 @@
 .SH NAME
 geom_sample_outline \- Create a plot layer of outline for the sample data
 .SH SYNOPSIS
-\fIgeom_sample_outline(\fBthreshold\fR as double = 0, 
+\fIgeom_sample_outline(\fBspots\fR as <generic> dataframe = \fB<NULL>\fR, 
+\fBthreshold\fR as double = 0, 
 \fBscale\fR as integer = 5, 
 \fBdegree\fR as double = 20, 
 \fBresolution\fR as integer = 1000, 
@@ -34,7 +35,7 @@ Create a plot layer of outline for the sample data
 \fBq\fB \fR\- -. 
 .PP
 .PP
-\fBline_stroke\fB \fR\- -. 
+\fBline_stroke\fB \fR\- a @\fBT:ggplot.elements.lineElement\fR that create via the ggplot function: \fBelement_line\fR.. 
 .PP
 .SH SEE ALSO
 ggplot

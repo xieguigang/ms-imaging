@@ -123,6 +123,8 @@ declare namespace ggplot {
     * Create a plot layer of outline for the sample data
     * 
     * 
+     * @param spots 
+     * + default value Is ``null``.
      * @param threshold the intensity threshold for make spatial spot binariation, for clean sample,
      *  leaves this parameter default zero, for sample with background, set this 
      *  parameter in range (0,1) for make spot cutoff.
@@ -140,11 +142,11 @@ declare namespace ggplot {
      * @param q -
      * 
      * + default value Is ``0.1``.
-     * @param line_stroke -
+     * @param line_stroke a @``T:ggplot.elements.lineElement`` that create via the ggplot function: ``element_line``.
      * 
      * + default value Is ``'stroke: width; stroke-width: 6px; stroke-dash: solid;'``.
    */
-   function geom_sample_outline(threshold?: number, scale?: object, degree?: number, resolution?: object, q?: number, line_stroke?: any): object;
+   function geom_sample_outline(spots?: object, threshold?: number, scale?: object, degree?: number, resolution?: object, q?: number, line_stroke?: any): object;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 
