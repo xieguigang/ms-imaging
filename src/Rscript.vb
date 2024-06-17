@@ -1,58 +1,58 @@
 ﻿#Region "Microsoft.VisualBasic::3b9fc228986352b0239cf2e9afa1c973, Rscript\Library\MSI_app\src\Rscript.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 535
-    '    Code Lines: 340 (63.55%)
-    ' Comment Lines: 141 (26.36%)
-    '    - Xml Docs: 97.87%
-    ' 
-    '   Blank Lines: 54 (10.09%)
-    '     File Size: 21.51 KB
+' Summaries:
 
 
-    ' Module Rscript
-    ' 
-    '     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
-    '               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
-    '               getChannel, KnnFill, raster_blending, unionlayers
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 535
+'    Code Lines: 340 (63.55%)
+' Comment Lines: 141 (26.36%)
+'    - Xml Docs: 97.87%
+' 
+'   Blank Lines: 54 (10.09%)
+'     File Size: 21.51 KB
+
+
+' Module Rscript
+' 
+'     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
+'               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
+'               getChannel, KnnFill, raster_blending, unionlayers
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -66,6 +66,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports ggplot
 Imports ggplot.colors
+Imports ggplot.elements
 Imports ggplot.layers
 Imports ggplotMSImaging.data
 Imports ggplotMSImaging.layers
@@ -453,7 +454,7 @@ Public Module Rscript
     ''' <param name="degree"></param>
     ''' <param name="resolution"></param>
     ''' <param name="q"></param>
-    ''' <param name="line_stroke"></param>
+    ''' <param name="line_stroke">a <see cref="lineElement"/> that create via the ggplot function: ``element_line``.</param>
     ''' <returns></returns>
     <ExportAPI("geom_sample_outline")>
     Public Function geom_sample_outline(Optional spots As dataframe = Nothing,
@@ -464,7 +465,7 @@ Public Module Rscript
                                         Optional q As Double = 0.1,
                                         Optional line_stroke As Object = "stroke: width; stroke-width: 6px; stroke-dash: solid;") As MSISampleOutline
 
-        Dim line As Stroke = Stroke.TryParse(InteropArgumentHelper.getStrokePenCSS(line_stroke, "stroke: width; stroke-width: 6px; stroke-dash: solid;"))
+        Dim line As Stroke = ggplotExtensions.GetStroke(line_stroke, "stroke: width; stroke-width: 6px; stroke-dash: solid;")
         Dim outline As New MSISampleOutline With {
             .line_stroke = line,
             .contour_scale = scale,
