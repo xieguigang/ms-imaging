@@ -116,7 +116,7 @@ Namespace layers
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim xscale = d3js.scale.linear.domain(values:={0.0, summary.size.Width}).range(values:=New Double() {rect.Left, rect.Right})
             Dim yscale = d3js.scale.linear.domain(values:={0.0, summary.size.Height}).range(values:=New Double() {rect.Top, rect.Bottom})
-            Dim scale As New DataScaler() With {
+            Dim scale As New DataScaler(rev:=True) With {
                 .AxisTicks = (Nothing, Nothing),
                 .region = rect,
                 .X = xscale,

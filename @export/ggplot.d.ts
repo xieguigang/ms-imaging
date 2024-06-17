@@ -144,7 +144,7 @@ declare namespace ggplot {
      * + default value Is ``0.1``.
      * @param line_stroke a @``T:ggplot.elements.lineElement`` that create via the ggplot function: ``element_line``.
      * 
-     * + default value Is ``'stroke: width; stroke-width: 6px; stroke-dash: solid;'``.
+     * + default value Is ``'stroke: white; stroke-width: 6px; stroke-dash: solid;'``.
    */
    function geom_sample_outline(spots?: object, threshold?: number, scale?: object, degree?: number, resolution?: object, q?: number, line_stroke?: any): object;
    /**
