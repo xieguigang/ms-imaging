@@ -22,6 +22,24 @@ Namespace layers
         Public Property q As Double = 0.1
         Public Property line_stroke As Stroke
         Public Property threshold As Double = 0
+        Public Property spots As Point()
+
+        Private Function getShapes(summary As MSISummary) As GeneralPath
+            Dim spots As New List(Of iPixelIntensity)(summary.rowScans.IteratesALL)
+
+            If Me.spots.IsNullOrEmpty Then
+                ' use all pixels
+                Return MSIRegionPlot.MeasureRegionPolygon(
+                    spots.X.ToArray,
+                    spots.Y.ToArray,
+                    contour_scale, degree, resolution, q)
+            Else
+                Return MSIRegionPlot.MeasureRegionPolygon(
+                    Me.spots.X,
+                    Me.spots.Y,
+                    contour_scale, degree, resolution, q)
+            End If
+        End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
@@ -30,13 +48,9 @@ Namespace layers
             Dim base = DirectCast(ggplot.base.reader, MSIReader)
             Dim reader As PixelReader = base.reader
             Dim summary As MSISummary = reader.GetSummary
-            Dim spots As New List(Of iPixelIntensity)
 
             If threshold > 0 Then
                 Throw New NotImplementedException("threshold cutoff")
-            Else
-                ' use all pixels
-                Call spots.AddRange(summary.rowScans.IteratesALL)
             End If
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
@@ -48,10 +62,7 @@ Namespace layers
                 .X = xscale,
                 .Y = yscale
             }
-            Dim shape As GeneralPath = MSIRegionPlot.MeasureRegionPolygon(
-                spots.X.ToArray,
-                spots.Y.ToArray,
-                contour_scale, degree, resolution, q)
+            Dim shape As GeneralPath = getShapes(summary)
 
             For Each region As PointF() In shape.GetPolygons
                 region = region _

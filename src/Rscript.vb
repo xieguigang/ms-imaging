@@ -456,7 +456,8 @@ Public Module Rscript
     ''' <param name="line_stroke"></param>
     ''' <returns></returns>
     <ExportAPI("geom_sample_outline")>
-    Public Function geom_sample_outline(Optional threshold As Double = 0,
+    Public Function geom_sample_outline(Optional spots As dataframe = Nothing,
+                                        Optional threshold As Double = 0,
                                         Optional scale As Integer = 5,
                                         Optional degree As Single = 20,
                                         Optional resolution As Integer = 1000,
@@ -471,6 +472,16 @@ Public Module Rscript
             .q = q,
             .resolution = resolution
         }
+
+        If Not spots Is Nothing Then
+            Dim df As dataframe = spots
+            Dim x As Integer() = CLRVector.asInteger(df.getBySynonym("x", "X"))
+            Dim y As Integer() = CLRVector.asInteger(df.getBySynonym("y", "Y"))
+
+            outline.spots = x _
+                .Select(Function(xi, i) New Point(xi, y(i))) _
+                .ToArray
+        End If
 
         Return outline
     End Function
