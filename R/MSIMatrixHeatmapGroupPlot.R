@@ -1,3 +1,16 @@
+const default_intensity_filter = function(ion, MSI_TrIQ = 0.8) {
+    ion$layer = ion$layer |> knnFill();
+    ion$TrIQ  = TrIQ(ion$layer, q = MSI_TrIQ) * max(intensity(ion$layer));
+    ion$layer = intensityLimits(ion$layer, max = ion$TrIQ[2]);
+    ion;
+}
+
+const custom_intensity_filter = function(ion, filters, MSI_TrIQ = 0.8) {
+    ion$layer = apply_raster_filter(filters, ion$layer);
+    ion$TrIQ  = TrIQ(ion$layer, q = MSI_TrIQ) * max(intensity(ion$layer));
+    ion;
+}
+
 #' Plot MS-Imaging heatmap matrix
 #' 
 #' @param ions_data a list of MSI layers data, each 
@@ -17,20 +30,23 @@ const PlotMSIMatrixHeatmap = function(ions_data,
                                       size          = [2700, 2000], 
                                       canvasPadding = [50, 300, 50, 50], 
                                       cellPadding   = [200, 100, 0, 100], 
+                                      font_size     = 27,
+                                      filters       = NULL,
                                       strict        = TRUE) {
     let NxN as integer = layout;
     let cambria   = rasterFont("Cambria", 27, "Bold");
     let cellWidth = (size[1] - canvasPadding[2] - canvasPadding[4]) / NxN[1]; 
+    let apply_msi_filter = {
+        if (length(filters) == 0) {
+            # apply of the default filter for the single ions data
+            x -> default_intensity_filter(x, MSI_TrIQ);
+        } else {
+            x -> custom_intensity_filter(x, MSI_TrIQ);
+        }
+    }
 
-    ions_data = ions_data
-    |> lapply(function(ion) {
-        ion$layer = ion$layer |> knnFill();
-        ion$TrIQ  = TrIQ(ion$layer, q = MSI_TrIQ) * max(intensity(ion$layer));
-        ion$layer = intensityLimits(ion$layer, max = ion$TrIQ[2]);
-        ion;
-    });
-    
-    layout = layout |> layout.grid(
+    ions_data = lapply(ions_data, ion -> apply_msi_filter(ion));
+    layout    = layout |> layout.grid(
         margin = `padding: ${cellPadding[1]}px ${cellPadding[2]}px ${cellPadding[3]}px ${cellPadding[4]}px;`
     );
 
