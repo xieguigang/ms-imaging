@@ -8,6 +8,8 @@ PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions.data,
     <i>size</i> = [<span style='color: green;'>2000</span>],
     <i>canvasPadding</i> = [<span style='color: green;'>300</span>,<span style='color: green;'>50</span>,<span style='color: green;'>50</span>],
     <i>cellPadding</i> = [<span style='color: green;'>100</span>,<span style='color: green;'>0</span>,<span style='color: green;'>100</span>],
+    <i>font.size</i> = <span style='color: green;'>27</span>,
+    <i>filters</i> = <span style='color: blue !important;'>NULL</span>,
     <i>strict</i> = <span style='color: blue !important;'>TRUE</span>)
 .SH SYNOPSIS
 \fIPlotMSIMatrixHeatmap(ions.data,
@@ -18,6 +20,8 @@ PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions.data,
     <i>size</i> = [<span style='color: green;'>2000</span>],
     <i>canvasPadding</i> = [<span style='color: green;'>300</span>,<span style='color: green;'>50</span>,<span style='color: green;'>50</span>],
     <i>cellPadding</i> = [<span style='color: green;'>100</span>,<span style='color: green;'>0</span>,<span style='color: green;'>100</span>],
+    <i>font.size</i> = <span style='color: green;'>27</span>,
+    <i>filters</i> = <span style='color: blue !important;'>NULL</span>,
     <i>strict</i> = <span style='color: blue !important;'>TRUE</span>)\fR
 .SH OPTIONS
 .PP
@@ -45,11 +49,17 @@ PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions.data,
 \fBcellPadding\fB \fR\- [200, 100, 0, 100]. 
 .PP
 .PP
+\fBfont.size\fB \fR\- 27. 
+.PP
+.PP
+\fBfilters\fB \fR\- NULL. the custom raster data filter apply for spatial heatmap rendering
+.PP
+.PP
 \fBstrict\fB \fR\- TRUE. 
 .PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function.PlotMSIMatrixHeatmap at MSIMatrixHeatmapGroupPlot.R:line 12
+SMRUCC/R#.declare_function.PlotMSIMatrixHeatmap at MSIMatrixHeatmapGroupPlot.R:line 28
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2024

@@ -49,7 +49,11 @@ declare namespace MSIfilter {
    */
    function log_scale(base?: number): object;
    /**
-     * @param q default value Is ``0.5``.
+    * 
+    * 
+     * @param q -
+     * 
+     * + default value Is ``0.5``.
    */
    function quantile_scale(q?: number): object;
    /**

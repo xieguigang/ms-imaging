@@ -20,6 +20,14 @@ declare namespace MSImaging {
    */
    function autoSize(dims: any, padding: any, scale?: any, is_multiple_combine_wide?: any, ratio_threshold?: any, ratio_scale?: any): object;
    /**
+     * @param MSI_TrIQ default value Is ``0.8``.
+   */
+   function custom_intensity_filter(ion: any, filters: any, MSI_TrIQ?: any): object;
+   /**
+     * @param MSI_TrIQ default value Is ``0.8``.
+   */
+   function default_intensity_filter(ion: any, MSI_TrIQ?: any): object;
+   /**
    */
    function default_MSIfilter(): object;
    /**
@@ -68,7 +76,9 @@ declare namespace MSImaging {
      * @param size default value Is ``[2700, 2000]``.
      * @param canvasPadding default value Is ``[50, 300, 50, 50]``.
      * @param cellPadding default value Is ``[200, 100, 0, 100]``.
+     * @param font_size default value Is ``27``.
+     * @param filters default value Is ``null``.
      * @param strict default value Is ``true``.
    */
-   function PlotMSIMatrixHeatmap(ions_data: any, layout?: any, colorSet?: any, MSI_TrIQ?: any, gaussian?: any, size?: any, canvasPadding?: any, cellPadding?: any, strict?: any): object;
+   function PlotMSIMatrixHeatmap(ions_data: any, layout?: any, colorSet?: any, MSI_TrIQ?: any, gaussian?: any, size?: any, canvasPadding?: any, cellPadding?: any, font_size?: any, filters?: any, strict?: any): object;
 }
