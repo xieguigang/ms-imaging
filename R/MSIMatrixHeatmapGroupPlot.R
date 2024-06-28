@@ -22,6 +22,9 @@ const custom_intensity_filter = function(ion, filters, MSI_TrIQ = 0.8) {
 #'       3. layer   the MSI ion layer data
 #'       4. mz      the target ion m/z value
 #' 
+#' @param filters the custom raster data filter apply for spatial 
+#'    heatmap rendering
+#' 
 const PlotMSIMatrixHeatmap = function(ions_data, 
                                       layout        = [3,3],
                                       colorSet      = "Jet",
