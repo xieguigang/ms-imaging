@@ -72,7 +72,7 @@ Module Filters
     ''' <param name="threshold"></param>
     ''' <param name="quantile"></param>
     ''' <returns></returns>
-    ''' 
+    ''' <keywords>intensity</keywords>
     <ExportAPI("intensity_cut")>
     Public Function intensity_cut(Optional threshold As Double = 0.05, Optional quantile As Boolean = False) As IntensityCutScaler
         Return New IntensityCutScaler(threshold, quantile)
@@ -83,11 +83,18 @@ Module Filters
     ''' </summary>
     ''' <param name="base">log(N), N=2 by default</param>
     ''' <returns></returns>
+    ''' <keywords>intensity</keywords>
     <ExportAPI("log_scale")>
     Public Function logScaler(Optional base As Double = 2.0) As LogScaler
         Return New LogScaler(base)
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="q"></param>
+    ''' <returns></returns>
+    ''' <keywords>intensity</keywords>
     <ExportAPI("quantile_scale")>
     Public Function quantileScaler(Optional q As Double = 0.5) As QuantileScaler
         Return New QuantileScaler(q)
@@ -98,6 +105,7 @@ Module Filters
     ''' </summary>
     ''' <param name="q"></param>
     ''' <returns></returns>
+    ''' <keywords>intensity</keywords>
     <ExportAPI("TrIQ_scale")>
     Public Function TrIQScaler(Optional q As Double = 0.6) As TrIQScaler
         Return New TrIQScaler(q)
@@ -107,6 +115,7 @@ Module Filters
     ''' Make convolution of the spatial data for make the imaging render result soften
     ''' </summary>
     ''' <returns></returns>
+    ''' <keywords>convolution</keywords>
     <ExportAPI("soften_scale")>
     <RApiReturn(GetType(SoftenScaler))>
     Public Function softenScaler() As SoftenScaler
@@ -132,5 +141,15 @@ Module Filters
     <RApiReturn(GetType(DenoiseScaler))>
     Public Function denoiseScaler(Optional q As Double = 0.01) As DenoiseScaler
         Return New DenoiseScaler(q)
+    End Function
+
+    <ROperator("+")>
+    Public Function construct_filter(a As Scaler, b As Scaler) As RasterPipeline
+        Return New RasterPipeline(a, b)
+    End Function
+
+    <ROperator("+")>
+    Public Function construct_pipeline(a As RasterPipeline, b As Scaler) As RasterPipeline
+        Return a.Then(b)
     End Function
 End Module
