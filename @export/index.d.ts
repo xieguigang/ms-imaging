@@ -79,6 +79,7 @@ declare namespace MSImaging {
      * @param font_size default value Is ``27``.
      * @param filters default value Is ``null``.
      * @param strict default value Is ``true``.
+     * @param msi_dimension default value Is ``null``.
    */
-   function PlotMSIMatrixHeatmap(ions_data: any, layout?: any, colorSet?: any, MSI_TrIQ?: any, gaussian?: any, size?: any, canvasPadding?: any, cellPadding?: any, font_size?: any, filters?: any, strict?: any): object;
+   function PlotMSIMatrixHeatmap(ions_data: any, layout?: any, colorSet?: any, MSI_TrIQ?: any, gaussian?: any, size?: any, canvasPadding?: any, cellPadding?: any, font_size?: any, filters?: any, strict?: any, msi_dimension?: any): object;
 }
