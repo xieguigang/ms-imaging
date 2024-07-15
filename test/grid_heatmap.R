@@ -29,5 +29,6 @@ bitmap(file = file.path(@dir, "rgb_3x1.png"));
         cellPadding   = [200, 100, 0, 100], 
         font_size     = 27,
         filters       = denoise_scale() + TrIQ_scale(0.85) + knn_scale(1,1.2, random = TRUE) + soften_scale(),
+        msi_dimension = [300,300],
         strict        = TRUE);
 dev.off();
