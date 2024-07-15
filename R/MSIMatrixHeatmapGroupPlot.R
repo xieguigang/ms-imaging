@@ -44,7 +44,7 @@ const PlotMSIMatrixHeatmap = function(ions_data,
             # apply of the default filter for the single ions data
             x -> default_intensity_filter(x, MSI_TrIQ);
         } else {
-            x -> custom_intensity_filter(x, MSI_TrIQ);
+            x -> custom_intensity_filter(x, filters, MSI_TrIQ);
         }
     }
 
