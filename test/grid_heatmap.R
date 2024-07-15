@@ -18,7 +18,7 @@ let rgb_ions = list(
     list(type = "[M+H]+", title = "metabolite 3", mz =  741.5303, layer = MSIlayer(rgb_rawdata, 741.5303))
 );
 
-bitmap(file = file.path(@dir, "rgb_3x1.png"));
+bitmap(file = file.path(@dir, "rgb_3x1.png"), fill = "black");
     PlotMSIMatrixHeatmap(rgb_ions, 
         layout        = [3,1],
         colorSet      = "Jet",
