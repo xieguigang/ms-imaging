@@ -35,7 +35,7 @@ declare namespace ggplot {
      * @return this function returns clr object in types based on the **`background`** parameter:
      *  
      *  1. "TIC" or "BPC": @``T:ggplotMSImaging.layers.MSITICOverlap``
-     *  2. html color code: @``T:ggplotMSImaging.MSIBackgroundOption``
+     *  2. html color code, or supported gdi image its file path: @``T:ggplotMSImaging.MSIBackgroundOption``
    */
    function geom_MSIbackground(background: any): object|object;
    /**
