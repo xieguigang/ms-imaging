@@ -513,7 +513,8 @@ Public Module Rscript
     ''' this function returns clr object in types based on the <paramref name="background"/> parameter:
     ''' 
     ''' 1. "TIC" or "BPC": <see cref="MSITICOverlap"/>
-    ''' 2. html color code: <see cref="MSIBackgroundOption"/>
+    ''' 2. html color code, or supported gdi image its file path: <see cref="MSIBackgroundOption"/>
+    ''' 
     ''' </returns>
     <ExportAPI("geom_MSIbackground")>
     <RApiReturn(GetType(MSIBackgroundOption), GetType(MSITICOverlap))>
