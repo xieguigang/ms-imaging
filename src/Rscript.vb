@@ -322,7 +322,9 @@ Public Module Rscript
                                     Optional colors As Object = "viridis:turbo",
                                     Optional env As Environment = Nothing) As Object
         If layer Is Nothing Then
-            Return New MSIRGBHeatMapLayer
+            Return New MSIRGBHeatMapLayer With {
+                .raster = If(TypeOf colors Is Bitmap OrElse TypeOf colors Is Image, CType(colors, Image), Nothing)
+            }
         Else
             Dim colorSet = RColorPalette.getColorSet(colors, [default]:="viridis:turbo")
 

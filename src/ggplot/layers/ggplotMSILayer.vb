@@ -155,6 +155,12 @@ Namespace layers
             Return ion
         End Function
 
+        ''' <summary>
+        ''' a helper function for scale the input <paramref name="MSI"/> raster image as the plot region size.
+        ''' </summary>
+        ''' <param name="MSI"></param>
+        ''' <param name="stream"></param>
+        ''' <returns></returns>
         Public Shared Function ScaleImageImpls(MSI As Image, stream As ggplotPipeline) As Image
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim ggplot As ggplotMSI = stream.ggplot

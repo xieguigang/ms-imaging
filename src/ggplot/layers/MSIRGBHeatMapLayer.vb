@@ -71,6 +71,12 @@ Namespace layers
     ''' </summary>
     Public Class MSIRGBHeatMapLayer : Inherits ggplotMSILayer
 
+        ''' <summary>
+        ''' the raster image background for the TIC overlaps
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property raster As Image
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim MSI As Image
@@ -81,13 +87,21 @@ Namespace layers
             Dim greenLayer As SingleIonLayer = ApplyRasterFilter(data.G, ggplot)
             Dim blueLayer As SingleIonLayer = ApplyRasterFilter(data.B, ggplot)
             Dim dims As Size = data.dimension
+            Dim defaultBackground As String = stream.theme.gridFill
+
+            If Not raster Is Nothing Then
+                defaultBackground = "transparent"
+
+                ' draw background
+                Call stream.g.DrawImage(raster, rect.Left, rect.Top, rect.Width, rect.Height)
+            End If
 
             MSI = engine.ChannelCompositions(
                 R:=redLayer,
                 G:=greenLayer,
                 B:=blueLayer,
                 dimension:=dims,
-                background:=stream.theme.gridFill
+                background:=defaultBackground
             ).AsGDIImage
 
             Call stream.g.DrawImage(ScaleImageImpls(MSI, stream), rect)
