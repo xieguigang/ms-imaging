@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace layers
@@ -125,7 +126,7 @@ Namespace layers
             greenLayer = ApplyRasterFilter(greenLayer, ggplot)
             blueLayer = ApplyRasterFilter(blueLayer, ggplot)
 
-            Using buf As Graphics2D = dims.CreateGDIDevice(filled:=Color.Black)
+            Using buf As IGraphics = DriverLoad.CreateGraphicsDevice(dims, Color.Black)
                 Call engine.ChannelCompositions(
                     buf,
                     region:=New GraphicsRegion With {.Size = dims, .Padding = Padding.Zero},
@@ -136,7 +137,7 @@ Namespace layers
                     background:=stream.theme.gridFill
                 )
 
-                stream.g.DrawImage(ScaleImageImpls(buf.ImageResource, stream), rect)
+                stream.g.DrawImage(ScaleImageImpls(DirectCast(buf, GdiRasterGraphics).ImageResource, stream), rect)
             End Using
 
             Return New legendGroupElement With {

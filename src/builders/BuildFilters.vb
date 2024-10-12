@@ -84,7 +84,7 @@ Module BuildFilters
         If REnv.isVector(Of String)(v) Then
             scales.AddRange(CLRVector.asCharacter(v).Select(Function(si) Scaler.Parse(si)))
         Else
-            scales.AddRange(REnv.asVector(Of Scaler)(v))
+            scales.AddRange(DirectCast(REnv.asVector(Of Scaler)(v), Scaler()))
         End If
 
         Dim pip As New RasterPipeline

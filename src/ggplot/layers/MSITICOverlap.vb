@@ -73,6 +73,21 @@ Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Linq
 Imports any = Microsoft.VisualBasic.Scripting
 
+#If NET48 Then
+#Else
+Imports Pen = Microsoft.VisualBasic.Imaging.Pen
+Imports Pens = Microsoft.VisualBasic.Imaging.Pens
+Imports Brush = Microsoft.VisualBasic.Imaging.Brush
+Imports Font = Microsoft.VisualBasic.Imaging.Font
+Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
+Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
+Imports DashStyle = Microsoft.VisualBasic.Imaging.DashStyle
+Imports Image = Microsoft.VisualBasic.Imaging.Image
+Imports Bitmap = Microsoft.VisualBasic.Imaging.Bitmap
+Imports GraphicsPath = Microsoft.VisualBasic.Imaging.GraphicsPath
+Imports FontStyle = Microsoft.VisualBasic.Imaging.FontStyle
+#End If
+
 Namespace layers
 
     ''' <summary>
@@ -107,7 +122,7 @@ Namespace layers
             End If
 
             Dim rect As Rectangle = stream.canvas.PlotRegion
-            Dim black = reader.dimension.Scale(2).CreateGDIDevice(filled:=Color.Black).ImageResource
+            Dim black = DirectCast(DriverLoad.CreateGraphicsDevice(reader.dimension.Scale(2), Color.Black), GdiRasterGraphics).ImageResource
             Dim TIC As Bitmap = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,
                 dimension:=ggplot.GetDimensionSize(reader.dimension),

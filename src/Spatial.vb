@@ -64,6 +64,7 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
+Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
 
 ''' <summary>
 ''' spatial mapping between the STdata and SMdata based on the ggplot framework
@@ -95,7 +96,7 @@ Public Module ggplotSpatial
         Dim colorSet As String() = CLRVector.asCharacter(colors)
 
         If colorSet Is Nothing Then
-            Return Internal.debug.stop("invalid color set value!", env)
+            Return RInternal.debug.stop("invalid color set value!", env)
         End If
 
         If colorSet.Length = 1 Then
@@ -159,7 +160,7 @@ Public Module ggplotSpatial
                     ' do nothing
                 Else
                     ' generate error for missing symbol id
-                    Return Internal.debug.stop({
+                    Return RInternal.debug.stop({
                         $"target gene symbol({geneID}) is not found in your STdata matrix!",
                         $"target_symbol: {geneID}"
                     }, env)

@@ -105,6 +105,22 @@ Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
 Imports renv = SMRUCC.Rsharp.Runtime
+Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
+
+#If NET48 Then
+#Else
+Imports Pen = Microsoft.VisualBasic.Imaging.Pen
+Imports Pens = Microsoft.VisualBasic.Imaging.Pens
+Imports Brush = Microsoft.VisualBasic.Imaging.Brush
+Imports Font = Microsoft.VisualBasic.Imaging.Font
+Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
+Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
+Imports DashStyle = Microsoft.VisualBasic.Imaging.DashStyle
+Imports Image = Microsoft.VisualBasic.Imaging.Image
+Imports Bitmap = Microsoft.VisualBasic.Imaging.Bitmap
+Imports GraphicsPath = Microsoft.VisualBasic.Imaging.GraphicsPath
+Imports FontStyle = Microsoft.VisualBasic.Imaging.FontStyle
+#End If
 
 ''' <summary>
 ''' the ggplot api plugin for do MS-Imaging rendering
@@ -235,9 +251,9 @@ Public Module Rscript
             End Function
 
         If missingLayer(R) Then
-            Return Internal.debug.stop(New MissingPrimaryKeyException("missing of the basic heatmap layer key!"), env)
+            Return RInternal.debug.stop(New MissingPrimaryKeyException("missing of the basic heatmap layer key!"), env)
         ElseIf matrix.rownames.IsNullOrEmpty Then
-            Return Internal.debug.stop(New MissingFieldException("no pixels data, you should assign the pixel points to the row names!"), env)
+            Return RInternal.debug.stop(New MissingFieldException("no pixels data, you should assign the pixel points to the row names!"), env)
         End If
 
         Dim pixels As Point() = matrix.rownames _
@@ -592,7 +608,7 @@ Public Module Rscript
             End If
 
             If val Is Nothing Then
-                Return Internal.debug.stop("input filter could not be nothing", env)
+                Return RInternal.debug.stop("input filter could not be nothing", env)
             ElseIf val.GetType.IsArray Then
                 Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromArray(val)}
             ElseIf TypeOf val Is RasterPipeline Then

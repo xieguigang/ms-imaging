@@ -56,8 +56,8 @@
 
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
 Imports ggplotMSImaging.data
-Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
 
 <Assembly: RPackageModule>
 
@@ -71,6 +71,6 @@ Public Class zzz
         Call ggplot.ggplot.Register(GetType(MSIHeatMap), Function(theme) New ggplotMSI(theme))
         Call ggplot.ggplot.Register(GetType(PointPack), Function(theme) New ggplotMSI(theme))
 
-        Call Internal.generic.add("plot", GetType(ggplotMSI), AddressOf ggplot.zzz.plotGGplot)
+        Call RInternal.generic.add("plot", GetType(ggplotMSI), AddressOf ggplot.zzz.plotGGplot)
     End Sub
 End Class

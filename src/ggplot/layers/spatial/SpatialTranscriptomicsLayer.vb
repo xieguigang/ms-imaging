@@ -70,6 +70,23 @@ Imports ggplot.layers
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports SMRUCC.genomics.Analysis.HTS.DataFrame
+Imports Microsoft.VisualBasic.Imaging.Driver
+
+
+#If NET48 Then
+#Else
+Imports Pen = Microsoft.VisualBasic.Imaging.Pen
+Imports Pens = Microsoft.VisualBasic.Imaging.Pens
+Imports Brush = Microsoft.VisualBasic.Imaging.Brush
+Imports Font = Microsoft.VisualBasic.Imaging.Font
+Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
+Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
+Imports DashStyle = Microsoft.VisualBasic.Imaging.DashStyle
+Imports Image = Microsoft.VisualBasic.Imaging.Image
+Imports Bitmap = Microsoft.VisualBasic.Imaging.Bitmap
+Imports GraphicsPath = Microsoft.VisualBasic.Imaging.GraphicsPath
+Imports FontStyle = Microsoft.VisualBasic.Imaging.FontStyle
+#End If
 
 Namespace layers.spatial
 
@@ -155,7 +172,7 @@ Namespace layers.spatial
             Dim println = stream.ggplot.environment.WriteLineHandler
             ' create a new transparent layer on
             ' current ms-imaging render layer
-            Dim layer As Graphics2D = dimension_size.Scale(spotSize).CreateGDIDevice(filled:=Color.Transparent)
+            Dim layer As IGraphics = DriverLoad.CreateGraphicsDevice(dimension_size.Scale(spotSize), Color.Transparent)
             Dim data As Dictionary(Of String, Double) = loadSpots()
             Dim colors = DirectCast(colorMap, ggplotColorPalette).ColorHandler(ggplot, data.Values.ToArray)
             Dim spotSizes = (From spot As SpotMap
@@ -189,7 +206,7 @@ Namespace layers.spatial
             Next
 
             Call layer.Flush()
-            Call stream.g.DrawImage(layer.ImageResource, rect)
+            Call stream.g.DrawImage(DirectCast(layer, GdiRasterGraphics).ImageResource, rect)
 
             Return Nothing
         End Function
