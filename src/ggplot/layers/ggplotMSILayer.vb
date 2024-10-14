@@ -182,8 +182,8 @@ Namespace layers
 
             ' scale size to the plot region
             ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
-            MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(hqx:=HqxScales.Hqx_4x)
-            MSI = New RasterScaler(CType(MSI, Bitmap)).Scale(rect.Width, rect.Height)
+            MSI = New RasterScaler(New Bitmap(MSI)).Scale(hqx:=HqxScales.Hqx_4x)
+            MSI = New RasterScaler(New Bitmap(MSI)).Scale(rect.Width, rect.Height)
             MSI = ApplyGauss(MSI, ggplot)
 
             Return MSI
