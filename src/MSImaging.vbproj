@@ -64,7 +64,7 @@
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\DataMining\DensityQuery\DensityQuery.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj" />
-    <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj" />
+
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
@@ -80,7 +80,12 @@
     <ProjectReference Include="..\..\..\..\src\visualize\TissueMorphology\TissueMorphology.vbproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj" />
+  </ItemGroup>
+
+
+    <ItemGroup>
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
