@@ -65,10 +65,10 @@
 	<path d="M2652.33 105L2652.33 1900"/>
 	<path d="M2652.33 105L2657.33 105"/>
 	<path d="M2652.33 1900L2657.33 1900"/>
-	<text fill="white" font-size="16" font-family="Cambria" x="2662.3333, 2671.1926, 2680.052, " y="90, ">
+	<text fill="white" font-size="50" font-family="Cambria" x="2662.3333, 2690.0188, 2717.7043, " y="54, ">
 			100
 	</text>
-	<text fill="white" font-size="16" font-family="Cambria" x="2662.3333, " y="1885, ">
+	<text fill="white" font-size="50" font-family="Cambria" x="2662.3333, " y="1849, ">
 			0
 	</text>
 	<defs>
