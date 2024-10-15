@@ -128,7 +128,7 @@ Namespace layers
                 Throw New NotImplementedException("threshold cutoff")
             End If
 
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim xscale = d3js.scale.linear.domain(values:={0.0, summary.size.Width}).range(values:=New Double() {rect.Left, rect.Right})
             Dim yscale = d3js.scale.linear.domain(values:={0.0, summary.size.Height}).range(values:=New Double() {rect.Top, rect.Bottom})
             Dim scale As New DataScaler(rev:=True) With {

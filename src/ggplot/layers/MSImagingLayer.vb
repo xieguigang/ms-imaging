@@ -150,7 +150,8 @@ Namespace layers
                 ggplot.environment.AddMessage("missing 'tolerance' parameter, use the default da:0.1 as mzdiff tolerance value!")
             End If
 
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim MSI As Image
             Dim colorSet As String = Nothing
             Dim colorLevels As Integer = Me.colorLevels
@@ -173,9 +174,9 @@ Namespace layers
 
         Private Function ScalerLegend(mz As Double(), rawInto As Double(), stream As ggplotPipeline, colorSet As String, colorLevels As Integer) As legendColorMapElement
             Dim theme As Theme = stream.theme
-            Dim ticks As Double() = rawInto.Range.CreateAxisTicks
-            Dim rect As Rectangle = stream.canvas.PlotRegion
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim ticks As Double() = rawInto.Range.CreateAxisTicks
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
 
             If ticks.Any(Function(t) t = 0.0) Then
                 ticks = {rawInto.Min} _

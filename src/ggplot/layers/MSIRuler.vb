@@ -63,6 +63,8 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports ggplot
 Imports ggplot.elements.legend
 Imports ggplot.layers
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace layers
 
@@ -77,7 +79,8 @@ Namespace layers
             Dim reader As PixelReader = base.reader
             Dim resolution As Double = reader.resolution
             Dim dimsize As Size = ggplot.GetDimensionSize(reader.dimension)
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
 
             Call New Ruler(stream.theme) With {.width = width} _
                 .DrawOnCanvas(

@@ -71,6 +71,10 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports SMRUCC.genomics.Analysis.HTS.DataFrame
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
+
+
 
 
 #If NET48 Then
@@ -167,7 +171,8 @@ Namespace layers.spatial
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim dimension_size As Size = ggplot.GetDimensionSize(Nothing)
             Dim println = stream.ggplot.environment.WriteLineHandler
             ' create a new transparent layer on

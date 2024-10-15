@@ -72,6 +72,10 @@ Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Linq
 Imports any = Microsoft.VisualBasic.Scripting
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
+
+
 
 #If NET48 Then
 #Else
@@ -121,7 +125,8 @@ Namespace layers
                 End If
             End If
 
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim black = DirectCast(DriverLoad.CreateGraphicsDevice(reader.dimension.Scale(2), Color.Black), GdiRasterGraphics).ImageResource
             Dim TIC As Bitmap = New RectangleRender(Drivers.Default, False).RenderPixels(
                 pixels:=pixels,

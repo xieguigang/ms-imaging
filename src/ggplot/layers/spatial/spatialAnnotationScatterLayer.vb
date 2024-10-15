@@ -63,6 +63,10 @@ Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
+
+
 
 #If NET48 Then
 #Else
@@ -99,7 +103,8 @@ Namespace layers.spatial
                 Return Nothing
             End If
 
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim paddingTop = rect.Top
 
             For i As Integer = 0 To x.Length - 1

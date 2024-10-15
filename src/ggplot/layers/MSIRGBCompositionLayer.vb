@@ -68,6 +68,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace layers
 
@@ -108,7 +109,8 @@ Namespace layers
         End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim engine As New RectangleRender(ggplot.driver, heatmapRender:=False)
             Dim redLayer As SingleIonLayer = DirectCast(red, MSIChannelLayer)?.getIonlayer(ggplot)

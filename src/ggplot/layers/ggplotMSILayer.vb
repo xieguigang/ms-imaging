@@ -66,6 +66,10 @@ Imports ggplot.layers
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Filters
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
+
+
 
 #If NET48 Then
 #Else
@@ -177,7 +181,8 @@ Namespace layers
         ''' <param name="stream"></param>
         ''' <returns></returns>
         Public Shared Function ScaleImageImpls(MSI As Image, stream As ggplotPipeline) As Image
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim ggplot As ggplotMSI = stream.ggplot
 
             ' scale size to the plot region

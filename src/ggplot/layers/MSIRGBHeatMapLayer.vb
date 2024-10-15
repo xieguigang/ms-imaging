@@ -63,6 +63,10 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
+
+
 
 #If NET48 Then
 #Else
@@ -93,7 +97,8 @@ Namespace layers
         Public Property raster As Image
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim rect As Rectangle = stream.canvas.PlotRegion
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim MSI As Image
             Dim ggplot As ggplot.ggplot = stream.ggplot
             Dim data = DirectCast(ggplot.data, MSIHeatMap)
