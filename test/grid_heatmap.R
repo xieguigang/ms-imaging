@@ -18,7 +18,23 @@ let rgb_ions = list(
     list(type = "[M+H]+", title = "metabolite 3", mz =  741.5303, layer = MSIlayer(rgb_rawdata, 741.5303))
 );
 
-bitmap(file = file.path(@dir, "rgb_3x1.svg"), fill = "black");
+bitmap(file = file.path(@dir, "rgb_3x1.png"), fill = "black");
+    PlotMSIMatrixHeatmap(rgb_ions, 
+        layout        = [3,1],
+        colorSet      = "Jet",
+        MSI_TrIQ      = 0.8,
+        gaussian      = 3,
+        size          = [6700, 2000], 
+        canvasPadding = [50, 300, 50, 50], 
+        cellPadding   = [200, 100, 0, 100], 
+        font_size     = 27,
+        filters       = denoise_scale() + TrIQ_scale(0.85) + knn_scale(1,1.2, random = TRUE) + soften_scale(),
+        msi_dimension = [300,300],
+        strict        = TRUE);
+dev.off();
+
+
+svg(file = file.path(@dir, "rgb_3x1.svg"), fill = "black");
     PlotMSIMatrixHeatmap(rgb_ions, 
         layout        = [3,1],
         colorSet      = "Jet",
