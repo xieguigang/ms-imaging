@@ -11,8 +11,7 @@ require(ggplot);
 
 options(memory.load = "max");
 
-svg(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.svg`, size = [3300, 2000]) {
-    
+let make_rgb_ggplot = function() {
     # load mzpack/imzML raw data file
     # and config ggplot data source driver 
     # as MSImaging data reader
@@ -33,4 +32,12 @@ svg(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.svg`, size = [3300, 2000]) {
        + scale_x_continuous(labels = "F0")
        + scale_y_continuous(labels = "F0")
     ;
+}
+
+svg(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.svg`, size = [3300, 2000]) {
+    make_rgb_ggplot();
+}
+
+pdf(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.pdf`, size = [3300, 2000]) {
+    make_rgb_ggplot();
 }

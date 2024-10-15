@@ -4,7 +4,7 @@ require(ggplot);
 
 options(memory.load = "max");
 
-bitmap(file = `${@dir}/demo.png`, size = [3000, 2400]) {
+svg(file = `${@dir}/demo.svg`, size = [3000, 2400]) {
     
     # load mzpack/imzML raw data file
     # and config ggplot data source driver 
