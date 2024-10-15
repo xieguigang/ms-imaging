@@ -34,10 +34,15 @@ let make_rgb_ggplot = function() {
     ;
 }
 
-svg(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.svg`, size = [3300, 2000], dpi = 100) {
+
+png(filename = `./HR2MSI_mouse_urinary_bladder_S096_RGB.png`, size = [3300, 2000], dpi = 300) {
     make_rgb_ggplot();
 }
 
-pdf(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.pdf`, size = [3300, 2000], dpi = 100) {
+svg(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.svg`, size = [3300, 2000], dpi = 300) {
+    make_rgb_ggplot();
+}
+
+pdf(file = `./HR2MSI_mouse_urinary_bladder_S096_RGB.pdf`, size = [3300, 2000], dpi = 300) {
     make_rgb_ggplot();
 }
