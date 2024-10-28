@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::25cb16caa8e4d8547f8c5b5db7596e42, Rscript\Library\MSI_app\src\Filters.vb"
+﻿#Region "Microsoft.VisualBasic::b23874ac8a01ae3abfdf3f3d956b9ad1, Rscript\Library\MSI_app\src\Filters.vb"
 
     ' Author:
     ' 
@@ -37,19 +37,19 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 79
-    '    Code Lines: 40 (50.63%)
-    ' Comment Lines: 30 (37.97%)
-    '    - Xml Docs: 96.67%
+    '   Total Lines: 98
+    '    Code Lines: 48 (48.98%)
+    ' Comment Lines: 39 (39.80%)
+    '    - Xml Docs: 97.44%
     ' 
-    '   Blank Lines: 9 (11.39%)
-    '     File Size: 2.76 KB
+    '   Blank Lines: 11 (11.22%)
+    '     File Size: 3.39 KB
 
 
     ' Module Filters
     ' 
-    '     Function: denoiseScaler, intensity_cut, knnScaler, logScaler, quantileScaler
-    '               softenScaler, TrIQScaler
+    '     Function: construct_filter, construct_pipeline, denoiseScaler, intensity_cut, knnScaler
+    '               logScaler, quantileScaler, softenScaler, TrIQScaler
     ' 
     ' /********************************************************************************/
 

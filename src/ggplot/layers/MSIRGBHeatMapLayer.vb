@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::cc6487a7d1bfe13bb8ae3f61cf873fe2, Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBHeatMapLayer.vb"
+﻿#Region "Microsoft.VisualBasic::a290a2557967fc3b4f42c2ec14bba966, Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBHeatMapLayer.vb"
 
     ' Author:
     ' 
@@ -37,16 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 60
-    '    Code Lines: 50 (83.33%)
-    ' Comment Lines: 3 (5.00%)
-    '    - Xml Docs: 100.00%
+    '   Total Lines: 94
+    '    Code Lines: 73 (77.66%)
+    ' Comment Lines: 8 (8.51%)
+    '    - Xml Docs: 87.50%
     ' 
-    '   Blank Lines: 7 (11.67%)
-    '     File Size: 2.51 KB
+    '   Blank Lines: 13 (13.83%)
+    '     File Size: 3.83 KB
 
 
     '     Class MSIRGBHeatMapLayer
+    ' 
+    '         Properties: raster
     ' 
     '         Function: legend, Plot
     ' 

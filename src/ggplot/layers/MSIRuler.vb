@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d37c299753ed710be45237f19906a6e9, Rscript\Library\MSI_app\src\ggplot\layers\MSIRuler.vb"
+﻿#Region "Microsoft.VisualBasic::f960aa247172bedc6107d4ac22570af8, Rscript\Library\MSI_app\src\ggplot\layers\MSIRuler.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 35
-    '    Code Lines: 29 (82.86%)
+    '   Total Lines: 38
+    '    Code Lines: 32 (84.21%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 6 (17.14%)
-    '     File Size: 1.25 KB
+    '   Blank Lines: 6 (15.79%)
+    '     File Size: 1.41 KB
 
 
     '     Class MSIRuler

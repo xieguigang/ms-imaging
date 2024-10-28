@@ -1,68 +1,68 @@
-﻿#Region "Microsoft.VisualBasic::f896ce30e1949a6164047f1ced0b5ab5, Rscript\Library\MSI_app\src\ggplot\layers\MSIChannelLayer.vb"
+﻿#Region "Microsoft.VisualBasic::495ab71f306986e55a75b931ecaf2761, Rscript\Library\MSI_app\src\ggplot\layers\MSIChannelLayer.vb"
 
-' Author:
-' 
-'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-' 
-' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 104
-'    Code Lines: 77 (74.04%)
-' Comment Lines: 12 (11.54%)
-'    - Xml Docs: 100.00%
-' 
-'   Blank Lines: 15 (14.42%)
-'     File Size: 4.35 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-'     Class MSIChannelLayer
-' 
-' 
-'         Enum Channels
-' 
-'             Blue, Green, NA, Red
-' 
-' 
-' 
-'  
-' 
-'     Properties: channel
-' 
-'     Function: getIonlayer, Plot, ToString
-' 
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 124
+    '    Code Lines: 94 (75.81%)
+    ' Comment Lines: 12 (9.68%)
+    '    - Xml Docs: 100.00%
+    ' 
+    '   Blank Lines: 18 (14.52%)
+    '     File Size: 5.17 KB
+
+
+    '     Class MSIChannelLayer
+    ' 
+    ' 
+    '         Enum Channels
+    ' 
+    '             Blue, Green, NA, Red
+    ' 
+    ' 
+    ' 
+    '  
+    ' 
+    '     Properties: channel
+    ' 
+    '     Function: getIonlayer, Plot, ToString
+    ' 
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

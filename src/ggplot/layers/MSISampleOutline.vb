@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a130a691335b5fc3934eef250ef0bdeb, Rscript\Library\MSI_app\src\ggplot\layers\MSISampleOutline.vb"
+﻿#Region "Microsoft.VisualBasic::265b76924d2395d63b9be826b340b1cc, Rscript\Library\MSI_app\src\ggplot\layers\MSISampleOutline.vb"
 
     ' Author:
     ' 
@@ -37,21 +37,21 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 69
-    '    Code Lines: 59 (85.51%)
-    ' Comment Lines: 1 (1.45%)
+    '   Total Lines: 95
+    '    Code Lines: 82 (86.32%)
+    ' Comment Lines: 1 (1.05%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (13.04%)
-    '     File Size: 2.90 KB
+    '   Blank Lines: 12 (12.63%)
+    '     File Size: 3.98 KB
 
 
     '     Class MSISampleOutline
     ' 
     '         Properties: contour_scale, degree, line_stroke, q, resolution
-    '                     threshold
+    '                     spots, threshold
     ' 
-    '         Function: Plot
+    '         Function: getShapes, Plot
     ' 
     ' 
     ' /********************************************************************************/
