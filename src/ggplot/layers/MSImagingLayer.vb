@@ -163,11 +163,11 @@ Namespace layers
             MSI = MSIHeatmapRender(ion, theme, ggplot, colorSet, colorLevels)
             MSI = ScaleImageImpls(MSI, stream)
 
-            'Using s = "./debug.png".Open(IO.FileMode.OpenOrCreate)
-            '    Call MSI.Save(s, ImageFormats.Png)
-            'End Using
+            Using s = "./debug.png".Open(IO.FileMode.OpenOrCreate)
+                Call MSI.Save(s, ImageFormats.Png)
+            End Using
 
-            Call stream.g.DrawImage(MSI, rect)
+            Call stream.g.DrawImage(MSI, rect.X, rect.Y, rect.Width, rect.Height)
 
             If mz.Length > 1 Then
                 Return Nothing
