@@ -100,6 +100,7 @@ Namespace layers
     Public Class MSITICOverlap : Inherits ggplotLayer
 
         Public Property summary As IntensitySummary
+        Public Property hqx As HqxScales = HqxScales.Hqx_4x
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
@@ -137,7 +138,9 @@ Namespace layers
             ).AsGDIImage _
              .DoCall(Function(img) New Bitmap(img))
 
-            TIC = New Drawing2D.HeatMap.RasterScaler(TIC).Scale(hqx:=HqxScales.Hqx_4x)
+            If hqx <> HqxScales.None AndAlso hqx <> 1 Then
+                TIC = New Drawing2D.HeatMap.RasterScaler(TIC).Scale(hqx:=hqx)
+            End If
 
             stream.theme.gridFill = "transparent"
             stream.g.DrawImage(black, rect)

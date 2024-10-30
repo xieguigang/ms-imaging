@@ -186,10 +186,13 @@ Namespace layers
             Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim ggplot As ggplotMSI = stream.ggplot
 
-            ' scale size to the plot region
-            ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
-            MSI = New RasterScaler(New Bitmap(MSI)).Scale(hqx:=hqx)
-            MSI = New RasterScaler(New Bitmap(MSI)).Scale(rect.Width, rect.Height)
+            If hqx <> HqxScales.None AndAlso hqx <> 1 Then
+                ' scale size to the plot region
+                ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
+                MSI = New RasterScaler(New Bitmap(MSI)).Scale(hqx:=hqx)
+                MSI = New RasterScaler(New Bitmap(MSI)).Scale(rect.Width, rect.Height)
+            End If
+
             MSI = ApplyGauss(MSI, ggplot)
 
             Return MSI
