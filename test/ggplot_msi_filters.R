@@ -343,8 +343,7 @@ for(let mz_i in tqdm(ions)) {
         + geom_msimaging(mz = mz, tolerance = "da:0.01")        
         + geom_MSIfilters([
             "denoise(0.01)"
-            "knn_fill(3,0.65,random=false)"
-            "soften()"
+            "knn_fill(3,0.65,random=false)"            
             "power(2)"
         ])
         + MSI_hqx(1)
