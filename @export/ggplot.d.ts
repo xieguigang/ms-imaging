@@ -168,6 +168,11 @@ declare namespace ggplot {
    */
    function MSI_gaussblur(levels?: object): object;
    /**
+     * @param hqx default value Is ``[1,2,3,4]``.
+     * @param env default value Is ``null``.
+   */
+   function MSI_hqx(hqx?: any, env?: object): object;
+   /**
     * configs the parameters for do Knn fill of the pixels
     * 
     * 
