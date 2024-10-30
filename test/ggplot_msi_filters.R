@@ -17,10 +17,10 @@ for(let mz in tqdm(ions$mz)) {
         # and config ggplot data source driver 
         # as MSImaging data reader
         ggplot(msi_data, padding = "padding: 200px 600px 200px 250px;") 
+        + geom_MSIbackground("TIC")
         # rendering of a single ion m/z
         # default color palette is Jet color set
-        + geom_msimaging(mz = mz, tolerance = "da:0.3")
-        + geom_MSIbackground("TIC")
+        + geom_msimaging(mz = mz, tolerance = "da:0.3")        
         + geom_MSIfilters([
             "denoise(0.01)"
             "knn_fill(3,0.65,random=false)"
@@ -39,7 +39,7 @@ for(let mz in tqdm(ions$mz)) {
     pdf(file = `F:/All/${mz}.pdf`, size = [4200, 2700], dpi = 300) {
         make_plot() 
     }
-    
+
     bitmap(file = `F:/All/${mz}.jpeg`, size = [4200, 2700], dpi = 300) {
         make_plot() 
     }
