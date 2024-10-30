@@ -168,7 +168,7 @@ Namespace layers
 #If NETCOREAPP Then
             ' 20241030 there is a draw image resize bug
             ' try to avoid this bug by resize image manually
-            Using skia As New Microsoft.VisualBasic.Drawing.Graphics(rect.Width, rect.Height, "#ffffff")
+            Using skia As New Microsoft.VisualBasic.Drawing.Graphics(rect.Width, rect.Height, NameOf(Color.Transparent))
                 skia.DrawImage(MSI, 0, 0, rect.Width, rect.Height)
                 skia.Flush()
 
