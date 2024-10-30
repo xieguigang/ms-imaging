@@ -11,9 +11,8 @@ let msi_data = open.mzpack("F:\\raw.mzPack");
 
 print(ions, max.print = 6);
 
-for(let mz in ions$mz) {
-    pdf(file = `F:/All/${mz}.pdf`, size = [3000, 2700]) {
-        
+for(let mz in tqdm(ions$mz)) {
+    let make_plot = function() {
         # load mzpack/imzML raw data file
         # and config ggplot data source driver 
         # as MSImaging data reader
@@ -35,6 +34,14 @@ for(let mz in ions$mz) {
         + scale_x_continuous(labels = "F0")
         + scale_y_continuous(labels = "F0")
         ;
+    }
+
+    pdf(file = `F:/All/${mz}.pdf`, size = [4200, 2700], dpi = 300) {
+        make_plot() 
+    }
+    
+    bitmap(file = `F:/All/${mz}.jpeg`, size = [4200, 2700], dpi = 300) {
+        make_plot() 
     }
 }
 
