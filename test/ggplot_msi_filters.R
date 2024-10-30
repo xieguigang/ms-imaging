@@ -342,6 +342,7 @@ for(let mz_i in tqdm(ions)) {
         # default color palette is Jet color set
         + geom_msimaging(mz = mz, tolerance = "da:0.01")        
         + geom_MSIfilters([            
+            "knn_fill(3,0.65,random=false)"
             "soften()"
             "power(2)"
         ])
