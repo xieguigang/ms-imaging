@@ -75,8 +75,6 @@ Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
-Imports Microsoft.VisualBasic.Drawing
-
 
 #If NET48 Then
 #Else

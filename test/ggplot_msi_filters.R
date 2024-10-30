@@ -7,7 +7,7 @@ options(memory.load = "max");
 setwd(@dir);
 
 # let ions = read.csv( "./ions.xls", tsv = TRUE, row.names = NULL, check.names=FALSE);
-let msi_data = open.mzpack("F:\\raw.mzPack");
+let msi_data = open.mzpack("\\192.168.1.254\backup3\项目以外内容\2024\MEMI_test\3ul_0.8Mpa_RAW_20241021-Kidney-2\raw_0_0.mzPack");
 let ions = [
     "318_11184"
 "319_20340"
@@ -355,12 +355,18 @@ for(let mz_i in tqdm(ions)) {
         ;
     }
 
-    pdf(file = `F:/All/${mz_i}.pdf`, size = [4200, 2100], dpi = 300) {
-        make_plot() 
-    }
+    if (file.exists(`F:/All/${mz_i}.pdf`) && file.exists(`F:/All/${mz_i}.jpeg`)) {
+        # skip
+    } else {
+        try({
+            pdf(file = `F:/All/${mz_i}.pdf`, size = [4200, 2100], dpi = 300) {
+                make_plot() 
+            }
 
-    bitmap(file = `F:/All/${mz_i}.jpeg`, size = [4200, 2100], dpi = 300) {
-        make_plot() 
+            bitmap(file = `F:/All/${mz_i}.jpeg`, size = [4200, 2100], dpi = 300) {
+                make_plot() 
+            }
+        });
     }
 }
 

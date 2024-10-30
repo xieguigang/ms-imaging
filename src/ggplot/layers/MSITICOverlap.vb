@@ -71,11 +71,9 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Linq
-Imports any = Microsoft.VisualBasic.Scripting
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
-
-
+Imports any = Microsoft.VisualBasic.Scripting
 
 #If NET48 Then
 #Else
