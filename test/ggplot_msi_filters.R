@@ -12,7 +12,7 @@ let msi_data = open.mzpack("F:\\raw.mzPack");
 print(ions, max.print = 6);
 
 for(let mz in ions$mz) {
-    pdf(file = `F:/All/{mz}.pdf`, size = [3000, 2700]) {
+    pdf(file = `F:/All/${mz}.pdf`, size = [3000, 2700]) {
         
         # load mzpack/imzML raw data file
         # and config ggplot data source driver 

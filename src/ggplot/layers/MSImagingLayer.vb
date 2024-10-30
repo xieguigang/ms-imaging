@@ -177,6 +177,7 @@ Namespace layers
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim ticks As Double() = rawInto.Range.CreateAxisTicks
             Dim rect As Rectangle = stream.canvas.PlotRegion(css)
+            Dim padding As New PaddingLayout(stream.canvas.Padding.LayoutVector(css))
 
             If ticks.Any(Function(t) t = 0.0) Then
                 ticks = {rawInto.Min} _
@@ -186,7 +187,7 @@ Namespace layers
             End If
 
             Return New legendColorMapElement With {
-                .width = stream.canvas.Padding.Right * (3 / 4),
+                .width = padding.Right * (3 / 4),
                 .height = rect.Height,
                 .colorMapLegend = New ColorMapLegend(colorSet, colorLevels) With {
                     .format = "G3",
@@ -196,7 +197,7 @@ Namespace layers
                     .title = $"m/z {mz(Scan0).ToString("F3")}",
                     .titleFont = css.GetFont(CSSFont.TryParse(theme.legendTitleCSS)),
                     .noblank = True,
-                    .legendOffsetLeft = stream.canvas.Padding.Right / 10
+                    .legendOffsetLeft = padding.Right / 10
                 }
             }
         End Function
