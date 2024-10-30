@@ -75,6 +75,8 @@ Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
+Imports Microsoft.VisualBasic.Drawing
+
 
 #If NET48 Then
 #Else
@@ -163,10 +165,16 @@ Namespace layers
             MSI = MSIHeatmapRender(ion, theme, ggplot, colorSet, colorLevels)
             MSI = ScaleImageImpls(MSI, stream)
 
-            Using s = "./debug.png".Open(IO.FileMode.OpenOrCreate)
-                Call MSI.Save(s, ImageFormats.Png)
-            End Using
+#If NETCOREAPP Then
+            ' 20241030 there is a draw image resize bug
+            ' try to avoid this bug by resize image manually
+            Using skia As New Microsoft.VisualBasic.Drawing.Graphics(rect.Width, rect.Height, "#ffffff")
+                skia.DrawImage(MSI, 0, 0, rect.Width, rect.Height)
+                skia.Flush()
 
+                MSI = skia.ImageResource
+            End Using
+#End If
             Call stream.g.DrawImage(MSI, rect.X, rect.Y, rect.Width, rect.Height)
 
             If mz.Length > 1 Then
