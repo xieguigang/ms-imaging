@@ -36,11 +36,11 @@ for(let mz in tqdm(ions$mz)) {
         ;
     }
 
-    pdf(file = `F:/All/${mz}.pdf`, size = [4200, 2700], dpi = 300) {
+    pdf(file = `F:/All/${mz}.pdf`, size = [4200, 2100], dpi = 300) {
         make_plot() 
     }
 
-    bitmap(file = `F:/All/${mz}.jpeg`, size = [4200, 2700], dpi = 300) {
+    bitmap(file = `F:/All/${mz}.jpeg`, size = [4200, 2100], dpi = 300) {
         make_plot() 
     }
 }
