@@ -129,7 +129,7 @@ Namespace layers
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim black = DirectCast(DriverLoad.CreateGraphicsDevice(reader.dimension.Scale(2), Color.Black), GdiRasterGraphics).ImageResource
-            Dim TIC As Bitmap = New RectangleRender(Drivers.Default, False).RenderPixels(
+            Dim TIC As Bitmap = New RectangleRender(Drivers.GDI, False).RenderPixels(
                 pixels:=pixels,
                 dimension:=ggplot.GetDimensionSize(reader.dimension),
                 colorSet:=colorSet,
@@ -144,8 +144,19 @@ Namespace layers
 
             stream.theme.gridFill = "transparent"
             stream.g.DrawImage(black, rect)
-            stream.g.DrawImage(TIC, rect)
 
+#If NETCOREAPP Then
+            ' 20241030 there is a draw image resize bug
+            ' try to avoid this bug by resize image manually
+            Using skia As New Microsoft.VisualBasic.Drawing.Graphics(rect.Width, rect.Height, NameOf(Color.Transparent))
+                Call skia.DrawImage(TIC, 0, 0, rect.Width, rect.Height)
+                Call skia.Flush()
+
+                Call stream.g.DrawImage(skia.ImageResource, rect.X, rect.Y, rect.Width, rect.Height)
+            End Using
+#Else
+            Call stream.g.DrawImage(TIC, rect)
+#End If
             Return Nothing
         End Function
     End Class
