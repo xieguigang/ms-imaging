@@ -107,6 +107,7 @@ Namespace layers
         ''' </summary>
         ''' <returns></returns>
         Public Property colorLevels As Integer = 255
+        Public Property hqx As HqxScales = HqxScales.Hqx_4x
 
         ''' <summary>
         ''' 
@@ -180,14 +181,14 @@ Namespace layers
         ''' <param name="MSI"></param>
         ''' <param name="stream"></param>
         ''' <returns></returns>
-        Public Shared Function ScaleImageImpls(MSI As Image, stream As ggplotPipeline) As Image
+        Public Function ScaleImageImpls(MSI As Image, stream As ggplotPipeline) As Image
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim ggplot As ggplotMSI = stream.ggplot
 
             ' scale size to the plot region
             ' MSI = Drawer.ScaleLayer(CType(MSI, Bitmap), rect.Width, rect.Height, InterpolationMode.HighQualityBicubic)
-            MSI = New RasterScaler(New Bitmap(MSI)).Scale(hqx:=HqxScales.Hqx_4x)
+            MSI = New RasterScaler(New Bitmap(MSI)).Scale(hqx:=hqx)
             MSI = New RasterScaler(New Bitmap(MSI)).Scale(rect.Width, rect.Height)
             MSI = ApplyGauss(MSI, ggplot)
 

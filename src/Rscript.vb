@@ -149,6 +149,19 @@ Public Module Rscript
         }
     End Function
 
+    <ExportAPI("MSI_hqx")>
+    Public Function hqx_opts(<RRawVectorArgument(TypeCodes.integer)> Optional hqx As Object = "1,2,3,4", Optional env As Environment = Nothing) As MSIHqxScaleOption
+        Dim hqx_ints = CLRVector.asInteger(hqx)
+        Dim opt = hqx_ints.ElementAtOrDefault(0, [default]:=4)
+
+        If opt <> 1 AndAlso opt <> 2 AndAlso opt <> 3 AndAlso opt <> 4 Then
+            opt = 4
+            env.AddMessage("invalid hqx scale options, set to HQX_4 by default.")
+        End If
+
+        Return New MSIHqxScaleOption With {.hqx = opt}
+    End Function
+
     ''' <summary>
     ''' options for config the canvas dimension size of the ms-imaging raw data scans
     ''' </summary>
