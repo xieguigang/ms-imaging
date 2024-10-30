@@ -121,7 +121,7 @@ Namespace layers
         Public Shared Function ApplyRasterFilter(layer As SingleIonLayer, ggplot As ggplotMSI) As SingleIonLayer
             If Not ggplot.filter Is Nothing Then
                 If layer IsNot Nothing Then
-                    layer = ggplot.filter(layer)
+                    layer = ggplot.filter.Run(layer:=layer)
                     layer.MSILayer = layer.MSILayer _
                         .Where(Function(p) p.intensity >= 1) _
                         .ToArray
