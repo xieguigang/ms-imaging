@@ -1,58 +1,58 @@
 ﻿#Region "Microsoft.VisualBasic::999b0bf888325e0b5d920e4067b65c23, Rscript\Library\MSI_app\src\Rscript.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 601
-    '    Code Lines: 385 (64.06%)
-    ' Comment Lines: 156 (25.96%)
-    '    - Xml Docs: 97.44%
-    ' 
-    '   Blank Lines: 60 (9.98%)
-    '     File Size: 24.62 KB
+' Summaries:
 
 
-    ' Module Rscript
-    ' 
-    '     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
-    '               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
-    '               geom_sample_outline, getChannel, KnnFill, raster_blending, unionlayers
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 601
+'    Code Lines: 385 (64.06%)
+' Comment Lines: 156 (25.96%)
+'    - Xml Docs: 97.44%
+' 
+'   Blank Lines: 60 (9.98%)
+'     File Size: 24.62 KB
+
+
+' Module Rscript
+' 
+'     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
+'               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
+'               geom_sample_outline, getChannel, KnnFill, raster_blending, unionlayers
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -73,7 +73,7 @@ Imports ggplotMSImaging.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
-Imports Microsoft.VisualBasic.Imaging.Math2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.MarchingSquares
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
@@ -88,10 +88,9 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
+Imports Polygon2D = Microsoft.VisualBasic.Imaging.Math2D.Polygon2D
 Imports renv = SMRUCC.Rsharp.Runtime
 Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.MarchingSquares
-
 
 #If NET48 Then
 #Else
@@ -478,6 +477,11 @@ Public Module Rscript
     ''' <summary>
     ''' Create a plot layer of outline for the sample data
     ''' </summary>
+    ''' <param name="region">
+    ''' The region data for the sample region outline drawing, data value should be a scibasic.net <see cref="GeneralPath"/>
+    ''' path data object, or a dataframe object that contains the data fields of ``x`` and ``y`` for store the region 
+    ''' spot data and the outline will be computed from this spot data points collection.
+    ''' </param>
     ''' <param name="threshold">
     ''' the intensity threshold for make spatial spot binariation, for clean sample,
     ''' leaves this parameter default zero, for sample with background, set this 
@@ -490,6 +494,7 @@ Public Module Rscript
     ''' <param name="line_stroke">a <see cref="lineElement"/> that create via the ggplot function: ``element_line``.</param>
     ''' <returns></returns>
     <ExportAPI("geom_sample_outline")>
+    <RApiReturn(GetType(MSISampleOutline))>
     Public Function geom_sample_outline(<RRawVectorArgument>
                                         Optional region As Object = Nothing,
                                         Optional threshold As Double = 0,
@@ -497,7 +502,8 @@ Public Module Rscript
                                         Optional degree As Single = 20,
                                         Optional resolution As Integer = 1000,
                                         Optional q As Double = 0.1,
-                                        Optional line_stroke As Object = "stroke: white; stroke-width: 6px; stroke-dash: solid;") As MSISampleOutline
+                                        Optional line_stroke As Object = "stroke: white; stroke-width: 6px; stroke-dash: solid;",
+                                        Optional env As Environment = Nothing) As Object
 
         Dim line As Stroke = ggplotExtensions.GetStroke(line_stroke, "stroke: white; stroke-width: 6px; stroke-dash: solid;")
         Dim outline As New MSISampleOutline With {
@@ -520,7 +526,9 @@ Public Module Rscript
             ElseIf TypeOf region Is GeneralPath Then
                 ' is pre-computed graphics path
                 ' use this path for region shape drawing directly
-
+                outline.precomputed = DirectCast(region, GeneralPath)
+            Else
+                Return Message.InCompatibleType(GetType(GeneralPath), region.GetType, env)
             End If
         End If
 
