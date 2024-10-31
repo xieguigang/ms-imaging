@@ -3,18 +3,26 @@
 .SH NAME
 geom_sample_outline \- Create a plot layer of outline for the sample data
 .SH SYNOPSIS
-\fIgeom_sample_outline(\fBspots\fR as <generic> dataframe = \fB<NULL>\fR, 
+\fIgeom_sample_outline(\fBregion\fR as any = \fB<NULL>\fR, 
 \fBthreshold\fR as double = 0, 
 \fBscale\fR as integer = 5, 
 \fBdegree\fR as double = 20, 
 \fBresolution\fR as integer = 1000, 
 \fBq\fR as double = 0.1, 
-\fBline_stroke\fR as any = "stroke: white; stroke-width: 6px; stroke-dash: solid;");\fR
+\fBline_stroke\fR as any = "stroke: white; stroke-width: 6px; stroke-dash: solid;", 
+[\fB<Environment>\fR]);\fR
 .SH DESCRIPTION
 .PP
 Create a plot layer of outline for the sample data
 .PP
 .SH OPTIONS
+.PP
+\fBregion\fB \fR\- 
+ The region data for the sample region outline drawing, data value should be a scibasic.net @\fBT:Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.MarchingSquares.GeneralPath\fR
+ path data object, or a dataframe object that contains the data fields of \fBx\fR and \fBy\fR for store the region 
+ spot data and the outline will be computed from this spot data points collection.
+. 
+.PP
 .PP
 \fBthreshold\fB \fR\- 
  the intensity threshold for make spatial spot binariation, for clean sample,
@@ -36,6 +44,42 @@ Create a plot layer of outline for the sample data
 .PP
 .PP
 \fBline_stroke\fB \fR\- a @\fBT:ggplot.elements.lineElement\fR that create via the ggplot function: \fBelement_line\fR.. 
+.PP
+.SH EXAMPLES
+.PP
+let region_spots = read.csv("/path/to/region.csv", row.names = NULL, check.names = FALSE);
+ 
+ print(region_spots, max.print = 6);
+ 
+ # the region outline will be computed when do 
+ # the ms-imaging plot
+ # create ggplot layer for ms-imaging
+ geom_sample_outline(region = region_spots,
+     threshold = 0,
+     scale = 5,
+     degree = 20,
+     resolution = 1000,
+     q = 0.1,
+     line_stroke = "stroke: blue; stroke-width: 9px; stroke-dash: solid;");
+     
+ # make region outline pre-computed and cached
+ # if there is a for loop for used for make batch drawing of the ms-imaging
+ # on the same sample slide data.
+ require(graphics2D);
+ 
+ let region_shape = graphics2D::contour_tracing(region_spots$x, region_spots$y);
+ let ions = [];
+ 
+ for(let mzi in ions) {
+    # use the cache data in batch drawing
+    geom_sample_outline(region = region_shape,
+       threshold = 0,
+       scale = 5,
+       degree = 20,
+       resolution = 1000,
+       q = 0.1,
+       line_stroke = "stroke: blue; stroke-width: 9px; stroke-dash: solid;");
+ }
 .PP
 .SH SEE ALSO
 ggplot

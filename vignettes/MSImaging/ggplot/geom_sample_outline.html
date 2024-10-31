@@ -28,7 +28,7 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_sample_outline</strong>(
-    <i>spots</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>region</i> = <span style='color: blue !important;'>NULL</span>,
     <i>threshold</i> = <span style='color: green;'>0</span>,
     <i>scale</i> = <span style='color: green;'>5</span>,
     <i>degree</i> = <span style='color: green;'>20</span>,
@@ -41,6 +41,12 @@
 
         <table>
             
+<dt>region</dt>
+<dd><p>The region data for the sample region outline drawing, data value should be a scibasic.net <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Drawing2D/Math2D/MarchingSquares/GeneralPath.html">GeneralPath</a>
+ path data object, or a dataframe object that contains the data fields of <code>x</code> and <code>y</code> for store the region 
+ spot data and the outline will be computed from this spot data points collection.</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>the intensity threshold for make spatial spot binariation, for clean sample,
  leaves this parameter default zero, for sample with background, set this 
@@ -81,9 +87,41 @@
 
         this function returns data object of type <a href="/vignettes/clr/ggplotMSImaging/layers/MSISampleOutline.html">MSISampleOutline</a>.<h4>clr value class</h4><ul><li><a href="/vignettes/clr/ggplotMSImaging/layers/MSISampleOutline.html">MSISampleOutline</a></li></ul>
 
-        <h3 style="display: none;">Examples</h3>
+        <h3 style="display: block;">Examples</h3>
 
-        
+        <pre><code id="example_r"> let region_spots = read.csv("/path/to/region.csv", row.names = NULL, check.names = FALSE);
+ 
+ print(region_spots, max.print = 6);
+ 
+ # the region outline will be computed when do 
+ # the ms-imaging plot
+ # create ggplot layer for ms-imaging
+ geom_sample_outline(region = region_spots,
+     threshold = 0,
+     scale = 5,
+     degree = 20,
+     resolution = 1000,
+     q = 0.1,
+     line_stroke = "stroke: blue; stroke-width: 9px; stroke-dash: solid;");
+     
+ # make region outline pre-computed and cached
+ # if there is a for loop for used for make batch drawing of the ms-imaging
+ # on the same sample slide data.
+ require(graphics2D);
+ 
+ let region_shape = graphics2D::contour_tracing(region_spots$x, region_spots$y);
+ let ions = [];
+ 
+ for(let mzi in ions) {
+    # use the cache data in batch drawing
+    geom_sample_outline(region = region_shape,
+       threshold = 0,
+       scale = 5,
+       degree = 20,
+       resolution = 1000,
+       q = 0.1,
+       line_stroke = "stroke: blue; stroke-width: 9px; stroke-dash: solid;");
+ }</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>ggplot</em> version 1.0.0.0 <a
