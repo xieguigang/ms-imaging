@@ -90,6 +90,8 @@ Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
 Imports renv = SMRUCC.Rsharp.Runtime
 Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.MarchingSquares
+
 
 #If NET48 Then
 #Else
@@ -488,7 +490,8 @@ Public Module Rscript
     ''' <param name="line_stroke">a <see cref="lineElement"/> that create via the ggplot function: ``element_line``.</param>
     ''' <returns></returns>
     <ExportAPI("geom_sample_outline")>
-    Public Function geom_sample_outline(Optional region As dataframe = Nothing,
+    Public Function geom_sample_outline(<RRawVectorArgument>
+                                        Optional region As Object = Nothing,
                                         Optional threshold As Double = 0,
                                         Optional scale As Integer = 5,
                                         Optional degree As Single = 20,
@@ -506,13 +509,19 @@ Public Module Rscript
         }
 
         If Not region Is Nothing Then
-            Dim df As dataframe = region
-            Dim x As Integer() = CLRVector.asInteger(df.getBySynonym("x", "X"))
-            Dim y As Integer() = CLRVector.asInteger(df.getBySynonym("y", "Y"))
+            If TypeOf region Is dataframe Then
+                Dim df As dataframe = region
+                Dim x As Integer() = CLRVector.asInteger(df.getBySynonym("x", "X"))
+                Dim y As Integer() = CLRVector.asInteger(df.getBySynonym("y", "Y"))
 
-            outline.spots = x _
-                .Select(Function(xi, i) New Point(xi, y(i))) _
-                .ToArray
+                outline.spots = x _
+                    .Select(Function(xi, i) New Point(xi, y(i))) _
+                    .ToArray
+            ElseIf TypeOf region Is GeneralPath Then
+                ' is pre-computed graphics path
+                ' use this path for region shape drawing directly
+
+            End If
         End If
 
         Return outline
