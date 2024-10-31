@@ -493,6 +493,41 @@ Public Module Rscript
     ''' <param name="q"></param>
     ''' <param name="line_stroke">a <see cref="lineElement"/> that create via the ggplot function: ``element_line``.</param>
     ''' <returns></returns>
+    ''' <example>
+    ''' let region_spots = read.csv("/path/to/region.csv", row.names = NULL, check.names = FALSE);
+    ''' 
+    ''' print(region_spots, max.print = 6);
+    ''' 
+    ''' # the region outline will be computed when do 
+    ''' # the ms-imaging plot
+    ''' # create ggplot layer for ms-imaging
+    ''' geom_sample_outline(region = region_spots,
+    '''     threshold = 0,
+    '''     scale = 5,
+    '''     degree = 20,
+    '''     resolution = 1000,
+    '''     q = 0.1,
+    '''     line_stroke = "stroke: blue; stroke-width: 9px; stroke-dash: solid;");
+    '''     
+    ''' # make region outline pre-computed and cached
+    ''' # if there is a for loop for used for make batch drawing of the ms-imaging
+    ''' # on the same sample slide data.
+    ''' require(graphics2D);
+    ''' 
+    ''' let region_shape = graphics2D::contour_tracing(region_spots$x, region_spots$y);
+    ''' let ions = [];
+    ''' 
+    ''' for(let mzi in ions) {
+    '''    # use the cache data in batch drawing
+    '''    geom_sample_outline(region = region_shape,
+    '''       threshold = 0,
+    '''       scale = 5,
+    '''       degree = 20,
+    '''       resolution = 1000,
+    '''       q = 0.1,
+    '''       line_stroke = "stroke: blue; stroke-width: 9px; stroke-dash: solid;");
+    ''' }
+    ''' </example>
     <ExportAPI("geom_sample_outline")>
     <RApiReturn(GetType(MSISampleOutline))>
     Public Function geom_sample_outline(<RRawVectorArgument>
