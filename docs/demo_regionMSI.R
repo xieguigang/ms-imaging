@@ -26,7 +26,7 @@ bitmap(file = `${@dir}/HR2MSI_mouse_urinary_bladder_S096_regionMSI.png`, size = 
        + geom_green(mz = 741.5303, tolerance = "da:0.3")
        + geom_red(mz = 743.5468, tolerance = "da:0.3")
        + geom_MSIbackground("black")
-       + geom_sample_outline(spots = region_spots,
+       + geom_sample_outline(region = region_spots,
             threshold = 0,
             scale = 5,
             degree = 20,

@@ -123,7 +123,10 @@ declare namespace ggplot {
     * Create a plot layer of outline for the sample data
     * 
     * 
-     * @param spots 
+     * @param region The region data for the sample region outline drawing, data value should be a scibasic.net @``T:Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.MarchingSquares.GeneralPath``
+     *  path data object, or a dataframe object that contains the data fields of ``x`` and ``y`` for store the region 
+     *  spot data and the outline will be computed from this spot data points collection.
+     * 
      * + default value Is ``null``.
      * @param threshold the intensity threshold for make spatial spot binariation, for clean sample,
      *  leaves this parameter default zero, for sample with background, set this 
@@ -145,8 +148,10 @@ declare namespace ggplot {
      * @param line_stroke a @``T:ggplot.elements.lineElement`` that create via the ggplot function: ``element_line``.
      * 
      * + default value Is ``'stroke: white; stroke-width: 6px; stroke-dash: solid;'``.
+     * @param env 
+     * + default value Is ``null``.
    */
-   function geom_sample_outline(spots?: object, threshold?: number, scale?: object, degree?: number, resolution?: object, q?: number, line_stroke?: any): object;
+   function geom_sample_outline(region?: any, threshold?: number, scale?: object, degree?: number, resolution?: object, q?: number, line_stroke?: any, env?: object): object;
    /**
     * options for config the canvas dimension size of the ms-imaging raw data scans
     * 

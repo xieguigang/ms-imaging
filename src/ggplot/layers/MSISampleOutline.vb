@@ -97,18 +97,35 @@ Namespace layers
         Public Property q As Double = 0.1
         Public Property line_stroke As Stroke
         Public Property threshold As Double = 0
+
+        ''' <summary>
+        ''' the region spot data
+        ''' </summary>
+        ''' <returns></returns>
         Public Property spots As Point()
+        ''' <summary>
+        ''' a pre-computed cache data
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property precomputed As GeneralPath
 
         Private Function getShapes(summary As MSISummary) As GeneralPath
             Dim spots As New List(Of iPixelIntensity)(summary.rowScans.IteratesALL)
 
+            If Not precomputed Is Nothing Then
+                ' use the cached data directly
+                Return precomputed
+            End If
+
             If Me.spots.IsNullOrEmpty Then
                 ' use all pixels
+                ' draw the sample outline
                 Return MSIRegionPlot.MeasureRegionPolygon(
                     spots.X.ToArray,
                     spots.Y.ToArray,
                     contour_scale, degree, resolution, q)
             Else
+                ' draw the current region outline
                 Return MSIRegionPlot.MeasureRegionPolygon(
                     Me.spots.X,
                     Me.spots.Y,
