@@ -8,6 +8,7 @@ geom_line \- Connect observations
 \fBwidth\fR as double = 5, 
 \fBshow_legend\fR as boolean = TRUE, 
 \fBalpha\fR as double = 1, 
+\fBbspline\fR as boolean = FALSE, 
 [\fB<Environment>\fR]);\fR
 .SH DESCRIPTION
 .PP
@@ -17,6 +18,16 @@ Connect observations
  the data. geom_line() connects them in order of the variable on the x axis. 
  geom_step() creates a stairstep plot, highlighting exactly when changes 
  occur. The group aesthetic determines which cases are connected together.
+.PP
+.SH OPTIONS
+.PP
+\fBbspline\fB \fR\- 
+ options for the b-spline smooth of the line plot
+. 
+.PP
+.SH VALUE
+.PP
+A line chart plot layer
 .PP
 .SH DETAILS
 .PP

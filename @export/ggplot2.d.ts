@@ -230,6 +230,7 @@ declare namespace ggplot2 {
      * @param env -
      * 
      * + default value Is ``null``.
+     * @return A bar plot layer
    */
    function geom_bar(stat?: any, position?: any, color?: any, width?: number, size?: number, show_legend?: boolean, env?: object): object;
    /**
@@ -416,6 +417,7 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @param env 
      * + default value Is ``null``.
+     * @return A histogram plot layer
    */
    function geom_histogram(bins: object, color?: any, alpha?: number, range?: any, env?: object): object;
    /**
@@ -469,10 +471,14 @@ declare namespace ggplot2 {
      * + default value Is ``true``.
      * @param alpha 
      * + default value Is ``1``.
+     * @param bspline options for the b-spline smooth of the line plot
+     * 
+     * + default value Is ``false``.
      * @param env 
      * + default value Is ``null``.
+     * @return A line chart plot layer
    */
-   function geom_line(mapping?: object, color?: any, width?: number, show_legend?: boolean, alpha?: number, env?: object): object;
+   function geom_line(mapping?: object, color?: any, width?: number, show_legend?: boolean, alpha?: number, bspline?: boolean, env?: object): object;
    /**
     * ## Connect observations
     *  
@@ -523,6 +529,7 @@ declare namespace ggplot2 {
      * @param env -
      * 
      * + default value Is ``null``.
+     * @return a scatter plot layer
    */
    function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: number, show_legend?: boolean, alpha?: number, env?: object): object;
    /**
@@ -647,7 +654,7 @@ declare namespace ggplot2 {
    /**
      * @param mapping default value Is ``null``.
    */
-   function geom_tile(mapping?: object): any;
+   function geom_tile(mapping?: object): object;
    /**
      * @param color default value Is ``null``.
      * @param width default value Is ``0.9``.
@@ -1033,6 +1040,7 @@ declare namespace ggplot2 {
      * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
      * @param panel_border 
      * + default value Is ``null``.
+     * @return A style mapper for create the internal @``T:Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme`` object
    */
    function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_title?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
    /**
