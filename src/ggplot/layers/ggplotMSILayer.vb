@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f52fbd7ce9fc4027d663601950e47404, Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
+﻿#Region "Microsoft.VisualBasic::ffb733c1fdd610f923013f558964a010, Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 138
-    '    Code Lines: 86 (62.32%)
-    ' Comment Lines: 31 (22.46%)
+    '   Total Lines: 142
+    '    Code Lines: 89 (62.68%)
+    ' Comment Lines: 31 (21.83%)
     '    - Xml Docs: 87.10%
     ' 
-    '   Blank Lines: 21 (15.22%)
-    '     File Size: 5.60 KB
+    '   Blank Lines: 22 (15.49%)
+    '     File Size: 5.75 KB
 
 
     '     Class ggplotMSILayer
     ' 
-    '         Properties: colorLevels, pixelDrawer, threshold
+    '         Properties: colorLevels, hqx, pixelDrawer, threshold
     ' 
     '         Function: ApplyGauss, ApplyRasterFilter, (+2 Overloads) getIonlayer, MSIInterpolation, ScaleImageImpls
     ' 

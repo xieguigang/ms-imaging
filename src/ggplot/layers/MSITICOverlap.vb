@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::dcf4356c4cd99bc179ecf7ffce94e204, Rscript\Library\MSI_app\src\ggplot\layers\MSITICOverlap.vb"
+﻿#Region "Microsoft.VisualBasic::c15c7a366a29b9b4c41e749c3fdff6d8, Rscript\Library\MSI_app\src\ggplot\layers\MSITICOverlap.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 90
-    '    Code Lines: 74 (82.22%)
-    ' Comment Lines: 3 (3.33%)
-    '    - Xml Docs: 100.00%
+    '   Total Lines: 102
+    '    Code Lines: 85 (83.33%)
+    ' Comment Lines: 5 (4.90%)
+    '    - Xml Docs: 60.00%
     ' 
-    '   Blank Lines: 13 (14.44%)
-    '     File Size: 3.69 KB
+    '   Blank Lines: 12 (11.76%)
+    '     File Size: 4.33 KB
 
 
     '     Class MSITICOverlap
     ' 
-    '         Properties: summary
+    '         Properties: hqx, summary
     ' 
     '         Function: Plot
     ' 

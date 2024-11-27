@@ -1,58 +1,59 @@
-﻿#Region "Microsoft.VisualBasic::999b0bf888325e0b5d920e4067b65c23, Rscript\Library\MSI_app\src\Rscript.vb"
+﻿#Region "Microsoft.VisualBasic::13fb79aac826da9503e463e38da79dbc, Rscript\Library\MSI_app\src\Rscript.vb"
 
-' Author:
-' 
-'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-' 
-' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 601
-'    Code Lines: 385 (64.06%)
-' Comment Lines: 156 (25.96%)
-'    - Xml Docs: 97.44%
-' 
-'   Blank Lines: 60 (9.98%)
-'     File Size: 24.62 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Module Rscript
-' 
-'     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
-'               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
-'               geom_sample_outline, getChannel, KnnFill, raster_blending, unionlayers
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 666
+    '    Code Lines: 405 (60.81%)
+    ' Comment Lines: 198 (29.73%)
+    '    - Xml Docs: 94.44%
+    ' 
+    '   Blank Lines: 63 (9.46%)
+    '     File Size: 27.64 KB
+
+
+    ' Module Rscript
+    ' 
+    '     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
+    '               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
+    '               geom_sample_outline, getChannel, hqx_opts, KnnFill, raster_blending
+    '               unionlayers
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

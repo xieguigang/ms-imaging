@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6445c550e2a23db6c77ca2fd0015d0cd, Rscript\Library\MSI_app\src\ggplot\layers\MSImagingLayer.vb"
+﻿#Region "Microsoft.VisualBasic::4bd445771073234d5932925e18f3025d, Rscript\Library\MSI_app\src\ggplot\layers\MSImagingLayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 146
-    '    Code Lines: 119 (81.51%)
-    ' Comment Lines: 8 (5.48%)
-    '    - Xml Docs: 100.00%
+    '   Total Lines: 157
+    '    Code Lines: 127 (80.89%)
+    ' Comment Lines: 10 (6.37%)
+    '    - Xml Docs: 80.00%
     ' 
-    '   Blank Lines: 19 (13.01%)
-    '     File Size: 6.40 KB
+    '   Blank Lines: 20 (12.74%)
+    '     File Size: 6.93 KB
 
 
     '     Class MSImagingLayer
