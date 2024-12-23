@@ -60,11 +60,23 @@ Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 
+''' <summary>
+''' rgb/cmyk data source mapping
+''' </summary>
 Public Class MSIHeatMap
 
+#Region "rgb"
     Public Property R As SingleIonLayer
     Public Property G As SingleIonLayer
     Public Property B As SingleIonLayer
+#End Region
+
+#Region "cmyk"
+    Public Property C As SingleIonLayer
+    Public Property M As SingleIonLayer
+    Public Property Y As SingleIonLayer
+    Public Property K As SingleIonLayer
+#End Region
 
     Public Property dimension As Size
 
