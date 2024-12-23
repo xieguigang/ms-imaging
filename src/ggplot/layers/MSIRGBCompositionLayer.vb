@@ -93,13 +93,10 @@ Namespace layers
         ''' <summary>
         ''' Try get the dimension size of the canvas based on the layer data
         ''' </summary>
-        ''' <param name="redLayer"></param>
-        ''' <param name="greenLayer"></param>
-        ''' <param name="blueLayer"></param>
         ''' <returns></returns>
-        Private Shared Function getDimSize(redLayer As SingleIonLayer, greenLayer As SingleIonLayer, blueLayer As SingleIonLayer) As Size
+        Friend Shared Function getDimSize(ParamArray layers As SingleIonLayer()) As Size
             Dim dimSizes As Size() = (From layer As SingleIonLayer
-                                      In {redLayer, greenLayer, blueLayer}
+                                      In layers
                                       Where Not layer Is Nothing
                                       Select layer.DimensionSize).ToArray
             Dim w As Integer = (Aggregate [dim] As Size In dimSizes Into Max([dim].Width))
@@ -151,7 +148,7 @@ Namespace layers
             }
         End Function
 
-        Private Shared Function legend(color As String, theme As Theme, layer As SingleIonLayer) As LegendObject
+        Friend Shared Function legend(color As String, theme As Theme, layer As SingleIonLayer) As LegendObject
             If layer Is Nothing Then
                 Return Nothing
             Else

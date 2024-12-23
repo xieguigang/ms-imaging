@@ -68,6 +68,8 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.hqx
 Imports Microsoft.VisualBasic.Imaging.Filters
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
+Imports BioNovoGene.Analytical.MassSpectrometry.Math.Spectra
+
 
 
 
@@ -159,6 +161,19 @@ Namespace layers
             End If
 
             Return layer
+        End Function
+
+        Public Function getIonlayer(a As MzAnnotation, mzdiff As Tolerance, ggplot As ggplot.ggplot) As SingleIonLayer
+            Dim base = DirectCast(ggplot.base.reader, MSIReader)
+            Dim ion As SingleIonLayer = SingleIonLayer.GetLayer(a.productMz, base.reader, mzdiff)
+
+            If a.annotation.IsSimpleNumber Then
+                ion.IonMz = a.productMz
+            Else
+                ion.IonMz = $"{a.annotation} ({a.productMz.ToString("F4")})"
+            End If
+
+            Return ion
         End Function
 
         Public Function getIonlayer(mz As Double, mzdiff As Tolerance, ggplot As ggplot.ggplot) As SingleIonLayer

@@ -390,9 +390,36 @@ Public Module Rscript
                               <RRawVectorArgument> m As Object,
                               <RRawVectorArgument> y As Object,
                               <RRawVectorArgument> k As Object,
+                              Optional tolerance As Object = "da:0.1",
                               Optional env As Environment = Nothing) As Object
 
-        Throw New NotImplementedException
+        Dim cl = MsSpectrumData.GetPeakAnnotation(c, env)
+        Dim ml = MsSpectrumData.GetPeakAnnotation(m, env)
+        Dim yl = MsSpectrumData.GetPeakAnnotation(y, env)
+        Dim kl = MsSpectrumData.GetPeakAnnotation(k, env)
+        Dim mzdiff = Math.getTolerance(tolerance, env, [default]:="da:0.1")
+
+        If mzdiff Like GetType(Message) Then
+            Return mzdiff.TryCast(Of Message)
+        End If
+
+        If cl Like GetType(Message) Then
+            Return cl.TryCast(Of Message)
+        ElseIf ml Like GetType(Message) Then
+            Return ml.TryCast(Of Message)
+        ElseIf yl Like GetType(Message) Then
+            Return yl.TryCast(Of Message)
+        ElseIf kl Like GetType(Message) Then
+            Return kl.TryCast(Of Message)
+        End If
+
+        Return New MSICMYKCompositionLayer With {
+            .cyan = cl,
+            .magenta = ml,
+            .yellow = yl,
+            .key = kl,
+            .mzdiff = mzdiff
+        }
     End Function
 
     ''' <summary>
