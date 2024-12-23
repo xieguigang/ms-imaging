@@ -384,6 +384,17 @@ Public Module Rscript
         Return scaleRaster.Scale(hqx:=hqx.HqxScales.Hqx_4x)
     End Function
 
+    <ExportAPI("geom_cmyk")>
+    <RApiReturn(GetType(MSICMYKCompositionLayer))>
+    Public Function geom_cmyk(<RRawVectorArgument> c As Object,
+                              <RRawVectorArgument> m As Object,
+                              <RRawVectorArgument> y As Object,
+                              <RRawVectorArgument> k As Object,
+                              Optional env As Environment = Nothing) As Object
+
+        Throw New NotImplementedException
+    End Function
+
     ''' <summary>
     ''' Do ms-imaging based on a set of given metabolite ions m/z
     ''' </summary>
