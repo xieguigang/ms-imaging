@@ -170,7 +170,7 @@ Namespace layers
             If a.annotation.IsSimpleNumber Then
                 ion.IonMz = a.productMz
             Else
-                ion.IonMz = $"{a.annotation} ({a.productMz.ToString("F4")})"
+                ion.IonMz = $"{a.annotation} (m/z {a.productMz.ToString("F4")})"
             End If
 
             Return ion
