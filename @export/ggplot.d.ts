@@ -11,6 +11,11 @@
 */
 declare namespace ggplot {
    /**
+     * @param tolerance default value Is ``'da:0.1'``.
+     * @param env default value Is ``null``.
+   */
+   function geom_cmyk(c: any, m: any, y: any, k: any, tolerance?: any, env?: object): object;
+   /**
     * Draw a ion m/z layer with a specific color channel
     * 
     * 

@@ -11,6 +11,7 @@ the ggplot api plugin for do MS-Imaging rendering
 + [MSIheatmap](ggplot/MSIheatmap.1) create R,G,B layers from the given dataframe columns data
 + [geom_msiheatmap](ggplot/geom_msiheatmap.1) create a new ms-imaging heatmap layer
 + [raster_blending](ggplot/raster_blending.1) rendering a gdi+ heatmap for create raster annotation in ggplot layer
++ [geom_cmyk](ggplot/geom_cmyk.1) 
 + [geom_msimaging](ggplot/geom_msimaging.1) Do ms-imaging based on a set of given metabolite ions m/z
 + [geom_MSIruler](ggplot/geom_MSIruler.1) Draw ruler overlaps of the ms-imaging
 + [geom_sample_outline](ggplot/geom_sample_outline.1) Create a plot layer of outline for the sample data
