@@ -1,5 +1,5 @@
 
-#' count the scan ms1
+#' count the scan ms1 number as the number of pixels
 #'
 #' @param raw the mzpack object
 #' 
