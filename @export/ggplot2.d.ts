@@ -1011,7 +1011,7 @@ declare namespace ggplot2 {
      *  inherits from axis.line.* which inherits from axis.line, which in turn 
      *  inherits from line
      * 
-     * + default value Is ``'stroke: black; stroke-width: 5px; stroke-dash: solid;'``.
+     * + default value Is ``'stroke: black; stroke-width: 2px; stroke-dash: solid;'``.
      * @param axis_text_x 
      * + default value Is ``null``.
      * @param legend_background background of legend (element_rect(); inherits from rect)
