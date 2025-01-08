@@ -60,8 +60,10 @@ declare namespace MSIfilter {
     * Make convolution of the spatial data for make the imaging render result soften
     * 
     * 
+     * @param layer 
+     * + default value Is ``null``.
    */
-   function soften_scale(): object;
+   function soften_scale(layer?: object): object|object;
    /**
     * Trim the raw input intensity value via the TrIQ algorithm
     * 

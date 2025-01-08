@@ -1,5 +1,5 @@
 const default_intensity_filter = function(ion, MSI_TrIQ = 0.8) {
-    ion$layer = ion$layer |> knnFill();
+    ion$layer = ion$layer |> knnFill() |> soften_scale();
     ion$TrIQ  = TrIQ(ion$layer, q = MSI_TrIQ) * max(intensity(ion$layer));
     ion$layer = intensityLimits(ion$layer, max = ion$TrIQ[2]);
     ion;
@@ -79,8 +79,7 @@ const PlotMSIMatrixHeatmap = function(ions_data,
 
         i = as.vector(region);
 
-        [ion]::MSILayer 
-        |> rasterHeatmap(
+        [ion]::MSILayer |> rasterHeatmap(
             region       = region, 
             gauss        = gaussian, 
             colorName    = colorSet, 
