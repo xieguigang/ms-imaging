@@ -69,9 +69,6 @@ Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports Microsoft.VisualBasic.Imaging.Driver
 
-
-
-
 #If NET48 Then
 #Else
 Imports Pen = Microsoft.VisualBasic.Imaging.Pen
