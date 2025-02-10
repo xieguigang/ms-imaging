@@ -15,6 +15,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_boxplot](ggplot2/geom_boxplot.1) ## A box and whiskers plot (in the style of Tukey)
 + [geom_col](ggplot2/geom_col.1) ### Bar charts
 + [geom_bar](ggplot2/geom_bar.1) ### Bar charts
++ [geom_segment](ggplot2/geom_segment.1) ### Line segments and curves
 + [geom_barplot](ggplot2/geom_barplot.1) 
 + [geom_violin](ggplot2/geom_violin.1) 
 + [geom_jitter](ggplot2/geom_jitter.1) 

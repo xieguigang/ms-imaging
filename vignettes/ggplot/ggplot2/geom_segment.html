@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Line segments and curves</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>geom_segment {ggplot2}</td>
+                <td style="text-align: right;">R Documentation</td>
+            </tr>
+        </table>
+
+        <h2>Line segments and curves</h2>
+
+        <h3>Description</h3>
+
+        <p><br /> geom<em>segment() draws a straight line between points (x, y) and (xend, yend). Both geoms <br /> draw a single segment/curve per case. See geom</em>path() if you need to connect points <br /> across multiple cases.</p>
+
+        <h3>Usage</h3>
+
+        <div style="width: 100%; padding-left: 3%; color: black;">
+            <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>geom_segment</strong>(
+    <i>mapping</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>data</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>stat</i> = <span style='color: brown;'><strong>"identity"</strong></span>,
+    <i>position</i> = <span style='color: brown;'><strong>"identity"</strong></span>,
+    <i>arrow</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>arrow.fill</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>lineend</i> = <span style='color: brown;'><strong>"butt"</strong></span>,
+    <i>linejoin</i> = <span style='color: brown;'><strong>"round"</strong></span>,
+    <i>na.rm</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>show.legend</i> = <span style='color: blue !important;'>FALSE</span>,
+    <i>inherit.aes</i> = <span style='color: blue !important;'>TRUE</span>,
+    <i>...</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
+        </div>
+
+        <h3>Arguments</h3>
+
+        <table>
+            
+<dt>mapping</dt>
+<dd><p>Set of aesthetic mappings created by aes(). If specified and <code>inherit.aes = TRUE</code> (the default),
+ it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no 
+ plot mapping. [as <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>]</p></dd>
+
+
+<dt>data</dt>
+<dd><p>The data to be displayed in this layer. There are three options:
+ 
+ If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot().
+ 
+ A data.frame, or other object, will override the plot data. All objects will be fortified to 
+ produce a data frame. See fortify() for which variables will be created.
+ 
+ A function will be called with a single argument, the plot data. The return value must be a data.frame, 
+ and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p></dd>
+
+
+<dt>stat</dt>
+<dd><p>The statistical transformation to use on the data for this layer. When using a geom_*() 
+ function to construct a layer, the stat argument can be used the override the default coupling between geoms
+ and stats. The stat argument accepts the following:
+ 
+ A Stat ggproto subclass, for example StatCount.
+ 
+ A string naming the stat. To give the stat as a string, strip the function name of the stat_ prefix. 
+ For example, to use stat_count(), give the stat as "count".
+ 
+ For more information and other ways to specify the stat, see the layer stat documentation. [as string]</p></dd>
+
+
+<dt>position</dt>
+<dd><p>A position adjustment to use on the data for this layer. This can be used in 
+ various ways, including to prevent overplotting and improving the display. The position argument 
+ accepts the following:
+ 
+ The result of calling a position function, such as position_jitter(). This method allows for passing 
+ extra arguments to the position.
+ 
+ A string naming the position adjustment. To give the position as a string, strip the function name of 
+ the position<em> prefix. For example, to use position</em>jitter(), give the position as "jitter".
+ 
+ For more information and other ways to specify the position, see the layer position documentation. [as string]</p></dd>
+
+
+<dt>arrow</dt>
+<dd><p>specification for arrow heads, as created by grid::arrow(). [as <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Drawing2D/Shapes/Triangle.html">Triangle</a>]</p></dd>
+
+
+<dt>arrow.fill</dt>
+<dd><p>fill colour to use for the arrow head (if closed). NULL means use colour aesthetic.</p></dd>
+
+
+<dt>lineend</dt>
+<dd><p>Line end style (round, butt, square). [as string]</p></dd>
+
+
+<dt>linejoin</dt>
+<dd><p>Line join style (round, mitre, bevel). [as string]</p></dd>
+
+
+<dt>na.rm</dt>
+<dd><p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed. [as boolean]</p></dd>
+
+
+<dt>show.legend</dt>
+<dd><p>logical. Should this layer be included in the legends? NA, the default, 
+ includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also 
+ be a named logical vector to finely select the aesthetics to display. [as boolean]</p></dd>
+
+
+<dt>inherit.aes</dt>
+<dd><p>If FALSE, overrides the default aesthetics, rather than combining with them. 
+ This is most useful for helper functions that define both data and aesthetics and shouldn't inherit 
+ behaviour from the default plot specification, e.g. borders(). [as boolean]</p></dd>
+
+
+<dt>args</dt>
+<dd><p>Other arguments passed on to layer()'s params argument. These arguments broadly 
+ fall into one of 4 categories below. Notably, further arguments to the position argument, or aesthetics 
+ that are required can not be passed through .... Unknown arguments that are not part of the 4 
+ categories below are ignored.
+ 
+ Static aesthetics that are not mapped to a scale, but are at a fixed value and apply to the layer as 
+ a whole. For example, colour = "red" or linewidth = 3. The geom's documentation has an Aesthetics 
+ section that lists the available options. The 'required' aesthetics cannot be passed on to the params.
+ Please note that while passing unmapped aesthetics as vectors is technically possible, the order and 
+ required length is not guaranteed to be parallel to the input data.
+ 
+ When constructing a layer using a stat_*() function, the ... argument can be used to pass on parameters 
+ to the geom part of the layer. An example of this is stat_density(geom = "area", outline.type = "both").
+ The geom's documentation lists which parameters it can accept.
+ 
+ Inversely, when constructing a layer using a geom_*() function, the ... argument can be used to pass on 
+ parameters to the stat part of the layer. An example of this is geom_area(stat = "density", adjust = 0.5).
+ The stat's documentation lists which parameters it can accept.
+ 
+ The key_glyph argument of layer() may also be passed on through .... This can be one of the functions 
+ described as key glyphs, to change the display of the layer in the legend. [as list]</p></dd>
+
+
+<dt>env</dt>
+<dd><p>[as <a href="/vignettes/clr/SMRUCC/Rsharp/Runtime/Environment.html">Environment</a>]</p></dd>
+
+        </table>
+
+
+        <h3 style="display: block;">Details</h3>
+
+        <p>geom_segment() understands the following aesthetics (required aesthetics are in bold):
+ 
+ + <strong>x</strong>
+ + <strong>y</strong>
+ + <strong>xend or yend</strong>
+ + alpha
+ + colour
+ + group
+ + linetype
+ + linewidth
+ 
+ Learn more about setting these aesthetics in vignette("ggplot2-specs").</p>
+
+        <h3 style="display: block">Authors</h3>
+
+        SMRUCC genomics institute
+
+        <h3>Value</h3>
+
+        this function returns data object of type <a href="/vignettes/clr/ggplot/layers/ggplotSegments.html">ggplotSegments</a>.<h4>clr value class</h4><ul><li><a href="/vignettes/clr/ggplot/layers/ggplotSegments.html">ggplotSegments</a></li></ul>
+
+        <h3 style="display: none;">Examples</h3>
+
+        
+
+        <hr />
+        <div style="text-align: center;">[Package <em>ggplot2</em> version 1.0.0.0 <a
+                href="../ggplot2.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
+<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript">r_highlights("example_r");</script>
+
+</html>
