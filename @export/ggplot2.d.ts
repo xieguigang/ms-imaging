@@ -847,6 +847,48 @@ declare namespace ggplot2 {
    */
    function ggplot(data?: any, mapping?: any, colorSet?: any, args?: object, environment?: object): object;
    /**
+    * 
+    * 
+     * @param filename -
+     * @param plot -
+     * 
+     * + default value Is ``'~last_plot()'``.
+     * @param device -
+     * 
+     * + default value Is ``null``.
+     * @param path -
+     * 
+     * + default value Is ``null``.
+     * @param scale -
+     * 
+     * + default value Is ``1``.
+     * @param width -
+     * 
+     * + default value Is ``null``.
+     * @param height -
+     * 
+     * + default value Is ``null``.
+     * @param units -
+     * 
+     * + default value Is ``null``.
+     * @param dpi -
+     * 
+     * + default value Is ``300``.
+     * @param limitsize -
+     * 
+     * + default value Is ``true``.
+     * @param bg -
+     * 
+     * + default value Is ``null``.
+     * @param args -
+     * 
+     * + default value Is ``null``.
+     * @param env -
+     * 
+     * + default value Is ``null``.
+   */
+   function ggsave(filename: string, plot?: any, device?: any, path?: any, scale?: number, width?: object, height?: object, units?: object, dpi?: object, limitsize?: boolean, bg?: any, args?: object, env?: object): any;
+   /**
     * ### Modify axis, legend, and plot labels
     *  
     *  Good labels are critical for making your plots accessible 
@@ -927,6 +969,14 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
    */
    function labs(x?: string, y?: string, title?: string, subtitle?: string, caption?: string, tag?: any, alt?: any, alt_insight?: any, args?: object, env?: object): object;
+   /**
+    * ### Retrieve the last plot to be modified or created.
+    *  
+    *  Retrieve the last plot to be modified or created.
+    * 
+    * 
+   */
+   function last_plot(): object;
    /**
     * Sequential, diverging and qualitative colour scales from ColorBrewer
     * 

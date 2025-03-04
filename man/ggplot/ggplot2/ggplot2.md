@@ -3,6 +3,8 @@
 Create Elegant Data Visualisations Using the Grammar of Graphics
 
 + [ggplot](ggplot2/ggplot.1) ### Create a new ggplot
++ [last_plot](ggplot2/last_plot.1) ### Retrieve the last plot to be modified or created.
++ [ggsave](ggplot2/ggsave.1) 
 + [aes](ggplot2/aes.1) ### Construct aesthetic mappings
 + [geom_point](ggplot2/geom_point.1) ### Scatter Points
 + [geom_text](ggplot2/geom_text.1) ### Text
