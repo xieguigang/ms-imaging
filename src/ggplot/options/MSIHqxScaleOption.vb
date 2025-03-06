@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fe2741327df7529481f394a34d8294d4, Rscript\Library\MSI_app\src\ggplot\options\MSIHqxScaleOption.vb"
+﻿#Region "Microsoft.VisualBasic::d829424a880135d4e6e6eb3513fc602b, Rscript\Library\MSI_app\src\ggplot\options\MSIHqxScaleOption.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 0.00%
     ' 
     '   Blank Lines: 5 (19.23%)
-    '     File Size: 822 B
+    '     File Size: 820 B
 
 
     ' Class MSIHqxScaleOption
@@ -82,4 +82,3 @@ Public Class MSIHqxScaleOption : Inherits ggplotOption
         Return ggplot
     End Function
 End Class
-

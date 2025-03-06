@@ -1,57 +1,57 @@
-﻿#Region "Microsoft.VisualBasic::b23874ac8a01ae3abfdf3f3d956b9ad1, Rscript\Library\MSI_app\src\Filters.vb"
+﻿#Region "Microsoft.VisualBasic::d007432919a4b8d8ea69595e19661b0d, Rscript\Library\MSI_app\src\Filters.vb"
 
-' Author:
-' 
-'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-' 
-' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 98
-'    Code Lines: 48 (48.98%)
-' Comment Lines: 39 (39.80%)
-'    - Xml Docs: 97.44%
-' 
-'   Blank Lines: 11 (11.22%)
-'     File Size: 3.39 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Module Filters
-' 
-'     Function: construct_filter, construct_pipeline, denoiseScaler, intensity_cut, knnScaler
-'               logScaler, quantileScaler, softenScaler, TrIQScaler
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 103
+    '    Code Lines: 53 (51.46%)
+    ' Comment Lines: 39 (37.86%)
+    '    - Xml Docs: 97.44%
+    ' 
+    '   Blank Lines: 11 (10.68%)
+    '     File Size: 3.64 KB
+
+
+    ' Module Filters
+    ' 
+    '     Function: construct_filter, construct_pipeline, denoiseScaler, intensity_cut, knnScaler
+    '               logScaler, quantileScaler, softenScaler, TrIQScaler
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

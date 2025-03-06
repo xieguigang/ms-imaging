@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::32e938df1c7b8fcda36d174aa8ab36a0, Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBCompositionLayer.vb"
+﻿#Region "Microsoft.VisualBasic::bbb3f53b80a5283dd076127c1f253a3c, Rscript\Library\MSI_app\src\ggplot\layers\MSIRGBCompositionLayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 109
-    '    Code Lines: 85 (77.98%)
-    ' Comment Lines: 10 (9.17%)
+    '   Total Lines: 106
+    '    Code Lines: 85 (80.19%)
+    ' Comment Lines: 7 (6.60%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 14 (12.84%)
-    '     File Size: 4.81 KB
+    '   Blank Lines: 14 (13.21%)
+    '     File Size: 4.60 KB
 
 
     '     Class MSIRGBCompositionLayer

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::13fb79aac826da9503e463e38da79dbc, Rscript\Library\MSI_app\src\Rscript.vb"
+﻿#Region "Microsoft.VisualBasic::b4ca8523eadf1fcb25c348b2753c1ba8, Rscript\Library\MSI_app\src\Rscript.vb"
 
     ' Author:
     ' 
@@ -37,21 +37,21 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 666
-    '    Code Lines: 405 (60.81%)
-    ' Comment Lines: 198 (29.73%)
+    '   Total Lines: 704
+    '    Code Lines: 438 (62.22%)
+    ' Comment Lines: 198 (28.12%)
     '    - Xml Docs: 94.44%
     ' 
-    '   Blank Lines: 63 (9.46%)
-    '     File Size: 27.64 KB
+    '   Blank Lines: 68 (9.66%)
+    '     File Size: 29.15 KB
 
 
     ' Module Rscript
     ' 
-    '     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_color
-    '               geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging, geom_MSIruler
-    '               geom_sample_outline, getChannel, hqx_opts, KnnFill, raster_blending
-    '               unionlayers
+    '     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_cmyk
+    '               geom_color, geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging
+    '               geom_MSIruler, geom_sample_outline, getChannel, hqx_opts, KnnFill
+    '               raster_blending, unionlayers
     ' 
     ' /********************************************************************************/
 
