@@ -3,9 +3,11 @@
 .SH NAME
 geom_histogram \- Histograms and frequency polygons
 .SH SYNOPSIS
-\fIgeom_histogram(\fBbins\fR as integer, 
+\fIgeom_histogram(\fBbins\fR as integer = 20, 
+\fBposition\fR as <integer> LayoutPosition = [identity], 
 \fBcolor\fR as any = \fB<NULL>\fR, 
 \fBalpha\fR as double = 1, 
+\fBbinwidth\fR as double = 0.1, 
 \fBrange\fR as any = \fB<NULL>\fR, 
 [\fB<Environment>\fR]);\fR
 .SH DESCRIPTION

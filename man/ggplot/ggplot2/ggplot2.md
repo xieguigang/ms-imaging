@@ -35,6 +35,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [ylab](ggplot2/ylab.1) ## Modify axis, legend, and plot labels
 + [coord_flip](ggplot2/coord_flip.1) Swapping X- and Y-Axes
 + [theme](ggplot2/theme.1) ## Modify components of a theme
++ [theme_minimal](ggplot2/theme_minimal.1) 
 + [element_blank](ggplot2/element_blank.1) means nothing
 + [waiver](ggplot2/waiver.1) ### A waiver object.
 + [element_line](ggplot2/element_line.1) Theme element: line.

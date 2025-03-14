@@ -409,17 +409,23 @@ declare namespace ggplot2 {
     * 
     * 
      * @param bins Number of bins. Overridden by binwidth. Defaults to 30.
+     * 
+     * + default value Is ``20``.
+     * @param position 
+     * + default value Is ``null``.
      * @param color 
      * + default value Is ``null``.
      * @param alpha 
      * + default value Is ``1``.
+     * @param binwidth 
+     * + default value Is ``0.1``.
      * @param range 
      * + default value Is ``null``.
      * @param env 
      * + default value Is ``null``.
      * @return A histogram plot layer
    */
-   function geom_histogram(bins: object, color?: any, alpha?: number, range?: any, env?: object): object;
+   function geom_histogram(bins?: object, position?: object, color?: any, alpha?: number, binwidth?: number, range?: any, env?: object): object;
    /**
     * ### Reference line defined by Y intercept. Useful for annotating plots.
     *  
@@ -1207,6 +1213,9 @@ declare namespace ggplot2 {
      * @return A style mapper for create the internal @``T:Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme`` object
    */
    function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_title?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
+   /**
+   */
+   function theme_minimal(): object;
    /**
     * ### A waiver object.
     *  
