@@ -858,7 +858,7 @@ declare namespace ggplot2 {
      * @param filename -
      * @param plot -
      * 
-     * + default value Is ``'~last_plot()'``.
+     * + default value Is ``null``.
      * @param device -
      * 
      * + default value Is ``null``.
