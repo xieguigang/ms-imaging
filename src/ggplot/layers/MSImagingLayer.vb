@@ -98,7 +98,12 @@ Namespace layers
     ''' </summary>
     Public Class MSImagingLayer : Inherits ggplotMSILayer
 
+        ''' <summary>
+        ''' intensity scalar threshold by TrIQ algorithm
+        ''' </summary>
+        ''' <returns></returns>
         Public Property TrIQ As Double = 0.65
+        Public Property IntensityRange As Double()
 
         ''' <summary>
         ''' the annotation overlaps only works when <see cref="pixelDrawer"/>
@@ -107,6 +112,15 @@ Namespace layers
         ''' <returns></returns>
         Public Property raster As Bitmap
 
+        ''' <summary>
+        ''' Rendering ion value as heatmap imaging output
+        ''' </summary>
+        ''' <param name="ion"></param>
+        ''' <param name="theme"></param>
+        ''' <param name="ggplot"></param>
+        ''' <param name="colorSet"></param>
+        ''' <param name="colorLevels"></param>
+        ''' <returns></returns>
         Private Function MSIHeatmapRender(ion As SingleIonLayer, theme As Theme, ggplot As ggplotMSI,
                                           <Out> ByRef colorSet As String,
                                           <Out> ByRef colorLevels As Integer) As Image
@@ -140,7 +154,7 @@ Namespace layers
             Dim args As list = reader.args
             Dim mz As Double() = CLRVector.asNumeric(args.getByName("mz"))
             Dim mzdiff As Tolerance = args.getValue(Of Tolerance)("mzdiff", ggplot.environment)
-            Dim knnfill As Boolean = args.getValue(Of Boolean)("knnfill", ggplot.environment, False)
+            Dim knnfill As Boolean = args.getValue("knnfill", ggplot.environment, False)
 
             If mz.Any(Function(mzi) mzi <= 0) Then
                 Throw New InvalidProgramException($"invalid ion m/z value '{mz.Where(Function(mzi) mzi <= 0).First}'!")
