@@ -144,7 +144,7 @@ Namespace layers
                 pixels:=ion.MSILayer,
                 dimension:=dimension_size,
                 colorSet:=colorSet,
-                defaultFill:=ggplot.ggplotTheme.gridFill,
+                defaultFill:=If(raster IsNot Nothing, "transparent", ggplot.ggplotTheme.gridFill),
                 mapLevels:=colorLevels
             ).AsGDIImage
         End Function
