@@ -149,6 +149,20 @@ Namespace layers
             ).AsGDIImage
         End Function
 
+        Private Function clamp(ion As SingleIonLayer) As SingleIonLayer
+            If IntensityRange.IsNullOrEmpty OrElse IntensityRange.Max = 0.0 Then
+                Return ion
+            Else
+                Dim intensityRange = Me.IntensityRange
+
+                If intensityRange.Length = 1 Then
+                    intensityRange = {0, intensityRange.Max}
+                End If
+
+                Return ion.Clamp(IntensityRange.Min, IntensityRange.Max)
+            End If
+        End Function
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplotMSI = stream.ggplot
             Dim args As list = reader.args
@@ -169,7 +183,7 @@ Namespace layers
             Dim MSI As Image
             Dim colorSet As String = Nothing
             Dim colorLevels As Integer = Me.colorLevels
-            Dim ion As SingleIonLayer = getIonlayer(mz, mzdiff, ggplot)
+            Dim ion As SingleIonLayer = clamp(getIonlayer(mz, mzdiff, ggplot))
             Dim rawInto As Double() = ion.GetIntensity
             Dim theme As Theme = stream.theme
 
