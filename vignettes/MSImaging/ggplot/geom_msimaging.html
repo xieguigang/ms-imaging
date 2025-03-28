@@ -34,7 +34,8 @@
     <i>color</i> = <span style='color: brown;'><strong>"viridis:turbo"</strong></span>,
     <i>knnFill</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>colorLevels</i> = <span style='color: green;'>120</span>,
-    <i>raster</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
+    <i>raster</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>clamp</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -70,6 +71,12 @@
 <dt>raster</dt>
 <dd><p>the raster annotation image to overlaps, this parameter works when
  the <strong>`pixel_render`</strong> is set to value TRUE.</p></dd>
+
+
+<dt>clamp</dt>
+<dd><p>the custom intensity range for make ion layer ms-imaging intensity clamp operation.
+ value of this parameter should be a numeric vector with [min,max] of the intensity range
+ for make numeric value clamp before the heatmap rendering.</p></dd>
 
 
 <dt>env</dt>

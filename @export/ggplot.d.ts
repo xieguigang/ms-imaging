@@ -107,11 +107,16 @@ declare namespace ggplot {
      *  the **`pixel_render`** is set to value TRUE.
      * 
      * + default value Is ``null``.
+     * @param clamp the custom intensity range for make ion layer ms-imaging intensity clamp operation.
+     *  value of this parameter should be a numeric vector with [min,max] of the intensity range
+     *  for make numeric value clamp before the heatmap rendering.
+     * 
+     * + default value Is ``null``.
      * @param env -
      * 
      * + default value Is ``null``.
    */
-   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, raster?: any, env?: object): object|object;
+   function geom_msimaging(mz: number, tolerance?: any, pixel_render?: boolean, TrIQ?: number, color?: any, knnFill?: boolean, colorLevels?: object, raster?: any, clamp?: any, env?: object): object|object;
    /**
     * Draw ruler overlaps of the ms-imaging
     * 

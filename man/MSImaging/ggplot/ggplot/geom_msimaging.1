@@ -11,6 +11,7 @@ geom_msimaging \- Do ms-imaging based on a set of given metabolite ions m/z
 \fBknnFill\fR as boolean = TRUE, 
 \fBcolorLevels\fR as integer = 120, 
 \fBraster\fR as any = \fB<NULL>\fR, 
+\fBclamp\fR as any = \fB<NULL>\fR, 
 [\fB<Environment>\fR]);\fR
 .SH DESCRIPTION
 .PP
@@ -47,6 +48,13 @@ Do ms-imaging based on a set of given metabolite ions m/z
 \fBraster\fB \fR\- 
  the raster annotation image to overlaps, this parameter works when
  the **`pixel_render`** is set to value TRUE.
+. 
+.PP
+.PP
+\fBclamp\fB \fR\- 
+ the custom intensity range for make ion layer ms-imaging intensity clamp operation.
+ value of this parameter should be a numeric vector with [min,max] of the intensity range
+ for make numeric value clamp before the heatmap rendering.
 . 
 .PP
 .PP
