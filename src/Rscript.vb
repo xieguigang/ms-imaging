@@ -443,6 +443,11 @@ Public Module Rscript
     ''' the raster annotation image to overlaps, this parameter works when
     ''' the <paramref name="pixel_render"/> is set to value TRUE.
     ''' </param>
+    ''' <param name="clamp">
+    ''' the custom intensity range for make ion layer ms-imaging intensity clamp operation.
+    ''' value of this parameter should be a numeric vector with [min,max] of the intensity range
+    ''' for make numeric value clamp before the heatmap rendering.
+    ''' </param>
     ''' <param name="env"></param>
     ''' <returns></returns>
     <ExportAPI("geom_msimaging")>
@@ -456,6 +461,8 @@ Public Module Rscript
                                    Optional knnFill As Boolean = True,
                                    Optional colorLevels As Integer = 120,
                                    Optional raster As Object = Nothing,
+                                   <RRawVectorArgument>
+                                   Optional clamp As Object = Nothing,
                                    Optional env As Environment = Nothing) As Object
 
         Dim mzdiff = Math.getTolerance(tolerance, env)
@@ -489,7 +496,8 @@ Public Module Rscript
             .colorMap = colors,
             .colorLevels = colorLevels,
             .alpha = 1,
-            .raster = rasterLayer
+            .raster = rasterLayer,
+            .IntensityRange = CLRVector.asNumeric(clamp)
         }
     End Function
 
