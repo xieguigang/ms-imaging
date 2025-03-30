@@ -74,20 +74,11 @@ Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports any = Microsoft.VisualBasic.Scripting
+Imports HeatMapParameters = Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.HeatMapParameters
 
 #If NET48 Then
 #Else
-Imports Pen = Microsoft.VisualBasic.Imaging.Pen
-Imports Pens = Microsoft.VisualBasic.Imaging.Pens
-Imports Brush = Microsoft.VisualBasic.Imaging.Brush
-Imports Font = Microsoft.VisualBasic.Imaging.Font
-Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
-Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
-Imports DashStyle = Microsoft.VisualBasic.Imaging.DashStyle
-Imports Image = Microsoft.VisualBasic.Imaging.Image
 Imports Bitmap = Microsoft.VisualBasic.Imaging.Bitmap
-Imports GraphicsPath = Microsoft.VisualBasic.Imaging.GraphicsPath
-Imports FontStyle = Microsoft.VisualBasic.Imaging.FontStyle
 #End If
 
 Namespace layers
@@ -109,8 +100,8 @@ Namespace layers
                 .Where(Function(p) p.totalIon > 0) _
                 .Select(Function(p)
                             Return New PixelData With {
-                                .x = p.x,
-                                .y = p.y,
+                                .X = p.x,
+                                .Y = p.y,
                                 .intensity = p.totalIon
                             }
                         End Function) _
@@ -127,12 +118,11 @@ Namespace layers
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim black = DirectCast(DriverLoad.CreateGraphicsDevice(reader.dimension.Scale(2), Color.Black), GdiRasterGraphics).ImageResource
+            Dim heatmap As New HeatMapParameters(colorSet, 100, defaultFill:="black")
             Dim TIC As Bitmap = New RectangleRender(Drivers.GDI, False).RenderPixels(
                 pixels:=pixels,
                 dimension:=ggplot.GetDimensionSize(reader.dimension),
-                colorSet:=colorSet,
-                mapLevels:=250,
-                defaultFill:="black"
+                heatmap:=heatmap
             ).AsGDIImage _
              .DoCall(Function(img) New Bitmap(img))
 

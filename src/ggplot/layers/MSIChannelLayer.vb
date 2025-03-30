@@ -78,6 +78,8 @@ Imports Microsoft.VisualBasic.Imaging
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
+
 
 
 
@@ -169,7 +171,8 @@ Namespace layers
                 Case "#0000ff"            ' blue
                     MSI = engine.ChannelCompositions({}, {}, ion.MSILayer, dims, background:="transparent").AsGDIImage
                 Case Else
-                    MSI = engine.RenderPixels(ion.MSILayer, dims, colorSet:=colorSet).AsGDIImage
+                    Dim heatmap As New HeatMapParameters(colorSet)
+                    MSI = engine.RenderPixels(ion.MSILayer, dims, heatmap).AsGDIImage
             End Select
 
             Call stream.g.DrawImage(ScaleImageImpls(MSI, stream), rect)

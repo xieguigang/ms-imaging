@@ -75,6 +75,7 @@ Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
+Imports HeatMapParameters = Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.HeatMapParameters
 
 #If NET48 Then
 #Else
@@ -140,12 +141,13 @@ Namespace layers
                 colorLevels = 30
             End If
 
+            Dim heatmap As New HeatMapParameters(colorSet, colorLevels,
+                defaultFill:=If(raster IsNot Nothing, "transparent", ggplot.ggplotTheme.gridFill))
+
             Return engine.RenderPixels(
                 pixels:=ion.MSILayer,
                 dimension:=dimension_size,
-                colorSet:=colorSet,
-                defaultFill:=If(raster IsNot Nothing, "transparent", ggplot.ggplotTheme.gridFill),
-                mapLevels:=colorLevels
+                heatmap:=heatmap
             ).AsGDIImage
         End Function
 
