@@ -142,7 +142,9 @@ Namespace layers
             End If
 
             Dim heatmap As New HeatMapParameters(colorSet, colorLevels,
-                defaultFill:=If(raster IsNot Nothing, "transparent", ggplot.ggplotTheme.gridFill))
+                defaultFill:=If(raster IsNot Nothing, "transparent", ggplot.ggplotTheme.gridFill)) With {
+                    .ValueRange = IntensityRange
+            }
 
             Return engine.RenderPixels(
                 pixels:=ion.MSILayer,
