@@ -215,7 +215,7 @@ Namespace layers
         Private Function ScalerLegend(mz As Double(), rawInto As Double(), stream As ggplotPipeline, colorSet As String, colorLevels As Integer) As legendColorMapElement
             Dim theme As Theme = stream.theme
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
-            Dim ticks As Double() = rawInto.Range.CreateAxisTicks
+            Dim ticks As Double() = rawInto.JoinIterates(IntensityRange).Range.CreateAxisTicks
             Dim rect As Rectangle = stream.canvas.PlotRegion(css)
             Dim padding As New PaddingLayout(stream.canvas.Padding.LayoutVector(css))
 
