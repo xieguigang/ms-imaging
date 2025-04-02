@@ -247,10 +247,13 @@ declare namespace ggplot {
      * @param levels the color scaler levels
      * 
      * + default value Is ``255``.
+     * @param filters the raster filter object, data type could be @``T:BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler.RasterPipeline`` or the ggplot wrapper of the pipeline: @``T:ggplotMSImaging.MSIFilterPipelineOption``.
+     * 
+     * + default value Is ``null``.
      * @param env -
      * 
      * + default value Is ``null``.
      * @return a gdi+ raster image
    */
-   function raster_blending(pixels: object, dims: any, scale?: string, levels?: object, env?: object): object;
+   function raster_blending(pixels: object, dims: any, scale?: string, levels?: object, filters?: any, env?: object): object;
 }

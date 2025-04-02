@@ -7,6 +7,7 @@ raster_blending \- rendering a gdi+ heatmap for create raster annotation in ggpl
 \fBdims\fR as any, 
 \fBscale\fR as string = "gray", 
 \fBlevels\fR as integer = 255, 
+\fBfilters\fR as any = \fB<NULL>\fR, 
 [\fB<Environment>\fR]);\fR
 .SH DESCRIPTION
 .PP
@@ -24,6 +25,11 @@ rendering a gdi+ heatmap for create raster annotation in ggplot layer
 .PP
 .PP
 \fBlevels\fB \fR\- the color scaler levels. 
+.PP
+.PP
+\fBfilters\fB \fR\- 
+ the raster filter object, data type could be @\fBT:BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler.RasterPipeline\fR or the ggplot wrapper of the pipeline: @\fBT:ggplotMSImaging.MSIFilterPipelineOption\fR.
+. 
 .PP
 .PP
 \fBenv\fB \fR\- -. 
