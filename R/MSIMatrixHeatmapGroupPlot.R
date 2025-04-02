@@ -1,17 +1,62 @@
-#' Plot MS-Imaging heatmap matrix
+#' Plot MS-Imaging Heatmap Matrix in Grid Layout
 #' 
-#' @param ions_data a list of MSI layers data, each 
-#'    element in this list should also be a list 
-#'    object that contains data slots:
-#'     
-#'       1. type  precursor type information string
-#'       2. title   the ion metabolite name
-#'       3. layer   the MSI ion layer data
-#'       4. mz      the target ion m/z value
+#' Generates a matrix of mass spectrometry imaging (MSI) heatmaps in grid layout 
+#' with intensity filtering, spatial smoothing, and formatted metabolite labels.
+#' Supports custom color schemes, layout configurations, and intensity filters.
+#'
+#' @param ions_data A list of MSI layer data. Each element must be a list containing:
+#'    \itemize{
+#'      \item{type: Character string specifying precursor type (e.g., "[M+H]+")}
+#'      \item{title: Character string of metabolite/ion name for labeling}
+#'      \item{layer: Matrix or raster object containing spatial intensity data}
+#'      \item{mz: Numeric m/z value of target ion (used in label generation)}
+#'    }
+#' @param filters Optional custom intensity filter(s) for raster data preprocessing. 
+#'    If NULL (default), applies Top x% Intensity Quantile (TrIQ) filtering via `MSI_TrIQ`.
+#' @param layout Integer vector of length 2 specifying grid dimensions [rows, columns]. 
+#'    Default: [3,3].
+#' @param colorSet Character specifying color palette name (e.g., "Jet", "viridis"). 
+#'    Default: "Jet".
+#' @param MSI_TrIQ Numeric [0-1] specifying Top x% Intensity Quantile threshold for 
+#'    default intensity filtering. Values > threshold are clipped. Default: 0.8.
+#' @param gaussian Numeric specifying Gaussian blur radius (in pixels) for spatial 
+#'    smoothing. Set to 0 to disable. Default: 3.
+#' @param size Integer vector of length 2 specifying canvas dimensions [width, height] 
+#'    in pixels. Default: [2700, 2000].
+#' @param canvasPadding Integer vector of length 4 specifying canvas margins 
+#'    [top, right, bottom, left] in pixels. Default: [50, 300, 50, 50].
+#' @param cellPadding Integer vector of length 4 specifying grid cell margins 
+#'    [top, right, bottom, left] in pixels. Default: [200, 100, 0, 100].
+#' @param font_size Numeric specifying base font size for labels. Default: 27.
+#' @param strict Logical. If TRUE, enforces dimension consistency checks. Default: TRUE.
+#' @param msi_dimension Optional integer vector of length 2 specifying output dimensions 
+#'    [width, height] for rasterization. If NULL, uses native data dimensions.
+#'
+#' @return Invisibly returns NULL. Generates a composite plot in the active graphics device
+#'    containing:
+#'    \itemize{
+#'      \item{Grid of MSI heatmaps with Gaussian smoothing}
+#'      \item{Color legend using specified palette}
+#'      \item{Metabolite labels with split formatting (name, precursor type, m/z)}
+#'    }
+#'
+#' @details 
+#' Key processing steps:
+#' \enumerate{
+#'   \item Applies intensity filtering (default or custom) to all ion layers
+#'   \item Generates grid layout with specified cell/canvas padding
+#'   \item Renders color legend using selected palette
+#'   \item Draws each ion heatmap with optional Gaussian smoothing
+#'   \item Adds formatted multi-line labels below each heatmap:
+#'      \itemize{
+#'        \item{Line 1: Metabolite name (auto-wrapped at 32 characters)}
+#'        \item{Line 2: Precursor type (from `type` slot)}
+#'        \item{Line 3: m/z value formatted to 3 decimal places}
+#'      }
+#' }
 #' 
-#' @param filters the custom raster data filter apply for spatial 
-#'    heatmap rendering
-#' 
+#' @seealso \code{\link{rasterHeatmap}}, \code{\link{layout.grid}}, \code{\link{colorMap.legend}}
+#' @export
 const PlotMSIMatrixHeatmap = function(ions_data, 
                                       layout        = [3,3],
                                       colorSet      = "Jet",
