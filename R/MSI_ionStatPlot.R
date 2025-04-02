@@ -1,48 +1,73 @@
 imports "ggspatial" from "MSImaging";
 
-#' Stat plot combine with the MS-imaging
-#' 
-#' @param mzpack a mzpack data object used for do MS-imaging 
-#'    or other data object that contains the ms-imaging layer 
-#'    data and could be recognized by the ggplot ms-imaging
-#'    function.
-#' @param ionName the display title string. the ion m/z value 
-#'    will be used if this parameter leaves default NULL.
-#' @param mz the target ion m/z value.
-#' @param met should be a list data object that contains the
-#'    sample data, which this list the key names is the sample 
-#'    id set and the corresponding element value is the sample 
-#'    intensity value.
-#' @param sampleinfo a data list set which could be used for 
-#'    defined the sample group information and the plot color 
-#'    value. this list data should be contains at least 3 
-#'    required data fields:
+#' Combined Statistical Plot and Mass Spectrometry Imaging Visualization
 #'
-#'       1. group: the sample group name, used for display as 
-#'          the title label of each group data
-#'       2. id: a character vector that contains the necessary
-#'          sample id reference to get the required sample data
-#'          for each data group
-#'       3. color: a single character string value in html color
-#'          format for specific the color of the bar/box/violin
-#'          stat plot.
+#' Generates a composite visualization combining statistical charts (e.g., bar/box/violin plots) 
+#' with mass spectrometry imaging (MSI) data. Outputs to specified PNG file with customizable layout.
+#'
+#' @param mzpack An mzpack object containing MS imaging data and layer information. Must be 
+#'               compatible with ggplot MS imaging functions.
+#' @param mz Target ion mass-to-charge ratio (m/z) value for imaging.
+#' @param met List containing sample intensity data. List keys should be sample IDs with 
+#'            corresponding intensity values.
+#' @param sampleinfo Metadata list defining sample groups and visualization properties. Requires:
+#'    \itemize{
+#'      \item \code{group}: Character vector of group names (plot titles)
+#'      \item \code{id}: Character vector of sample IDs corresponding to \code{met} keys
+#'      \item \code{color}: HTML color codes for each group's statistical plot elements
+#'    }
+#' @param savePng Output file path for PNG image. Default: "./Rplot.png".
+#' @param ionName Display title for the ion. Uses m/z value when \code{NULL} (default).
+#' @param size Image dimensions in pixels [width, height]. Default: \code{c(2400, 1000)}.
+#' @param colorMap Named list mapping group names to custom colors (overrides \code{sampleinfo$color}).
+#' @param MSI_colorset Color palette for MS imaging. Default: "viridis:turbo".
+#' @param ggStatPlot Statistical plot geometry function. Default: bar plot (\code{geom_barplot}).
+#' @param padding_top Top padding in pixels. Default: 150.
+#' @param padding_right Right padding in pixels. Default: 200.
+#' @param padding_bottom Bottom padding in pixels. Default: 150.
+#' @param padding_left Left padding in pixels. Default: 150.
+#' @param interval Spacing between statistical plot and MS image in pixels. Default: 50.
+#' @param combine_layout Layout ratio [stat_plot_width, msi_width]. Default: \code{c(4, 5)} 
+#'        (converted to 44.4% vs 55.6% of available width).
+#' @param jitter_size Point size for jittered data points. Default: 8.
+#' @param TrIQ Intensity quantile threshold (0-1) for MS image enhancement. Default: 0.65.
+#' @param backcolor Background color for MS imaging panel. Default: "black".
+#' @param regions Optional list with spatial coordinates to overlay on MS image:
+#'    \itemize{
+#'      \item \code{x}: X-coordinates vector
+#'      \item \code{y}: Y-coordinates vector
+#'      \item \code{colors}: Corresponding colors vector
+#'    }
+#'
+#' @details 
+#' The function performs three main operations:
+#' 1. Computes ANOVA group statistics using \code{ANOVAGroup()}
+#' 2. Creates a statistical plot (bar/box/violin) with significance annotations
+#' 3. Generates MS ion image with optional spatial region overlays
 #' 
-#' @param colorMap a list object that contains the color set value
-#'    that used for rendering the stat chartting, example as box/bar/violin.
-#'    this list data object the key names should be the sample group 
-#'    tag and the corresponding value must be the sample intensity 
-#'    data value.
-#' @param MSI_colorset the color map name for do MS-imaging 
-#'    rendering, default color scale name is ``viridis:turbo``.
-#' @param ggStatPlot default is bar plot.
-#' @param combine_layout the layout of the stat charting 
-#'   and the MS-imaging plot. a numeric vector that contains
-#'   two value element, first is the width percentage of the 
-#'   stats chart and the second one is the width percentage
-#'   of the single ion ms-imaging.
-#' @param savePng the filepath to save the image plot output.
-#' @param backcolor the background color of the MS-imaging plot
-#' 
+#' Plots are combined using a customizable split-layout system. Statistical tests include:
+#' - ANOVA global test (displayed in plot)
+#' - Pairwise t-tests against global mean (p-value symbols)
+#'
+#' @note Requires 'ggspatial' and 'MSImaging' packages. The \code{ANOVAGroup()} function 
+#'       must be available in the environment.
+#'
+#' @examples
+#' \dontrun{
+#' MSI_ionStatPlot(
+#'   mzpack = sample_data,
+#'   mz = 885.454,
+#'   met = intensity_list,
+#'   sampleinfo = list(
+#'     group = c("Control", "Treatment"),
+#'     id = c("S1", "S2"),
+#'     color = c("#FF0000", "#00FF00")
+#'   ),
+#'   savePng = "analysis_output.png",
+#'   combine_layout = c(3, 5)
+#' )
+#' }
+#' @export
 const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo, 
                                  savePng        = "./Rplot.png", 
                                  ionName        = NULL,
