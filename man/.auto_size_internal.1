@@ -1,4 +1,4 @@
-﻿.TH .AUTO_SIZE_INTERNAL 1 2025-Apr "internal" "Internal canvas dimension calculator Helper function that computes base canvas dimensions with padding and scaling."
+﻿.TH .AUTO_SIZE_INTERNAL 1 2025-Apr "" "Evaluate the canvas size"
 .SH NAME
 .auto_size_internal \- .auto_size_internal(dims, padding,
     <i>scale</i> = <span style='color: green;'>1</span>)
@@ -7,21 +7,21 @@
     <i>scale</i> = <span style='color: green;'>1</span>)\fR
 .SH OPTIONS
 .PP
-\fBdims\fB \fR\- . Original image dimensions (numeric vector [width, height])
+\fBdims\fB \fR\- . 
 .PP
 .PP
-\fBpadding\fB \fR\- . Numeric vector specifying padding [top, right, bottom, left]
+\fBpadding\fB \fR\- . 
 .PP
 .PP
-\fBscale\fB \fR\- 1. Numeric scaling factor for initial dimension adjustment
+\fBscale\fB \fR\- 1. 
 .PP
 .SH VALUE
 .PP
-Numeric vector [width, height] representing: (original dimensions * scale) + padding adjustments
+A size numeric vector with two elements: w,h
 .PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function..auto_size_internal at layout.R:line 99
+SMRUCC/R#.declare_function..auto_size_internal at layout.R:line 85
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2025
