@@ -1,16 +1,3 @@
-const default_intensity_filter = function(ion, MSI_TrIQ = 0.8) {
-    ion$layer = ion$layer |> knnFill() |> soften_scale();
-    ion$TrIQ  = TrIQ(ion$layer, q = MSI_TrIQ) * max(intensity(ion$layer));
-    ion$layer = intensityLimits(ion$layer, max = ion$TrIQ[2]);
-    ion;
-}
-
-const custom_intensity_filter = function(ion, filters, MSI_TrIQ = 0.8) {
-    ion$layer = apply_raster_filter(filters, ion$layer);
-    ion$TrIQ  = TrIQ(ion$layer, q = MSI_TrIQ) * max(intensity(ion$layer));
-    ion;
-}
-
 #' Plot MS-Imaging heatmap matrix
 #' 
 #' @param ions_data a list of MSI layers data, each 
