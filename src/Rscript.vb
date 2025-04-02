@@ -358,16 +358,20 @@ Public Module Rscript
     ''' <param name="dims">the spatial dimension size of the sample data</param>
     ''' <param name="scale">the color palette name</param>
     ''' <param name="levels">the color scaler levels</param>
+    ''' <param name="filters">
+    ''' the raster filter object, data type could be <see cref="RasterPipeline"/> or the ggplot wrapper of the pipeline: <see cref="MSIFilterPipelineOption"/>.
+    ''' </param>
     ''' <param name="env"></param>
     ''' <returns>
     ''' a gdi+ raster image
     ''' </returns>
     <ExportAPI("raster_blending")>
+    <RApiReturn(GetType(Bitmap))>
     Public Function raster_blending(pixels As PixelScanIntensity(), <RRawVectorArgument> dims As Object,
                                     Optional scale As String = "gray",
                                     Optional levels As Integer = 255,
-                                    Optional filters As RasterPipeline = Nothing,
-                                    Optional env As Environment = Nothing) As Bitmap
+                                    Optional filters As Object = Nothing,
+                                    Optional env As Environment = Nothing) As Object
 
         Dim dimSize = InteropArgumentHelper.getSize(dims, env, "0,0").SizeParser
 
@@ -376,10 +380,20 @@ Public Module Rscript
         End If
 
         If Not filters Is Nothing Then
-            pixels = filters _
-                .DoIntensityScale(pixels.CreatePixelData(Of PixelData), dimSize) _
-                .ExtractPixels _
-                .ToArray
+            If TypeOf filters Is MSIFilterPipelineOption Then
+                filters = DirectCast(filters, MSIFilterPipelineOption).pipeline
+            End If
+
+            If Not filters Is Nothing Then
+                If TypeOf filters Is RasterPipeline Then
+                    pixels = DirectCast(filters, RasterPipeline) _
+                        .DoIntensityScale(pixels.CreatePixelData(Of PixelData), dimSize) _
+                        .ExtractPixels _
+                        .ToArray
+                Else
+                    Return RInternal.debug.stop($"Invalid raster filter pipeline object of clr type: {filters.GetType.FullName}", env)
+                End If
+            End If
         End If
 
         Dim raster = Drawer.RenderSummaryLayer(
