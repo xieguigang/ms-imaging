@@ -1,29 +1,35 @@
 require(graphics2D);
 
-#' evaluate of the canvas size and padding
+#' Calculate recommended canvas size for MSImaging visualization
 #' 
-#' @param dims the dimension data of the MSImaging raw data. 
-#'     it should be a numeric vector with at least two element 
-#'     standards for ``[w, h]``; or a list object with at 
-#'     least two slot elements which are named ``w`` and ``h``.
-#' @param scale a numeric factor for describ the pixel scale 
-#'     size in MSImaging rendering process. default value is 1 
-#'     means no scale, just rendering of the origina size!
-#' @param padding  the padding element is a numeric vector with 
-#'     four elements standards for css padding value: 
-#'     ``[top, right, bottom, left]``. 
-#' @param is_multiple_combine_wide the function will trying to
-#'     make the aspect ratio equals to 1:1 if this parameter value
-#'     is set to false by default.
-#' @param ratio_scale the scale of the ratio value should not be 1,
-#'     due to the reason of ``1`` means no changes.
+#' Automatically evaluates appropriate canvas dimensions considering padding, scaling, 
+#' and aspect ratio adjustments for multi-sample imaging displays.
+#'
+#' @param dims The dimensions of MSImaging raw data. Can be either:
+#'     1. A numeric vector with at least two elements representing [width, height]
+#'     2. A list object containing at least two named elements "w" and "h".
+#' @param padding A numeric vector specifying CSS-style padding in the order: 
+#'     [top, right, bottom, left]. Defines empty space around the imaging data.
+#' @param scale Numeric scaling factor for pixel dimensions (default: 1). 
+#'     Values >1 enlarge, <1 shrink while maintaining original proportions.
+#' @param is_multiple_combine_wide Logical indicating if wide-format multi-sample 
+#'     layout should be prioritized (default: FALSE). When FALSE, attempts to 
+#'     maintain 1:1 aspect ratio by applying ratio scaling when needed.
+#' @param ratio_threshold Numeric threshold for aspect ratio adjustment 
+#'     (default: 1.25). Triggers dimension scaling when width/height ratio 
+#'     exceeds this value.
+#' @param ratio_scale Multiplicative factor (default: 1.5) applied to 
+#'     under-dimensioned axis when aspect ratio exceeds threshold.
+#'
+#' @return A list containing:
+#' \itemize{
+#'   \item size - Numeric vector [width, height] of recommended canvas dimensions
+#'   \item scale - Applied scaling factors (if any)
+#' }
 #' 
-#' @return this function returns a list object that contains 
-#'   the recommended size value for the MSImaging plot. the 
-#'   result value contains two slot elements: size element is 
-#'   a dimension vector with two elements standards for 
-#'   ``[w, h]``.
-#' 
+#' @examples
+#' # Basic usage
+#' autoSize(c(1024, 768), padding = c(20, 15, 20, 15))
 const autoSize = function(dims, padding,
                           scale = 1, 
                           is_multiple_combine_wide = FALSE, 
@@ -78,10 +84,18 @@ const autoSize = function(dims, padding,
     scale;
 }
 
-#' Evaluate the canvas size
+#' Internal canvas dimension calculator
 #' 
-#' @return A size numeric vector with two elements: w,h
+#' Helper function that computes base canvas dimensions with padding and scaling.
+#'
+#' @param dims Original image dimensions (numeric vector [width, height])
+#' @param padding Numeric vector specifying padding [top, right, bottom, left]
+#' @param scale Numeric scaling factor for initial dimension adjustment
+#'
+#' @return Numeric vector [width, height] representing:
+#'     (original dimensions * scale) + padding adjustments
 #' 
+#' @keywords internal
 const .auto_size_internal = function(dims, padding, scale = 1) {
     const vpad = padding[1] + padding[3];
     const hpad = padding[2] + padding[4]; 
