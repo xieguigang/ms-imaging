@@ -28,3 +28,28 @@
 const npixels = function(raw) {
 	length([raw]::MS);
 }
+
+#' Internal canvas dimension calculator
+#' 
+#' Helper function that computes base canvas dimensions with padding and scaling.
+#'
+#' @param dims Original image dimensions (numeric vector [width, height])
+#' @param padding Numeric vector specifying padding [top, right, bottom, left]
+#' @param scale Numeric scaling factor for initial dimension adjustment
+#'
+#' @return Numeric vector [width, height] representing:
+#'     (original dimensions * scale) + padding adjustments
+#' 
+#' @keywords internal
+const .auto_size_internal = function(dims, padding, scale = 1) {
+    const vpad = padding[1] + padding[3];
+    const hpad = padding[2] + padding[4]; 
+
+    dims = dims * scale;
+    dims = [
+        dims[1] + hpad, # width
+        dims[2] + vpad  # height
+    ];
+
+    dims;
+}
