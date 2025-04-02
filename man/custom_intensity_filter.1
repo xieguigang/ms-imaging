@@ -1,23 +1,35 @@
-﻿.TH CUSTOM_INTENSITY_FILTER 1 2025-Mar "" "custom_intensity_filter"
+﻿.TH CUSTOM_INTENSITY_FILTER 1 2025-Apr "" "Apply Custom Filter Sequence to MSI Ion Layer"
 .SH NAME
 custom_intensity_filter \- custom_intensity_filter(ion, filters,
     <i>MSI.TrIQ</i> = <span style='color: green;'>0.8</span>)
 .SH SYNOPSIS
 \fIcustom_intensity_filter(ion, filters,
     <i>MSI.TrIQ</i> = <span style='color: green;'>0.8</span>)\fR
+.SH DESCRIPTION
+.PP
+Processes an ion layer using user-defined raster filters followed by automatic intensity scaling through Trimmed Quantile Scaling (TrIQ).
+.PP
 .SH OPTIONS
 .PP
-\fBion\fB \fR\- . 
+\fBion\fB \fR\- . An `ion` object containing MSI data with `layer` raster data
 .PP
 .PP
-\fBfilters\fB \fR\- . 
+\fBfilters\fB \fR\- . List of raster filters to apply in sequence (function objects)
 .PP
 .PP
 \fBMSI.TrIQ\fB \fR\- 0.8. 
 .PP
+.SH VALUE
+.PP
+Modified `ion` object with filtered `layer` and updated `TrIQ` values
+.PP
+.SH DETAILS
+.PP
+Key features: - Allows custom filter sequences via \code{apply_raster_filter()} - Maintains automatic TrIQ scaling after custom filtering - Preserves original object structure while updating `layer` and `TrIQ`
+.PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function.custom_intensity_filter at MSIMatrixHeatmapGroupPlot.R:line 8
+SMRUCC/R#.declare_function.custom_intensity_filter at custom.R:line 70
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2025

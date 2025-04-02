@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>Plot MS-Imaging heatmap matrix</title>
+    <title>Plot MS-Imaging Heatmap Matrix in Grid Layout Generates a matrix of mass spectrometry imaging (MSI) heatmaps in grid layout with intensity filtering, spatial smoothing, and formatted metabolite labels. Supports custom color schemes, layout configurations, and intensity filters.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             </tr>
         </table>
 
-        <h2>Plot MS-Imaging heatmap matrix</h2>
+        <h2>Plot MS-Imaging Heatmap Matrix in Grid Layout Generates a matrix of mass spectrometry imaging (MSI) heatmaps in grid layout with intensity filtering, spatial smoothing, and formatted metabolite labels. Supports custom color schemes, layout configurations, and intensity filters.</h2>
 
         <h3>Description</h3>
 
@@ -46,18 +46,58 @@
         <table>
             
 <dt>ions.data</dt>
-<dd><p><p>a list of MSI layers data, each element in this list should also be a list object that contains data slots: 1. type  precursor type information string 2. title   the ion metabolite name 3. layer   the MSI ion layer data 4. mz      the target ion m/z value</p></p></dd>
+<dd><p><p>A list of MSI layer data. Each element must be a list containing: \itemize{ \item{type: Character string specifying precursor type (e.g., "[M+H]+")} \item{title: Character string of metabolite/ion name for labeling} \item{layer: Matrix or raster object containing spatial intensity data} \item{mz: Numeric m/z value of target ion (used in label generation)} }</p></p></dd>
 
 
 <dt>filters</dt>
-<dd><p><p>the custom raster data filter apply for spatial heatmap rendering</p></p></dd>
+<dd><p><p>Optional custom intensity filter(s) for raster data preprocessing. If NULL (default), applies Top x% Intensity Quantile (TrIQ) filtering via `MSI_TrIQ`.</p></p></dd>
+
+
+<dt>layout</dt>
+<dd><p><p>Integer vector of length 2 specifying grid dimensions [rows, columns]. Default: [3,3].</p></p></dd>
+
+
+<dt>colorSet</dt>
+<dd><p><p>Character specifying color palette name (e.g., "Jet", "viridis"). Default: "Jet".</p></p></dd>
+
+
+<dt>MSI.TrIQ</dt>
+<dd><p><p>Numeric [0-1] specifying Top x% Intensity Quantile threshold for default intensity filtering. Values > threshold are clipped. Default: 0.8.</p></p></dd>
+
+
+<dt>gaussian</dt>
+<dd><p><p>Numeric specifying Gaussian blur radius (in pixels) for spatial smoothing. Set to 0 to disable. Default: 3.</p></p></dd>
+
+
+<dt>size</dt>
+<dd><p><p>Integer vector of length 2 specifying canvas dimensions [width, height] in pixels. Default: [2700, 2000].</p></p></dd>
+
+
+<dt>canvasPadding</dt>
+<dd><p><p>Integer vector of length 4 specifying canvas margins [top, right, bottom, left] in pixels. Default: [50, 300, 50, 50].</p></p></dd>
+
+
+<dt>cellPadding</dt>
+<dd><p><p>Integer vector of length 4 specifying grid cell margins [top, right, bottom, left] in pixels. Default: [200, 100, 0, 100].</p></p></dd>
+
+
+<dt>font.size</dt>
+<dd><p><p>Numeric specifying base font size for labels. Default: 27.</p></p></dd>
+
+
+<dt>strict</dt>
+<dd><p><p>Logical. If TRUE, enforces dimension consistency checks. Default: TRUE.</p></p></dd>
+
+
+<dt>msi.dimension</dt>
+<dd><p><p>Optional integer vector of length 2 specifying output dimensions [width, height] for rasterization. If NULL, uses native data dimensions.</p></p></dd>
 
         </table>
 
 
-        <h3 style="display: none;">Details</h3>
+        <h3 style="display: block;">Details</h3>
 
-        
+        <p>Key processing steps: \enumerate{ \item Applies intensity filtering (default or custom) to all ion layers \item Generates grid layout with specified cell/canvas padding \item Renders color legend using selected palette \item Draws each ion heatmap with optional Gaussian smoothing \item Adds formatted multi-line labels below each heatmap: \itemize{ \item{Line 1: Metabolite name (auto-wrapped at 32 characters)} \item{Line 2: Precursor type (from `type` slot)} \item{Line 3: m/z value formatted to 3 decimal places} } }</p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -65,7 +105,7 @@
 
         <h3>Value</h3>
 
-        This function has no value returns.
+        <p>Invisibly returns NULL. Generates a composite plot in the active graphics device containing: \itemize{ \item{Grid of MSI heatmaps with Gaussian smoothing} \item{Color legend using specified palette} \item{Metabolite labels with split formatting (name, precursor type, m/z)} }</p>
 
         <h3 style="display: none;">Examples</h3>
 
@@ -78,8 +118,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

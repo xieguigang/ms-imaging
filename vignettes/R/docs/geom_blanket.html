@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>geom_blanket</title>
+    <title>Create monochromatic overlay for MS imaging Generates a grayscale ggplot2 layer for mass spectrometry imaging (MSI) data, typically used as a background layer or for intensity normalization.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             </tr>
         </table>
 
-        <h2>geom_blanket</h2>
+        <h2>Create monochromatic overlay for MS imaging Generates a grayscale ggplot2 layer for mass spectrometry imaging (MSI) data, typically used as a background layer or for intensity normalization.</h2>
 
         <h3>Description</h3>
 
@@ -35,6 +35,13 @@
 
         <table>
             
+<dt>mz</dt>
+<dd><p><p>numeric. The target mass-to-charge ratio (m/z) value for ion detection.</p></p></dd>
+
+
+<dt>tolerance</dt>
+<dd><p><p>character or numeric. Mass accuracy tolerance. See geom_red() for format details.</p></p></dd>
+
         </table>
 
 
@@ -48,7 +55,7 @@
 
         <h3>Value</h3>
 
-        This function has no value returns.
+        <p>A ggplot2 layer object using "Greys" color palette with alpha channel (c8 = 200/255 transparency) suitable for creating intensity-normalized backgrounds or composite overlays.</p>
 
         <h3 style="display: none;">Examples</h3>
 
@@ -61,8 +68,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

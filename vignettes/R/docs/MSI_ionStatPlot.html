@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>Stat plot combine with the MS-imaging</title>
+    <title>Combined Statistical Plot and Mass Spectrometry Imaging Visualization Generates a composite visualization combining statistical charts (e.g., bar/box/violin plots) with mass spectrometry imaging (MSI) data. Outputs to specified PNG file with customizable layout.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             </tr>
         </table>
 
-        <h2>Stat plot combine with the MS-imaging</h2>
+        <h2>Combined Statistical Plot and Mass Spectrometry Imaging Visualization Generates a composite visualization combining statistical charts (e.g., bar/box/violin plots) with mass spectrometry imaging (MSI) data. Outputs to specified PNG file with customizable layout.</h2>
 
         <h3>Description</h3>
 
@@ -51,54 +51,90 @@
         <table>
             
 <dt>mzpack</dt>
-<dd><p><p>a mzpack data object used for do MS-imaging or other data object that contains the ms-imaging layer data and could be recognized by the ggplot ms-imaging function.</p></p></dd>
-
-
-<dt>ionName</dt>
-<dd><p><p>the display title string. the ion m/z value will be used if this parameter leaves default NULL.</p></p></dd>
+<dd><p><p>An mzpack object containing MS imaging data and layer information. Must be compatible with ggplot MS imaging functions.</p></p></dd>
 
 
 <dt>mz</dt>
-<dd><p><p>the target ion m/z value.</p></p></dd>
+<dd><p><p>Target ion mass-to-charge ratio (m/z) value for imaging.</p></p></dd>
 
 
 <dt>met</dt>
-<dd><p><p>should be a list data object that contains the sample data, which this list the key names is the sample id set and the corresponding element value is the sample intensity value.</p></p></dd>
+<dd><p><p>List containing sample intensity data. List keys should be sample IDs with corresponding intensity values.</p></p></dd>
 
 
 <dt>sampleinfo</dt>
-<dd><p><p>a data list set which could be used for defined the sample group information and the plot color value. this list data should be contains at least 3 required data fields: 1. group: the sample group name, used for display as the title label of each group data 2. id: a character vector that contains the necessary sample id reference to get the required sample data for each data group 3. color: a single character string value in html color format for specific the color of the bar/box/violin stat plot.</p></p></dd>
-
-
-<dt>colorMap</dt>
-<dd><p><p>a list object that contains the color set value that used for rendering the stat chartting, example as box/bar/violin. this list data object the key names should be the sample group tag and the corresponding value must be the sample intensity data value.</p></p></dd>
-
-
-<dt>MSI.colorset</dt>
-<dd><p><p>the color map name for do MS-imaging rendering, default color scale name is <code>viridis:turbo</code>.</p></p></dd>
-
-
-<dt>ggStatPlot</dt>
-<dd><p><p>default is bar plot.</p></p></dd>
-
-
-<dt>combine.layout</dt>
-<dd><p><p>the layout of the stat charting and the MS-imaging plot. a numeric vector that contains two value element, first is the width percentage of the stats chart and the second one is the width percentage of the single ion ms-imaging.</p></p></dd>
+<dd><p><p>Metadata list defining sample groups and visualization properties. Requires: \itemize{ \item \code{group}: Character vector of group names (plot titles) \item \code{id}: Character vector of sample IDs corresponding to \code{met} keys \item \code{color}: HTML color codes for each group's statistical plot elements }</p></p></dd>
 
 
 <dt>savePng</dt>
-<dd><p><p>the filepath to save the image plot output.</p></p></dd>
+<dd><p><p>Output file path for PNG image. Default: "./Rplot.png".</p></p></dd>
+
+
+<dt>ionName</dt>
+<dd><p><p>Display title for the ion. Uses m/z value when \code{NULL} (default).</p></p></dd>
+
+
+<dt>size</dt>
+<dd><p><p>Image dimensions in pixels [width, height]. Default: \code{c(2400, 1000)}.</p></p></dd>
+
+
+<dt>colorMap</dt>
+<dd><p><p>Named list mapping group names to custom colors (overrides \code{sampleinfo$color}).</p></p></dd>
+
+
+<dt>MSI.colorset</dt>
+<dd><p><p>Color palette for MS imaging. Default: "viridis:turbo".</p></p></dd>
+
+
+<dt>ggStatPlot</dt>
+<dd><p><p>Statistical plot geometry function. Default: bar plot (\code{geom_barplot}).</p></p></dd>
+
+
+<dt>padding.top</dt>
+<dd><p><p>Top padding in pixels. Default: 150.</p></p></dd>
+
+
+<dt>padding.right</dt>
+<dd><p><p>Right padding in pixels. Default: 200.</p></p></dd>
+
+
+<dt>padding.bottom</dt>
+<dd><p><p>Bottom padding in pixels. Default: 150.</p></p></dd>
+
+
+<dt>padding.left</dt>
+<dd><p><p>Left padding in pixels. Default: 150.</p></p></dd>
+
+
+<dt>interval</dt>
+<dd><p><p>Spacing between statistical plot and MS image in pixels. Default: 50.</p></p></dd>
+
+
+<dt>combine.layout</dt>
+<dd><p><p>Layout ratio [stat<em>plot</em>width, msi_width]. Default: \code{c(4, 5)} (converted to 44.4% vs 55.6% of available width).</p></p></dd>
+
+
+<dt>jitter.size</dt>
+<dd><p><p>Point size for jittered data points. Default: 8.</p></p></dd>
+
+
+<dt>TrIQ</dt>
+<dd><p><p>Intensity quantile threshold (0-1) for MS image enhancement. Default: 0.65.</p></p></dd>
 
 
 <dt>backcolor</dt>
-<dd><p><p>the background color of the MS-imaging plot</p></p></dd>
+<dd><p><p>Background color for MS imaging panel. Default: "black".</p></p></dd>
+
+
+<dt>regions</dt>
+<dd><p><p>Optional list with spatial coordinates to overlay on MS image: \itemize{ \item \code{x}: X-coordinates vector \item \code{y}: Y-coordinates vector \item \code{colors}: Corresponding colors vector }</p></p></dd>
 
         </table>
 
 
-        <h3 style="display: none;">Details</h3>
+        <h3 style="display: block;">Details</h3>
 
-        
+        <p>The function performs three main operations: 1. Computes ANOVA group statistics using \code{ANOVAGroup()} 2. Creates a statistical plot (bar/box/violin) with significance annotations 3. Generates MS ion image with optional spatial region overlays Plots are combined using a customizable split-layout system. Statistical tests include: - ANOVA global test (displayed in plot) - Pairwise t-tests against global mean (p-value symbols)</p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -119,8 +155,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

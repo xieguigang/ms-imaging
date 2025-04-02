@@ -1,4 +1,4 @@
-﻿.TH AUTOSIZE 1 2025-Mar "" "evaluate of the canvas size and padding"
+﻿.TH AUTOSIZE 1 2025-Apr "" "Calculate recommended canvas size for MSImaging visualization Automatically evaluates appropriate canvas dimensions considering padding, scaling, and aspect ratio adjustments for multi-sample imaging displays."
 .SH NAME
 autoSize \- autoSize(dims, padding,
     <i>scale</i> = <span style='color: green;'>1</span>,
@@ -13,13 +13,13 @@ autoSize \- autoSize(dims, padding,
     <i>ratio.scale</i> = <span style='color: green;'>1.5</span>)\fR
 .SH OPTIONS
 .PP
-\fBdims\fB \fR\- . the dimension data of the MSImaging raw data. it should be a numeric vector with at least two element standards for ``[w, h]``; or a list object with at least two slot elements which are named ``w`` and ``h``.
+\fBdims\fB \fR\- . The dimensions of MSImaging raw data. Can be either: 1. A numeric vector with at least two elements representing [width, height] 2. A list object containing at least two named elements "w" and "h".
 .PP
 .PP
-\fBpadding\fB \fR\- . the padding element is a numeric vector with four elements standards for css padding value: ``[top, right, bottom, left]``.
+\fBpadding\fB \fR\- . A numeric vector specifying CSS-style padding in the order: [top, right, bottom, left]. Defines empty space around the imaging data.
 .PP
 .PP
-\fBscale\fB \fR\- 1. a numeric factor for describ the pixel scale size in MSImaging rendering process. default value is 1 means no scale, just rendering of the origina size!
+\fBscale\fB \fR\- 1. Numeric scaling factor for pixel dimensions (default: 1). Values >1 enlarge, <1 shrink while maintaining original proportions.
 .PP
 .PP
 \fBis.multiple.combine.wide\fB \fR\- FALSE. 
@@ -32,11 +32,11 @@ autoSize \- autoSize(dims, padding,
 .PP
 .SH VALUE
 .PP
-this function returns a list object that contains the recommended size value for the MSImaging plot. the result value contains two slot elements: size element is a dimension vector with two elements standards for ``[w, h]``.
+A list containing: \itemize{ \item size - Numeric vector [width, height] of recommended canvas dimensions \item scale - Applied scaling factors (if any) }
 .PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function.autoSize at layout.R:line 27
+SMRUCC/R#.declare_function.autoSize at layout.R:line 33
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2025

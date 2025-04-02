@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>Evaluate the canvas size</title>
+    <title>Internal canvas dimension calculator Helper function that computes base canvas dimensions with padding and scaling.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             </tr>
         </table>
 
-        <h2>Evaluate the canvas size</h2>
+        <h2>Internal canvas dimension calculator Helper function that computes base canvas dimensions with padding and scaling.</h2>
 
         <h3>Description</h3>
 
@@ -35,6 +35,17 @@
 
         <table>
             
+<dt>dims</dt>
+<dd><p><p>Original image dimensions (numeric vector [width, height])</p></p></dd>
+
+
+<dt>padding</dt>
+<dd><p><p>Numeric vector specifying padding [top, right, bottom, left]</p></p></dd>
+
+
+<dt>scale</dt>
+<dd><p><p>Numeric scaling factor for initial dimension adjustment</p></p></dd>
+
         </table>
 
 
@@ -48,7 +59,7 @@
 
         <h3>Value</h3>
 
-        <p>A size numeric vector with two elements: w,h</p>
+        <p>Numeric vector [width, height] representing: (original dimensions * scale) + padding adjustments</p>
 
         <h3 style="display: none;">Examples</h3>
 
@@ -61,8 +72,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

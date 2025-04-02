@@ -1,38 +1,58 @@
 ﻿<head>
-<title>ggplot package for MS-Imaging</title>
+<title>Mass Spectrometry Imaging Data Processing and Visualization Toolkit</title>
 </head>
 <body>
-<h1>ggplot package for MS-Imaging</h1>
+<h1>Mass Spectrometry Imaging Data Processing and Visualization Toolkit</h1>
 <pre>Package: MSImaging
 Type: Package
-Title: ggplot package for MS-Imaging
+Title: Mass Spectrometry Imaging Data Processing and Visualization Toolkit
 Version: 0.1.0
 Author: xieguigang
 Maintainer: xieguigang &lt;gg.xie@bionovogene.com>
-Description: MS-imaging rendering package for R# environment 
-    based on the mzkit library and ggplot api.
+Description: Provides comprehensive pipelines for processing and visualizing mass
+    spectrometry imaging (MSI) data. Key features include:
+    - Intelligent intensity filtering (TrIQ scaling, kNN imputation, spatial smoothing)
+    - Multi-modal visualization (heatmap matrices, RGB channel overlays, spatial coordinates)
+    - Embedded statistical analysis integration (ANOVA group testing with imaging overlay)
+    - Customizable preprocessing pipelines with geometric filters
+    - Adaptive canvas sizing with CSS-style layout controls
+    Built on 'ggplot2' grammar for layered visualization and 'mzkit' for mass spec
+    data handling. Supports both exploratory analysis and publication-quality figure
+    generation for MSI workflows.
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 License: MIT
-</pre>
+URL: https://github.com/xieguigang/ms-imaging
+BugReports: https://github.com/xieguigang/ms-imaging/issues
+Depends: 
+    R (>= 4.0.0),
+    ggplot2,
+    mzkit
+Imports:
+    graphics2D,
+    stats,
+    utils
+Suggests:
+    knitr,
+    rmarkdown</pre>
 <br />
 <a href="./keywords.html">View package by keywords.</a>
 <h2>R Package Symbols</h2>
 <ul>
-<li><a href="./R/docs/default_MSIfilter.html">default_MSIfilter</a></li>
 <li><a href="./R/docs/autoSize.html">autoSize</a></li>
 <li><a href="./R/docs/.auto_size_internal.html">.auto_size_internal</a></li>
 <li><a href="./R/docs/geom_red.html">geom_red</a></li>
 <li><a href="./R/docs/geom_green.html">geom_green</a></li>
 <li><a href="./R/docs/geom_blue.html">geom_blue</a></li>
 <li><a href="./R/docs/geom_blanket.html">geom_blanket</a></li>
-<li><a href="./R/docs/default_intensity_filter.html">default_intensity_filter</a></li>
-<li><a href="./R/docs/custom_intensity_filter.html">custom_intensity_filter</a></li>
 <li><a href="./R/docs/PlotMSIMatrixHeatmap.html">PlotMSIMatrixHeatmap</a></li>
 <li><a href="./R/docs/MSI_ionStatPlot.html">MSI_ionStatPlot</a></li>
 <li><a href="./R/docs/npixels.html">npixels</a></li>
 <li><a href="./R/docs/.onLoad.html">.onLoad</a></li>
+<li><a href="./R/docs/default_intensity_filter.html">default_intensity_filter</a></li>
+<li><a href="./R/docs/custom_intensity_filter.html">custom_intensity_filter</a></li>
+<li><a href="./R/docs/default_MSIfilter.html">default_MSIfilter</a></li>
 </ul>
 <h2>Library: ggplot.dll</h2>
 <ul>

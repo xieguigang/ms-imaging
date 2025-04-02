@@ -1,20 +1,32 @@
-﻿.TH DEFAULT_INTENSITY_FILTER 1 2025-Mar "" "default_intensity_filter"
+﻿.TH DEFAULT_INTENSITY_FILTER 1 2025-Apr "" "Apply Default Intensity Filtering Pipeline to MSI Ion Layer"
 .SH NAME
 default_intensity_filter \- default_intensity_filter(ion,
     <i>MSI.TrIQ</i> = <span style='color: green;'>0.8</span>)
 .SH SYNOPSIS
 \fIdefault_intensity_filter(ion,
     <i>MSI.TrIQ</i> = <span style='color: green;'>0.8</span>)\fR
+.SH DESCRIPTION
+.PP
+Processes an ion layer through a predefined sequence of intensity correction steps including gap filling, spatial smoothing, and intensity range truncation using Trimmed Quantile Scaling (TrIQ).
+.PP
 .SH OPTIONS
 .PP
-\fBion\fB \fR\- . 
+\fBion\fB \fR\- . An `ion` object containing MSI data with at least a `layer` component (raster data) and `TrIQ` field for storing scaling factors.
 .PP
 .PP
 \fBMSI.TrIQ\fB \fR\- 0.8. 
 .PP
+.SH VALUE
+.PP
+Modified `ion` object with updated `layer` and `TrIQ` components.
+.PP
+.SH DETAILS
+.PP
+Processing workflow: 1. ​**kNN Imputation**: Fills missing values using \code{knnFill()} 2. ​**Spatial Smoothing**: Applies \code{soften_scale()} for edge-preserving smoothing 3. ​**TrIQ Scaling**: Calculates intensity thresholds with \code{TrIQ()} 4. ​**Intensity Truncation**: Limits layer values using \code{intensityLimits()} The modified `ion` object will contain: - Processed `layer` raster with adjusted intensities - Calculated `TrIQ` values stored in the object
+.PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function.default_intensity_filter at MSIMatrixHeatmapGroupPlot.R:line 1
+SMRUCC/R#.declare_function.default_intensity_filter at custom.R:line 36
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2025

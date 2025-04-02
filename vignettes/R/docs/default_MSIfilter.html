@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>optmise for single ion ms-imaging</title>
+    <title>Create Default Filter Pipeline for Single Ion Mass Spectrometry Imaging</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -18,11 +18,11 @@
             </tr>
         </table>
 
-        <h2>optmise for single ion ms-imaging</h2>
+        <h2>Create Default Filter Pipeline for Single Ion Mass Spectrometry Imaging</h2>
 
         <h3>Description</h3>
 
-        
+        <p>Generates a predefined pipeline of geometric filters optimized for preprocessing single ion mass spectrometry imaging (MSI) data. This pipeline combines multiple image enhancement steps in a recommended sequence.</p>
 
         <h3>Usage</h3>
 
@@ -37,9 +37,9 @@
         </table>
 
 
-        <h3 style="display: none;">Details</h3>
+        <h3 style="display: block;">Details</h3>
 
-        
+        <p>The filter pipeline is constructed using the following processing steps in sequence: \enumerate{ \item \code{denoise<em>scale()}: Applies initial noise reduction to raw MSI data \item \code{TrIQ</em>scale(0.99)}: Performs trimmed quantile scaling (top 1% truncated) \item \code{knn<em>scale()}: Executes k-nearest neighbors smoothing \item \code{soften</em>scale()}: Final edge-preserving image softening } The 'greater than' operator (>) is used to define processing order in this domain-specific language. Filters are applied from left to right.</p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -47,7 +47,7 @@
 
         <h3>Value</h3>
 
-        This function has no value returns.
+        <p>A filter pipeline object of class 'geometric_filters' containing the configured processing sequence. This object can be used with MSI processing functions that accept geometric filter pipelines.</p>
 
         <h3 style="display: none;">Examples</h3>
 
@@ -60,8 +60,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

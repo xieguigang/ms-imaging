@@ -1,4 +1,4 @@
-﻿.TH GEOM_BLUE 1 2025-Mar "" "Do MSI rendering for mz as blue layer"
+﻿.TH GEOM_BLUE 1 2025-Apr "" "Create blue channel MS imaging layer Generates a ggplot2 layer for mass spectrometry imaging (MSI) data visualization in blue color channel corresponding to specified m/z value."
 .SH NAME
 geom_blue \- geom_blue(mz,
     <i>tolerance</i> = 'getOption'('mzdiff', 'default' = 'da:0.3'))
@@ -7,18 +7,18 @@ geom_blue \- geom_blue(mz,
     <i>tolerance</i> = 'getOption'('mzdiff', 'default' = 'da:0.3'))\fR
 .SH OPTIONS
 .PP
-\fBmz\fB \fR\- . the m/z value of the target ion
+\fBmz\fB \fR\- . numeric. The target mass-to-charge ratio (m/z) value for ion detection.
 .PP
 .PP
-\fBtolerance\fB \fR\- 'getOption'('mzdiff', 'default' = 'da:0.3'). 
+\fBtolerance\fB \fR\- 'getOption'('mzdiff', 'default' = 'da:0.3'). character or numeric. Mass accuracy tolerance. See geom_red() for format details.
 .PP
 .SH VALUE
 .PP
-a ggplot layer object for do MS-imaging rendering.
+A ggplot2 layer object displaying ion distribution in blue color scale.
 .PP
 .SH FILES
 .PP
-SMRUCC/R#.declare_function.geom_blue at MSImaging.R:line 27
+SMRUCC/R#.declare_function.geom_blue at MSImaging.R:line 54
 .PP
 .SH COPYRIGHT
 Copyright © xieguigang, MIT Licensed 2025
