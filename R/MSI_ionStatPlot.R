@@ -84,7 +84,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  jitter_size    = 8, 
                                  TrIQ           = 0.65,
                                  backcolor      = "black", 
-                                 regions        = NULL) {
+                                 regions        = NULL, 
+                                 swap           = FALSE) {
 
     bitmap(file = savePng, size = size, fill = "white");
 
@@ -102,6 +103,14 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     let right = width * combine_layout[2];
     let layout_left = `padding: ${padding_top}px ${padding_right + right}px ${padding_bottom}px ${padding_left}px;`;
     let layout_right = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_right + left + interval}px;`;
+
+    if (swap) {
+        # swap of the plot layout
+        [layout_left, layout_right] = list(
+            layout_left  = layout_right, 
+            layout_right = layout_left 
+        );
+    }
 
     if (is.null(colorMap)) {
         colorMap = lapply(sampleinfo, i -> i$color);
