@@ -86,7 +86,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  backcolor      = "black", 
                                  regions        = NULL, 
                                  swap           = FALSE, 
-                                 title_fontsize = 36) {
+                                 title_fontsize = 36, 
+                                 show_legend    = TRUE) {
 
     bitmap(file = savePng, size = size, fill = "white");
 
@@ -168,7 +169,10 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     + labs(x = "Dimension(X)", y = "Dimension(Y)")
     + scale_x_continuous(labels = "F0")
     + scale_y_continuous(labels = "F0")
-    + theme(panel.grid = element_blank())
+    + theme(
+        panel.grid = element_blank(), 
+        legend.position = ifelse(show_legend, NULL, "none")
+    )
     ;
 
     plot(ggplot(padding = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_left}px;`) 

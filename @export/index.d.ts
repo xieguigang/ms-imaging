@@ -64,8 +64,10 @@ declare namespace MSImaging {
      * @param backcolor default value Is ``black``.
      * @param regions default value Is ``null``.
      * @param swap default value Is ``false``.
+     * @param title_fontsize default value Is ``36``.
+     * @param show_legend default value Is ``true``.
    */
-   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any, regions?: any, swap?: any): object;
+   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any, regions?: any, swap?: any, title_fontsize?: any, show_legend?: any): object;
    /**
    */
    function npixels(raw: any): object;
