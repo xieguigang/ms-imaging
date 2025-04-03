@@ -207,7 +207,7 @@ Namespace layers
 #End If
             Call stream.g.DrawImage(MSI, rect.X, rect.Y, rect.Width, rect.Height)
 
-            If mz.Length > 1 Then
+            If mz.Length > 1 OrElse Not theme.drawLegend Then
                 Return Nothing
             Else
                 Return ScalerLegend(mz, rawInto, stream, colorSet, colorLevels)

@@ -85,7 +85,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  TrIQ           = 0.65,
                                  backcolor      = "black", 
                                  regions        = NULL, 
-                                 swap           = FALSE) {
+                                 swap           = FALSE, 
+                                 title_fontsize = 36) {
 
     bitmap(file = savePng, size = size, fill = "white");
 
@@ -172,7 +173,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
 
     plot(ggplot(padding = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_left}px;`) 
         + ggtitle(ionName) 
-        + theme(plot.title = element_text(family = "Cambria Math", size = 32))
+        + theme(plot.title = element_text(family = "Cambria Math", size = title_fontsize))
     );
     plot(bar);
 
