@@ -16,7 +16,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>jitter.size</i> = <span style='color: green;'>8</span>,
     <i>TrIQ</i> = <span style='color: green;'>0.65</span>,
     <i>backcolor</i> = <span style='color: #000000;'><strong>'black'</strong></span>,
-    <i>regions</i> = <span style='color: blue !important;'>NULL</span>)
+    <i>regions</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>swap</i> = <span style='color: blue !important;'>FALSE</span>)
 .SH SYNOPSIS
 \fIMSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>savePng</i> = <span style='color: brown;'><strong>'./Rplot.png'</strong></span>,
@@ -34,7 +35,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>jitter.size</i> = <span style='color: green;'>8</span>,
     <i>TrIQ</i> = <span style='color: green;'>0.65</span>,
     <i>backcolor</i> = <span style='color: #000000;'><strong>'black'</strong></span>,
-    <i>regions</i> = <span style='color: blue !important;'>NULL</span>)\fR
+    <i>regions</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>swap</i> = <span style='color: blue !important;'>FALSE</span>)\fR
 .SH OPTIONS
 .PP
 \fBmzpack\fB \fR\- . An mzpack object containing MS imaging data and layer information. Must be compatible with ggplot MS imaging functions.
@@ -95,6 +97,9 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 .PP
 .PP
 \fBregions\fB \fR\- NULL. Optional list with spatial coordinates to overlay on MS image: \itemize{ \item \code{x}: X-coordinates vector \item \code{y}: Y-coordinates vector \item \code{colors}: Corresponding colors vector }
+.PP
+.PP
+\fBswap\fB \fR\- FALSE. 
 .PP
 .SH DETAILS
 .PP
