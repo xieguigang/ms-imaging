@@ -81,7 +81,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  padding_left   = 150,
                                  interval       = 50,
                                  combine_layout = [4, 5], 
-                                 jitter_size    = 8, 
+                                 jitter_size    = 2, 
                                  TrIQ           = 0.65,
                                  backcolor      = "black", 
                                  regions        = NULL, 
@@ -163,11 +163,16 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     }
 
     # chartting at left
-    let bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
-    # Add horizontal line at base mean 
-    + geom_hline(yintercept = mean(data$intensity), linetype="dash", line.width = 6, color = "red")
+    let bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left);
+
+    if (show_stats) {
+        # Add horizontal line at base mean 
+        bar <- bar + geom_hline(yintercept = mean(data$intensity), linetype="dash", line.width = 6, color = "red");
+    }
+    
+    bar <- bar 
     + ggStatPlot(colorMap)
-    + geom_jitter(width = 0.3, radius = jitter_size, color = colorMap, adjust = "darker")	
+    + geom_jitter(width = 0.2, radius = jitter_size, color = colorMap, adjust = "darker")	
     # + ggtitle(ionName)
     + ylab("intensity")
     + xlab("")
