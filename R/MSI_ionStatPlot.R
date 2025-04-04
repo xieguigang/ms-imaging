@@ -86,7 +86,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  backcolor      = "black", 
                                  regions        = NULL, 
                                  swap           = FALSE, 
-                                 title_fontsize = 36, 
+                                 title_fontsize = 40, 
                                  show_legend    = TRUE,
                                  show_grid      = TRUE,
                                  show_stats     = TRUE,
@@ -190,7 +190,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     
     bar <- bar + theme(
         axis.text.x      = element_text(angle = 45, family = "Cambria Math", size = 24), 
-        axis.text        = element_text(family = "Cambria Math", size = 24), 
+        axis.text        = element_text(family = "Cambria Math", size = title_fontsize * 0.6), 
+        axis.title       = element_text(family = "Cambria Math", size = title_fontsize * 0.8), 
         plot.title       = element_text(family = "Cambria Math", size = 16),
         panel.grid       = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank()),
         panel.grid_major = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank())
