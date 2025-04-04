@@ -19,7 +19,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>regions</i> = <span style='color: blue !important;'>NULL</span>,
     <i>swap</i> = <span style='color: blue !important;'>FALSE</span>,
     <i>title.fontsize</i> = <span style='color: green;'>36</span>,
-    <i>show.legend</i> = <span style='color: blue !important;'>TRUE</span>)
+    <i>show.legend</i> = <span style='color: blue !important;'>TRUE</span>,
+    <i>tic.outline</i> = <span style='color: blue !important;'>NULL</span>)
 .SH SYNOPSIS
 \fIMSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>savePng</i> = <span style='color: brown;'><strong>'./Rplot.png'</strong></span>,
@@ -40,7 +41,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>regions</i> = <span style='color: blue !important;'>NULL</span>,
     <i>swap</i> = <span style='color: blue !important;'>FALSE</span>,
     <i>title.fontsize</i> = <span style='color: green;'>36</span>,
-    <i>show.legend</i> = <span style='color: blue !important;'>TRUE</span>)\fR
+    <i>show.legend</i> = <span style='color: blue !important;'>TRUE</span>,
+    <i>tic.outline</i> = <span style='color: blue !important;'>NULL</span>)\fR
 .SH OPTIONS
 .PP
 \fBmzpack\fB \fR\- . An mzpack object containing MS imaging data and layer information. Must be compatible with ggplot MS imaging functions.
@@ -110,6 +112,9 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 .PP
 .PP
 \fBshow.legend\fB \fR\- TRUE. 
+.PP
+.PP
+\fBtic.outline\fB \fR\- NULL. 
 .PP
 .SH DETAILS
 .PP

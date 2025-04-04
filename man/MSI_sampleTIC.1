@@ -1,0 +1,29 @@
+﻿.TH MSI_SAMPLETIC 1 2025-Apr "" "Create raster image based on the total ions thumbnail of the sample rawdata file."
+.SH NAME
+MSI_sampleTIC \- MSI_sampleTIC(rawdata,
+    <i>dims</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>filters</i> = <span style='color: blue !important;'>NULL</span>)
+.SH SYNOPSIS
+\fIMSI_sampleTIC(rawdata,
+    <i>dims</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>filters</i> = <span style='color: blue !important;'>NULL</span>)\fR
+.SH OPTIONS
+.PP
+\fBrawdata\fB \fR\- . should be the mzkit mzpack data object
+.PP
+.PP
+\fBdims\fB \fR\- NULL. 
+.PP
+.PP
+\fBfilters\fB \fR\- NULL. the raster filters for the ms-imaging spatial pixels rawdata
+.PP
+.SH VALUE
+.PP
+a gdi+ raster image data object for make single ion ms-imaging rendering as background.
+.PP
+.SH FILES
+.PP
+SMRUCC/R#.declare_function.MSI_sampleTIC at SampleTIC.R:line 11
+.PP
+.SH COPYRIGHT
+Copyright © xieguigang, MIT Licensed 2025

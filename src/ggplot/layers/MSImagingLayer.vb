@@ -128,7 +128,7 @@ Namespace layers
 
             Dim engine As Renderer = If(pixelDrawer,
                 New PixelRender(heatmapRender:=False, overlaps:=raster),
-                New RectangleRender(Drivers.GDI, heatmapRender:=False)
+                New RectangleRender(Drivers.GDI, heatmapRender:=False, overlaps:=raster)
             )
             Dim dimension_size As Size = ggplot.GetDimensionSize(ion.DimensionSize)
 
