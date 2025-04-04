@@ -129,13 +129,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
 
     let width = size[1] - (padding_left + padding_right);
     # mzkit::ANOVAGroup
-    let data = {
-        if (show_stats) {
-            ANOVAGroup(met, sampleinfo);
-        } else {
-            NULL;
-        }
-    };
+    let data = ANOVAGroup(met, sampleinfo);
 
     ionName = ifelse(is.null(ionName), `M/Z: ${mz |> toString(format = "F3")}`, ionName);
     combine_layout = combine_layout / sum(combine_layout);   
@@ -153,6 +147,9 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         );
     }
 
+    print("previews of the ANOVA group data:");
+    print(data, max.print = 13);
+
     if (is.null(colorMap)) {
         colorMap = lapply(sampleinfo, i -> i$color);
     }
@@ -164,9 +161,6 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
             );
         }
     }
-
-    print("previews of the ANOVA group data:");
-    print(data, max.print = 13);
 
     # chartting at left
     let bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
