@@ -87,12 +87,26 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  regions        = NULL, 
                                  swap           = FALSE, 
                                  title_fontsize = 36, 
-                                 show_legend    = TRUE) {
+                                 show_legend    = TRUE,
+                                 tic_outline    = NULL) {
 
     bitmap(file = savePng, size = size, fill = "white");
 
     print("open the graphics device at location:");
     print(savePng);
+
+    if (is.logical(tic_outline)) {
+        if (tic_outline) {
+            # generates the raster image if parameter is logical TRUE
+            tic_outline <- MSI_sampleTIC(rawdata = mzpack, dims = NULL, filters = default_MSIfilter());
+        } else {
+            # set to nothing if the parameter is logcial FALSE
+            tic_outline <- NULL;
+        }
+    } else {
+        # is the raster image data object
+        # just do nothing
+    }
 
     # mzkit::ANOVAGroup
     let data = ANOVAGroup(met, sampleinfo);
@@ -160,7 +174,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         tolerance = mzkit::tolerance("da", 0.1),
         TrIQ      = TrIQ,
         knnFill   = TRUE,
-        color     = MSI_colorset
+        color     = MSI_colorset,
+        raster    = tic_outline
     )
     + geom_MSIbackground(backcolor)
     + default_MSIfilter()
