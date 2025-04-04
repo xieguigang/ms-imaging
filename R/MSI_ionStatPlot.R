@@ -92,6 +92,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  show_grid      = TRUE,
                                  show_stats     = TRUE,
                                  show_axis.msi  = TRUE,
+                                 show_title     = TRUE,
                                  tic_outline    = NULL) {
 
     bitmap(file = savePng, size = size, fill = "white");
@@ -228,11 +229,13 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     if (!show_axis.msi) {
         ion <- ion + theme_void();
     }
+    if (show_title) {
+        plot(ggplot(padding = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_left}px;`) 
+            + ggtitle(ionName) 
+            + theme(plot.title = element_text(family = font_family, size = title_fontsize, face = "bold"))
+        );
+    }
 
-    plot(ggplot(padding = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_left}px;`) 
-        + ggtitle(ionName) 
-        + theme(plot.title = element_text(family = font_family, size = title_fontsize, face = "bold"))
-    );
     plot(bar);
 
     if (is.null(regions)) {
