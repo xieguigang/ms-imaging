@@ -88,6 +88,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  swap           = FALSE, 
                                  title_fontsize = 36, 
                                  show_legend    = TRUE,
+                                 show_grid      = TRUE,
+                                 show_stats     = TRUE,
                                  tic_outline    = NULL) {
 
     bitmap(file = savePng, size = size, fill = "white");
@@ -106,6 +108,23 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     } else {
         # is the raster image data object
         # just do nothing
+    }
+
+    if ((length(sampleinfo) == 3) && all(["group", "id", "color"] in sampleinfo)) {
+        sampleinfo = sampleinfo |> groupBy("group");
+        sampleinfo = lapply(sampleinfo, function(group) {
+            if (is.data.frame(group)) {
+                list(group = unique(group$group),
+                    id = group$id,
+                    color = first(group$color)
+                );
+            } else {
+                list(group = unique(group@group),
+                    id = group@id,
+                    color = first(group@color)
+                );
+            }           
+        });
     }
 
     # mzkit::ANOVAGroup
@@ -148,7 +167,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     # Add horizontal line at base mean 
     + geom_hline(yintercept = mean(data$intensity), linetype="dash", line.width = 6, color = "red")
     + ggStatPlot(colorMap)
-    + geom_jitter(width = 0.3, radius = jitter_size, color = colorMap)	
+    + geom_jitter(width = 0.3, radius = jitter_size, color = colorMap, adjust = "darker")	
     # + ggtitle(ionName)
     + ylab("intensity")
     + xlab("")
@@ -160,8 +179,10 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     # + geom_signif(list(vs = tag))	
     # + stat_pvalue_manual(pvalue)
     + theme(
-        axis.text.x = element_text(angle = 45), 
-        plot.title  = element_text(family = "Cambria Math", size = 16)
+        axis.text.x      = element_text(angle = 45), 
+        plot.title       = element_text(family = "Cambria Math", size = 16),
+        panel.grid       = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank()),
+        panel.grid_major = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank())
     )
     ;
 
