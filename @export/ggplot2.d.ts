@@ -88,8 +88,10 @@ declare namespace ggplot2 {
     * means nothing
     * 
     * 
+     * @param text_blank 
+     * + default value Is ``false``.
    */
-   function element_blank(): object;
+   function element_blank(text_blank?: boolean): object;
    /**
     * Theme element: line.
     * 
