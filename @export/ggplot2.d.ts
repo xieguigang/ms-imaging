@@ -196,7 +196,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``false``.
    */
-   function element_text(family?: string, face?: string, size?: number, hjust?: number, vjust?: number, angle?: number, lineheight?: number, color?: string, margin?: number, debug?: boolean, inherit_blank?: boolean): object;
+   function element_text(family?: string, face?: object, size?: number, hjust?: number, vjust?: number, angle?: number, lineheight?: number, color?: string, margin?: number, debug?: boolean, inherit_blank?: boolean): object;
    /**
     * ### Bar charts
     *  

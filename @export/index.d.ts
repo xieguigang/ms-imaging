@@ -64,7 +64,7 @@ declare namespace MSImaging {
      * @param backcolor default value Is ``black``.
      * @param regions default value Is ``null``.
      * @param swap default value Is ``false``.
-     * @param title_fontsize default value Is ``36``.
+     * @param title_fontsize default value Is ``40``.
      * @param show_legend default value Is ``true``.
      * @param show_grid default value Is ``true``.
      * @param show_stats default value Is ``true``.
