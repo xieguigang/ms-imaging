@@ -1,3 +1,5 @@
+imports "MSI" from "mzkit";
+
 #' Create raster image based on the total ions thumbnail of the sample rawdata file.
 #' 
 #' @param rawdata should be the mzkit mzpack data object
