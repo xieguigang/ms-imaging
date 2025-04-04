@@ -81,7 +81,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  padding_left   = 150,
                                  interval       = 50,
                                  combine_layout = [4, 5], 
-                                 jitter_size    = 2, 
+                                 jitter_size    = 4, 
                                  TrIQ           = 0.65,
                                  backcolor      = "black", 
                                  regions        = NULL, 
@@ -180,7 +180,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     # + ggtitle(ionName)
     + ylab("intensity")
     + xlab("")
-    + scale_y_continuous(labels = intensity_format, n = 5)
+    + scale_y_continuous(labels = intensity_format, n = 3)
     ;
 
     if (show_stats) {
