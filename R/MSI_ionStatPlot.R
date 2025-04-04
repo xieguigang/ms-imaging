@@ -90,6 +90,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  show_legend    = TRUE,
                                  show_grid      = TRUE,
                                  show_stats     = TRUE,
+                                 show_axis.msi  = TRUE,
                                  tic_outline    = NULL) {
 
     bitmap(file = savePng, size = size, fill = "white");
@@ -190,8 +191,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     
     bar <- bar + theme(
         axis.text.x      = element_text(angle = 45, family = "Cambria Math", size = 24), 
-        axis.text        = element_text(family = "Cambria Math", size = title_fontsize * 0.6), 
-        axis.title       = element_text(family = "Cambria Math", size = title_fontsize * 0.8), 
+        axis.text        = element_text(family = "Cambria Math", size = title_fontsize * 0.8), 
+        axis.title       = element_text(family = "Cambria Math", size = title_fontsize * 0.85, face = "bold"), 
         plot.title       = element_text(family = "Cambria Math", size = 16),
         panel.grid       = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank()),
         panel.grid_major = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank())
@@ -199,7 +200,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     ;
 
     # ms-imaging at right
-    const ion = ggplot(mzpack, padding = layout_right)
+    let ion = ggplot(mzpack, padding = layout_right)
     # rendering of a single ion m/z
     # default color palette is Jet color set
     + geom_msimaging(
@@ -223,9 +224,13 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     )
     ;
 
+    if (!show_axis.msi) {
+        ion <- ion + theme_void();
+    }
+
     plot(ggplot(padding = `padding: ${padding_top}px ${padding_right}px ${padding_bottom}px ${padding_left}px;`) 
         + ggtitle(ionName) 
-        + theme(plot.title = element_text(family = "Cambria Math", size = title_fontsize))
+        + theme(plot.title = element_text(family = "Cambria Math", size = title_fontsize, face = "bold"))
     );
     plot(bar);
 
