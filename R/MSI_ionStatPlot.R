@@ -93,7 +93,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  show_stats     = TRUE,
                                  show_axis.msi  = TRUE,
                                  show_title     = TRUE,
-                                 tic_outline    = NULL) {
+                                 tic_outline    = NULL, 
+                                 intensity_format = "G2") {
 
     bitmap(file = savePng, size = size, fill = "white");
 
@@ -179,7 +180,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     # + ggtitle(ionName)
     + ylab("intensity")
     + xlab("")
-    + scale_y_continuous(labels = "G2", n = 5)
+    + scale_y_continuous(labels = intensity_format, n = 5)
     ;
 
     if (show_stats) {

@@ -25,7 +25,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>show.stats</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>show.axis.msi</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>show.title</i> = <span style='color: blue !important;'>TRUE</span>,
-    <i>tic.outline</i> = <span style='color: blue !important;'>NULL</span>)
+    <i>tic.outline</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>intensity.format</i> = <span style='color: brown;'><strong>'G2'</strong></span>)
 .SH SYNOPSIS
 \fIMSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>savePng</i> = <span style='color: brown;'><strong>'./Rplot.png'</strong></span>,
@@ -52,7 +53,8 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>show.stats</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>show.axis.msi</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>show.title</i> = <span style='color: blue !important;'>TRUE</span>,
-    <i>tic.outline</i> = <span style='color: blue !important;'>NULL</span>)\fR
+    <i>tic.outline</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>intensity.format</i> = <span style='color: brown;'><strong>'G2'</strong></span>)\fR
 .SH OPTIONS
 .PP
 \fBmzpack\fB \fR\- . An mzpack object containing MS imaging data and layer information. Must be compatible with ggplot MS imaging functions.
@@ -140,6 +142,9 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 .PP
 .PP
 \fBtic.outline\fB \fR\- NULL. 
+.PP
+.PP
+\fBintensity.format\fB \fR\- 'G2'. 
 .PP
 .SH DETAILS
 .PP
