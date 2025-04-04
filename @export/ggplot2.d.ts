@@ -453,9 +453,10 @@ declare namespace ggplot2 {
      * @param radius default value Is ``10``.
      * @param alpha default value Is ``0.85``.
      * @param color default value Is ``null``.
+     * @param adjust default value Is ``null``.
      * @param env default value Is ``null``.
    */
-   function geom_jitter(mapping?: object, data?: any, stat?: any, width?: number, radius?: number, alpha?: number, color?: object, env?: object): object;
+   function geom_jitter(mapping?: object, data?: any, stat?: any, width?: number, radius?: number, alpha?: number, color?: object, adjust?: object, env?: object): object;
    /**
     * ### Connect observations
     *  
