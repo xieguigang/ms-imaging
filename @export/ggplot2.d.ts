@@ -1086,14 +1086,18 @@ declare namespace ggplot2 {
      *  + waiver() for the default labels computed by the transformation object
      *  + A character vector giving labels (must be same length As breaks)
      *  + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+     *  + .NET number format string, example as: F2, G3
      * 
      * + default value Is ``null``.
      * @param limits 
      * + default value Is ``null``.
+     * @param n set number of the ticks on the x axis
+     * 
+     * + default value Is ``9``.
      * @param env 
      * + default value Is ``null``.
    */
-   function scale_x_continuous(labels?: string, limits?: number, env?: object): object;
+   function scale_x_continuous(labels?: string, limits?: number, n?: object, env?: object): object;
    /**
     * ### Position scales for continuous data (x & y)
     * 
@@ -1104,14 +1108,18 @@ declare namespace ggplot2 {
      *  + waiver() for the default labels computed by the transformation object
      *  + A character vector giving labels (must be same length As breaks)
      *  + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+     *  + .NET number format string, example as: F2, G3
      * 
      * + default value Is ``null``.
      * @param limits 
      * + default value Is ``null``.
+     * @param n set number of the ticks on the y axis
+     * 
+     * + default value Is ``9``.
      * @param env 
      * + default value Is ``null``.
    */
-   function scale_y_continuous(labels?: string, limits?: number, env?: object): object;
+   function scale_y_continuous(labels?: string, limits?: number, n?: object, env?: object): object;
    /**
     * ### Position scales for continuous data (x & y)
     * 

@@ -5,6 +5,7 @@ scale_x_continuous \- Position scales for continuous data (x & y)
 .SH SYNOPSIS
 \fIscale_x_continuous(\fBlabels\fR as string = \fB<NULL>\fR, 
 \fBlimits\fR as double = \fB<NULL>\fR, 
+\fBn\fR as integer = 9, 
 [\fB<Environment>\fR]);\fR
 .SH DESCRIPTION
 .PP
@@ -19,6 +20,12 @@ Position scales for continuous data (x & y)
  + waiver() for the default labels computed by the transformation object
  + A character vector giving labels (must be same length As breaks)
  + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+ + .NET number format string, example as: F2, G3
+. 
+.PP
+.PP
+\fBn\fB \fR\- 
+ set number of the ticks on the x axis
 . 
 .PP
 .SH SEE ALSO

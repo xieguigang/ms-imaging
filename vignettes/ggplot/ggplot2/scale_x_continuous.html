@@ -29,7 +29,8 @@
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>scale_x_continuous</strong>(
     <i>labels</i> = <span style='color: blue !important;'>NULL</span>,
-    <i>limits</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
+    <i>limits</i> = <span style='color: blue !important;'>NULL</span>,
+    <i>n</i> = <span style='color: green;'>9</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -42,7 +43,12 @@
  + <code>NULL</code> for no labels
  + waiver() for the default labels computed by the transformation object
  + A character vector giving labels (must be same length As breaks)
- + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation. [as string]</p></dd>
+ + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+ + .NET number format string, example as: F2, G3. [as string]</p></dd>
+
+
+<dt>n</dt>
+<dd><p>set number of the ticks on the x axis. [as integer]</p></dd>
 
         </table>
 

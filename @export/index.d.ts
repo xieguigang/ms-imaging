@@ -59,7 +59,7 @@ declare namespace MSImaging {
      * @param padding_left default value Is ``150``.
      * @param interval default value Is ``50``.
      * @param combine_layout default value Is ``[4, 5]``.
-     * @param jitter_size default value Is ``8``.
+     * @param jitter_size default value Is ``2``.
      * @param TrIQ default value Is ``0.65``.
      * @param backcolor default value Is ``black``.
      * @param regions default value Is ``null``.
