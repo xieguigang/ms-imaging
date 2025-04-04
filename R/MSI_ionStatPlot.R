@@ -178,7 +178,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     # + ggtitle(ionName)
     + ylab("intensity")
     + xlab("")
-    + scale_y_continuous(labels = "G2")
+    + scale_y_continuous(labels = "G2", n = 5)
     ;
 
     if (show_stats) {
