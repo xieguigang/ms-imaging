@@ -73,8 +73,9 @@ declare namespace MSImaging {
      * @param show_title default value Is ``true``.
      * @param tic_outline default value Is ``null``.
      * @param intensity_format default value Is ``G2``.
+     * @param intensity_axis default value Is ``true``.
    */
-   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any, regions?: any, swap?: any, title_fontsize?: any, font_family?: any, show_legend?: any, show_grid?: any, show_stats?: any, show_axis.msi?: any, show_title?: any, tic_outline?: any, intensity_format?: any): object;
+   function MSI_ionStatPlot(mzpack: any, mz: any, met: any, sampleinfo: any, savePng?: any, ionName?: any, size?: any, colorMap?: any, MSI_colorset?: any, ggStatPlot?: any, padding_top?: any, padding_right?: any, padding_bottom?: any, padding_left?: any, interval?: any, combine_layout?: any, jitter_size?: any, TrIQ?: any, backcolor?: any, regions?: any, swap?: any, title_fontsize?: any, font_family?: any, show_legend?: any, show_grid?: any, show_stats?: any, show_axis.msi?: any, show_title?: any, tic_outline?: any, intensity_format?: any, intensity_axis?: any): object;
    /**
      * @param dims default value Is ``null``.
      * @param filters default value Is ``null``.

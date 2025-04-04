@@ -94,7 +94,8 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  show_axis.msi  = TRUE,
                                  show_title     = TRUE,
                                  tic_outline    = NULL, 
-                                 intensity_format = "G2") {
+                                 intensity_format = "G2",
+                                 intensity_axis = TRUE) {
 
     bitmap(file = savePng, size = size, fill = "white");
 
@@ -178,7 +179,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     + ggStatPlot(colorMap)
     + geom_jitter(width = 0.2, radius = jitter_size, color = colorMap, adjust = "darker")	
     # + ggtitle(ionName)
-    + ylab("intensity")
+    + ifelse(intensity_axis, ylab("intensity"), ylab(""))
     + xlab("")
     + scale_y_continuous(labels = intensity_format, n = 3)
     ;
