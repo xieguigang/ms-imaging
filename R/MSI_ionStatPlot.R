@@ -127,9 +127,15 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
         });
     }
 
-    # mzkit::ANOVAGroup
-    let data = ANOVAGroup(met, sampleinfo);
     let width = size[1] - (padding_left + padding_right);
+    # mzkit::ANOVAGroup
+    let data = {
+        if (show_stats) {
+            ANOVAGroup(met, sampleinfo);
+        } else {
+            NULL;
+        }
+    };
 
     ionName = ifelse(is.null(ionName), `M/Z: ${mz |> toString(format = "F3")}`, ionName);
     combine_layout = combine_layout / sum(combine_layout);   
@@ -163,7 +169,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     print(data, max.print = 13);
 
     # chartting at left
-    const bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
+    let bar = ggplot(data, aes(x = "region_group", y = "intensity"), padding = layout_left)
     # Add horizontal line at base mean 
     + geom_hline(yintercept = mean(data$intensity), linetype="dash", line.width = 6, color = "red")
     + ggStatPlot(colorMap)
@@ -172,13 +178,18 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     + ylab("intensity")
     + xlab("")
     + scale_y_continuous(labels = "G2")
-    # Add global annova p-value 
-    + stat_compare_means(method = "anova", label.y = 1600) 
-    # Pairwise comparison against all
-    + stat_compare_means(label = "p.signif", method = "t.test", ref.group = ".all.", hide.ns = TRUE)
-    # + geom_signif(list(vs = tag))	
-    # + stat_pvalue_manual(pvalue)
-    + theme(
+    ;
+
+    if (show_stats) {
+        # Add global annova p-value 
+        bar <- bar + stat_compare_means(method = "anova", label.y = 1600) 
+                   # Pairwise comparison against all
+                   + stat_compare_means(label = "p.signif", method = "t.test", ref.group = ".all.", hide.ns = TRUE)
+                   # + geom_signif(list(vs = tag))	
+                   # + stat_pvalue_manual(pvalue)
+    }
+    
+    bar <- bar + theme(
         axis.text.x      = element_text(angle = 45), 
         plot.title       = element_text(family = "Cambria Math", size = 16),
         panel.grid       = ifelse(show_grid, "stroke: lightgray; stroke-width: 2px; stroke-dash: dash;", element_blank()),
