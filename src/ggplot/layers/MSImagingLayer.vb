@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4bd445771073234d5932925e18f3025d, Rscript\Library\MSI_app\src\ggplot\layers\MSImagingLayer.vb"
+﻿#Region "Microsoft.VisualBasic::4047a4bc542db7680cd52eacc51d3fdb, Rscript\Library\MSI_app\src\ggplot\layers\MSImagingLayer.vb"
 
     ' Author:
     ' 
@@ -37,20 +37,20 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 157
-    '    Code Lines: 127 (80.89%)
-    ' Comment Lines: 10 (6.37%)
-    '    - Xml Docs: 80.00%
+    '   Total Lines: 189
+    '    Code Lines: 142 (75.13%)
+    ' Comment Lines: 23 (12.17%)
+    '    - Xml Docs: 91.30%
     ' 
-    '   Blank Lines: 20 (12.74%)
-    '     File Size: 6.93 KB
+    '   Blank Lines: 24 (12.70%)
+    '     File Size: 8.30 KB
 
 
     '     Class MSImagingLayer
     ' 
-    '         Properties: raster, TrIQ
+    '         Properties: IntensityRange, raster, TrIQ
     ' 
-    '         Function: MSIHeatmapRender, Plot, ScalerLegend
+    '         Function: clamp, MSIHeatmapRender, Plot, ScalerLegend
     ' 
     ' 
     ' /********************************************************************************/

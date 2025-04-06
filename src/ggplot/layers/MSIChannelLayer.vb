@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::495ab71f306986e55a75b931ecaf2761, Rscript\Library\MSI_app\src\ggplot\layers\MSIChannelLayer.vb"
+﻿#Region "Microsoft.VisualBasic::bfb3a9c234f02e0761e100a1339ee511, Rscript\Library\MSI_app\src\ggplot\layers\MSIChannelLayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 124
-    '    Code Lines: 94 (75.81%)
-    ' Comment Lines: 12 (9.68%)
+    '   Total Lines: 127
+    '    Code Lines: 96 (75.59%)
+    ' Comment Lines: 12 (9.45%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 18 (14.52%)
-    '     File Size: 5.17 KB
+    '   Blank Lines: 19 (14.96%)
+    '     File Size: 5.29 KB
 
 
     '     Class MSIChannelLayer
