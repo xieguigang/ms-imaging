@@ -94,6 +94,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
                                  show_axis.msi  = TRUE,
                                  show_title     = TRUE,
                                  tic_outline    = NULL, 
+                                 plot_daErr     = 0.05,
                                  intensity_format = "G2",
                                  intensity_axis = TRUE) {
 
@@ -209,7 +210,7 @@ const MSI_ionStatPlot = function(mzpack, mz, met, sampleinfo,
     # default color palette is Jet color set
     + geom_msimaging(
         mz        = mz,
-        tolerance = mzkit::tolerance("da", 0.1),
+        tolerance = mzkit::tolerance("da", plot_daErr),
         TrIQ      = TrIQ,
         knnFill   = TRUE,
         color     = MSI_colorset,
