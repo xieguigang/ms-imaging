@@ -1,59 +1,59 @@
 ﻿#Region "Microsoft.VisualBasic::d8af09d9527f03a08978573f34b9072a, Rscript\Library\MSI_app\src\Rscript.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 735
-    '    Code Lines: 459 (62.45%)
-    ' Comment Lines: 206 (28.03%)
-    '    - Xml Docs: 94.66%
-    ' 
-    '   Blank Lines: 70 (9.52%)
-    '     File Size: 30.81 KB
+' Summaries:
 
 
-    ' Module Rscript
-    ' 
-    '     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_cmyk
-    '               geom_color, geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging
-    '               geom_MSIruler, geom_sample_outline, getChannel, hqx_opts, KnnFill
-    '               raster_blending, unionlayers
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 735
+'    Code Lines: 459 (62.45%)
+' Comment Lines: 206 (28.03%)
+'    - Xml Docs: 94.66%
+' 
+'   Blank Lines: 70 (9.52%)
+'     File Size: 30.81 KB
+
+
+' Module Rscript
+' 
+'     Function: ConfigMSIDimensionSize, CreateMSIheatmap, createPixelPack, gaussBlurOpt, geom_cmyk
+'               geom_color, geom_MSIbackground, geom_MSIfilters, geom_msiheatmap, geom_msimaging
+'               geom_MSIruler, geom_sample_outline, getChannel, hqx_opts, KnnFill
+'               raster_blending, unionlayers
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -704,6 +704,10 @@ Public Module Rscript
 
             If TypeOf eval Is Message Then
                 Return eval
+            ElseIf TypeOf eval Is RasterPipeline Then
+                Return New MSIFilterPipelineOption With {
+                    .pipeline = DirectCast(eval, RasterPipeline)
+                }
             End If
 
             Return New MSIFilterPipelineOption With {
@@ -720,6 +724,8 @@ Public Module Rscript
                 }
             End If
         ElseIf Not filters Is Nothing Then
+            ' symbol reference
+            ' other kind of expression
             Dim val As Object = DirectCast(filters, Expression).Evaluate(env)
 
             If Program.isException(val) Then
@@ -744,7 +750,9 @@ Public Module Rscript
                 Return buf.TryCast(Of Message)
             End If
 
-            Return New MSIFilterPipelineOption With {.pipeline = BuildFilters.FromFile(buf.TryCast(Of Stream))}
+            Return New MSIFilterPipelineOption With {
+                .pipeline = BuildFilters.FromFile(buf.TryCast(Of Stream))
+            }
         Else
             Return Message.InCompatibleType(GetType(BinaryExpression), filters.GetType, env)
         End If

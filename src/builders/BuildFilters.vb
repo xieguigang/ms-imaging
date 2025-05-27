@@ -81,10 +81,16 @@ Module BuildFilters
     Public Function FromArray(v As Array) As RasterPipeline
         Dim scales As New List(Of Scaler)
 
+        If v IsNot Nothing AndAlso v.Length = 1 Then
+            If TypeOf v(0) Is RasterPipeline Then
+                Return DirectCast(v(0), RasterPipeline)
+            End If
+        End If
+
         If REnv.isVector(Of String)(v) Then
-            scales.AddRange(CLRVector.asCharacter(v).Select(Function(si) Scaler.Parse(si)))
+            Call scales.AddRange(CLRVector.asCharacter(v).Select(Function(si) Scaler.Parse(si)))
         Else
-            scales.AddRange(DirectCast(REnv.asVector(Of Scaler)(v), Scaler()))
+            Call scales.AddRange(DirectCast(REnv.asVector(Of Scaler)(v), Scaler()))
         End If
 
         Dim pip As New RasterPipeline
