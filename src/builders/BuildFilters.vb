@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a36da386c4dc03f8ef82493e824dd4de, Rscript\Library\MSI_app\src\builders\BuildFilters.vb"
+﻿#Region "Microsoft.VisualBasic::9b6179196492c16e47b2f9d7e05eae81, Rscript\Library\MSI_app\src\builders\BuildFilters.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 48
-    '    Code Lines: 39 (81.25%)
+    '   Total Lines: 54
+    '    Code Lines: 44 (81.48%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (18.75%)
-    '     File Size: 1.63 KB
+    '   Blank Lines: 10 (18.52%)
+    '     File Size: 1.84 KB
 
 
     ' Module BuildFilters
