@@ -371,9 +371,11 @@ Public Module Rscript
                                     Optional scale As String = "gray",
                                     Optional levels As Integer = 255,
                                     Optional filters As Object = Nothing,
+                                    Optional backcolor As Object = "black",
                                     Optional env As Environment = Nothing) As Object
 
         Dim dimSize = InteropArgumentHelper.getSize(dims, env, "0,0").SizeParser
+        Dim background As Color = RColorPalette.GetRawColor(backcolor, [default]:="black")
 
         If dimSize.IsEmpty Then
             dimSize = New Polygon2D(pixels).GetSize
@@ -400,9 +402,10 @@ Public Module Rscript
             layer:=pixels,
             dimension:=dimSize,
             colorSet:=scale,
-            mapLevels:=levels
-        ).AsGDIImage
-        Dim scaleRaster As New RasterScaler(raster)
+            mapLevels:=levels,
+            background:=background.ToHtmlColor(allowTransparent:=True)
+        )
+        Dim scaleRaster As New RasterScaler(raster.AsGDIImage)
 
         Return scaleRaster.Scale(hqx:=hqx.HqxScales.Hqx_4x)
     End Function
