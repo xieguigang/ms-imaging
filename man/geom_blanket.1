@@ -1,4 +1,4 @@
-﻿.TH GEOM_BLANKET 1 2025-Jun "" "Create monochromatic overlay for MS imaging Generates a grayscale ggplot2 layer for mass spectrometry imaging (MSI) data, typically used as a background layer or for intensity normalization."
+﻿.TH GEOM_BLANKET 1 2025-Jun "" "Create monochromatic overlay for MS imaging"
 .SH NAME
 geom_blanket \- geom_blanket(mz,
     <i>tolerance</i> = 'getOption'('mzdiff', 'default' = 'da:0.3'))
@@ -15,6 +15,10 @@ geom_blanket \- geom_blanket(mz,
 .SH VALUE
 .PP
 A ggplot2 layer object using "Greys" color palette with alpha channel (c8 = 200/255 transparency) suitable for creating intensity-normalized backgrounds or composite overlays.
+.PP
+.SH EXAMPLES
+.PP
+\dontrun{ plot_base() + geom_blanket(1200.834) }
 .PP
 .SH FILES
 .PP

@@ -5,10 +5,6 @@ custom_intensity_filter \- custom_intensity_filter(ion, filters,
 .SH SYNOPSIS
 \fIcustom_intensity_filter(ion, filters,
     <i>MSI.TrIQ</i> = <span style='color: green;'>0.8</span>)\fR
-.SH DESCRIPTION
-.PP
-Processes an ion layer using user-defined raster filters followed by automatic intensity scaling through Trimmed Quantile Scaling (TrIQ).
-.PP
 .SH OPTIONS
 .PP
 \fBion\fB \fR\- . An `ion` object containing MSI data with `layer` raster data
@@ -27,6 +23,12 @@ Modified `ion` object with filtered `layer` and updated `TrIQ` values
 .PP
 Key features: - Allows custom filter sequences via \code{apply_raster_filter()} - Maintains automatic TrIQ scaling after custom filtering - Preserves original object structure while updating `layer` and `TrIQ`
 .PP
+.SH EXAMPLES
+.PP
+\dontrun{ custom_filters <- list(denoise_scale(), median_filter(3)) custom_ion <- custom_intensity_filter(sample_ion, custom_filters) }
+.PP
+.SH SEE ALSO
+\code{\link{default_intensity_filter}} for the predefined filtering sequence
 .SH FILES
 .PP
 SMRUCC/R#.declare_function.custom_intensity_filter at custom.R:line 70

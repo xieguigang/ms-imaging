@@ -1,4 +1,4 @@
-﻿.TH PLOTMSIMATRIXHEATMAP 1 2025-Jun "" "Plot MS-Imaging Heatmap Matrix in Grid Layout Generates a matrix of mass spectrometry imaging (MSI) heatmaps in grid layout with intensity filtering, spatial smoothing, and formatted metabolite labels. Supports custom color schemes, layout configurations, and intensity filters."
+﻿.TH PLOTMSIMATRIXHEATMAP 1 2025-Jun "" "Plot MS-Imaging Heatmap Matrix in Grid Layout"
 .SH NAME
 PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions.data,
     <i>layout</i> = [<span style='color: green;'>3</span>],
@@ -70,6 +70,8 @@ Invisibly returns NULL. Generates a composite plot in the active graphics device
 .PP
 Key processing steps: \enumerate{ \item Applies intensity filtering (default or custom) to all ion layers \item Generates grid layout with specified cell/canvas padding \item Renders color legend using selected palette \item Draws each ion heatmap with optional Gaussian smoothing \item Adds formatted multi-line labels below each heatmap: \itemize{ \item{Line 1: Metabolite name (auto-wrapped at 32 characters)} \item{Line 2: Precursor type (from `type` slot)} \item{Line 3: m/z value formatted to 3 decimal places} } }
 .PP
+.SH SEE ALSO
+\code{\link{rasterHeatmap}}, \code{\link{layout.grid}}, \code{\link{colorMap.legend}}
 .SH FILES
 .PP
 SMRUCC/R#.declare_function.PlotMSIMatrixHeatmap at MSIMatrixHeatmapGroupPlot.R:line 60

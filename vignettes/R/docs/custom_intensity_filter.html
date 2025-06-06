@@ -5,7 +5,7 @@
     <title>Apply Custom Filter Sequence to MSI Ion Layer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p>Processes an ion layer using user-defined raster filters followed by automatic intensity scaling through Trimmed Quantile Scaling (TrIQ).</p>
+        
 
         <h3>Usage</h3>
 
@@ -61,9 +61,9 @@
 
         <p>Modified `ion` object with filtered `layer` and updated `TrIQ` values</p>
 
-        <h3 style="display: none;">Examples</h3>
+        <h3 style="display: block;">Examples</h3>
 
-        
+        <pre><code id="example_r">\dontrun{ custom_filters <- list(denoise_scale(), median_filter(3)) custom_ion <- custom_intensity_filter(sample_ion, custom_filters) }</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a
@@ -72,8 +72,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

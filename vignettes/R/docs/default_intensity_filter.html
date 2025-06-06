@@ -5,7 +5,7 @@
     <title>Apply Default Intensity Filtering Pipeline to MSI Ion Layer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p>Processes an ion layer through a predefined sequence of intensity correction steps including gap filling, spatial smoothing, and intensity range truncation using Trimmed Quantile Scaling (TrIQ).</p>
+        
 
         <h3>Usage</h3>
 
@@ -57,9 +57,9 @@
 
         <p>Modified `ion` object with updated `layer` and `TrIQ` components.</p>
 
-        <h3 style="display: none;">Examples</h3>
+        <h3 style="display: block;">Examples</h3>
 
-        
+        <pre><code id="example_r">\dontrun{ processed_ion <- default_intensity_filter(sample_ion) plot_raster(processed_ion$layer) }</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a
@@ -68,8 +68,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

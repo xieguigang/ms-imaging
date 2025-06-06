@@ -1,4 +1,4 @@
-﻿.TH AUTOSIZE 1 2025-Jun "" "Calculate recommended canvas size for MSImaging visualization Automatically evaluates appropriate canvas dimensions considering padding, scaling, and aspect ratio adjustments for multi-sample imaging displays."
+﻿.TH AUTOSIZE 1 2025-Jun "" "Calculate recommended canvas size for MSImaging visualization"
 .SH NAME
 autoSize \- autoSize(dims, padding,
     <i>scale</i> = <span style='color: green;'>1</span>,
@@ -33,6 +33,10 @@ autoSize \- autoSize(dims, padding,
 .SH VALUE
 .PP
 A list containing: \itemize{ \item size - Numeric vector [width, height] of recommended canvas dimensions \item scale - Applied scaling factors (if any) }
+.PP
+.SH EXAMPLES
+.PP
+# Basic usage autoSize(c(1024, 768), padding = c(20, 15, 20, 15))
 .PP
 .SH FILES
 .PP

@@ -1,4 +1,4 @@
-﻿.TH MSI_IONSTATPLOT 1 2025-Jun "" "Combined Statistical Plot and Mass Spectrometry Imaging Visualization Generates a composite visualization combining statistical charts (e.g., bar/box/violin plots) with mass spectrometry imaging (MSI) data. Outputs to specified PNG file with customizable layout."
+﻿.TH MSI_IONSTATPLOT 1 2025-Jun "" "Combined Statistical Plot and Mass Spectrometry Imaging Visualization"
 .SH NAME
 MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>savePng</i> = <span style='color: brown;'><strong>'./Rplot.png'</strong></span>,
@@ -159,6 +159,10 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 .SH DETAILS
 .PP
 The function performs three main operations: 1. Computes ANOVA group statistics using \code{ANOVAGroup()} 2. Creates a statistical plot (bar/box/violin) with significance annotations 3. Generates MS ion image with optional spatial region overlays Plots are combined using a customizable split-layout system. Statistical tests include: - ANOVA global test (displayed in plot) - Pairwise t-tests against global mean (p-value symbols)
+.PP
+.SH EXAMPLES
+.PP
+\dontrun{ MSI_ionStatPlot( mzpack = sample_data, mz = 885.454, met = intensity_list, sampleinfo = list( group = c("Control", "Treatment"), id = c("S1", "S2"), color = c("#FF0000", "#00FF00") ), savePng = "analysis_output.png", combine_layout = c(3, 5) ) }
 .PP
 .SH FILES
 .PP

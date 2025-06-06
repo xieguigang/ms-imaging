@@ -5,7 +5,7 @@
     <title>Create Default Filter Pipeline for Single Ion Mass Spectrometry Imaging</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+    <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p>Generates a predefined pipeline of geometric filters optimized for preprocessing single ion mass spectrometry imaging (MSI) data. This pipeline combines multiple image enhancement steps in a recommended sequence.</p>
+        
 
         <h3>Usage</h3>
 
@@ -49,9 +49,9 @@
 
         <p>A filter pipeline object of class 'geometric_filters' containing the configured processing sequence. This object can be used with MSI processing functions that accept geometric filter pipelines.</p>
 
-        <h3 style="display: none;">Examples</h3>
+        <h3 style="display: block;">Examples</h3>
 
-        
+        <pre><code id="example_r">\dontrun{ # Get default filter pipeline my_filter <- default_MSIfilter() # Apply to MSI dataset processed_data <- process_msi(data = sample_image, filter = my_filter) }</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a
@@ -60,8 +60,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
-<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript" src="../../_assets/R_syntax.js"></script>
+<script type="text/javascript" src="../../_assets/highlights.js"></script>
 <script type="text/javascript">r_highlights("example_r");</script>
 
 </html>

@@ -1,4 +1,4 @@
-﻿.TH NPIXELS 1 2025-Jun "" "Count the number of MS1 scans as imaging pixels This function calculates the total number of MS1 scans in an mzpack object, which corresponds to the pixel dimensions in MS imaging spatial data. Each MS1 scan represents a spatial coordinate (pixel) in the 2D imaging plane."
+﻿.TH NPIXELS 1 2025-Jun "" "Count the number of MS1 scans as imaging pixels"
 .SH NAME
 npixels \- npixels(raw)
 .SH SYNOPSIS
@@ -14,6 +14,10 @@ An integer value representing the total number of pixels in the associated MS im
 .SH DETAILS
 .PP
 The function accesses the MS property of the mzpack object, which stores a list of MS scans, and returns the count of MS1-level scans. In MS imaging, each MS1 scan is spatially mapped to a specific (x,y) coordinate, forming the basis for intensity-based image reconstruction.
+.PP
+.SH EXAMPLES
+.PP
+\dontrun{ # Assuming 'mzpack_data' is a valid mzpack object pixel_count <- npixels(mzpack_data) cat("Total imaging pixels:", pixel_count) }
 .PP
 .SH FILES
 .PP
