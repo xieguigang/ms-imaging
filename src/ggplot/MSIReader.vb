@@ -85,6 +85,11 @@ Public Class MSIReader : Inherits ggplotReader
         _ggplot = ggplot
     End Sub
 
+    Sub New(reader As PixelReader, ggplot As ggplotMSI)
+        _reader = reader
+        _ggplot = ggplot
+    End Sub
+
     Sub New(pack As PointPack, ggplot As ggplotMSI)
         _reader = New ReadPixelPack(pack.pixels, pack.GetDimensionSize)
         _ggplot = ggplot

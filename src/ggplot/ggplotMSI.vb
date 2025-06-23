@@ -1,60 +1,60 @@
 ﻿#Region "Microsoft.VisualBasic::ad25e7e9cf5b521d872332e2d599a816, Rscript\Library\MSI_app\src\ggplot\ggplotMSI.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 125
-    '    Code Lines: 87 (69.60%)
-    ' Comment Lines: 24 (19.20%)
-    '    - Xml Docs: 91.67%
-    ' 
-    '   Blank Lines: 14 (11.20%)
-    '     File Size: 4.58 KB
+' Summaries:
 
 
-    ' Class ggplotMSI
-    ' 
-    '     Properties: dimension_size, filter
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    '     Function: createHeatmap, createMzPackReader, createPixelReader, createPointReader, CreateReader
-    '               GetDimensionSize
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 125
+'    Code Lines: 87 (69.60%)
+' Comment Lines: 24 (19.20%)
+'    - Xml Docs: 91.67%
+' 
+'   Blank Lines: 14 (11.20%)
+'     File Size: 4.58 KB
+
+
+' Class ggplotMSI
+' 
+'     Properties: dimension_size, filter
+' 
+'     Constructor: (+1 Overloads) Sub New
+'     Function: createHeatmap, createMzPackReader, createPixelReader, createPointReader, CreateReader
+'               GetDimensionSize
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -62,6 +62,7 @@ Imports System.Drawing
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
+Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Reader
 Imports ggplot
 Imports ggplotMSImaging.data
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -115,6 +116,7 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
             Case GetType(MSIHeatMap) : Return createHeatmap()
             Case GetType(PixelData()) : Return createPixelReader()
             Case GetType(PointPack) : Return createPointReader()
+            Case GetType(MemoryIndexReader) : Return createIndexReader(mapping)
 
             Case Else
                 Throw New NotImplementedException(template.FullName)
@@ -138,6 +140,42 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     Private Function createHeatmap() As ggplotBase
         Return New ggplotBase() With {
             .reader = New HeatMapReader(DirectCast(data, MSIHeatMap))
+        }
+    End Function
+
+    Private Function createIndexReader(mapping As ggplot.ggplotReader) As ggplotBase
+        Dim index As MemoryIndexReader = DirectCast(data, MemoryIndexReader)
+        Dim metadata = index.dimension
+        Dim scan_x = metadata.Width
+        Dim scan_y = metadata.Height
+        Dim println As Action(Of Object) = environment.WriteLineHandler
+        Dim verbose As Boolean = environment.globalEnvironment.verboseOption(opt:=False)
+
+        If dimension_size.IsEmpty Then
+            dimension_size = New Size(scan_x, scan_y)
+
+            If verbose Then
+                ' show information data about the msimaging dimension
+                ' size parameter
+                Call println({
+                    $"use the ms-imaging canvas size from the internal metadata!",
+                    $"internal_canvas_size: [{scan_x}x{scan_y}]"
+                })
+            End If
+        End If
+
+        Return New ggplotBase With {
+            .reader = New MSIReader(index, Me) With {
+                .args = mapping.args,
+                .[class] = mapping.class,
+                .color = mapping.color,
+                .label = mapping.label,
+                .shape = mapping.shape,
+                .title = mapping.title,
+                .x = mapping.x,
+                .y = mapping.y,
+                .z = mapping.z
+            }
         }
     End Function
 
