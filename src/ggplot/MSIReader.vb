@@ -144,6 +144,15 @@ Public Class MSIReader : Inherits ggplotReader
         y = points.Select(Function(p) CDbl(p.Y)).ToArray
     End Sub
 
+    Private Shared Sub readFromIndex(data As MemoryIndexReader, env As Environment, ByRef x As Double(), ByRef y As Double())
+        Dim points As Point() = data.AllPixels _
+            .Select(Function(scan) New Point(scan.X, scan.Y)) _
+            .ToArray
+
+        x = points.Select(Function(p) CDbl(p.X)).ToArray
+        y = points.Select(Function(p) CDbl(p.Y)).ToArray
+    End Sub
+
     ''' <summary>
     ''' returns the dimensions of the MSI raw data
     ''' </summary>
@@ -161,8 +170,10 @@ Public Class MSIReader : Inherits ggplotReader
 
             x = pack.pixels.Select(Function(p) CDbl(p.x)).ToArray
             y = pack.pixels.Select(Function(p) CDbl(p.y)).ToArray
+        ElseIf TypeOf data Is MemoryIndexReader Then
+            Call readFromIndex(DirectCast(data, MemoryIndexReader), env, x, y)
         Else
-            Throw New NotImplementedException
+            Throw New NotImplementedException(data.GetType.FullName)
         End If
 
         Return New ggplotData With {
