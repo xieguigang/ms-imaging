@@ -257,5 +257,5 @@ declare namespace ggplot {
      * + default value Is ``null``.
      * @return a gdi+ raster image
    */
-   function raster_blending(pixels: object, dims: any, scale?: string, levels?: object, filters?: any, backcolor?: any, env?: object): object;
+   function raster_blending(pixels: any, dims: any, scale?: string, levels?: object, filters?: any, backcolor?: any, env?: object): object;
 }
