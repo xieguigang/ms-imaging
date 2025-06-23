@@ -367,7 +367,7 @@ Public Module Rscript
     ''' </returns>
     <ExportAPI("raster_blending")>
     <RApiReturn(GetType(Bitmap))>
-    Public Function raster_blending(pixels As PixelScanIntensity(), <RRawVectorArgument> dims As Object,
+    Public Function raster_blending(<RRawVectorArgument> pixels As Object, <RRawVectorArgument> dims As Object,
                                     Optional scale As String = "gray",
                                     Optional levels As Integer = 255,
                                     Optional filters As Object = Nothing,
@@ -376,9 +376,22 @@ Public Module Rscript
 
         Dim dimSize = InteropArgumentHelper.getSize(dims, env, "0,0").SizeParser
         Dim background As Color = RColorPalette.GetRawColor(backcolor, [default]:="black")
+        Dim pixelData As PixelScanIntensity()
+
+        If TypeOf pixels Is MSISummary Then
+            pixelData = DirectCast(pixels, MSISummary).GetLayer(IntensitySummary.Total).ToArray
+        Else
+            Dim pullData = pipeline.TryCreatePipeline(Of PixelScanIntensity)(pixels, env)
+
+            If pullData.isError Then
+                Return pullData.getError
+            Else
+                pixelData = pullData.populates(Of PixelScanIntensity)(env).ToArray
+            End If
+        End If
 
         If dimSize.IsEmpty Then
-            dimSize = New Polygon2D(pixels).GetSize
+            dimSize = New Polygon2D(pixelData).GetSize
         End If
 
         If Not filters Is Nothing Then
@@ -388,8 +401,8 @@ Public Module Rscript
 
             If Not filters Is Nothing Then
                 If TypeOf filters Is RasterPipeline Then
-                    pixels = DirectCast(filters, RasterPipeline) _
-                        .DoIntensityScale(pixels.CreatePixelData(Of PixelData), dimSize) _
+                    pixelData = DirectCast(filters, RasterPipeline) _
+                        .DoIntensityScale(pixelData.CreatePixelData(Of PixelData), dimSize) _
                         .ExtractPixels _
                         .ToArray
                 Else
@@ -399,7 +412,7 @@ Public Module Rscript
         End If
 
         Dim raster = Drawer.RenderSummaryLayer(
-            layer:=pixels,
+            layer:=pixelData,
             dimension:=dimSize,
             colorSet:=scale,
             mapLevels:=levels,
