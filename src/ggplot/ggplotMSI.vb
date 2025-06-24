@@ -84,7 +84,7 @@ Public Class ggplotMSI : Inherits ggplot.ggplot
     Public Sub New(theme As Theme)
         MyBase.New(theme)
 
-        titleOffset = 1.125
+        titleOffset = 1.5
     End Sub
 
     ''' <summary>
