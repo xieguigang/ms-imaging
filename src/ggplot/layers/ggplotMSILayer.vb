@@ -122,7 +122,12 @@ Namespace layers
                 If layer IsNot Nothing Then
                     layer = ggplot.filter.Run(layer:=layer)
                     layer.MSILayer = layer.MSILayer _
-                        .Where(Function(p) p.intensity >= 1) _
+                        .Where(Function(p)
+                                   ' 20250625 if the input layer pixels intensity data all in data range [0,1]
+                                   ' then this filter will removes all pixels if the throeshold is p.intensity >= 1
+                                   ' set to ZERO at here for removes empty pixels
+                                   Return p.intensity >= 0
+                               End Function) _
                         .ToArray
                 End If
             End If
