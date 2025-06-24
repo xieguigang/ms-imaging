@@ -8,6 +8,7 @@ the ggplot api plugin for do MS-Imaging rendering
 + [MSI_hqx](ggplot/MSI_hqx.1) 
 + [MSI_dimension](ggplot/MSI_dimension.1) options for config the canvas dimension size of the ms-imaging raw data scans
 + [pixelPack](ggplot/pixelPack.1) create a pixel point pack object for create ggplot
++ [as.pixelPack](ggplot/as.pixelPack.1) create a pixel point pack object for create ggplot
 + [MSIheatmap](ggplot/MSIheatmap.1) create R,G,B layers from the given dataframe columns data
 + [geom_msiheatmap](ggplot/geom_msiheatmap.1) create a new ms-imaging heatmap layer
 + [raster_blending](ggplot/raster_blending.1) rendering a gdi+ heatmap for create raster annotation in ggplot layer

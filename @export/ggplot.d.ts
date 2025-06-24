@@ -10,6 +10,16 @@
  * > @``T:ggplotMSImaging.ggplotMSI`` is the ms-imaging render.
 */
 declare namespace ggplot {
+   module as {
+      /**
+       * create a pixel point pack object for create ggplot
+       * 
+       * 
+        * @param env 
+        * + default value Is ``null``.
+      */
+      function pixelPack(layer: object, env?: object): object;
+   }
    /**
      * @param tolerance default value Is ``'da:0.1'``.
      * @param env default value Is ``null``.
