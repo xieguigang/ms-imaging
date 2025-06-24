@@ -66,18 +66,18 @@ Namespace data
     ''' <summary>
     ''' A collection of the <see cref="PixelData"/>
     ''' </summary>
-    Public Class PointPack
+    Public Class PointPack : Implements IMSILayer
 
         ''' <summary>
         ''' A collection of the <see cref="PixelData"/> for create heatmap rendering
         ''' </summary>
         ''' <returns></returns>
-        Public Property pixels As PixelData()
+        Public Property pixels As PixelData() Implements IMSILayer.MSILayer
         ''' <summary>
         ''' the canvas size of the ms-imaging
         ''' </summary>
         ''' <returns></returns>
-        Public Property dimension As Size
+        Public Property dimension As Size Implements IMSILayer.DimensionSize
 
         ''' <summary>
         ''' get the element number of the <see cref="PixelData"/> collection

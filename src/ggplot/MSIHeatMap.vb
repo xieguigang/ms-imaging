@@ -62,7 +62,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 
 ''' <summary>
-''' rgb/cmyk data source mapping
+''' rgb/cmyk heatmap layers data source mapping
 ''' </summary>
 Public Class MSIHeatMap
 

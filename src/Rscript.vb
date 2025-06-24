@@ -208,6 +208,15 @@ Public Module Rscript
         }
     End Function
 
+    <ExportAPI("as.pixelPack")>
+    <RApiReturn(GetType(PointPack))>
+    Public Function createPixelPack(layer As SingleIonLayer, Optional env As Environment = Nothing) As Object
+        Return New PointPack With {
+            .dimension = layer.DimensionSize,
+            .pixels = layer.MSILayer
+        }
+    End Function
+
     ''' <summary>
     ''' create R,G,B layers from the given dataframe columns data
     ''' </summary>
