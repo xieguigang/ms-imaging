@@ -1221,11 +1221,13 @@ declare namespace ggplot2 {
      * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
      * @param panel_grid_major 
      * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
+     * @param panel_grid_minor 
+     * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
      * @param panel_border 
      * + default value Is ``null``.
      * @return A style mapper for create the internal @``T:Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme`` object
    */
-   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_title?: object, legend_position?: string, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_border?: object): object;
+   function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_title?: object, legend_position?: string, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_grid_minor?: any, panel_border?: object): object;
    /**
    */
    function theme_minimal(): object;
