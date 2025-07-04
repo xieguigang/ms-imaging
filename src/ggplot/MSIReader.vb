@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c7e83a681b79dc82a4dffbdfc2d67ee4, Rscript\Library\MSI_app\src\ggplot\MSIReader.vb"
+﻿#Region "Microsoft.VisualBasic::78bf692a90afbb361d33da602155fd21, Rscript\Library\MSI_app\src\ggplot\MSIReader.vb"
 
     ' Author:
     ' 
@@ -37,24 +37,24 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 106
-    '    Code Lines: 81 (76.42%)
-    ' Comment Lines: 9 (8.49%)
+    '   Total Lines: 122
+    '    Code Lines: 94 (77.05%)
+    ' Comment Lines: 9 (7.38%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 16 (15.09%)
-    '     File Size: 4.05 KB
+    '   Blank Lines: 19 (15.57%)
+    '     File Size: 4.73 KB
 
 
     ' Class MSIReader
     ' 
     '     Properties: ggplot, offset, reader
     ' 
-    '     Constructor: (+2 Overloads) Sub New
+    '     Constructor: (+3 Overloads) Sub New
     ' 
     '     Function: getMapData
     ' 
-    '     Sub: readFromMzPack
+    '     Sub: readFromIndex, readFromMzPack
     ' 
     ' /********************************************************************************/
 

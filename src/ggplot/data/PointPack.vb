@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c24b109be292545f23526b54094378d6, Rscript\Library\MSI_app\src\ggplot\data\PointPack.vb"
+﻿#Region "Microsoft.VisualBasic::116b56066142f7fdb9e1b1c3d897b42a, Rscript\Library\MSI_app\src\ggplot\data\PointPack.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 100.00%
     ' 
     '   Blank Lines: 8 (14.04%)
-    '     File Size: 1.97 KB
+    '     File Size: 2.05 KB
 
 
     '     Class PointPack

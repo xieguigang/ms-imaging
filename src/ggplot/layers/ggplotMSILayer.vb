@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::27b946b1af49d1f05d39846cd3f7b6c8, Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
+﻿#Region "Microsoft.VisualBasic::42d85cdf4783114e30d0a22fc64bbc24, Rscript\Library\MSI_app\src\ggplot\layers\ggplotMSILayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 157
-    '    Code Lines: 100 (63.69%)
-    ' Comment Lines: 31 (19.75%)
-    '    - Xml Docs: 87.10%
+    '   Total Lines: 159
+    '    Code Lines: 102 (64.15%)
+    ' Comment Lines: 34 (21.38%)
+    '    - Xml Docs: 79.41%
     ' 
-    '   Blank Lines: 26 (16.56%)
-    '     File Size: 6.36 KB
+    '   Blank Lines: 23 (14.47%)
+    '     File Size: 6.75 KB
 
 
     '     Class ggplotMSILayer
