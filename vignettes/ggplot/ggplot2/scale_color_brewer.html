@@ -28,12 +28,13 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>scale_color_brewer</strong>(
-    <i>name</i> = [<span style='color: brown;'><strong>'PiYG'</strong></span>,<span style='color: brown;'><strong>'PRGn'</strong></span>,<span style='color: brown;'><strong>'PuOr'</strong></span>,<span style='color: brown;'><strong>'RdBu'</strong></span>,<span style='color: brown;'><strong>'RdGy'</strong></span>,<span style='color: brown;'><strong>'RdYlBu'</strong></span>,<span style='color: brown;'><strong>'RdYlGn'</strong></span>,<span style='color: brown;'><strong>'Spectral'</strong></span>,<span style='color: brown;'><strong>'Accent'</strong></span>,<span style='color: brown;'><strong>'Dark2'</strong></span>,<span style='color: brown;'><strong>'Paired'</strong></span>,
+    <i>palette</i> = [<span style='color: brown;'><strong>'PiYG'</strong></span>,<span style='color: brown;'><strong>'PRGn'</strong></span>,<span style='color: brown;'><strong>'PuOr'</strong></span>,<span style='color: brown;'><strong>'RdBu'</strong></span>,<span style='color: brown;'><strong>'RdGy'</strong></span>,<span style='color: brown;'><strong>'RdYlBu'</strong></span>,<span style='color: brown;'><strong>'RdYlGn'</strong></span>,<span style='color: brown;'><strong>'Spectral'</strong></span>,<span style='color: brown;'><strong>'Accent'</strong></span>,<span style='color: brown;'><strong>'Dark2'</strong></span>,<span style='color: brown;'><strong>'Paired'</strong></span>,
 <span style='color: brown;'><strong>'Pastel1'</strong></span>,<span style='color: brown;'><strong>'Pastel2'</strong></span>,<span style='color: brown;'><strong>'Set1'</strong></span>,<span style='color: brown;'><strong>'Set2'</strong></span>,<span style='color: brown;'><strong>'Set3'</strong></span>,<span style='color: brown;'><strong>'Blues'</strong></span>,<span style='color: brown;'><strong>'BuGn'</strong></span>,<span style='color: brown;'><strong>'BuPu'</strong></span>,<span style='color: brown;'><strong>'GnBu'</strong></span>,<span style='color: brown;'><strong>'Greens'</strong></span>,<span style='color: brown;'><strong>'Greys'</strong></span>,
 <span style='color: brown;'><strong>'Oranges'</strong></span>,<span style='color: brown;'><strong>'OrRd'</strong></span>,<span style='color: brown;'><strong>'PuBu'</strong></span>,<span style='color: brown;'><strong>'PuBuGn'</strong></span>,<span style='color: brown;'><strong>'PuRd'</strong></span>,<span style='color: brown;'><strong>'Purples'</strong></span>,<span style='color: brown;'><strong>'RdPu'</strong></span>,<span style='color: brown;'><strong>'Reds'</strong></span>,<span style='color: brown;'><strong>'YlGn'</strong></span>,<span style='color: brown;'><strong>'YlGnBu'</strong></span>,<span style='color: brown;'><strong>'YlOrBr'</strong></span>,
 <span style='color: brown;'><strong>'YlOrRd'</strong></span>],
     <i>direction</i> = <span style='color: green;'>1</span>,
-    <i>alpha</i> = <span style='color: green;'>1</span>);</code></pre>
+    <i>alpha</i> = <span style='color: green;'>1</span>,
+    <i>name</i> = <span style='color: blue !important;'>NULL</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -43,7 +44,7 @@
 <dt>name</dt>
 <dd><p>The name of the scale. Used as the axis or legend title. If waiver(), the default,
  the name of the scale is taken from the first mapping used for that aesthetic. 
- If NULL, the legend title will be omitted.</p></dd>
+ If NULL, the legend title will be omitted. [as string]</p></dd>
 
 
 <dt>direction</dt>

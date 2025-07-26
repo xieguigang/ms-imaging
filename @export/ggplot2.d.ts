@@ -56,6 +56,8 @@ declare namespace ggplot2 {
      * @param class mapping data of the element class group.
      * 
      * + default value Is ``null``.
+     * @param size 
+     * + default value Is ``null``.
      * @param args 
      * + default value Is ``null``.
      * @param env -
@@ -64,7 +66,7 @@ declare namespace ggplot2 {
      * @return A list with class uneval. Components of the list are either quosures 
      *  or constants.
    */
-   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
+   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, size?: any, args?: object, env?: object): object;
    /**
     * annotation_raster: Annotation: high-performance rectangular tiling
     *  
@@ -540,7 +542,7 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @return a scatter plot layer
    */
-   function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: number, show_legend?: boolean, alpha?: number, env?: object): object;
+   function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: any, show_legend?: boolean, alpha?: number, env?: object): object;
    /**
      * @param layout default value Is ``null``.
      * @param env default value Is ``null``.
@@ -1011,10 +1013,7 @@ declare namespace ggplot2 {
     * >  
     * >  Modify the palette through the palette argument.
     * 
-     * @param name The name of the scale. Used as the axis or legend title. If waiver(), the default,
-     *  the name of the scale is taken from the first mapping used for that aesthetic. 
-     *  If NULL, the legend title will be omitted.
-     * 
+     * @param palette 
      * + default value Is ``["BrBG","PiYG","PRGn","PuOr","RdBu","RdGy","RdYlBu","RdYlGn","Spectral","Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3","Blues","BuGn","BuPu","GnBu","Greens","Greys","Oranges","OrRd","PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr","YlOrRd"]``.
      * @param direction Sets the order Of colours In the scale. If 1, the Default, colours are 
      *  As output by RColorBrewer:brewer.pal(). If -1, the order of colours 
@@ -1024,11 +1023,16 @@ declare namespace ggplot2 {
      * @param alpha color alpha channel value between [0,1]
      * 
      * + default value Is ``1``.
+     * @param name The name of the scale. Used as the axis or legend title. If waiver(), the default,
+     *  the name of the scale is taken from the first mapping used for that aesthetic. 
+     *  If NULL, the legend title will be omitted.
+     * 
+     * + default value Is ``null``.
      * @param env -
      * 
      * + default value Is ``null``.
    */
-   function scale_color_brewer(name?: any, direction?: object, alpha?: number, env?: object): object;
+   function scale_color_brewer(palette?: any, direction?: object, alpha?: number, name?: string, env?: object): object;
    /**
     * ### Create your own discrete scale
     *  
@@ -1078,6 +1082,18 @@ declare namespace ggplot2 {
      * @param env default value Is ``null``.
    */
    function scale_fill_manual(values: any, alpha?: number, env?: object): object;
+   /**
+     * @param name default value Is ``null``.
+     * @param breaks default value Is ``null``.
+     * @param labels default value Is ``null``.
+     * @param limits default value Is ``null``.
+     * @param range default value Is ``[1,6]``.
+     * @param transform default value Is ``'identity'``.
+     * @param trans default value Is ``null``.
+     * @param guide default value Is ``'legend'``.
+     * @param env default value Is ``null``.
+   */
+   function scale_size_continuous(name?: any, breaks?: any, labels?: any, limits?: any, range?: any, transform?: any, trans?: any, guide?: any, env?: object): object;
    /**
     * Position scales for continuous data (x & y)
     * 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ggplot.layers.ggplotScatter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>ggplotScatter {ggplot.layers}</td>
+                <td style="text-align: right;">.NET clr documentation</td>
+            </tr>
+        </table>
+
+        <h2>ggplotScatter</h2>
+
+        <h3>Description</h3>
+
+        <p>A scatter plot is a type of data visualization that uses dots to represent the values of two different numerical variables. 
+ The position of each dot on the horizontal and vertical axes corresponds to the values of the two variables being plotted. 
+ Scatter plots are particularly useful for showing the relationship between two variables and are a key tool in statistics 
+ and data analysis.
+ 
+ Here are some key aspects of scatter plots:
+ 
+ ### Purpose:
+ - To observe and interpret relationships between two quantitative variables.
+ - To identify trends, patterns, or clusters in data.
+ - To help in making predictions or drawing conclusions based on the observed relationships.
+ 
+ ### Components:
+ - <strong>X-axis (Horizontal axis):</strong> Represents one variable, often called the independent variable.
+ - <strong>Y-axis (Vertical axis):</strong> Represents the other variable, often called the dependent variable.
+ - <strong>Data Points (Dots):</strong> Each point represents an observation with coordinates corresponding to its values on both axes.
+ 
+ ### Types of Relationships:
+ - <strong>Positive Correlation:</strong> As the value of one variable increases, the value of the other variable also increases. The points tend to rise from left to right.
+ - <strong>Negative Correlation:</strong> As the value of one variable increases, the value of the other variable decreases. The points tend to fall from left to right.
+ - <strong>No Correlation:</strong> There is no apparent relationship between the variables. The points are scattered randomly on the plot.
+ - <strong>Non-linear Relationship:</strong> The relationship between variables is not a straight line but might be curved or follow another pattern.
+ 
+ ### Interpreting the Plot:
+ - <strong>Cluster:</strong> A group of points that are close together, indicating a concentration of data points.
+ - <strong>Outlier:</strong> A point that is distant from other points, indicating an unusual observation or a data error.
+ - <strong>Trend Line (or Line of Best Fit):</strong> A line that best represents the relationship between the variables. It can be used to make predictions.
+ 
+ ### Uses:
+ - In fields like economics, biology, psychology, and social sciences to understand the dynamics between variables.
+ - In machine learning and data science for feature selection and to understand the underlying structure of data.</p>
+
+<p>scatter and bubble</p>
+
+        <h3>Declare</h3>        
+
+        <pre>
+            <code id="clr_ts">
+# namespace ggplot.layers
+export class ggplotScatter extends <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a> {
+   alpha: double;
+   colorMap: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a>;
+   reader: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>;
+   shape: <a href="/vignettes/clr/System/Nullable`1.html">Nullable`1</a>;
+   showLegend: boolean;
+   size: <a href="/vignettes/clr/ggplot/options/ggplotSize.html">ggplotSize</a>;
+   stroke: string;
+   which: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a>;
+   zindex: integer;
+}
+</code>
+        </pre>
+
+        <h3>.NET clr type reference tree</h3>
+
+        <ol>
+<li>this class extends from <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a> class: <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a></li>
+<li>use by <i>property</i> member <code>colorMap</code>: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a></li>
+<li>use by <i>property</i> member <code>reader</code>: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a></li>
+<li>use by <i>property</i> member <code>shape</code>: <a href="/vignettes/clr/System/Nullable`1.html">Nullable`1</a></li>
+<li>use by <i>property</i> member <code>size</code>: <a href="/vignettes/clr/ggplot/options/ggplotSize.html">ggplotSize</a></li>
+<li>use by <i>property</i> member <code>which</code>: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a></li>
+</ol>
+
+
+        <hr />
+        <div style="text-align: center;">[Package <em>{$package}</em> version {$version} <a
+                href="../{$package}.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
+<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript">r_highlights("clr_ts");</script>
+
+</html>
