@@ -1234,11 +1234,11 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
      * @param panel_grid 
-     * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
+     * + default value Is ``'stroke: lightgray; stroke-width: 1px; stroke-dash: dash;'``.
      * @param panel_grid_major 
-     * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
+     * + default value Is ``'stroke: lightgray; stroke-width: 1px; stroke-dash: dash;'``.
      * @param panel_grid_minor 
-     * + default value Is ``'stroke: lightgray; stroke-width: 2px; stroke-dash: dash;'``.
+     * + default value Is ``'stroke: lightgray; stroke-width: 1px; stroke-dash: dash;'``.
      * @param panel_border 
      * + default value Is ``null``.
      * @return A style mapper for create the internal @``T:Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme`` object
