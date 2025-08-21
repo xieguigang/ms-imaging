@@ -22,7 +22,8 @@
 
         <h3>Description</h3>
 
-        
+        <p>Generates a composite visualization combining statistical charts (e.g., bar/box/violin plots)
+with mass spectrometry imaging (MSI) data. Outputs to specified PNG file with customizable layout.</p>
 
         <h3>Usage</h3>
 
@@ -63,7 +64,8 @@
         <table>
             
 <dt>mzpack</dt>
-<dd><p><p>An mzpack object containing MS imaging data and layer information. Must be compatible with ggplot MS imaging functions.</p></p></dd>
+<dd><p><p>An mzpack object containing MS imaging data and layer information. Must be
+compatible with ggplot MS imaging functions.</p></p></dd>
 
 
 <dt>mz</dt>
@@ -71,11 +73,17 @@
 
 
 <dt>met</dt>
-<dd><p><p>List containing sample intensity data. List keys should be sample IDs with corresponding intensity values.</p></p></dd>
+<dd><p><p>List containing sample intensity data. List keys should be sample IDs with
+corresponding intensity values.</p></p></dd>
 
 
 <dt>sampleinfo</dt>
-<dd><p><p>Metadata list defining sample groups and visualization properties. Requires: \itemize{ \item \code{group}: Character vector of group names (plot titles) \item \code{id}: Character vector of sample IDs corresponding to \code{met} keys \item \code{color}: HTML color codes for each group's statistical plot elements }</p></p></dd>
+<dd><p><p>Metadata list defining sample groups and visualization properties. Requires:
+\itemize{
+\item \code{group}: Character vector of group names (plot titles)
+\item \code{id}: Character vector of sample IDs corresponding to \code{met} keys
+\item \code{color}: HTML color codes for each group's statistical plot elements
+}</p></p></dd>
 
 
 <dt>savePng</dt>
@@ -123,7 +131,8 @@
 
 
 <dt>combine.layout</dt>
-<dd><p><p>Layout ratio [stat<em>plot</em>width, msi_width]. Default: \code{c(4, 5)} (converted to 44.4% vs 55.6% of available width).</p></p></dd>
+<dd><p><p>Layout ratio [stat<em>plot</em>width, msi_width]. Default: \code{c(4, 5)}
+(converted to 44.4% vs 55.6% of available width).</p></p></dd>
 
 
 <dt>jitter.size</dt>
@@ -139,14 +148,30 @@
 
 
 <dt>regions</dt>
-<dd><p><p>Optional list with spatial coordinates to overlay on MS image: \itemize{ \item \code{x}: X-coordinates vector \item \code{y}: Y-coordinates vector \item \code{colors}: Corresponding colors vector }</p></p></dd>
+<dd><p><p>Optional list with spatial coordinates to overlay on MS image:
+\itemize{
+\item \code{x}: X-coordinates vector
+\item \code{y}: Y-coordinates vector
+\item \code{colors}: Corresponding colors vector
+}</p></p></dd>
 
         </table>
 
 
         <h3 style="display: block;">Details</h3>
 
-        <p>The function performs three main operations: 1. Computes ANOVA group statistics using \code{ANOVAGroup()} 2. Creates a statistical plot (bar/box/violin) with significance annotations 3. Generates MS ion image with optional spatial region overlays Plots are combined using a customizable split-layout system. Statistical tests include: - ANOVA global test (displayed in plot) - Pairwise t-tests against global mean (p-value symbols)</p>
+        <p>The function performs three main operations:
+<ol>
+<li>Computes ANOVA group statistics using \code{ANOVAGroup()}</li>
+<li>Creates a statistical plot (bar/box/violin) with significance annotations</li>
+<li>Generates MS ion image with optional spatial region overlays</li>
+</ol></p>
+
+<p>Plots are combined using a customizable split-layout system. Statistical tests include:
+<ul>
+<li>ANOVA global test (displayed in plot)</li>
+<li>Pairwise t-tests against global mean (p-value symbols)</li>
+</ul></p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -158,7 +183,22 @@
 
         <h3 style="display: block;">Examples</h3>
 
-        <pre><code id="example_r">\dontrun{ MSI_ionStatPlot( mzpack = sample_data, mz = 885.454, met = intensity_list, sampleinfo = list( group = c("Control", "Treatment"), id = c("S1", "S2"), color = c("#FF0000", "#00FF00") ), savePng = "analysis_output.png", combine_layout = c(3, 5) ) }</code></pre>
+        <pre><code id="example_r">#\dontrun{
+
+MSI_ionStatPlot(
+mzpack = sample_data,
+mz = 885.454,
+met = intensity_list,
+sampleinfo = list(
+group = c("Control", "Treatment"),
+id = c("S1", "S2"),
+color = c("#FF0000", "#00FF00")
+),
+savePng = "analysis_output.png",
+combine_layout = c(3, 5)
+)
+
+#}</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a

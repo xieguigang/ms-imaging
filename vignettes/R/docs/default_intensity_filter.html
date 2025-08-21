@@ -22,7 +22,9 @@
 
         <h3>Description</h3>
 
-        
+        <p>Processes an ion layer through a predefined sequence of intensity correction
+steps including gap filling, spatial smoothing, and intensity range truncation
+using Trimmed Quantile Scaling (TrIQ).</p>
 
         <h3>Usage</h3>
 
@@ -36,18 +38,32 @@
         <table>
             
 <dt>ion</dt>
-<dd><p><p>An `ion` object containing MSI data with at least a `layer` component (raster data) and `TrIQ` field for storing scaling factors.</p></p></dd>
+<dd><p><p>An `ion` object containing MSI data with at least a `layer` component
+(raster data) and `TrIQ` field for storing scaling factors.</p></p></dd>
 
 
 <dt>MSI.TrIQ</dt>
-<dd><p><p>Quantile threshold (0-1) for intensity truncation. Default 0.8 (retains intensities below 80th percentile).</p></p></dd>
+<dd><p><p>Quantile threshold (0-1) for intensity truncation. Default 0.8
+(retains intensities below 80th percentile).</p></p></dd>
 
         </table>
 
 
         <h3 style="display: block;">Details</h3>
 
-        <p>Processing workflow: 1. ​<strong>kNN Imputation<em></em>: Fills missing values using \code{knnFill()} 2. ​<em></em>Spatial Smoothing<em></em>: Applies \code{soften_scale()} for edge-preserving smoothing 3. ​<em></em>TrIQ Scaling<em></em>: Calculates intensity thresholds with \code{TrIQ()} 4. ​<em></em>Intensity Truncation</strong>: Limits layer values using \code{intensityLimits()} The modified `ion` object will contain: - Processed `layer` raster with adjusted intensities - Calculated `TrIQ` values stored in the object</p>
+        <p>Processing workflow:
+<ol>
+<li>​<strong>kNN Imputation</strong>: Fills missing values using \code{knnFill()}</li>
+<li>​<strong>Spatial Smoothing</strong>: Applies \code{soften_scale()} for edge-preserving smoothing</li>
+<li>​<strong>TrIQ Scaling</strong>: Calculates intensity thresholds with \code{TrIQ()}</li>
+<li>​<strong>Intensity Truncation</strong>: Limits layer values using \code{intensityLimits()}</li>
+</ol></p>
+
+<p>The modified `ion` object will contain:
+<ul>
+<li>Processed `layer` raster with adjusted intensities</li>
+<li>Calculated `TrIQ` values stored in the object</li>
+</ul></p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -59,7 +75,12 @@
 
         <h3 style="display: block;">Examples</h3>
 
-        <pre><code id="example_r">\dontrun{ processed_ion <- default_intensity_filter(sample_ion) plot_raster(processed_ion$layer) }</code></pre>
+        <pre><code id="example_r">#\dontrun{
+
+processed_ion <- default_intensity_filter(sample_ion)
+plot_raster(processed_ion$layer)
+
+#}</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a

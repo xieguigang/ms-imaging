@@ -22,7 +22,8 @@
 
         <h3>Description</h3>
 
-        
+        <p>Processes an ion layer using user-defined raster filters followed by automatic
+intensity scaling through Trimmed Quantile Scaling (TrIQ).</p>
 
         <h3>Usage</h3>
 
@@ -51,7 +52,12 @@
 
         <h3 style="display: block;">Details</h3>
 
-        <p>Key features: - Allows custom filter sequences via \code{apply<em>raster</em>filter()} - Maintains automatic TrIQ scaling after custom filtering - Preserves original object structure while updating `layer` and `TrIQ`</p>
+        <p>Key features:
+<ul>
+<li>Allows custom filter sequences via \code{apply<em>raster</em>filter()}</li>
+<li>Maintains automatic TrIQ scaling after custom filtering</li>
+<li>Preserves original object structure while updating `layer` and `TrIQ`</li>
+</ul></p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -63,7 +69,12 @@
 
         <h3 style="display: block;">Examples</h3>
 
-        <pre><code id="example_r">\dontrun{ custom_filters <- list(denoise_scale(), median_filter(3)) custom_ion <- custom_intensity_filter(sample_ion, custom_filters) }</code></pre>
+        <pre><code id="example_r">#\dontrun{
+
+custom_filters <- list(denoise_scale(), median_filter(3))
+custom_ion <- custom_intensity_filter(sample_ion, custom_filters)
+
+#}</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a

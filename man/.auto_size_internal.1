@@ -5,6 +5,10 @@
 .SH SYNOPSIS
 \fI.auto_size_internal(dims, padding,
     <i>scale</i> = <span style='color: green;'>1</span>)\fR
+.SH DESCRIPTION
+.PP
+Helper function that computes base canvas dimensions with padding and scaling.
+.PP
 .SH OPTIONS
 .PP
 \fBdims\fB \fR\- . Original image dimensions (numeric vector [width, height])
@@ -17,7 +21,8 @@
 .PP
 .SH VALUE
 .PP
-Numeric vector [width, height] representing: (original dimensions * scale) + padding adjustments
+Numeric vector [width, height] representing:
+(original dimensions * scale) + padding adjustments
 .PP
 .SH FILES
 .PP

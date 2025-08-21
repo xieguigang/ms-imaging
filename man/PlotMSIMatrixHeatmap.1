@@ -25,36 +25,49 @@ PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions.data,
     <i>filters</i> = <span style='color: blue !important;'>NULL</span>,
     <i>strict</i> = <span style='color: blue !important;'>TRUE</span>,
     <i>msi.dimension</i> = <span style='color: blue !important;'>NULL</span>)\fR
+.SH DESCRIPTION
+.PP
+Generates a matrix of mass spectrometry imaging (MSI) heatmaps in grid layout
+with intensity filtering, spatial smoothing, and formatted metabolite labels.
+Supports custom color schemes, layout configurations, and intensity filters.
+.PP
 .SH OPTIONS
 .PP
 \fBions.data\fB \fR\- . 
 .PP
 .PP
-\fBlayout\fB \fR\- [3, 3]. Integer vector of length 2 specifying grid dimensions [rows, columns]. Default: [3,3].
+\fBlayout\fB \fR\- [3, 3]. Integer vector of length 2 specifying grid dimensions [rows, columns].
+Default: [3,3].
 .PP
 .PP
-\fBcolorSet\fB \fR\- 'Jet'. Character specifying color palette name (e.g., "Jet", "viridis"). Default: "Jet".
+\fBcolorSet\fB \fR\- 'Jet'. Character specifying color palette name (e.g., "Jet", "viridis").
+Default: "Jet".
 .PP
 .PP
 \fBMSI.TrIQ\fB \fR\- 0.8. 
 .PP
 .PP
-\fBgaussian\fB \fR\- 3. Numeric specifying Gaussian blur radius (in pixels) for spatial smoothing. Set to 0 to disable. Default: 3.
+\fBgaussian\fB \fR\- 3. Numeric specifying Gaussian blur radius (in pixels) for spatial
+smoothing. Set to 0 to disable. Default: 3.
 .PP
 .PP
-\fBsize\fB \fR\- [2700, 2000]. Integer vector of length 2 specifying canvas dimensions [width, height] in pixels. Default: [2700, 2000].
+\fBsize\fB \fR\- [2700, 2000]. Integer vector of length 2 specifying canvas dimensions [width, height]
+in pixels. Default: [2700, 2000].
 .PP
 .PP
-\fBcanvasPadding\fB \fR\- [50, 300, 50, 50]. Integer vector of length 4 specifying canvas margins [top, right, bottom, left] in pixels. Default: [50, 300, 50, 50].
+\fBcanvasPadding\fB \fR\- [50, 300, 50, 50]. Integer vector of length 4 specifying canvas margins
+[top, right, bottom, left] in pixels. Default: [50, 300, 50, 50].
 .PP
 .PP
-\fBcellPadding\fB \fR\- [200, 100, 0, 100]. Integer vector of length 4 specifying grid cell margins [top, right, bottom, left] in pixels. Default: [200, 100, 0, 100].
+\fBcellPadding\fB \fR\- [200, 100, 0, 100]. Integer vector of length 4 specifying grid cell margins
+[top, right, bottom, left] in pixels. Default: [200, 100, 0, 100].
 .PP
 .PP
 \fBfont.size\fB \fR\- 27. 
 .PP
 .PP
-\fBfilters\fB \fR\- NULL. Optional custom intensity filter(s) for raster data preprocessing. If NULL (default), applies Top x% Intensity Quantile (TrIQ) filtering via `MSI_TrIQ`.
+\fBfilters\fB \fR\- NULL. Optional custom intensity filter(s) for raster data preprocessing.
+If NULL (default), applies Top x% Intensity Quantile (TrIQ) filtering via `MSI_TrIQ`.
 .PP
 .PP
 \fBstrict\fB \fR\- TRUE. Logical. If TRUE, enforces dimension consistency checks. Default: TRUE.
@@ -64,11 +77,29 @@ PlotMSIMatrixHeatmap \- PlotMSIMatrixHeatmap(ions.data,
 .PP
 .SH VALUE
 .PP
-Invisibly returns NULL. Generates a composite plot in the active graphics device containing: \itemize{ \item{Grid of MSI heatmaps with Gaussian smoothing} \item{Color legend using specified palette} \item{Metabolite labels with split formatting (name, precursor type, m/z)} }
+Invisibly returns NULL. Generates a composite plot in the active graphics device
+containing:
+\itemize{
+\item{Grid of MSI heatmaps with Gaussian smoothing}
+\item{Color legend using specified palette}
+\item{Metabolite labels with split formatting (name, precursor type, m/z)}
+}
 .PP
 .SH DETAILS
 .PP
-Key processing steps: \enumerate{ \item Applies intensity filtering (default or custom) to all ion layers \item Generates grid layout with specified cell/canvas padding \item Renders color legend using selected palette \item Draws each ion heatmap with optional Gaussian smoothing \item Adds formatted multi-line labels below each heatmap: \itemize{ \item{Line 1: Metabolite name (auto-wrapped at 32 characters)} \item{Line 2: Precursor type (from `type` slot)} \item{Line 3: m/z value formatted to 3 decimal places} } }
+Key processing steps:
+\enumerate{
+\item Applies intensity filtering (default or custom) to all ion layers
+\item Generates grid layout with specified cell/canvas padding
+\item Renders color legend using selected palette
+\item Draws each ion heatmap with optional Gaussian smoothing
+\item Adds formatted multi-line labels below each heatmap:
+\itemize{
+\item{Line 1: Metabolite name (auto-wrapped at 32 characters)}
+\item{Line 2: Precursor type (from `type` slot)}
+\item{Line 3: m/z value formatted to 3 decimal places}
+}
+}
 .PP
 .SH SEE ALSO
 \code{\link{rasterHeatmap}}, \code{\link{layout.grid}}, \code{\link{colorMap.legend}}

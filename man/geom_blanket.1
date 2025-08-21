@@ -5,6 +5,11 @@ geom_blanket \- geom_blanket(mz,
 .SH SYNOPSIS
 \fIgeom_blanket(mz,
     <i>tolerance</i> = 'getOption'('mzdiff', 'default' = 'da:0.3'))\fR
+.SH DESCRIPTION
+.PP
+Generates a grayscale ggplot2 layer for mass spectrometry imaging (MSI) data,
+typically used as a background layer or for intensity normalization.
+.PP
 .SH OPTIONS
 .PP
 \fBmz\fB \fR\- . numeric. The target mass-to-charge ratio (m/z) value for ion detection.
@@ -14,11 +19,16 @@ geom_blanket \- geom_blanket(mz,
 .PP
 .SH VALUE
 .PP
-A ggplot2 layer object using "Greys" color palette with alpha channel (c8 = 200/255 transparency) suitable for creating intensity-normalized backgrounds or composite overlays.
+A ggplot2 layer object using "Greys" color palette with alpha channel (c8 = 200/255 transparency)
+suitable for creating intensity-normalized backgrounds or composite overlays.
 .PP
 .SH EXAMPLES
 .PP
-\dontrun{ plot_base() + geom_blanket(1200.834) }
+#\dontrun{
+
+plot_base() + geom_blanket(1200.834)
+
+#}
 .PP
 .SH FILES
 .PP

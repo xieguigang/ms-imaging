@@ -22,7 +22,9 @@
 
         <h3>Description</h3>
 
-        
+        <p>Generates a predefined pipeline of geometric filters optimized for preprocessing
+single ion mass spectrometry imaging (MSI) data. This pipeline combines multiple
+image enhancement steps in a recommended sequence.</p>
 
         <h3>Usage</h3>
 
@@ -39,7 +41,15 @@
 
         <h3 style="display: block;">Details</h3>
 
-        <p>The filter pipeline is constructed using the following processing steps in sequence: \enumerate{ \item \code{denoise<em>scale()}: Applies initial noise reduction to raw MSI data \item \code{TrIQ</em>scale(0.99)}: Performs trimmed quantile scaling (top 1% truncated) \item \code{knn<em>scale()}: Executes k-nearest neighbors smoothing \item \code{soften</em>scale()}: Final edge-preserving image softening } The 'greater than' operator (>) is used to define processing order in this domain-specific language. Filters are applied from left to right.</p>
+        <p>The filter pipeline is constructed using the following processing steps in sequence:
+\enumerate{
+\item \code{denoise_scale()}: Applies initial noise reduction to raw MSI data
+\item \code{TrIQ_scale(0.99)}: Performs trimmed quantile scaling (top 1% truncated)
+\item \code{knn_scale()}: Executes k-nearest neighbors smoothing
+\item \code{soften_scale()}: Final edge-preserving image softening
+}
+The 'greater than' operator (>) is used to define processing order in this domain-specific
+language. Filters are applied from left to right.</p>
 
         <h3 style="display: block">Authors</h3>
 
@@ -47,11 +57,20 @@
 
         <h3>Value</h3>
 
-        <p>A filter pipeline object of class 'geometric_filters' containing the configured processing sequence. This object can be used with MSI processing functions that accept geometric filter pipelines.</p>
+        <p>A filter pipeline object of class 'geometric_filters' containing the
+configured processing sequence. This object can be used with MSI processing
+functions that accept geometric filter pipelines.</p>
 
         <h3 style="display: block;">Examples</h3>
 
-        <pre><code id="example_r">\dontrun{ # Get default filter pipeline my_filter <- default_MSIfilter() # Apply to MSI dataset processed_data <- process_msi(data = sample_image, filter = my_filter) }</code></pre>
+        <pre><code id="example_r">#\dontrun{
+
+# Get default filter pipeline
+my_filter <- default_MSIfilter()
+# Apply to MSI dataset
+processed_data <- process_msi(data = sample_image, filter = my_filter)
+
+#}</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a

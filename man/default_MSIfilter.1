@@ -3,17 +3,42 @@
 default_MSIfilter \- default_MSIfilter()
 .SH SYNOPSIS
 \fIdefault_MSIfilter()\fR
+.SH DESCRIPTION
+.PP
+
+
+Generates a predefined pipeline of geometric filters optimized for preprocessing
+single ion mass spectrometry imaging (MSI) data. This pipeline combines multiple
+image enhancement steps in a recommended sequence.
+.PP
 .SH VALUE
 .PP
-A filter pipeline object of class 'geometric_filters' containing the configured processing sequence. This object can be used with MSI processing functions that accept geometric filter pipelines.
+A filter pipeline object of class 'geometric_filters' containing the
+configured processing sequence. This object can be used with MSI processing
+functions that accept geometric filter pipelines.
 .PP
 .SH DETAILS
 .PP
-The filter pipeline is constructed using the following processing steps in sequence: \enumerate{ \item \code{denoise_scale()}: Applies initial noise reduction to raw MSI data \item \code{TrIQ_scale(0.99)}: Performs trimmed quantile scaling (top 1% truncated) \item \code{knn_scale()}: Executes k-nearest neighbors smoothing \item \code{soften_scale()}: Final edge-preserving image softening } The 'greater than' operator (>) is used to define processing order in this domain-specific language. Filters are applied from left to right.
+The filter pipeline is constructed using the following processing steps in sequence:
+\enumerate{
+\item \code{denoise_scale()}: Applies initial noise reduction to raw MSI data
+\item \code{TrIQ_scale(0.99)}: Performs trimmed quantile scaling (top 1% truncated)
+\item \code{knn_scale()}: Executes k-nearest neighbors smoothing
+\item \code{soften_scale()}: Final edge-preserving image softening
+}
+The 'greater than' operator (>) is used to define processing order in this domain-specific
+language. Filters are applied from left to right.
 .PP
 .SH EXAMPLES
 .PP
-\dontrun{ # Get default filter pipeline my_filter <- default_MSIfilter() # Apply to MSI dataset processed_data <- process_msi(data = sample_image, filter = my_filter) }
+#\dontrun{
+
+# Get default filter pipeline
+my_filter <- default_MSIfilter()
+# Apply to MSI dataset
+processed_data <- process_msi(data = sample_image, filter = my_filter)
+
+#}
 .PP
 .SH SEE ALSO
 \code{\link{geom_MSIfilters}} for building custom filter pipelines

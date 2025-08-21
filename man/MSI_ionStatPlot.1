@@ -59,18 +59,30 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
     <i>plot.daErr</i> = <span style='color: green;'>0.05</span>,
     <i>intensity.format</i> = <span style='color: brown;'><strong>'G2'</strong></span>,
     <i>intensity.axis</i> = <span style='color: blue !important;'>TRUE</span>)\fR
+.SH DESCRIPTION
+.PP
+Generates a composite visualization combining statistical charts (e.g., bar/box/violin plots)
+with mass spectrometry imaging (MSI) data. Outputs to specified PNG file with customizable layout.
+.PP
 .SH OPTIONS
 .PP
-\fBmzpack\fB \fR\- . An mzpack object containing MS imaging data and layer information. Must be compatible with ggplot MS imaging functions.
+\fBmzpack\fB \fR\- . An mzpack object containing MS imaging data and layer information. Must be
+compatible with ggplot MS imaging functions.
 .PP
 .PP
 \fBmz\fB \fR\- . Target ion mass-to-charge ratio (m/z) value for imaging.
 .PP
 .PP
-\fBmet\fB \fR\- . List containing sample intensity data. List keys should be sample IDs with corresponding intensity values.
+\fBmet\fB \fR\- . List containing sample intensity data. List keys should be sample IDs with
+corresponding intensity values.
 .PP
 .PP
-\fBsampleinfo\fB \fR\- . Metadata list defining sample groups and visualization properties. Requires: \itemize{ \item \code{group}: Character vector of group names (plot titles) \item \code{id}: Character vector of sample IDs corresponding to \code{met} keys \item \code{color}: HTML color codes for each group's statistical plot elements }
+\fBsampleinfo\fB \fR\- . Metadata list defining sample groups and visualization properties. Requires:
+\itemize{
+\item \code{group}: Character vector of group names (plot titles)
+\item \code{id}: Character vector of sample IDs corresponding to \code{met} keys
+\item \code{color}: HTML color codes for each group's statistical plot elements
+}
 .PP
 .PP
 \fBsavePng\fB \fR\- './Rplot.png'. Output file path for PNG image. Default: "./Rplot.png".
@@ -118,7 +130,12 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 \fBbackcolor\fB \fR\- 'black'. Background color for MS imaging panel. Default: "black".
 .PP
 .PP
-\fBregions\fB \fR\- NULL. Optional list with spatial coordinates to overlay on MS image: \itemize{ \item \code{x}: X-coordinates vector \item \code{y}: Y-coordinates vector \item \code{colors}: Corresponding colors vector }
+\fBregions\fB \fR\- NULL. Optional list with spatial coordinates to overlay on MS image:
+\itemize{
+\item \code{x}: X-coordinates vector
+\item \code{y}: Y-coordinates vector
+\item \code{colors}: Corresponding colors vector
+}
 .PP
 .PP
 \fBswap\fB \fR\- FALSE. 
@@ -158,11 +175,32 @@ MSI_ionStatPlot \- MSI_ionStatPlot(mzpack, mz, met, sampleinfo,
 .PP
 .SH DETAILS
 .PP
-The function performs three main operations: 1. Computes ANOVA group statistics using \code{ANOVAGroup()} 2. Creates a statistical plot (bar/box/violin) with significance annotations 3. Generates MS ion image with optional spatial region overlays Plots are combined using a customizable split-layout system. Statistical tests include: - ANOVA global test (displayed in plot) - Pairwise t-tests against global mean (p-value symbols)
+The function performs three main operations:
+1. Computes ANOVA group statistics using \code{ANOVAGroup()}
+2. Creates a statistical plot (bar/box/violin) with significance annotations
+3. Generates MS ion image with optional spatial region overlays
+Plots are combined using a customizable split-layout system. Statistical tests include:
+- ANOVA global test (displayed in plot)
+- Pairwise t-tests against global mean (p-value symbols)
 .PP
 .SH EXAMPLES
 .PP
-\dontrun{ MSI_ionStatPlot( mzpack = sample_data, mz = 885.454, met = intensity_list, sampleinfo = list( group = c("Control", "Treatment"), id = c("S1", "S2"), color = c("#FF0000", "#00FF00") ), savePng = "analysis_output.png", combine_layout = c(3, 5) ) }
+#\dontrun{
+
+MSI_ionStatPlot(
+mzpack = sample_data,
+mz = 885.454,
+met = intensity_list,
+sampleinfo = list(
+group = c("Control", "Treatment"),
+id = c("S1", "S2"),
+color = c("#FF0000", "#00FF00")
+),
+savePng = "analysis_output.png",
+combine_layout = c(3, 5)
+)
+
+#}
 .PP
 .SH FILES
 .PP

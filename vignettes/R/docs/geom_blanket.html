@@ -22,7 +22,8 @@
 
         <h3>Description</h3>
 
-        
+        <p>Generates a grayscale ggplot2 layer for mass spectrometry imaging (MSI) data,
+typically used as a background layer or for intensity normalization.</p>
 
         <h3>Usage</h3>
 
@@ -55,11 +56,16 @@
 
         <h3>Value</h3>
 
-        <p>A ggplot2 layer object using "Greys" color palette with alpha channel (c8 = 200/255 transparency) suitable for creating intensity-normalized backgrounds or composite overlays.</p>
+        <p>A ggplot2 layer object using "Greys" color palette with alpha channel (c8 = 200/255 transparency)
+suitable for creating intensity-normalized backgrounds or composite overlays.</p>
 
         <h3 style="display: block;">Examples</h3>
 
-        <pre><code id="example_r">\dontrun{ plot_base() + geom_blanket(1200.834) }</code></pre>
+        <pre><code id="example_r">#\dontrun{
+
+plot_base() + geom_blanket(1200.834)
+
+#}</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a

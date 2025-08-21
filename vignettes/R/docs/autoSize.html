@@ -22,7 +22,8 @@
 
         <h3>Description</h3>
 
-        
+        <p>Automatically evaluates appropriate canvas dimensions considering padding, scaling,
+and aspect ratio adjustments for multi-sample imaging displays.</p>
 
         <h3>Usage</h3>
 
@@ -39,27 +40,38 @@
         <table>
             
 <dt>dims</dt>
-<dd><p><p>The dimensions of MSImaging raw data. Can be either: 1. A numeric vector with at least two elements representing [width, height] 2. A list object containing at least two named elements "w" and "h".</p></p></dd>
+<dd><p><p>The dimensions of MSImaging raw data. Can be either:
+<ol>
+<li>A numeric vector with at least two elements representing [width, height]</li>
+<li>A list object containing at least two named elements "w" and "h".</li>
+</ol></p></p></dd>
 
 
 <dt>padding</dt>
-<dd><p><p>A numeric vector specifying CSS-style padding in the order: [top, right, bottom, left]. Defines empty space around the imaging data.</p></p></dd>
+<dd><p><p>A numeric vector specifying CSS-style padding in the order:
+[top, right, bottom, left]. Defines empty space around the imaging data.</p></p></dd>
 
 
 <dt>scale</dt>
-<dd><p><p>Numeric scaling factor for pixel dimensions (default: 1). Values >1 enlarge, <1 shrink while maintaining original proportions.</p></p></dd>
+<dd><p><p>Numeric scaling factor for pixel dimensions (default: 1).
+Values >1 enlarge, <1 shrink while maintaining original proportions.</p></p></dd>
 
 
 <dt>is.multiple.combine.wide</dt>
-<dd><p><p>Logical indicating if wide-format multi-sample layout should be prioritized (default: FALSE). When FALSE, attempts to maintain 1:1 aspect ratio by applying ratio scaling when needed.</p></p></dd>
+<dd><p><p>Logical indicating if wide-format multi-sample
+layout should be prioritized (default: FALSE). When FALSE, attempts to
+maintain 1:1 aspect ratio by applying ratio scaling when needed.</p></p></dd>
 
 
 <dt>ratio.threshold</dt>
-<dd><p><p>Numeric threshold for aspect ratio adjustment (default: 1.25). Triggers dimension scaling when width/height ratio exceeds this value.</p></p></dd>
+<dd><p><p>Numeric threshold for aspect ratio adjustment
+(default: 1.25). Triggers dimension scaling when width/height ratio
+exceeds this value.</p></p></dd>
 
 
 <dt>ratio.scale</dt>
-<dd><p><p>Multiplicative factor (default: 1.5) applied to under-dimensioned axis when aspect ratio exceeds threshold.</p></p></dd>
+<dd><p><p>Multiplicative factor (default: 1.5) applied to
+under-dimensioned axis when aspect ratio exceeds threshold.</p></p></dd>
 
         </table>
 
@@ -74,11 +86,16 @@
 
         <h3>Value</h3>
 
-        <p>A list containing: \itemize{ \item size - Numeric vector [width, height] of recommended canvas dimensions \item scale - Applied scaling factors (if any) }</p>
+        <p>A list containing:
+\itemize{
+\item size - Numeric vector [width, height] of recommended canvas dimensions
+\item scale - Applied scaling factors (if any)
+}</p>
 
         <h3 style="display: block;">Examples</h3>
 
-        <pre><code id="example_r"># Basic usage autoSize(c(1024, 768), padding = c(20, 15, 20, 15))</code></pre>
+        <pre><code id="example_r"># Basic usage
+autoSize(c(1024, 768), padding = c(20, 15, 20, 15))</code></pre>
 
         <hr />
         <div style="text-align: center;">[Package <em>MSImaging</em> version 0.1.0 <a
