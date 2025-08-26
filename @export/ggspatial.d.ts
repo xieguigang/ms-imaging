@@ -10,6 +10,13 @@
 */
 declare namespace ggspatial {
    /**
+    * test for the ruler formatter
+    * 
+    * 
+     * @param x should be a numeric vector of ``μm`` for auto formatted
+   */
+   function format_ruler(x: any): any;
+   /**
     * draw scatter layer with a given x and y coordinates.
     * 
     * 
