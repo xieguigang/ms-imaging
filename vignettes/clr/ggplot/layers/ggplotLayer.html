@@ -33,6 +33,8 @@ export class ggplotLayer {
    # the fill color transparency, value in range [0,1]
    alpha: double;
    colorMap: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a>;
+   # the custom data source for this ggplot layer plot
+   dataset: <i>any</i> kind;
    # the custom data reader for each ggplot plot layer
    reader: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>;
    showLegend: boolean;
@@ -47,6 +49,7 @@ export class ggplotLayer {
 
         <ol>
 <li>use by <i>property</i> member <code>colorMap</code>: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a></li>
+<li>use by <i>property</i> member <code>dataset</code>: <i>any</i> kind</li>
 <li>use by <i>property</i> member <code>reader</code>: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a></li>
 <li>use by <i>property</i> member <code>which</code>: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a></li>
 </ol>
