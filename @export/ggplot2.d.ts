@@ -58,6 +58,8 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @param size 
      * + default value Is ``null``.
+     * @param group 
+     * + default value Is ``null``.
      * @param args 
      * + default value Is ``null``.
      * @param env -
@@ -66,7 +68,7 @@ declare namespace ggplot2 {
      * @return A list with class uneval. Components of the list are either quosures 
      *  or constants.
    */
-   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, size?: any, args?: object, env?: object): object;
+   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, size?: any, group?: any, args?: object, env?: object): object;
    /**
     * annotation_raster: Annotation: high-performance rectangular tiling
     *  
@@ -543,6 +545,13 @@ declare namespace ggplot2 {
      * @return a scatter plot layer
    */
    function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: any, show_legend?: boolean, alpha?: number, env?: object): object;
+   /**
+     * @param mapping default value Is ``null``.
+     * @param color default value Is ``'black'``.
+     * @param alpha default value Is ``1``.
+     * @param size default value Is ``1``.
+   */
+   function geom_polygon(mapping?: object, color?: any, alpha?: number, size?: number): object;
    /**
      * @param layout default value Is ``null``.
      * @param env default value Is ``null``.
