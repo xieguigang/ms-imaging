@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ggplot.layers.ggplotLine</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" type="text/css" href="https://mzkit.org/assets/js/page.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <table style="width: 100%;">
+            <tr>
+                <td>ggplotLine {ggplot.layers}</td>
+                <td style="text-align: right;">.NET clr documentation</td>
+            </tr>
+        </table>
+
+        <h2>ggplotLine</h2>
+
+        <h3>Description</h3>
+
+        <p>A line chart, also known as a line plot or line graph, is a type of chart used to display the trend, progress, 
+ or change over time or between different conditions or categories. It is one of the most common and simple 
+ methods for visualizing data sequences. Here's an introduction to the components and purposes of a line chart:
+ 
+ ### Components of a Line Chart:
+ 
+ 1. <strong>Horizontal Axis (X-axis):</strong> This axis typically represents the independent variable, often time, which is placed on the horizontal line. Each point on the axis corresponds to a specific point in time or a category.
+ 2. <strong>Vertical Axis (Y-axis):</strong> This axis represents the dependent variable, which is the data that is being measured or tracked. The scale on the y-axis can be linear or logarithmic, depending on the range and distribution of the data.
+ 3. <strong>Lines:</strong> These are the curves or straight lines that connect the data points. Each line usually represents a different data series or category.
+ 4. <strong>Data Points:</strong> These are the individual markers on the chart that indicate the value of the dependent variable at a specific point on the x-axis. They can be represented by dots, squares, or other symbols.
+ 5. <strong>Legend:</strong> When multiple data series are represented on the same chart, a legend is used to explain what each line represents.
+ 
+ ### Purposes of a Line Chart:
+ 
+ - <strong>Show Trends:</strong> Line charts are ideal for showing trends over time, such as the stock market performance, temperature changes, or website traffic.
+ - <strong>Compare Data Series:</strong> They can be used to compare the performance of different groups or categories over the same period.
+ - <strong>Highlight Patterns:</strong> Line charts can reveal patterns such as cycles, trends, seasonality, or irregularities in the data.
+ - <strong>Forecasting:</strong> By identifying trends, line charts can be used as a tool for making predictions about future data points.
+ 
+ Line charts are versatile and can be used in a wide range of fields, including business, economics, science, and
+ education, to present data in a clear and concise manner.</p>
+
+        <h3>Declare</h3>        
+
+        <pre>
+            <code id="clr_ts">
+# namespace ggplot.layers
+export class ggplotLine extends <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a> {
+   alpha: double;
+   bspline: boolean;
+   colorMap: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a>;
+   dataset: <i>any</i> kind;
+   line_width: double;
+   reader: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>;
+   showLegend: boolean;
+   which: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a>;
+   zindex: integer;
+}
+</code>
+        </pre>
+
+        <h3>.NET clr type reference tree</h3>
+
+        <ol>
+<li>this class extends from <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a> class: <a href="/vignettes/clr/ggplot/layers/ggplotLayer.html">ggplotLayer</a></li>
+<li>use by <i>property</i> member <code>colorMap</code>: <a href="/vignettes/clr/ggplot/colors/ggplotColorMap.html">ggplotColorMap</a></li>
+<li>use by <i>property</i> member <code>dataset</code>: <i>any</i> kind</li>
+<li>use by <i>property</i> member <code>reader</code>: <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a></li>
+<li>use by <i>property</i> member <code>which</code>: <a href="/vignettes/clr/SMRUCC/Rsharp/Interpreter/ExecuteEngine/Expression.html">Expression</a></li>
+</ol>
+
+
+        <hr />
+        <div style="text-align: center;">[Package <em>{$package}</em> version {$version} <a
+                href="../{$package}.html">Index</a>]
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://mzkit.org/assets/js/R_syntax.js"></script>
+<script type="text/javascript" src="https://mzkit.org/assets/js/highlights.js"></script>
+<script type="text/javascript">r_highlights("clr_ts");</script>
+
+</html>

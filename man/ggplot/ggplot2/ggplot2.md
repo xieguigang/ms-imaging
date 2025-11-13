@@ -10,6 +10,7 @@ Create Elegant Data Visualisations Using the Grammar of Graphics
 + [geom_text](ggplot2/geom_text.1) ### Text
 + [geom_histogram](ggplot2/geom_histogram.1) ## Histograms and frequency polygons
 + [geom_line](ggplot2/geom_line.1) ### Connect observations
++ [geom_princurve](ggplot2/geom_princurve.1) 
 + [geom_hline](ggplot2/geom_hline.1) ### Reference line defined by Y intercept. Useful for annotating plots.
 + [geom_vline](ggplot2/geom_vline.1) ## Reference lines: horizontal, vertical, and diagonal
 + [geom_path](ggplot2/geom_path.1) ## Connect observations

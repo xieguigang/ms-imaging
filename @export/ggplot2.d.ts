@@ -553,6 +553,19 @@ declare namespace ggplot2 {
    */
    function geom_polygon(mapping?: object, color?: any, alpha?: number, size?: number): object;
    /**
+     * @param mapping default value Is ``null``.
+     * @param color default value Is ``null``.
+     * @param width default value Is ``5``.
+     * @param show_legend default value Is ``false``.
+     * @param alpha default value Is ``1``.
+     * @param bspline default value Is ``false``.
+     * @param bandwidth default value Is ``1``.
+     * @param maxIterations default value Is ``100``.
+     * @param tolerance default value Is ``0.001``.
+     * @param env default value Is ``null``.
+   */
+   function geom_princurve(mapping?: object, color?: any, width?: number, show_legend?: boolean, alpha?: number, bspline?: boolean, bandwidth?: number, maxIterations?: object, tolerance?: number, env?: object): object;
+   /**
      * @param layout default value Is ``null``.
      * @param env default value Is ``null``.
    */
