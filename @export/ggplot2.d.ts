@@ -664,6 +664,10 @@ declare namespace ggplot2 {
      *  behaviour from the default plot specification, e.g. borders().
      * 
      * + default value Is ``true``.
+     * @param maxL 
+     * + default value Is ``3``.
+     * @param thickness 
+     * + default value Is ``2``.
      * @param args Other arguments passed on to layer()'s params argument. These arguments broadly 
      *  fall into one of 4 categories below. Notably, further arguments to the position argument, or aesthetics 
      *  that are required can not be passed through .... Unknown arguments that are not part of the 4 
@@ -691,7 +695,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``null``.
    */
-   function geom_segment(mapping?: object, data?: any, stat?: string, position?: string, arrow?: object, arrow_fill?: any, lineend?: string, linejoin?: string, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, args?: object, env?: object): object;
+   function geom_segment(mapping?: object, data?: any, stat?: string, position?: string, arrow?: object, arrow_fill?: any, lineend?: string, linejoin?: string, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, maxL?: number, thickness?: number, args?: object, env?: object): object;
    /**
     * ## Create significance layer
     * 
