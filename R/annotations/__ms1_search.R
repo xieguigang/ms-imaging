@@ -1,6 +1,6 @@
 imports "metadb" from "mzkit";
 
-const __ms1_search = function(mz, data) {
+const __ms1_search = function(mz, data, ms1ppm = 15, adducts = c("[M+H]+")) {
     let i = !has.metal_ion(data$formula);
     let j = is.organic(data$formula,strict =TRUE);
 
@@ -9,7 +9,7 @@ const __ms1_search = function(mz, data) {
     data[,"id"] = rownames(data);
 
     let index = annotationStream(rownames(data), data$name, data$formula);
-    let db = ms1_handler(index, precursors = c("[M+H]+"),tolerance= "ppm:15");
+    let db = ms1_handler(index, precursors = adducts,tolerance= `ppm:${ms1ppm}`);
     
     print(data, max.print = 6);
     print(mz);
