@@ -13,6 +13,11 @@ declare namespace MSImaging {
       function onLoad(): object;
    }
    /**
+     * @param ms1ppm default value Is ``15``.
+     * @param adducts default value Is ``Call "c"("[M+H]+")``.
+   */
+   function __ms1_search(mz: any, data: any, ms1ppm?: any, adducts?: any): object;
+   /**
      * @param scale default value Is ``1``.
      * @param is_multiple_combine_wide default value Is ``false``.
      * @param ratio_threshold default value Is ``1.25``.
@@ -82,6 +87,11 @@ declare namespace MSImaging {
      * @param filters default value Is ``null``.
    */
    function MSI_sampleTIC(rawdata: any, dims?: any, filters?: any): object;
+   /**
+     * @param ms1ppm default value Is ``15``.
+     * @param adducts default value Is ``Call "c"("[M+H]+", "[M]+")``.
+   */
+   function NPBS_Atlas(mz: any, ms1ppm?: any, adducts?: any): object;
    /**
    */
    function npixels(raw: any): object;
