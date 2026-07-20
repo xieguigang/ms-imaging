@@ -1,16 +1,15 @@
 imports "metadb" from "mzkit";
 
 const __ms1_search = function(mz, data) {
-    let hmdb = read.csv(relative_work("../hmdb.csv"), row.names = 1);
-    let i = !has.metal_ion( hmdb$formula);
-    let j = is.organic(hmdb$formula,strict =TRUE);
+    let i = !has.metal_ion(data$formula);
+    let j = is.organic(data$formula,strict =TRUE);
 
-    hmdb = hmdb[i && j,];
-    hmdb = hmdb[nchar(hmdb$kegg_id) > 2, ];
-    hmdb[,"id"] = rownames(hmdb);
+    data = data[i && j,];
+    data = data[nchar(data$kegg_id) > 2, ];
+    data[,"id"] = rownames(data);
 
-    let index = annotationStream(rownames(hmdb), hmdb$name, hmdb$formula);
-    let hmdb_db = ms1_handler(index, precursors = c("[M+H]+"),tolerance= "ppm:15");
+    let index = annotationStream(rownames(data), data$name, data$formula);
+    let db = ms1_handler(index, precursors = c("[M+H]+"),tolerance= "ppm:15");
     let data = read.csv("expression_matrix.csv", row.names = 1, check.names = FALSE);
     let mz = as.numeric(rownames(data));
 

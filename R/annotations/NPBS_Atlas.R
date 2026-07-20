@@ -4,6 +4,7 @@ const NPBS_Atlas = function(mz) {
         row.names = rownames(data),
         name = data[,"Compound name"],
         formula = data[,"Molecular formula"],
+        kegg_id = "n/a",
         pathway = data[,"Pathway"],
         class = data[,"Class"]
     ));
