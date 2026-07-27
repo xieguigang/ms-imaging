@@ -7,7 +7,7 @@ const NPBS_Atlas = function(mz, ms1ppm = 15, adducts = c("[M+H]+","[M]+")) {
         kegg_id = "n/a",
         pathway = data[,"Pathway"],
         class = data[,"Class"]
-    ));
+    ), ms1ppm = ms1ppm, adducts = adducts);
 
     return(result);
 }
