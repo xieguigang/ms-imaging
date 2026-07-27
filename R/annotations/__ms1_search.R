@@ -25,6 +25,8 @@ const __ms1_search = function(mz, data, ms1ppm = 15, adducts = c("[M+H]+")) {
     result[,"formula.1"] = NULL;
     result[,"unique_id"] = NULL;
 
+    result = result[result$ppm < ms1ppm, ];
+
     result[,"mz"] = round(result$mz, 4);
     result[,"ppm"] = round(result$ppm, 2);
     result[,"score"] = round(result$score, 2);
