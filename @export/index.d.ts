@@ -52,6 +52,11 @@ declare namespace MSImaging {
    */
    function geom_red(mz: any, tolerance?: any): object;
    /**
+     * @param ms1ppm default value Is ``15``.
+     * @param adducts default value Is ``Call "c"("[M+H]+", "[M]+")``.
+   */
+   function ms1_search_ion(mz: any, id: any, name: any, formula: any, kegg_id: any, pathway: any, class: any, ms1ppm?: any, adducts?: any): object;
+   /**
      * @param savePng default value Is ``./Rplot.png``.
      * @param ionName default value Is ``null``.
      * @param size default value Is ``[2400, 1000]``.
